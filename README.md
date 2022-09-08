@@ -1,1 +1,43 @@
-# perfiles
+<h1 align="center">
+  <br>
+  <a href=#><img src="https://osuc.dev/img/min-icon.svg" width="200px" alt="banner"></a>
+</h1>
+
+<h4 align="center"> Repositorio web para la comunidad OSUC </h4>
+
+<p align="center">
+     <!-- Badges Here -->
+</p>
+
+<p align="center">
+  <a href="#Descripción">Descripción</a> •
+  <a href="#Uso">Uso</a> •
+  <a href="#Contribuir">Contribuir</a>
+</p>
+
+---
+
+## Descripción
+
+Este repositorio contiene el código fuente para la plataforma comunitaria de [Open Source UC](https://osuc.dev). La plataforma permite que integrantes de la organización creen perfiles y obtengan logros, entre otras cosas.
+
+## Uso
+
+Por definir.
+
+#### Contribuir
+
+> El workflow es PR a development -> Revisar preview y checks -> Asignar reviewers -> Aprobación -> Merge a development
+
+La información detallada sobre cómo contribuir se puede encontrar en [contributing.md](contributing.md).
+
+#### Bug Reports & Feature Requests
+
+Utilice las **issues** para informar cualquier bug o solicitud.
+
+### Mantenedores
+
+- [agucova](https://www.github.com/agucova)
+- [diegocostares](https://www.github.com/diegocostares)
+- [fernandosmither](https://www.github.com/fernandosmither)
+- [a-maccormack](https://www.github.com/a-maccormack)
