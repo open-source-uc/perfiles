@@ -1,0 +1,17 @@
+name: Frontend Node CI
+
+on: pull_request
+
+jobs:
+  tests:
+    name: Tests and linters
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v2
+      - name: Install dependencies
+        run: yarn install
+      - name: Run ESLint
+        run: yarn lint
+      - name: Run Tests
+        run: yarn test
