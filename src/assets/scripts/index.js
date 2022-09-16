@@ -4,7 +4,7 @@ let members = null
 
 // Simulate the obtaining of the parameters as api 
 const fetchData = async() => {
-    const res = await fetch('/assets/members.json');
+    const res = await fetch('src/assets/members.json');
     members = await res.json()
 }
 
