@@ -1,4 +1,4 @@
-/* Defensive CSS Reset */
+ne/* Defensive CSS Reset */
 /* https://defensivecss.dev/articles/intro-defensive-css/ */
 
 /* [1] Break words when there is enough space */
@@ -81,7 +81,7 @@ h6 {
 
 /* No borders! */
 body {
-  margin: 0px;
+  margin: 0px auto;
 }
 
 /* Header + Navbar */
@@ -134,8 +134,11 @@ nav a:hover {
 footer {
   background-color: var(--black--3);
   color: var(--white--3);
-  padding: 1rem;
+  padding: 1.5rem 0;
   text-align: center;
+  position: absolute;
+  bottom: 0;
+  width: 100%;
 }
 
 /* Make text-decoration play well on the black background */
@@ -173,7 +176,7 @@ footer a {
   font-size: 1.2em;
   font-family: "Inter";
   font-weight: 400;
-  max-width: 450px;
+  max-width: 45%;
   width: 100%;
   text-align: center;
 }
@@ -181,6 +184,7 @@ footer a {
 /* Make the search box responsive */
 @media (max-width: 600px) {
   .search-box {
+    width: 85%;
     flex-direction: column;
   }
 
@@ -193,15 +197,17 @@ footer a {
 .profile__list {
   /* Flex for team members' avatars */
   display: flex;
-  flex-wrap: wrap;
-  justify-content: start;
-  align-items: left;
-  max-width: 1000px;
+  flex-flow: row wrap;
+  justify-content: center;
+  align-content: flex-start;
+  max-width: 80%;
+  margin: 0 auto;
 }
 
 /* Center on mobile */
 @media (max-width: 600px) {
   .profile__list {
+    max-width: 100%;
     justify-content: center;
   }
 }
