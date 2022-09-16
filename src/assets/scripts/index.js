@@ -1,72 +1,11 @@
-// This should probably be memoized
-function getMembers() {
-  // Get all organization members
-  // For now, let's mock this
-  const members = [
-    {
-      name: "Max Militzer",
-      role: "coordinator",
-      title: "Coordinador General",
-      // This is also their GitHub username
-      username: "Dyotson",
-    },
-    {
-      name: "Diego Costa",
-      role: "coordinator",
-      title: "Coordinador de Comunidad e Inserción",
-      username: "diegocostares",
-    },
-    {
-      name: "Lucas Natero",
-      role: "coordinator",
-      title: "Coordinador Externo",
-      username: "lnatero",
-    },
-    {
-      name: "Fernando Smith",
-      role: "coordinator",
-      title: "Coordinador de Educación",
-      username: "fernandosmither",
-    },
-    {
-      name: "Benjamín Vicente",
-      role: "coordinator",
-      title: "Coordinador de Proyectos",
-      username: "benjavicente",
-    },
-    {
-      name: "Martín Atria",
-      role: "member",
-      username: "Maratripa",
-    },
-    {
-      name: "Agustín Covarrubias",
-      role: "member",
-      username: "agucova",
-    },
-    {
-      name: "Alister MacCormack",
-      role: "member",
-      username: "a-maccormack",
-    },
-    {
-      name: "José Antonio Castro",
-      role: "member",
-      username: "Baelfire18",
-    },
-    {
-      name: "Ignacio Palma",
-      role: "member",
-      username: "IgnacioPalma",
-    },
-    {
-      name: "Juan Vargas",
-      role: "member",
-      username: "v4rgas",
-    },
-  ];
+document.addEventListener('DOMContentLoaded', e => { fetchData() });
 
-  return members;
+let members = null
+
+// Simulate the obtaining of the parameters as api 
+const fetchData = async() => {
+    const res = await fetch('members.json');
+    members = await res.json()
 }
 
 function createProfile(member) {
@@ -133,7 +72,6 @@ function fillProfiles(members) {
 
 // Load members on page load and fill their profiles on the profiles div
 window.onload = () => {
-  const members = getMembers();
   fillProfiles(members);
 };
 
@@ -142,7 +80,7 @@ const searchInput = document.getElementById("search-members-input");
 
 searchInput.addEventListener("input", (event) => {
   // Filter members by name
-  const members = getMembers().filter((member) =>
+  const members_filtered = members.filter((member) =>
     member.name.toLowerCase().includes(event.target.value.toLowerCase())
   );
 
@@ -151,5 +89,5 @@ searchInput.addEventListener("input", (event) => {
   profiles.forEach((profile) => profile.remove());
 
   // Fill profiles with filtered members
-  fillProfiles(members);
+  fillProfiles(members_filtered);
 });
