@@ -3,6 +3,7 @@
         "ritwickdey.liveserver",
         "esbenp.prettier-vscode",
         "dbaeumer.vscode-eslint",
-        "rvest.vs-code-prettier-eslint"
+        "rvest.vs-code-prettier-eslint",
+        "tonybaloney.vscode-pets"
     ]
 }

@@ -70,6 +70,7 @@ function getMembers() {
 }
 
 function createProfile(member) {
+  // Create the profile div from the member object
   const profile = document.createElement("div");
   profile.classList.add("profile");
 
@@ -96,6 +97,8 @@ function createProfile(member) {
 }
 
 function fillProfiles(members) {
+  // Create all of the profile divs based on the list of members
+
   // Group users by their role
   const coordinators = members.filter(
     (member) => member.role === "coordinator"
