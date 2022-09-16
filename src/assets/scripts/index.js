@@ -1,3 +1,4 @@
+// This should probably be memoized
 function getMembers() {
   // Get all organization members
   // For now, let's mock this

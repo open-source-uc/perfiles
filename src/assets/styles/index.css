@@ -199,6 +199,13 @@ footer a {
   max-width: 1000px;
 }
 
+/* Center on mobile */
+@media (max-width: 600px) {
+  .profile__list {
+    justify-content: center;
+  }
+}
+
 .profile {
   /* Flex for each team member's avatar and info */
   display: flex;
