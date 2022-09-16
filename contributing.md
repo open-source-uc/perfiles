@@ -1,6 +1,7 @@
 # Contributing
 
 ## Workflow
+
 1. (Opcional) Discutir tu propuesta previamente creando una issue.
 2. Hacer _fork_ del repositorio para hacer tus cambios, o si tienes los permisos, crear una nueva branch bajo el mismo repositorio.
    <details><summary>Si ya tienes un fork, debes sincronizar tu repositorio con upstream:</summary>
@@ -16,13 +17,13 @@
 
 4. Crear un Pull Request (PR) a `development`, manteniéndolo como "borrador" (draft) hasta que esté listo para ser incorporado.
 5. Explicar brevemente los cambios, siguiendo el formato de Pull Requests, especificando posibles problemas o puntos de discusión.
-6. Solicitar una revisión de pares (*review*) a los integrantes del equipo del proyecto (los encuentras en la seccion de Maintainers del readme).
+6. Solicitar una revisión de pares (_review_) a los integrantes del equipo del proyecto (los encuentras en la seccion de Maintainers del readme).
 7. Una vez aprobada la PR, un maintainer miembro del proyecto hará merge del código a `development`, una vez hecho el merge puedes eliminar tu branch.
 
-   
-   
 ## Tutorial
+
 ### Como hacer Pull Requests
+
 Primero debe crear un `fork` del repositorio para poder realizar cambios en él.Se pueden encontrar mas detalles en [GitHub Documentation](https://docs.github.com/en/get-started/quickstart/fork-a-repo).
 
 Luego agrega tu fork como un proyecto local:
@@ -63,6 +64,7 @@ git remote -v
 ```
 
 ### Realizar actualizaciones remotas
+
 Para mantenerse al día con el repositorio central:
 
 ```sh
@@ -70,14 +72,15 @@ git pull upstream main # or master
 ```
 
 ### Elija una branch de base
+
 Antes de comenzar el desarrollo, debe saber en qué branch basar sus modificaciones/adiciones. En caso de duda, use main o master.
 
-| Type of change                |           | Branches              |
-| :------------------           |:---------:| ---------------------:|
-| Documentation                 |           | `main`              |
-| Bug fixes                     |           | `main`              |
-| New features                  |           | `main`              |
-| New issues models             |           | `YOUR-USERNAME:patch` |
+| Type of change    |     |              Branches |
+| :---------------- | :-: | --------------------: |
+| Documentation     |     |                `main` |
+| Bug fixes         |     |                `main` |
+| New features      |     |                `main` |
+| New issues models |     | `YOUR-USERNAME:patch` |
 
 ```sh
 # Switch to the desired branch

@@ -1,0 +1,36 @@
+{
+  "name": "perfiles-osuc",
+  "version": "1.0.0",
+  "description": "Perfiles OSUC es la plataforma comunitaria de Open Source UC. Aquí puedes encontrar un registro de todes nuestros integrantes, sus logros, biografías y más.",
+  "main": "src/assets/scripts/index.js",
+  "scripts": {
+    "format": "prettier-eslint --write \"**/*.{js,jsx,ts,tsx,json,css,scss,md}\"",
+    "lint": "eslint \"src/**/*.{js,jsx}\" --quiet"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/open-source-uc/perfiles.git"
+  },
+  "author": "",
+  "license": "GPL-3.0-or-later",
+  "bugs": {
+    "url": "https://github.com/open-source-uc/perfiles/issues"
+  },
+  "homepage": "https://github.com/open-source-uc/perfiles#readme",
+  "devDependencies": {
+    "eslint": "^8.23.1",
+    "eslint-config-airbnb": "^19.0.4",
+    "eslint-config-airbnb-base": "^15.0.0",
+    "eslint-config-prettier": "^8.5.0",
+    "eslint-plugin-import": "^2.26.0",
+    "eslint-plugin-jsx-a11y": "^6.6.1",
+    "eslint-plugin-prettier": "^4.2.1",
+    "eslint-plugin-react": "^7.31.8",
+    "eslint-plugin-react-hooks": "^4.6.0",
+    "prettier": "^2.7.1",
+    "prettier-eslint": "^15.0.1"
+  },
+  "dependencies": {
+    "prettier-eslint-cli": "^7.1.0"
+  }
+}

@@ -37,7 +37,9 @@ La información detallada sobre cómo contribuir se puede encontrar en [contribu
 Utiliza las **issues** para informar cualquier bug o solicitud.
 
 ## Recursos adicionales
+
 Además de este repo, se incluyen algunos recursos adicionales:
+
 - [Wireframes](https://www.figma.com/file/yaM1qmubPm9Uy92E2MCrI7/Mock-ups)
 - [Mock-up de Landing](https://www.figma.com/file/lGAFeFU1kSXCeEmchjH3Go/Landing-Page)
 - [Flujo de miembros](https://www.figma.com/file/v88a4QTAT3G3LkCUNjSYU5/Flujo-de-Miembros)
