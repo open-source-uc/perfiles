@@ -85,7 +85,6 @@ function createProfile(member) {
   name.innerText = member.name;
   profile.appendChild(name);
 
-
   // Add title
   const title = document.createElement("p");
   title.classList.add("profile__title");
@@ -133,3 +132,20 @@ window.onload = () => {
   const members = getMembers();
   fillProfiles(members);
 };
+
+// On-type earch bar (#search-members-input)
+const searchInput = document.getElementById("search-members-input");
+
+searchInput.addEventListener("input", (event) => {
+  // Filter members by name
+  const members = getMembers().filter((member) =>
+    member.name.toLowerCase().includes(event.target.value.toLowerCase())
+  );
+
+  // Clear profiles
+  const profiles = document.querySelectorAll(".profile");
+  profiles.forEach((profile) => profile.remove());
+
+  // Fill profiles with filtered members
+  fillProfiles(members);
+});

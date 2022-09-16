@@ -167,22 +167,15 @@ footer a {
   font-weight: 400;
 }
 
-.search-box input {
+.search-box {
   padding: 10px 20px;
   border-radius: 5px;
   font-size: 1.2em;
   font-family: "Inter";
   font-weight: 400;
-  margin-right: 10px;
-}
-
-/* Search box */
-.search-box {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  margin: 20px 0px;
-  max-width: 500px;
+  max-width: 450px;
+  width: 100%;
+  text-align: center;
 }
 
 /* Make the search box responsive */
@@ -195,7 +188,6 @@ footer a {
     margin-bottom: 10px;
   }
 }
-
 
 /* Profiles */
 .profile__list {
