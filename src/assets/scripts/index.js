@@ -33,9 +33,66 @@ function getMembers() {
       title: "Coordinador de Proyectos",
       username: "benjavicente",
     },
+    {
+      name: "Martín Atria",
+      role: "member",
+      username: "Maratripa",
+    },
+    {
+      name: "Agustín Covarrubias",
+      role: "member",
+      username: "agucova",
+    },
+    {
+      name: "Alister MacCormack",
+      role: "member",
+      username: "a-maccormack",
+    },
+    {
+      name: "José Antonio Castro",
+      role: "member",
+      username: "Baelfire18",
+    },
+    {
+      name: "Ignacio Palma",
+      role: "member",
+      username: "IgnacioPalma",
+    },
+    {
+      name: "Juan Vargas",
+      role: "member",
+      username: "v4rgas",
+    },
   ];
 
   return members;
+}
+
+function createProfile(member) {
+  const profile = document.createElement("div");
+  profile.classList.add("profile");
+
+  const avatar = document.createElement("img");
+  // Use GitHub avatar
+  avatar.src = `https://avatars.githubusercontent.com/${member.username}`;
+  avatar.alt = member.name;
+  avatar.classList.add("profile__avatar");
+  profile.appendChild(avatar);
+
+  // Add name
+  const name = document.createElement("p");
+  name.classList.add("profile__name");
+  name.innerText = member.name;
+  profile.appendChild(name);
+
+
+  // Add title
+  const title = document.createElement("p");
+  title.classList.add("profile__title");
+  title.innerText = member.title || "Integrante";
+  profile.appendChild(title);
+
+  return profile;
 }
 
 function fillProfiles(members) {
@@ -50,28 +107,24 @@ function fillProfiles(members) {
   const coordinationProfiles = document.getElementById("coordination-profiles");
 
   coordinators.forEach((coordinator) => {
-    const profile = document.createElement("div");
-    profile.classList.add("profile");
-
-    const avatar = document.createElement("img");
-    // Use GitHub avatar
-    avatar.src = `https://avatars.githubusercontent.com/${coordinator.username}`;
-    avatar.alt = coordinator.name;
-    avatar.classList.add("profile__avatar");
-    // Add name
-    const name = document.createElement("p");
-    name.classList.add("profile__name");
-    name.innerText = coordinator.name;
-    // Add title
-    const title = document.createElement("p");
-    title.classList.add("profile__title");
-    title.innerText = coordinator.title;
-
-    profile.appendChild(avatar);
-    profile.appendChild(name);
-    profile.appendChild(title);
-
+    const profile = createProfile(coordinator);
     coordinationProfiles.appendChild(profile);
+  });
+
+  // Fill students profiles inside #members-profiles
+  const studentsProfiles = document.getElementById("members-profiles");
+
+  students.forEach((student) => {
+    const profile = createProfile(student);
+    studentsProfiles.appendChild(profile);
+  });
+
+  // Fill alumni profiles inside #hall-of-fame-profiles
+  const alumniProfiles = document.getElementById("hall-of-fame-profiles");
+
+  alumni.forEach((alumnus) => {
+    const profile = createProfile(alumnus);
+    alumniProfiles.appendChild(profile);
   });
 }
 
