@@ -75,7 +75,7 @@ function createProfile(member) {
 
   const avatar = document.createElement("img");
   // Use GitHub avatar
-  avatar.src = `https://avatars.githubusercontent.com/${member.username}`;
+  avatar.src = `https://avatars.githubusercontent.com/${member.username}?s=120`;
   avatar.alt = member.name;
   avatar.classList.add("profile__avatar");
   profile.appendChild(avatar);
