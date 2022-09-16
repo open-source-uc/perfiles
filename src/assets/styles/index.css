@@ -126,7 +126,6 @@ nav a:hover {
 
 /* Logo */
 .logo img {
-  width: 280px;
   object-fit: contain;
   margin: 0px 15px;
 }
