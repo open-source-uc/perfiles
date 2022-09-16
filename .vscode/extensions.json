@@ -4,6 +4,7 @@
         "esbenp.prettier-vscode",
         "dbaeumer.vscode-eslint",
         "rvest.vs-code-prettier-eslint",
-        "tonybaloney.vscode-pets"
+        "tonybaloney.vscode-pets",
+        "GitHub.copilot"
     ]
 }
