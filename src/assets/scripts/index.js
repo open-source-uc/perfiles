@@ -1,13 +1,3 @@
-document.addEventListener('DOMContentLoaded', e => { fetchData() });
-
-let members = null
-
-// Simulate the obtaining of the parameters as api 
-const fetchData = async() => {
-    const res = await fetch('src/assets/members.json');
-    members = await res.json()
-}
-
 function createProfile(member) {
   // Create the profile div from the member object
   const profile = document.createElement("div");
@@ -72,7 +62,13 @@ function fillProfiles(members) {
 
 // Load members on page load and fill their profiles on the profiles div
 window.onload = () => {
-  fillProfiles(members);
+  // Fetch from /assets/members.json and save on window.members
+  fetch("/assets/members.json")
+    .then((response) => response.json())
+    .then((data) => {
+      window.members = data;
+      fillProfiles(data);
+    });
 };
 
 // On-type earch bar (#search-members-input)
@@ -80,7 +76,7 @@ const searchInput = document.getElementById("search-members-input");
 
 searchInput.addEventListener("input", (event) => {
   // Filter members by name
-  const members_filtered = members.filter((member) =>
+  const membersFiltered = window.members.filter((member) =>
     member.name.toLowerCase().includes(event.target.value.toLowerCase())
   );
 
@@ -89,5 +85,5 @@ searchInput.addEventListener("input", (event) => {
   profiles.forEach((profile) => profile.remove());
 
   // Fill profiles with filtered members
-  fillProfiles(members_filtered);
+  fillProfiles(membersFiltered);
 });
