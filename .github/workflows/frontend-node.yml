@@ -1,4 +1,4 @@
-name: Frontend Node CI
+name: Frontend CI
 
 on: pull_request
 
@@ -10,8 +10,6 @@ jobs:
     steps:
       - uses: actions/checkout@v2
       - name: Install dependencies
-        run: yarn install
+        run: npm install
       - name: Run ESLint
-        run: yarn lint
-      - name: Run Tests
-        run: yarn test
+        run: npm run lint
