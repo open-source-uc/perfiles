@@ -93,13 +93,13 @@ header {
 }
 
 /* Make navbar an right-aligned horizontal flex */
-nav li {
+.nav-main li {
   display: inline-block;
   padding: 0.5rem 1rem;
 }
 
 /* Link styling */
-nav a {
+.nav-main a {
   color: var(--white--3);
   text-decoration: none;
   font-family: "Inter";
@@ -107,7 +107,7 @@ nav a {
 }
 
 /* Make navbar links whiter on hover */
-nav a:hover {
+.nav-main a:hover {
   color: var(--white--1);
 }
 
@@ -117,8 +117,8 @@ nav a:hover {
     flex-direction: column;
   }
 
-  /* Make nav centered */
-  nav {
+  /* Make the main navbar centered */
+  .nav-main {
     justify-content: center;
     text-align: center;
   }
@@ -256,4 +256,80 @@ footer a {
   font-size: 1em;
   font-weight: 400;
   margin: 0;
+}
+
+/* Admin */
+.login-picture {
+  /* Round login picture */
+  border-radius: 50%;
+  width: 60px;
+  height: 60px;
+}
+
+.admin__main {
+  padding: 20px 50px;
+  margin-left: 60px;
+}
+
+.admin__welcome {
+  font-size: 2.3em;
+  margin: 10px 0;
+  text-align: center;
+  margin-top: 30px;
+}
+
+/* aside */
+.nav-admin {
+  position: fixed;
+  height: 100%;
+  top: 107px;
+  bottom: 0px;
+  left: 0px;
+  width: 60px;
+  background-color: white;
+  border: 1px solid rgb(126, 126, 126);
+  z-index: 100;
+}
+
+/* Update top position on phone */
+@media (max-width: 600px) {
+  .nav-admin {
+    top: 179px;
+  }
+}
+
+/* nav */
+
+.nav-admin__nav {
+  /* This is a lateral navbar meant to go on the left of the page */
+  display: flex;
+  flex-direction: column;
+  overflow: auto;
+  justify-content: space-between;
+  align-items: center;
+}
+
+/* ul */
+.nav-admin__ul {
+  list-style-type: none;
+  padding: 0;
+  width: 100%;
+  text-align: center;
+}
+
+.nav-admin ul li {
+  position: relative;
+  height: 50px;
+  width: 100%;
+  line-height: 50px;
+}
+
+.nav-admin ul li a {
+  padding: auto;
+  text-decoration: none;
+}
+
+/* Selected li */
+.nav-admin li.active {
+  background-color: rgb(230, 230, 230);
 }
