@@ -62,12 +62,17 @@
     <header>
       <!-- Logo -->
       <a href="/" class="logo">
-        <img src="/assets/images/logo.svg" alt="Perfiles OSUC" width="280px" />
+        <img src="/assets/images/logo.svg" alt="Perfiles OSUC" />
       </a>
       <!-- Navbar -->
       <nav class="nav-main">
+        <input type="checkbox" id="check" />
+        <label for="check" class="checkbtn">
+          <i class="fa-solid fa-bars"></i>
+        </label>
         <ul>
           <li><a href="/logros">🏅 Logros</a></li>
+          <li><a href="/estatutos">📖 Estatutos</a></li>
           <li>
             <a
               href="https://github.com/login/oauth/authorize?client_id=77a88aaa5e4cd67cff18"
@@ -106,6 +111,9 @@
           <div id="hall-of-fame-profiles" class="profile__list"></div>
         </section>
       </section>
+      <button class="btn-scrollup btn_scrollup--visible" id="btn_scrollup">
+        <i class="fa-solid fa-chevron-up"></i>
+      </button>
     </main>
     <footer>
       <!-- Código autogenerado por https://chooser-beta.creativecommons.org/ -->
