@@ -419,12 +419,12 @@ footer a {
 
 /* aside */
 .nav-admin {
-  position: fixed;
-  height: 100%;
+  height: 838px;
   /* This is the main navbar offset (-1 for border) */
-  top: 107px;
-  bottom: 0px;
-  left: 0px;
+  position: absolute;
+  /* top: 107px; */
+  /* bottom: 0px; */
+  /* left: 0px; */
   /* The sidebar width */
   width: 60px;
   /* Some decoration */
@@ -435,19 +435,9 @@ footer a {
   z-index: 100;
 }
 
-/* Update top position on phone */
-@media (max-width: 600px) {
-  .nav-admin {
-    /* This updates the position because of the larger  */
-    /* navbar on mobile (-1 for border too) */
-    top: 179px;
-  }
-}
-
 /* nav */
-
 .nav-admin__nav {
-  /* This is a lateral navbar meant to go on the left of the page */
+  /* This is a lateral navbar that goes on left of the page */
   display: flex;
   flex-direction: column;
   overflow: auto;

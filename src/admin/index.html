@@ -61,32 +61,47 @@
     <header>
       <!-- Logo -->
       <a href="/" class="logo">
-        <img src="/assets/images/logo.svg" alt="Perfiles OSUC" width="280px" />
+        <img src="/assets/images/logo.svg" alt="Perfiles OSUC" />
       </a>
       <!-- Navbar -->
       <nav class="nav-main">
+        <input type="checkbox" id="check" />
+        <label for="check" class="checkbtn">
+          <i class="fa-solid fa-bars"></i>
+        </label>
         <ul>
           <li><a href="/logros">🏅 Logros</a></li>
-          <li>
-            <a
-              href="https://github.com/login/oauth/authorize?client_id=77a88aaa5e4cd67cff18"
-            >
-              👩‍💻 Iniciar sesión</a
-            >
-          </li>
+          <li><a href="/estatutos">📖 Estatutos</a></li>
+
+          <input type="checkbox" id="check-profile" />
+          <label for="check-profile" class="checkbtn-profile">
+            <li>
+              <img
+                class="login-picture"
+                src="https://avatars.githubusercontent.com/barbaraim?s=120"
+              />
+              <!--<span>barbaraim</span>-->
+            </li>
+          </label>
+
+          <ul class="profile-dropdown">
+            <li><a href="/perfil">👤 Perfil</a></li>
+            <li><a href="/admin">👨‍💻 Admin</a></li>
+            <li><a href="/logout">🚪 Cerrar sesión</a></li>
+          </ul>
         </ul>
       </nav>
     </header>
-    <!-- <aside class="nav-admin">
-        <nav class="nav-admin__nav" aria-label="Navegación de Admin">
-            <ul class="nav-admin__ul">
-                <li class="active"><a href="/admin/">📈</a></li>
-                <li><a href="/admin/rrhh">👥</a></li>
-                <li><a href="/admin/logros">🏅</a></li>
-                <li><a href="/admin/config">⚙️</a></li>
-            </ul>
-        </nav>
-    </aside> -->
+    <aside class="nav-admin">
+      <nav class="nav-admin__nav" aria-label="Navegación de Admin">
+        <ul class="nav-admin__ul">
+          <li class="active"><a href="/admin/">📈</a></li>
+          <li><a href="/admin/rrhh">👥</a></li>
+          <li><a href="/admin/logros">🏅</a></li>
+          <li><a href="/admin/config">⚙️</a></li>
+        </ul>
+      </nav>
+    </aside>
     <main class="admin__main">
       <p class="admin__welcome">Bienvenida, Bárbara 👋</p>
       <h2>Actividad reciente</h2>
