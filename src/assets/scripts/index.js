@@ -91,22 +91,22 @@ Array.from(searchInputs).forEach((input) => {
 });
 
 // Scroll to top button
-const btn_scrollup = document.getElementById("btn_scrollup");
-btn_scrollup.addEventListener("click", () => {
+const btnScrollup = document.getElementById("btn_scrollup");
+btnScrollup.addEventListener("click", () => {
   window.scrollTo({
     top: 0,
     behavior: "smooth",
   });
 });
 
-const add_btn_scrollup = () => {
+const addBtnScrollup = () => {
   if (window.scrollY < 300) {
-    btn_scrollup.classList.remove("btn_scrollup--visible");
+    btnScrollup.classList.remove("btn_scrollup--visible");
   } else {
-    btn_scrollup.classList.add("btn_scrollup--visible");
+    btnScrollup.classList.add("btn_scrollup--visible");
   }
 };
 
 window.onscroll = () => {
-  add_btn_scrollup();
+  addBtnScrollup();
 };
