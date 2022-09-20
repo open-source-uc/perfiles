@@ -94,14 +94,18 @@ header {
   width: 100%;
 }
 
+#logoOSUC{
+  width: 280px
+}
+
 /* Make navbar an right-aligned horizontal flex */
-nav li {
+.nav-main li {
   display: inline-block;
   padding: 0.5rem 1rem;
 }
 
 /* Link styling */
-nav a {
+.nav-main a {
   color: var(--white--3);
   text-decoration: none;
   font-family: "Inter";
@@ -124,24 +128,13 @@ nav a {
 }
 
 /* Make navbar links whiter on hover */
-nav a:hover {
+.nav-main a:hover {
   color: var(--white--1);
 }
 
 /* If on a phone, make header vertical */
 @media (max-width: 600px) {
-  /* Alternativa 1 */
-  header {
-    flex-direction: column;
-  }
-
-  nav {
-    justify-content: center;
-    text-align: center;
-  } 
-  /* Alternativa 2 */
-
-  /* nav ul {
+  .nav-main ul {
     position: absolute;
     width: 100%;
     background: var(--black--2);
@@ -154,7 +147,7 @@ nav a:hover {
     display: none;
   }
 
-  nav li{
+  .nav-main li{
     display: block;
     margin: 1rem 0;
     line-height: 30px;
@@ -166,7 +159,7 @@ nav a:hover {
   
   #check:checked ~ ul{
     display: block;
-  } */
+  }
 }
 
 /* Logo */
