@@ -59,6 +59,10 @@ body {
   text-rendering: optimizeLegibility;
 }
 
+main {
+  min-height: 800px;
+}
+
 h1 h2 {
   font-family: "League Spartan", sans-serif;
   font-weight: 700;
@@ -92,11 +96,9 @@ header {
   justify-content: space-between;
   position: fixed;
   width: 100%;
+  max-height: 70px;
 }
 
-.logoOSUC{
-  width: 280px
-}
 .nav-main ul {
   display: flex;
   align-items: center;
@@ -133,9 +135,54 @@ header {
   padding: 0 1rem;
 }
 
+.checkbtn-profile {
+  font-size: 2.5rem;
+  cursor: pointer;
+  float: right;
+  line-height: 0px;
+  transition: all .3s ease;
+}
+
 #check{
   display: none;
 }
+#check-profile{
+  display: none;
+}
+
+#check-profile:checked ~ .profile-dropdown {
+  display: block;
+}
+#check-profile:checked ~ .profile-dropdown li {
+  display: block;
+}
+
+.profile-dropdown {
+  position: absolute;
+  background: var(--black--2);
+  z-index: -1;
+  top: 0;
+  right: 0;
+  margin-top: 70px;
+  padding: 0;
+  display: none;
+  border: 1px solid var(--white--4);
+  border-top: 0;
+}
+
+.profile-dropdown li {
+  display: none;
+  margin: 0;
+  font-size: 1.1rem;
+  line-height: 30px;
+  border-top-width: 1.3px;
+  border-top-style: solid;
+  border-top-color: var(--white--4);
+  border-left: 30px solid transparent;
+  border-right: 30px solid transparent;
+}
+
+
 
 /* Make navbar links whiter on hover */
 .nav-main a:hover {
@@ -150,7 +197,6 @@ header {
     background: var(--black--2);
     z-index: -1;
     left: 0;
-    top: 0;
     text-align: center;
     margin-top: 70px;
     padding: 0;
@@ -172,6 +218,14 @@ header {
   .checkbtn {
     display: block;
   }
+  .checkbtn-profile {
+    float: none;
+    display: block;
+  }
+  .profile-dropdown {
+    top: 50%;
+    border-left: none;
+  }
   
   #check:checked ~ ul{
     display: block;
@@ -180,6 +234,7 @@ header {
 
 /* Logo */
 .logo img {
+  width: 280px;
   object-fit: contain;
   margin: 0px 15px;
   max-width: 12rem;
