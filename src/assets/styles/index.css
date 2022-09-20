@@ -395,3 +395,40 @@ footer a {
   font-weight: 400;
   margin: 0;
 }
+
+/* statutes */
+#estatutos {
+  text-align: justify;
+  margin: 0 auto;
+  max-width: 36em;
+  padding-left: 50px;
+  padding-right: 50px;
+  padding-top: 50px;
+  padding-bottom: 50px;
+  overflow-wrap: break-word;
+  text-rendering: optimizeLegibility;
+  font-kerning: normal;
+}
+
+#estatutos span {
+  font-weight: bold;
+}
+
+#estatutos li p {
+  margin: 1em 0 1em 1.7em;
+  padding-left: 1em;
+}
+
+figcaption {
+  caption-side: bottom;
+  text-align: center;
+  font-size: 0.8em;
+  font-style: italic;
+}
+
+.footnote-ref {
+  font-size: 0.6rem;
+}
+.footnote-back {
+  font-size: 0.6rem;
+}
