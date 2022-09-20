@@ -71,7 +71,7 @@ window.onload = () => {
     });
 };
 
-// On-type earch bar (.search-members__input)
+// On-type search bar (.search-members__input)
 const searchInputs = document.getElementsByClassName("search-members__input");
 
 Array.from(searchInputs).forEach((input) => {
