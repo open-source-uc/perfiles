@@ -134,7 +134,7 @@ header {
   display: none;
   float: right;
   line-height: 80px;
-  transition: all .3s ease;
+  transition: all 0.3s ease;
   padding: 0 1rem;
 }
 
@@ -144,13 +144,13 @@ header {
   cursor: pointer;
   float: right;
   line-height: 0px;
-  transition: all .3s ease;
+  transition: all 0.3s ease;
 }
 
-#check{
+#check {
   display: none;
 }
-#check-profile{
+#check-profile {
   display: none;
 }
 
@@ -187,8 +187,6 @@ header {
   border-right: 30px solid transparent;
 }
 
-
-
 /* Make navbar links whiter on hover */
 .nav-main a:hover {
   color: var(--white--1);
@@ -208,7 +206,7 @@ header {
     display: none;
   }
 
-  .nav-main li{
+  .nav-main li {
     display: block;
     margin: 0;
     font-size: 1.1rem;
@@ -231,8 +229,8 @@ header {
     top: 50%;
     border-left: none;
   }
-  
-  #check:checked ~ ul{
+
+  #check:checked ~ ul {
     display: block;
   }
 }
@@ -246,7 +244,7 @@ header {
 }
 
 /* Scroll to top button */
-.btn-scrollup{
+.btn-scrollup {
   position: fixed;
   bottom: 3%;
   right: 1.5%;
@@ -260,11 +258,11 @@ header {
   transition: 0.3s;
 }
 
-.btn_scrollup--visible{
+.btn_scrollup--visible {
   transform: translateY(0px);
 }
 
-.btn-scrollup:hover{
+.btn-scrollup:hover {
   transform: translateY(-6px);
   transition: all 0.2s ease-in-out;
 }

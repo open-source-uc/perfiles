@@ -90,7 +90,7 @@ Array.from(searchInputs).forEach((input) => {
   });
 });
 
-// Scroll to top button 
+// Scroll to top button
 const btn_scrollup = document.getElementById("btn_scrollup");
 btn_scrollup.addEventListener("click", () => {
   window.scrollTo({
@@ -100,14 +100,13 @@ btn_scrollup.addEventListener("click", () => {
 });
 
 const add_btn_scrollup = () => {
-  if (window.scrollY < 300){
+  if (window.scrollY < 300) {
     btn_scrollup.classList.remove("btn_scrollup--visible");
   } else {
     btn_scrollup.classList.add("btn_scrollup--visible");
-  };
+  }
 };
 
-
 window.onscroll = () => {
-  add_btn_scrollup()
+  add_btn_scrollup();
 };
