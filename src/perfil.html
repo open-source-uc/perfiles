@@ -50,7 +50,6 @@
     <link
         href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=League+Spartan:wght@400;700&display=swap"
         rel="stylesheet">
-    <script defer src="/assets/scripts/index.js"></script>
 
 </head>
 
@@ -63,47 +62,37 @@
         </a>
         <!-- Navbar -->
         <nav class="nav-main">
-            <input type="checkbox" id="check">
+            <input type="checkbox" id="check"/>
                 <label for="check" class="checkbtn">
                     <i class="fa-solid fa-bars"></i>
                 </label>
             <ul>
                 <li><a href="/logros">🏅 Logros</a></li>
                 <li><a href="/estatutos">📖 Estatutos</a></li>
-                <li><a href="https://github.com/login/oauth/authorize?client_id=77a88aaa5e4cd67cff18"> 👩‍💻 Iniciar
-                        sesión</a></li>
+                
+                <input type="checkbox" id="check-profile"/>
+                <label for="check-profile" class="checkbtn-profile">
+                    <li><img class="login-picture" src="https://avatars.githubusercontent.com/barbaraim?s=120"/> <!--<span>barbaraim</span>--></li>
+                </label>
+    
+                <ul class="profile-dropdown">
+                    <li><a href="/perfil">👤 Perfil</a></li>
+                    <li><a href="/admin">👨‍💻 Admin</a></li>
+                    <li><a href="/logout">🚪 Cerrar sesión</a></li>
+                </ul>
             </ul>
         </nav>
+
     </header>
     <main>
-        <section id="welcome-hero">
-            <h1>Bienvenide a la plataforma de perfiles OSUC</h1>
-            <p>Aquí podrás encontrar los perfiles de les integrantes de Open Source UC, sus logros y biografías.</p>
-        </section>
-        <section id="members">
-            <section class="search-members">
-                <p class="search-members__title">🔍 Buscar integrantes</p>
-                <input type="text" name="name" class="search-members__input" placeholder="Escribe un nombre..." />
-            </section>
-            <section id="profiles">
-                <h2>Coordinación</h2>
-                <div id="coordination-profiles" class="profile__list">
-                </div>
-                <h2>Integrantes</h2>
-                <div id="members-profiles" class="profile__list">
-                </div>
-
-                <h2>Sala de la fama 🏆</h2>
-                <div id="hall-of-fame-profiles" class="profile__list">
-                </div>
-            </section>
+        <section id="profile">
+            
         </section>
         <button class="btn-scrollup btn_scrollup--visible" id="btn_scrollup">
             <i class="fa-solid fa-chevron-up"></i>
         </button>
     </main>
     <footer>
-        <!-- Código autogenerado por https://chooser-beta.creativecommons.org/ -->
         <p xmlns:cc="http://creativecommons.org/ns#" xmlns:dct="http://purl.org/dc/terms/"><a property="dct:title"
                 rel="cc:attributionURL" href="https://perfiles.osuc.dev/">Perfiles OSUC</a> de <a
                 rel="cc:attributionURL dct:creator" property="cc:attributionName" href="https://osuc.dev/">Open Source
@@ -121,6 +110,7 @@
                     alt="Flecha curvándose hacia si misma" title="ShareAlike"></a>
         </p>
     </footer>
+    <script src="/assets/scripts/index.js"></script>
 </body>
 
 </html>

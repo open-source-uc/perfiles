@@ -89,3 +89,24 @@ Array.from(searchInputs).forEach((input) => {
     fillProfiles(membersFiltered);
   });
 });
+
+// Scroll to top button
+const btnScrollup = document.getElementById("btn_scrollup");
+btnScrollup.addEventListener("click", () => {
+  window.scrollTo({
+    top: 0,
+    behavior: "smooth",
+  });
+});
+
+const addBtnScrollup = () => {
+  if (window.scrollY < 300) {
+    btnScrollup.classList.remove("btn_scrollup--visible");
+  } else {
+    btnScrollup.classList.add("btn_scrollup--visible");
+  }
+};
+
+window.onscroll = () => {
+  addBtnScrollup();
+};
