@@ -71,19 +71,21 @@ window.onload = () => {
     });
 };
 
-// On-type earch bar (#search-members-input)
-const searchInput = document.getElementById("search-members-input");
+// On-type earch bar (.search-members__input)
+const searchInputs = document.getElementsByClassName("search-members__input");
 
-searchInput.addEventListener("input", (event) => {
-  // Filter members by name
-  const membersFiltered = window.members.filter((member) =>
-    member.name.toLowerCase().includes(event.target.value.toLowerCase())
-  );
+Array.from(searchInputs).forEach((input) => {
+  input.addEventListener("input", (event) => {
+    // Filter members by name
+    const membersFiltered = window.members.filter((member) =>
+      member.name.toLowerCase().includes(event.target.value.toLowerCase())
+    );
 
-  // Clear profiles
-  const profiles = document.querySelectorAll(".profile");
-  profiles.forEach((profile) => profile.remove());
+    // Clear profiles
+    const profiles = document.querySelectorAll(".profile");
+    profiles.forEach((profile) => profile.remove());
 
-  // Fill profiles with filtered members
-  fillProfiles(membersFiltered);
+    // Fill profiles with filtered members
+    fillProfiles(membersFiltered);
+  });
 });
