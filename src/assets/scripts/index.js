@@ -87,3 +87,20 @@ searchInput.addEventListener("input", (event) => {
   // Fill profiles with filtered members
   fillProfiles(membersFiltered);
 });
+
+// Scroll to top button 
+const btn_scrollup = document.getElementById("btn_scrollup");
+btn_scrollup.addEventListener("click", () => {
+  window.scrollTo({
+    top: 0,
+    behavior: "smooth",
+  });
+});
+
+window.onscroll = () => {
+  if (window.scrollY < 300){
+    btn_scrollup.classList.remove("btn_scrollup--visible");
+  } else {
+    btn_scrollup.classList.add("btn_scrollup--visible");
+  }
+};
