@@ -97,10 +97,15 @@ btn_scrollup.addEventListener("click", () => {
   });
 });
 
-window.onscroll = () => {
+const add_btn_scrollup = () => {
   if (window.scrollY < 300){
     btn_scrollup.classList.remove("btn_scrollup--visible");
   } else {
     btn_scrollup.classList.add("btn_scrollup--visible");
-  }
+  };
+};
+
+
+window.onscroll = () => {
+  add_btn_scrollup()
 };
