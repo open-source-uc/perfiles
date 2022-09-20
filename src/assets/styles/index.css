@@ -149,8 +149,14 @@ header {
 
   .nav-main li{
     display: block;
-    margin: 1rem 0;
+    margin: 0;
+    font-size: 1.1rem;
     line-height: 30px;
+    border-top-width: 1.3px;
+    border-top-style: solid;
+    border-top-color: var(--white--4);
+    border-left: 30px solid transparent;
+    border-right: 30px solid transparent;
   }
 
   .checkbtn {
