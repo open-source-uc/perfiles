@@ -94,20 +94,35 @@
         <!-- adminindexbox1-->
         <ol class="adminindexbox">
           <li class="adminindexbox-item">
-            <a href="#">Dashboard</a>
+            <a href="/admin/index.html">Admin</a>
           </li>
-          <li class="adminindexbox-item active">My Dashboard</li>
+          <li class="adminindexbox-item active">Configuración</li>
         </ol>
         <!-- adminBox-->
         <section class="admin-box">
-          <article class="col-100"></article>
+          <article class="col-100">
+            <h2>Integraciones</h2>
+            <ul>
+              <li>GitHub<button>GH_API_TOKEN</button></li>
+              <li>Telegram<button>TG_API_TOKEN</button></li>
+              <li>ForwardEmail<button>FW_API_TOKEN</button></li>
+              <li><button class="save">Guardar</button></li>
+            </ul>
+          </article>
+          <article class="col-100">
+            <h2>Criterios de membresía y permanencia</h2>
+            <ul>
+              <li>Puntaje de Membresía <input></input></li>
+              <li>Puntaje de permanencia <input></input></li>
+              <li><button class="save">Guardar</button></li>
+            </ul>
+          </article>
+          <article class="col-50"></article>
           <article class="col-50"></article>
           <article class="col-33"></article>
+          <article class="col-33"></article>
+          <article class="col-33"></article>
           <article class="col-25"></article>
-          <article class="col-100"></article>
-          <article class="col-33"></article>
-          <article class="col-33"></article>
-          <article class="col-33"></article>
         </section>
       </div>
       <button class="btn-scrollup btn_scrollup--visible" id="btn_scrollup">

@@ -445,6 +445,27 @@ footer a {
   min-height: 20rem;
 }
 
+.admin-box ul {
+  list-style: none;
+  line-height: 4rem;
+}
+
+.admin-box button {
+  background: var(--white--4);
+  height: 3rem;
+  width: 14rem;
+  border: none;
+  border-radius: 0.5rem;
+  padding: 0.5rem 1rem;
+  font-size: 1.2rem;
+  cursor: pointer;
+}
+
+.save {
+  background: var(--main--color) !important;
+  color: var(--white--1);
+}
+
 .col-100 {
   width: calc(100% - 1rem);
 }
