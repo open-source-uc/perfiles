@@ -150,16 +150,14 @@ header {
 #check {
   display: none;
 }
-
 #check-profile {
   display: none;
 }
 
-#check-profile:checked~.profile-dropdown {
+#check-profile:checked ~ .profile-dropdown {
   display: block;
 }
-
-#check-profile:checked~.profile-dropdown li {
+#check-profile:checked ~ .profile-dropdown li {
   display: block;
 }
 
@@ -223,18 +221,16 @@ header {
   .checkbtn {
     display: block;
   }
-
   .checkbtn-profile {
     float: none;
     display: block;
   }
-
   .profile-dropdown {
     top: 50%;
     border-left: none;
   }
 
-  #check:checked~ul {
+  #check:checked ~ ul {
     display: block;
   }
 }
