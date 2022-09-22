@@ -45,6 +45,7 @@ img {
   --green: rgba(163, 190, 140, 1);
   --orange: rgba(208, 135, 112, 1);
   --purple: rgba(180, 142, 173, 1);
+  --box-shadow: 0 0 10px -2px rgba(0, 0, 0, 0.075);
 }
 
 /* Set default text styles */
@@ -400,6 +401,98 @@ footer a {
   margin: 0;
 }
 
+.addminContent {
+  margin: 0 1rem 1rem 1rem;
+}
+
+.adminindexbox {
+  padding: 10px 16px;
+  list-style: none;
+  background-color: var(--white--3);
+  border-radius: 0.5rem;
+}
+
+.adminindexbox li {
+  display: inline-block;
+  margin: 0 0.1rem;
+  font-size: 1.4rem;
+}
+
+.adminindexbox li:before {
+  content: "/\00a0";
+}
+
+.adminindexbox li a {
+  color: var(--blue--1);
+  text-decoration: none;
+  font-weight: 600;
+}
+
+.adminindexbox li a:hover {
+  color: #01447e;
+  text-decoration: underline;
+}
+
+.admin-box {
+  flex-wrap: wrap;
+  display: flex;
+  justify-content: flex-start;
+}
+
+.admin-box article {
+  background: var(--white--1);
+  box-shadow: var(--box-shadow);
+  border-radius: 0.8rem;
+  margin: 0 0.5rem 30px 0.5rem;
+  padding: 20px;
+  box-sizing: border-box;
+  min-height: 20rem;
+}
+
+.admin-box ul {
+  list-style: none;
+  line-height: 4rem;
+}
+
+.admin-box button {
+  background: var(--white--4);
+  height: 3rem;
+  width: 14rem;
+  border: none;
+  border-radius: 0.5rem;
+  padding: 0.5rem 1rem;
+  font-size: 1.2rem;
+  cursor: pointer;
+}
+
+.save {
+  background: var(--main--color) !important;
+  color: var(--white--1);
+}
+
+.col-100 {
+  width: calc(100% - 1rem);
+}
+
+.col-50 {
+  width: calc(50% - 1rem);
+}
+
+.col-33 {
+  width: calc(33.33% - 1rem);
+}
+
+.col-25 {
+  width: calc(25% - 1rem);
+}
+
+@media screen and (max-width: 800px) {
+  .col-50,
+  .col-33,
+  .col-25 {
+    width: calc(100% - 1rem);
+  }
+
 /* statutes */
 #estatutos {
   text-align: justify;
@@ -518,4 +611,5 @@ figcaption {
   /* This means we just need to add the "active" class to */
   /* the current page. */
   background-color: rgb(230, 230, 230);
+
 }
