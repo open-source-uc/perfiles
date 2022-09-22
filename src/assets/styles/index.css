@@ -312,7 +312,7 @@ header {
   bottom: 3%;
   right: 1.5%;
   padding: 1.5rem 1.5rem;
-  background-color: var(--main--blue);
+  background-color: var(--main--nabyblue);
   color: var(--white--1);
   border: 0 solid transparent;
   border-radius: 100%;
@@ -477,7 +477,7 @@ footer a {
 }
 
 .adminindexbox li a {
-  color: var(--main--blue);
+  color: var(--main--nabyblue);
   text-decoration: none;
   font-weight: 600;
 }
@@ -520,7 +520,7 @@ footer a {
 }
 
 .save {
-  background: var(--main--blue) !important;
+  background: var(--main--nabyblue) !important;
   color: var(--white--1);
 }
 
