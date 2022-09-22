@@ -8,8 +8,8 @@
     />
 
     <!-- Primary Meta Tags -->
-    <title>Inicio | Perfiles OSUC</title>
-    <meta name="title" content="Inicio | Perfiles OSUC" />
+    <title>Admin | Perfiles OSUC</title>
+    <meta name="title" content="Admin | Perfiles OSUC" />
     <meta
       name="description"
       content="Perfiles OSUC es la plataforma comunitaria de Open Source UC. Aquí puedes encontrar un registro de todes nuestros integrantes, sus logros, biografías y más."
@@ -18,8 +18,8 @@
     <!-- Open Graph / Facebook -->
     <!-- http://ogp.me/ -->
     <meta property="og:type" content="website" />
-    <meta property="og:url" content="https://perfiles.osuc.dev/" />
-    <meta property="og:title" content="Inicio | Perfiles OSUC" />
+    <meta property="og:url" content="https://perfiles.osuc.dev/admin/" />
+    <meta property="og:title" content="Admin | Perfiles OSUC" />
     <meta
       property="og:description"
       content="Perfiles OSUC es la plataforma comunitaria de Open Source UC. Aquí puedes encontrar un registro de todes nuestros integrantes, sus logros, biografías y más."
@@ -37,7 +37,7 @@
     />
     <meta property="twitter:image" content="/assets/images/banner.png" />
 
-    <link rel="canonical" href="https://perfiles.osuc.dev/" />
+    <link rel="canonical" href="https://perfiles.osuc.dev/admin/" />
 
     <!-- Icons and favicons -->
     <link rel="icon" href="/assets/images/favicon.ico" />
@@ -54,7 +54,6 @@
       href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=League+Spartan:wght@400;700&display=swap"
       rel="stylesheet"
     />
-    <script defer src="/assets/scripts/index.js"></script>
   </head>
 
   <body>
@@ -73,47 +72,49 @@
         <ul>
           <li><a href="/logros">🏅 Logros</a></li>
           <li><a href="/estatutos">📖 Estatutos</a></li>
-          <li>
-            <a
-              href="https://github.com/login/oauth/authorize?client_id=77a88aaa5e4cd67cff18"
-            >
-              👩‍💻 Iniciar sesión</a
-            >
-          </li>
+
+          <input type="checkbox" id="check-profile" />
+          <label for="check-profile" class="checkbtn-profile">
+            <li>
+              <img
+                class="login-picture"
+                src="https://avatars.githubusercontent.com/barbaraim?s=120"
+              />
+              <!--<span>barbaraim</span>-->
+            </li>
+          </label>
+
+          <ul class="profile-dropdown">
+            <li><a href="/perfil">👤 Perfil</a></li>
+            <li><a href="/admin">👨‍💻 Admin</a></li>
+            <li><a href="/logout">🚪 Cerrar sesión</a></li>
+          </ul>
         </ul>
       </nav>
     </header>
-    <main>
-      <section id="welcome-hero">
-        <h1>Bienvenide a la plataforma de perfiles OSUC</h1>
-        <p>
-          Aquí podrás encontrar los perfiles de les integrantes de Open Source
-          UC, sus logros y biografías.
-        </p>
-      </section>
-      <section id="members">
-        <section class="search-members">
-          <p class="search-members__title">🔍 Buscar integrantes</p>
-          <input
-            type="text"
-            name="name"
-            class="search-members__input"
-            placeholder="Escribe un nombre..."
-          />
-        </section>
-        <section id="profiles">
-          <h2>Coordinación</h2>
-          <div id="coordination-profiles" class="profile__list"></div>
-          <h2>Integrantes</h2>
-          <div id="members-profiles" class="profile__list"></div>
-
-          <h2>Sala de la fama 🏆</h2>
-          <div id="hall-of-fame-profiles" class="profile__list"></div>
-        </section>
-      </section>
-      <button class="btn-scrollup btn_scrollup--visible" id="btn_scrollup">
-        <i class="fa-solid fa-chevron-up"></i>
-      </button>
+    <aside class="nav-admin">
+      <nav class="nav-admin__nav" aria-label="Navegación de Admin">
+        <ul class="nav-admin__ul">
+          <li class="active"><a href="/admin/">📈</a></li>
+          <li><a href="/admin/rrhh">👥</a></li>
+          <li><a href="/admin/logros">🏅</a></li>
+          <li><a href="/admin/config">⚙️</a></li>
+        </ul>
+      </nav>
+    </aside>
+    <main class="admin__main">
+      <p class="admin__welcome">Bienvenida, Bárbara 👋</p>
+      <h2>Actividad reciente</h2>
+      <table>
+        <tbody>
+          <tr>
+            <td>dfskjfsdkjds</td>
+          </tr>
+          <tr>
+            <td>dfskjfsdkjds</td>
+          </tr>
+        </tbody>
+      </table>
     </main>
     <footer>
       <!-- Código autogenerado por https://chooser-beta.creativecommons.org/ -->
@@ -164,5 +165,6 @@
         /></a>
       </p>
     </footer>
+    <script src="/assets/scripts/index.js"></script>
   </body>
 </html>
