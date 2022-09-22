@@ -44,6 +44,12 @@
     <link rel="apple-touch-icon" href="/assets/images/apple-touch-icon.png" />
     <link rel="manifest" href="/site.webmanifest" />
 
+    <!-- fontawesome -->
+    <script
+      src="https://kit.fontawesome.com/0928ae0e39.js"
+      crossorigin="anonymous"
+    ></script>
+
     <!-- Styles -->
     <link rel="stylesheet" href="/assets/styles/index.css" />
 
@@ -54,6 +60,7 @@
       href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=League+Spartan:wght@400;700&display=swap"
       rel="stylesheet"
     />
+    <script defer src="/assets/scripts/index.js"></script>
   </head>
 
   <body>
@@ -96,13 +103,19 @@
       <nav class="nav-admin__nav" aria-label="Navegación de Admin">
         <ul class="nav-admin__ul">
           <li class="active"><a href="/admin/">📈</a></li>
-          <li><a href="/admin/rrhh">👥</a></li>
-          <li><a href="/admin/logros">🏅</a></li>
-          <li><a href="/admin/config">⚙️</a></li>
+          <li><a href="/admin/rrhh.html">👥</a></li>
+          <li><a href="/admin/logros.html">🏅</a></li>
+          <li><a href="/admin/config.html">⚙️</a></li>
         </ul>
       </nav>
     </aside>
     <main class="admin__main">
+      <!-- adminindexbox1-->
+      <ol class="adminindexbox">
+        <li class="adminindexbox-item">
+          <a href="/admin/index.html">Admin</a>
+        </li>
+      </ol>
       <p class="admin__welcome">Bienvenida, Bárbara 👋</p>
       <h2>Actividad reciente</h2>
       <table>
@@ -165,6 +178,5 @@
         /></a>
       </p>
     </footer>
-    <script src="/assets/scripts/index.js"></script>
   </body>
 </html>

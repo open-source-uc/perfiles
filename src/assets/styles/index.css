@@ -98,6 +98,7 @@ header {
   position: sticky;
   width: 100%;
   max-height: 70px;
+  z-index: 10;
 }
 
 /* Make navbar an horizontal flex */
@@ -156,11 +157,11 @@ header {
   display: none;
 }
 
-#check-profile:checked~.profile-dropdown {
+#check-profile:checked ~ .profile-dropdown {
   display: block;
 }
 
-#check-profile:checked~.profile-dropdown li {
+#check-profile:checked ~ .profile-dropdown li {
   display: block;
 }
 
@@ -235,7 +236,7 @@ header {
     border-left: none;
   }
 
-  #check:checked~ul {
+  #check:checked ~ ul {
     display: block;
   }
 }
@@ -401,15 +402,12 @@ footer a {
   margin: 0;
 }
 
-.addminContent {
-  margin: 0 1rem 1rem 1rem;
-}
-
 .adminindexbox {
   padding: 10px 16px;
   list-style: none;
   background-color: var(--white--3);
   border-radius: 0.5rem;
+  margin: 0 0.5rem 1rem 0.5rem;
 }
 
 .adminindexbox li {
@@ -492,6 +490,7 @@ footer a {
   .col-25 {
     width: calc(100% - 1rem);
   }
+}
 
 /* statutes */
 #estatutos {
@@ -554,20 +553,15 @@ figcaption {
 
 /* aside */
 .nav-admin {
-  height: 838px;
-  /* This is the main navbar offset (-1 for border) */
-  position: absolute;
-  /* top: 107px; */
-  /* bottom: 0px; */
-  /* left: 0px; */
-  /* The sidebar width */
+  background-color: var(--white--1);
+  box-shadow: var(--box-shadow);
   width: 60px;
-  /* Some decoration */
-  background-color: white;
-  border: 1px solid rgb(126, 126, 126);
-  /* This makes sure the sidebar is on top of */
-  /* everything else in the page. */
-  z-index: 100;
+  height: 100%;
+  position: fixed;
+  z-index: 0;
+  top: 0;
+  transition: all 0.4s ease-in-out;
+  padding-top: 70px;
 }
 
 /* nav */
@@ -611,5 +605,4 @@ figcaption {
   /* This means we just need to add the "active" class to */
   /* the current page. */
   background-color: rgb(230, 230, 230);
-
 }

@@ -107,6 +107,19 @@ const addBtnScrollup = () => {
   }
 };
 
+// Scroll to admin navbar .nav-admin
+const navbarAdmin = document.querySelector(".nav-admin");
+const adminnavbarScroll = () => {
+  if (window.scrollY > 70) {
+    // Cambiamos el padding-top a 0
+    navbarAdmin.style.paddingTop = "0";
+  } else {
+    // Cambiamos el padding-top a 70px
+    navbarAdmin.style.paddingTop = "70px";
+  }
+};
+
 window.onscroll = () => {
   addBtnScrollup();
+  adminnavbarScroll();
 };
