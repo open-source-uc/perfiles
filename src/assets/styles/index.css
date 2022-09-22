@@ -123,6 +123,7 @@ header {
   display: flex;
   outline: none;
   padding: 0;
+  margin: 0 auto;
 }
 
 .switchtheme::after {
