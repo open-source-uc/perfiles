@@ -549,8 +549,8 @@ footer a {
   }
 }
 
-/* statutes */
-#estatutos {
+/* statutes and inscriptions */
+.styleword {
   text-align: justify;
   margin: 0 auto;
   max-width: 36em;
@@ -563,11 +563,11 @@ footer a {
   font-kerning: normal;
 }
 
-#estatutos span {
+.styleword span {
   font-weight: bold;
 }
 
-#estatutos li p {
+.styleword li p {
   margin: 1em 0 1em 1.7em;
   padding-left: 1em;
 }
@@ -585,6 +585,17 @@ figcaption {
 
 .footnote-back {
   font-size: 0.6rem;
+}
+
+/*Iframe content links OSUC*/
+#linksOSUC {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  margin: 0 auto;
+  width: 400px;
+  height: 600px;
+  border: none;
 }
 
 /* Admin */
