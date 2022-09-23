@@ -114,7 +114,7 @@ window.onscroll = () => {
   addBtnScrollup();
   if (window.location.pathname.startsWith("/admin")) {
     adminnavbarScroll();
-  };
+  }
 };
 
 // Dark mode
@@ -148,4 +148,4 @@ if (window.location.pathname === "/") {
       window.members = data;
       fillProfiles(data);
     });
-};
+}
