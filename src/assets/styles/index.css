@@ -214,11 +214,11 @@ header {
   display: none;
 }
 
-#check-profile:checked ~ .profile-dropdown {
+#check-profile:checked~.profile-dropdown {
   display: block;
 }
 
-#check-profile:checked ~ .profile-dropdown li {
+#check-profile:checked~.profile-dropdown li {
   display: block;
 }
 
@@ -274,7 +274,7 @@ header {
     line-height: 30px;
     border-top-width: 1.3px;
     border-top-style: solid;
-    border-top-color: var(--white--4);
+    border-top-color: var(--white--2);
     border-left: 30px solid transparent;
     border-right: 30px solid transparent;
   }
@@ -293,7 +293,7 @@ header {
     border-left: none;
   }
 
-  #check:checked ~ ul {
+  #check:checked~ul {
     display: block;
   }
 }
@@ -541,6 +541,7 @@ footer a {
 }
 
 @media screen and (max-width: 800px) {
+
   .col-50,
   .col-33,
   .col-25 {
@@ -609,7 +610,7 @@ figcaption {
 
 /* aside */
 .nav-admin {
-  background-color: var(--white--1);
+  background-color: var(--white--3);
   box-shadow: var(--box-shadow);
   width: 60px;
   height: 100%;
@@ -660,5 +661,5 @@ figcaption {
   /* This changes the background of the active element */
   /* This means we just need to add the "active" class to */
   /* the current page. */
-  background-color: rgb(230, 230, 230);
+  background-color: var(--white--2);
 }
