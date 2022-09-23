@@ -663,3 +663,84 @@ figcaption {
   /* the current page. */
   background-color: var(--white--2);
 }
+
+/* Table admin */
+.tableadmin {
+  width: 100%;
+  margin: 10px;
+  font-size: 1.2em;
+  margin-bottom: 15px;
+  text-align: left;
+  box-shadow: var(--box-shadow2);
+}
+
+.tableadmin td {
+  padding: 4px;
+}
+
+.tableadmin thead {
+  cursor: pointer;
+  background: var(--black--3);
+  color: #fff;
+}
+
+.tableadmin tbody {
+  background: #e5ebf1;
+}
+
+.tableadmin thead th {
+  padding: 4px;
+  border-bottom: 4px solid #9ea7af;
+}
+
+.tableadmin tbody td {
+  border-bottom: 1px solid #9ea7af;
+}
+
+.tableadmin tr:nth-child(odd) td {
+  background: #dedee1;
+}
+
+/* Danger admin */
+.border-danger {
+  border: 2px solid #dc3545;
+  box-shadow: 0 0 5px 5px rgba(255, 0, 0, 0.2),
+    inset 0 0 5px 5px rgba(130, 2, 2, 0.2) !important;
+}
+
+.text-danger {
+  color: #dc3545;
+}
+
+.btn-danger {
+  background-color: #dc3545 !important;
+  border-color: #dc3545 !important;
+  color: #fff !important;
+}
+
+/* --- */
+.import-members {
+  height: 200px;
+  border: 4px dashed rgb(0, 0, 0);
+  margin-bottom: 40px;
+}
+.import-members p {
+  text-align: center;
+  line-height: 170px;
+  color: #000000;
+}
+.import-members input {
+  position: absolute;
+  width: 100%;
+  height: 200px;
+  outline: none;
+  opacity: 0;
+}
+.import-members button {
+  width: 508px;
+  height: 35px;
+  transition: all 0.2s ease;
+  outline: none;
+  border: 10px;
+  margin-top: 10px;
+}

@@ -125,13 +125,79 @@
       </ol>
       <!-- adminBox-->
       <section class="admin-box">
-        <article class="col-100"></article>
-        <article class="col-50"></article>
-        <article class="col-50"></article>
-        <article class="col-33"></article>
-        <article class="col-33"></article>
-        <article class="col-33"></article>
-        <article class="col-25"></article>
+        <article class="col-100">
+          <h2>Miembros</h2>
+          <p class="search-members__title">Buscar miembros...</p>
+          <input
+            type="text"
+            name="name"
+            class="search-members__input"
+            placeholder="Escribe un nombre..."
+          />
+          <table class="tableadmin" cellspacing="0" cellpadding="0">
+            <thead>
+              <tr>
+                <th><span>Nombre</span></th>
+                <th><span>rol</span></th>
+                <th><span>Estado</span></th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Nombre1</td>
+                <td>Miembro</td>
+                <td>Activo</td>
+              </tr>
+              <tr>
+                <td>Nombre1</td>
+                <td>Miembro</td>
+                <td>Activo</td>
+              </tr>
+              <tr>
+                <td>Nombre1</td>
+                <td>Miembro</td>
+                <td>Activo</td>
+              </tr>
+              <tr>
+                <td>Nombre1</td>
+                <td>Miembro</td>
+                <td>Activo</td>
+              </tr>
+              <tr>
+                <td>Nombre1</td>
+                <td>Miembro</td>
+                <td>Activo</td>
+              </tr>
+            </tbody>
+          </table>
+        </article>
+        <article class="col-50">
+          <h2>Reporte de aplicantes</h2>
+          <button class="save">Guardar</button>
+        </article>
+        <article class="col-50">
+          <h2>Reporte de outboarding</h2>
+          <button class="save">Guardar</button>
+        </article>
+        <article class="col-100">
+          <h2>Importar aplicantes</h2>
+          <p>
+            Los aplicantes recibiran invitaciones a Telegram, Discord, GitHub y
+            el sistema de mails de OSUC
+          </p>
+          <form class="import-members">
+            <input type="file" />
+            <p>Arrastre sus archivos aquí o haga clic en esta área.</p>
+            <button type="submit">Subir</button>
+          </form>
+        </article>
+
+        <!-- DANGER ZONE -->
+        <article class="col-100 border-danger">
+          <h2 class="text-danger">Zona de peligro</h2>
+          <button class="btn-danger">Generar cambio de coordinación</button>
+          <button class="btn-danger">Reiniciar onboarding</button>
+        </article>
       </section>
       <button class="btn-scrollup btn_scrollup--visible" id="btn_scrollup">
         <i class="fa-solid fa-chevron-up"></i>
