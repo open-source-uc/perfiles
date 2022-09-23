@@ -58,6 +58,7 @@ img {
   --black--2: rgba(229, 233, 240, 1);
   --black--3: rgba(216, 222, 233, 1);
   --black--4: rgba(193, 200, 215, 1);
+  --main--nabyblue: hsl(209, 100%, 60%);
 }
 
 /* Set default text styles */
