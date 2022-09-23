@@ -29,7 +29,11 @@ img {
 
 :root {
   /* Colors (from the OSUC Design Kit) */
-  --main--color: rgba(0, 115, 222, 1);
+  --main--white: rgba(253, 251, 247, 1);
+  --main--bluegreen: rgba(150, 230, 215, 1);
+  --main--munsell: rgba(63, 144, 169, 1);
+  --main--nabyblue: rgba(0, 115, 222, 1);
+  --main--bluedark: rgba(39, 46, 145, 1);
   --black--1: rgba(46, 52, 64, 1);
   --black--2: rgba(59, 66, 82, 1);
   --black--3: rgba(67, 76, 94, 1);
@@ -41,11 +45,20 @@ img {
   --blue: rgba(94, 129, 172, 1);
   --yellow: rgba(235, 203, 139, 1);
   --red: rgba(191, 97, 106, 1);
-  --teal: rgba(143, 188, 187, 1);
-  --green: rgba(163, 190, 140, 1);
-  --orange: rgba(208, 135, 112, 1);
-  --purple: rgba(180, 142, 173, 1);
   --box-shadow: 0 0 10px -2px rgba(0, 0, 0, 0.075);
+  --box-shadow2: 0 0 2px 2px rgba(0, 0, 0, 0.2);
+}
+
+.dark {
+  --white--1: rgba(46, 52, 64, 1);
+  --white--2: rgba(59, 66, 82, 1);
+  --white--3: rgba(67, 76, 94, 1);
+  --white--4: rgba(76, 86, 106, 1);
+  --black--1: rgba(242, 244, 248, 1);
+  --black--2: rgba(229, 233, 240, 1);
+  --black--3: rgba(216, 222, 233, 1);
+  --black--4: rgba(193, 200, 215, 1);
+  --main--nabyblue: hsl(209, 100%, 60%);
 }
 
 /* Set default text styles */
@@ -54,7 +67,7 @@ body {
   font-size: 1rem;
   line-height: 1.4;
   color: var(--black--1);
-  background: var(--white--2);
+  background: var(--white--1);
   margin: 20px auto;
   word-wrap: break-word;
   text-rendering: optimizeLegibility;
@@ -99,6 +112,51 @@ header {
   width: 100%;
   max-height: 70px;
   z-index: 10;
+}
+
+/* Button theme switch */
+.switchtheme {
+  background: var(--black--1);
+  border-radius: 1000px;
+  border: none;
+  position: relative;
+  cursor: pointer;
+  display: flex;
+  outline: none;
+  padding: 0;
+  margin: 0 auto;
+}
+
+.switchtheme::after {
+  content: "";
+  display: block;
+  width: 2rem;
+  height: 2rem;
+  position: absolute;
+  border-radius: 100px;
+  background: var(--white--3);
+  box-shadow: var(--box-shadow2);
+  transition: all 0.3s ease;
+  left: 0;
+  right: unset;
+}
+
+.activetheme {
+  background: var(--main--nabyblue);
+}
+
+.activetheme::after {
+  left: unset !important;
+  right: 0 !important;
+}
+
+.switchtheme span {
+  width: 2rem;
+  height: 2rem;
+  line-height: 2rem;
+  display: block;
+  background: none;
+  color: var(--white--1);
 }
 
 /* Make navbar an horizontal flex */
@@ -217,7 +275,7 @@ header {
     line-height: 30px;
     border-top-width: 1.3px;
     border-top-style: solid;
-    border-top-color: var(--white--4);
+    border-top-color: var(--white--2);
     border-left: 30px solid transparent;
     border-right: 30px solid transparent;
   }
@@ -255,7 +313,7 @@ header {
   bottom: 3%;
   right: 1.5%;
   padding: 1.5rem 1.5rem;
-  background-color: var(--main--color);
+  background-color: var(--main--nabyblue);
   color: var(--white--1);
   border: 0 solid transparent;
   border-radius: 100%;
@@ -298,7 +356,6 @@ footer a {
 }
 
 #members {
-  background-color: var(--white--1);
   padding: 20px 50px;
 }
 
@@ -421,7 +478,7 @@ footer a {
 }
 
 .adminindexbox li a {
-  color: var(--blue--1);
+  color: var(--main--nabyblue);
   text-decoration: none;
   font-weight: 600;
 }
@@ -464,7 +521,7 @@ footer a {
 }
 
 .save {
-  background: var(--main--color) !important;
+  background: var(--main--nabyblue) !important;
   color: var(--white--1);
 }
 
@@ -553,7 +610,7 @@ figcaption {
 
 /* aside */
 .nav-admin {
-  background-color: var(--white--1);
+  background-color: var(--white--3);
   box-shadow: var(--box-shadow);
   width: 60px;
   height: 100%;
@@ -604,5 +661,5 @@ figcaption {
   /* This changes the background of the active element */
   /* This means we just need to add the "active" class to */
   /* the current page. */
-  background-color: rgb(230, 230, 230);
+  background-color: var(--white--2);
 }

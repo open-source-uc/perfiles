@@ -60,17 +60,6 @@ function fillProfiles(members) {
   });
 }
 
-// Load members on page load and fill their profiles on the profiles div
-window.onload = () => {
-  // Fetch from /assets/members.json and save on window.members
-  fetch("/assets/members.json")
-    .then((response) => response.json())
-    .then((data) => {
-      window.members = data;
-      fillProfiles(data);
-    });
-};
-
 // On-type search bar (.search-members__input)
 const searchInputs = document.getElementsByClassName("search-members__input");
 
@@ -92,12 +81,14 @@ Array.from(searchInputs).forEach((input) => {
 
 // Scroll to top button
 const btnScrollup = document.getElementById("btn_scrollup");
-btnScrollup.addEventListener("click", () => {
-  window.scrollTo({
-    top: 0,
-    behavior: "smooth",
+if (btnScrollup) {
+  btnScrollup.addEventListener("click", () => {
+    window.scrollTo({
+      top: 0,
+      behavior: "smooth",
+    });
   });
-});
+}
 
 const addBtnScrollup = () => {
   if (window.scrollY < 300) {
@@ -121,5 +112,40 @@ const adminnavbarScroll = () => {
 
 window.onscroll = () => {
   addBtnScrollup();
-  adminnavbarScroll();
+  if (window.location.pathname.startsWith("/admin")) {
+    adminnavbarScroll();
+  }
 };
+
+// Dark mode
+const btnSwitch = document.getElementById("switchtheme");
+btnSwitch.addEventListener("click", () => {
+  document.body.classList.toggle("dark");
+  btnSwitch.classList.toggle("activetheme");
+  // Guardamos el modo en localstorage
+  if (document.body.classList.contains("dark")) {
+    localStorage.setItem("dark-mode", "true");
+  } else {
+    localStorage.setItem("dark-mode", "false");
+  }
+});
+
+// revisamos el localStorage TODO: hacer antes de que cargue la pagina
+if (localStorage.getItem("dark-mode") === "true") {
+  document.body.classList.add("dark");
+  btnSwitch.classList.add("activetheme");
+} else {
+  document.body.classList.remove("dark");
+}
+
+// If on homepage
+// Load members on page load and fill their profiles on the profiles div
+if (window.location.pathname === "/") {
+  // Fetch from /assets/members.json and save on window.members
+  fetch("/assets/members.json")
+    .then((response) => response.json())
+    .then((data) => {
+      window.members = data;
+      fillProfiles(data);
+    });
+}
