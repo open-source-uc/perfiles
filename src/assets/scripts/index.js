@@ -81,12 +81,14 @@ Array.from(searchInputs).forEach((input) => {
 
 // Scroll to top button
 const btnScrollup = document.getElementById("btn_scrollup");
-btnScrollup.addEventListener("click", () => {
-  window.scrollTo({
-    top: 0,
-    behavior: "smooth",
+if (btnScrollup) {
+  btnScrollup.addEventListener("click", () => {
+    window.scrollTo({
+      top: 0,
+      behavior: "smooth",
+    });
   });
-});
+}
 
 const addBtnScrollup = () => {
   if (window.scrollY < 300) {
@@ -110,7 +112,9 @@ const adminnavbarScroll = () => {
 
 window.onscroll = () => {
   addBtnScrollup();
-  adminnavbarScroll();
+  if (window.location.pathname.startsWith("/admin")) {
+    adminnavbarScroll();
+  };
 };
 
 // Dark mode
@@ -126,15 +130,17 @@ btnSwitch.addEventListener("click", () => {
   }
 });
 
+// revisamos el localStorage TODO: hacer antes de que cargue la pagina
+if (localStorage.getItem("dark-mode") === "true") {
+  document.body.classList.add("dark");
+  btnSwitch.classList.add("activetheme");
+} else {
+  document.body.classList.remove("dark");
+}
+
+// If on homepage
 // Load members on page load and fill their profiles on the profiles div
-window.onload = () => {
-  // revisamos el localStorage TODO: hacer antes de que cargue la pagina
-  if (localStorage.getItem("dark-mode") === "true") {
-    document.body.classList.add("dark");
-    btnSwitch.classList.add("activetheme");
-  } else {
-    document.body.classList.remove("dark");
-  }
+if (window.location.pathname === "/") {
   // Fetch from /assets/members.json and save on window.members
   fetch("/assets/members.json")
     .then((response) => response.json())
