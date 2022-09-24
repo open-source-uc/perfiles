@@ -395,7 +395,7 @@ if (window.location.pathname === "/logros.html") {
   const tooltipText1 = new Konva.Text({
     x: -50,
     y: 60,
-    text: "COMPLEX TEXT\n\nAll the world's a stage, and all the men and women merely players. They have their exits and their entrances.",
+    text: "APLICANTE\n\nHaber sobrevivido al onboarding, y haber sido aceptado como miembro de la comunidad!",
     fontSize: 18,
     fontFamily: "Calibri",
     fill: "#555",
@@ -420,13 +420,13 @@ if (window.location.pathname === "/logros.html") {
   });
   layer.add(tooltipRect1);
   layer.add(tooltipText1);
-  // tooltipText1.hide();
-  // tooltipRect1.hide();
+  tooltipText1.hide();
+  tooltipRect1.hide();
 
   const tooltipText2 = new Konva.Text({
     x: 250,
     y: 60,
-    text: "COMPLEX TEXT\n\nAll the world's a stage, and all the men and women merely players. They have their exits and their entrances.",
+    text: "PRIMERA PR\n\nA que no era tan difícil hacer tu primera contribución, eh?.",
     fontSize: 18,
     fontFamily: "Calibri",
     fill: "#555",
@@ -451,13 +451,13 @@ if (window.location.pathname === "/logros.html") {
   });
   layer.add(tooltipRect2);
   layer.add(tooltipText2);
-  // tooltipText2.hide();
-  // tooltipRect2.hide();
+  tooltipText2.hide();
+  tooltipRect2.hide();
 
   const tooltipText3 = new Konva.Text({
     x: 750,
     y: -150,
-    text: "COMPLEX TEXT\n\nAll the world's a stage, and all the men and women merely players. They have their exits and their entrances.",
+    text: "ESTAFA PIRAMIDAL\n\nGracias por invitar a 3 amigos a OSUC!... Que ahora ellos inviten a 3 amigos también. 😈",
     fontSize: 18,
     fontFamily: "Calibri",
     fill: "#555",
@@ -482,13 +482,13 @@ if (window.location.pathname === "/logros.html") {
   });
   layer.add(tooltipRect3);
   layer.add(tooltipText3);
-  // tooltipText3.hide();
-  // tooltipRect3.hide();
+  tooltipText3.hide();
+  tooltipRect3.hide();
 
   const tooltipText4 = new Konva.Text({
     x: 750,
     y: 50,
-    text: "COMPLEX TEXT\n\nAll the world's a stage, and all the men and women merely players. They have their exits and their entrances.",
+    text: "2FA\n\n¿Tanto les cuesta adaptarse a la tecnología, que tenemos que darles un logro para que lo hagan?.",
     fontSize: 18,
     fontFamily: "Calibri",
     fill: "#555",
@@ -513,13 +513,13 @@ if (window.location.pathname === "/logros.html") {
   });
   layer.add(tooltipRect4);
   layer.add(tooltipText4);
-  // tooltipText4.hide();
-  // tooltipRect4.hide();
+  tooltipText4.hide();
+  tooltipRect4.hide();
 
   const tooltipText5 = new Konva.Text({
     x: 750,
     y: 250,
-    text: "COMPLEX TEXT\n\nAll the world's a stage, and all the men and women merely players. They have their exits and their entrances.",
+    text: "AYUDANTE\n\nHaber sido ayudante de un curso DCC.",
     fontSize: 18,
     fontFamily: "Calibri",
     fill: "#555",
@@ -544,13 +544,13 @@ if (window.location.pathname === "/logros.html") {
   });
   layer.add(tooltipRect5);
   layer.add(tooltipText5);
-  // tooltipText5.hide();
-  // tooltipRect5.hide();
+  tooltipText5.hide();
+  tooltipRect5.hide();
 
   const tooltipText6 = new Konva.Text({
     x: 1050,
     y: 50,
-    text: "COMPLEX TEXT\n\nAll the world's a stage, and all the men and women merely players. They have their exits and their entrances.",
+    text: "TENEMOS QUE HABLAR\n\nLa dipre u otra autoridad de la universidad te reta por un proyecto.",
     fontSize: 18,
     fontFamily: "Calibri",
     fill: "#555",
@@ -575,13 +575,13 @@ if (window.location.pathname === "/logros.html") {
   });
   layer.add(tooltipRect6);
   layer.add(tooltipText6);
-  // tooltipText6.hide();
-  // tooltipRect6.hide();
+  tooltipText6.hide();
+  tooltipRect6.hide();
 
   const tooltipText7 = new Konva.Text({
     x: 1050,
     y: 250,
-    text: "COMPLEX TEXT\n\nAll the world's a stage, and all the men and women merely players. They have their exits and their entrances.",
+    text: "ADMIN\n\nHaber sido coordinador de un curso DCC.",
     fontSize: 18,
     fontFamily: "Calibri",
     fill: "#555",
@@ -606,13 +606,13 @@ if (window.location.pathname === "/logros.html") {
   });
   layer.add(tooltipRect7);
   layer.add(tooltipText7);
-  // tooltipText7.hide();
-  // tooltipRect7.hide();
+  tooltipText7.hide();
+  tooltipRect7.hide();
 
   const tooltipText8 = new Konva.Text({
     x: 1350,
     y: 50,
-    text: "COMPLEX TEXT\n\nAll the world's a stage, and all the men and women merely players. They have their exits and their entrances.",
+    text: "ELON MUSK\n\nTener uno o más proyectos con más de 100 usuarios diarios!.",
     fontSize: 18,
     fontFamily: "Calibri",
     fill: "#555",
@@ -637,8 +637,8 @@ if (window.location.pathname === "/logros.html") {
   });
   layer.add(tooltipRect8);
   layer.add(tooltipText8);
-  // tooltipText8.hide();
-  // tooltipRect8.hide();
+  tooltipText8.hide();
+  tooltipRect8.hide();
 
   chickenBadge.on("mouseover", (evt) => {
     const shape = evt.target;
