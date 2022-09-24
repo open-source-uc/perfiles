@@ -489,19 +489,48 @@ footer a {
 }
 
 .admin-box {
-  flex-wrap: wrap;
-  display: flex;
-  justify-content: flex-start;
+  /* Add a border */
+  border: 3px solid var(--black--3);
+  /* Add some padding */
+  padding: 1em;
+  /* Add some bottom margin */
+  margin-bottom: 1em;
 }
 
-.admin-box article {
-  background: var(--white--1);
-  box-shadow: var(--box-shadow);
-  border-radius: 0.8rem;
-  margin: 0 0.5rem 30px 0.5rem;
-  padding: 20px;
-  box-sizing: border-box;
-  min-height: 20rem;
+.admin-box h2,
+.admin-box h3,
+.admin-box h4,
+.admin-box p {
+  margin-left: 20px;
+}
+
+.admin-box table {
+  /* Tables must be tighly fit inside the box */
+  width: 100%;
+  /* Remove all padding */
+  padding: 0;
+  margin: 0;
+}
+
+/* Highlight thead */
+.admin-box thead {
+  background-color: var(--black--3);
+  color: var(--white--1);
+}
+
+/* Center rows */
+.admin-box tr {
+  text-align: center;
+}
+
+/* Center cells */
+.admin-box td,
+.admin-box th {
+  text-align: center;
+}
+
+.admin-members {
+  padding: 0px;
 }
 
 .admin-box ul {
@@ -520,6 +549,54 @@ footer a {
   cursor: pointer;
 }
 
+/* Search for the members section */
+
+.admin-members-search__input {
+  padding: 10px 20px;
+  border-radius: 5px;
+  font-size: 1.2em;
+  font-family: "Inter";
+  font-weight: 400;
+  max-width: 60%;
+  width: 100%;
+  text-align: center;
+  /* Center */
+  margin: 0 auto;
+}
+
+.admin-members-search__title {
+  font-size: 1.1em;
+  margin-bottom: 0.5em;
+}
+
+.admin-members-search {
+  text-align: center;
+  width: 90%;
+  margin-bottom: 20px;
+  display: flex;
+  justify-content: center;
+}
+
+/* Styles for the report sections in human resources */
+.admin-reports-buttons {
+  display: flex;
+  flex-direction: row;
+  /* Distribute buttons along the row */
+  justify-content: space-evenly;
+  /* Center buttons vertically */
+  align-items: center;
+  margin-top: 40px;
+  margin-bottom: 30px;
+}
+
+.admin-reports-buttons button {
+  width: 300px;
+  height: 100px;
+  background-color: var(--main--nabyblue);
+  color: var(--white--3);
+}
+
+/* Miscellaneous stuff */
 .save {
   background: var(--main--nabyblue) !important;
   color: var(--white--1);
@@ -733,9 +810,8 @@ figcaption {
 
 /* --- */
 .import-members {
-  height: 200px;
   border: 4px dashed rgb(0, 0, 0);
-  margin-bottom: 40px;
+  padding: 20px;
 }
 
 .import-members p {
@@ -753,10 +829,31 @@ figcaption {
 }
 
 .import-members button {
-  width: 508px;
-  height: 35px;
+  width: 100%;
+  height: 40px;
   transition: all 0.2s ease;
   outline: none;
   border: 10px;
-  margin-top: 10px;
+  margin-top: 20px;
+}
+
+.admin-danger-zone {
+  /* Give danger border */
+  border: 4px solid #dc3545;
+}
+
+.admin-danger-zone h2 {
+  margin-bottom: 30px;
+}
+
+.admin-danger-zone button {
+  width: 300px;
+  height: 100px;
+}
+
+.admin-danger-zone-buttons {
+  display: flex;
+  justify-content: space-evenly;
+  margin-top: 20px;
+  width: 100%;
 }
