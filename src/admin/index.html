@@ -1,199 +1,162 @@
 <!DOCTYPE html>
 <html lang="es">
-  <head>
-    <meta charset="UTF-8" />
-    <meta
-      name="viewport"
-      content="width=device-width, initial-scale=1, minimum-scale=1"
-    />
 
-    <!-- Primary Meta Tags -->
-    <title>Admin | Perfiles OSUC</title>
-    <meta name="title" content="Admin | Perfiles OSUC" />
-    <meta
-      name="description"
-      content="Perfiles OSUC es la plataforma comunitaria de Open Source UC. Aquí puedes encontrar un registro de todes nuestros integrantes, sus logros, biografías y más."
-    />
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1" />
 
-    <!-- Open Graph / Facebook -->
-    <!-- http://ogp.me/ -->
-    <meta property="og:type" content="website" />
-    <meta property="og:url" content="https://perfiles.osuc.dev/admin/" />
-    <meta property="og:title" content="Admin | Perfiles OSUC" />
-    <meta
-      property="og:description"
-      content="Perfiles OSUC es la plataforma comunitaria de Open Source UC. Aquí puedes encontrar un registro de todes nuestros integrantes, sus logros, biografías y más."
-    />
-    <meta property="og:image" content="/assets/images/banner.png" />
+  <!-- Primary Meta Tags -->
+  <title>Admin | Perfiles OSUC</title>
+  <meta name="title" content="Admin | Perfiles OSUC" />
+  <meta name="description"
+    content="Perfiles OSUC es la plataforma comunitaria de Open Source UC. Aquí puedes encontrar un registro de todes nuestros integrantes, sus logros, biografías y más." />
 
-    <!-- Twitter Card -->
-    <!-- https://dev.twitter.com/cards/overview  -->
-    <meta property="twitter:card" content="summary_large_image" />
-    <meta property="twitter:url" content="https://perfiles.osuc.dev/" />
-    <meta property="twitter:title" content="Inicio | Perfiles OSUC" />
-    <meta
-      property="twitter:description"
-      content="Perfiles OSUC es la plataforma comunitaria de Open Source UC. Aquí puedes encontrar un registro de todes nuestros integrantes, sus logros, biografías y más."
-    />
-    <meta property="twitter:image" content="/assets/images/banner.png" />
+  <!-- Open Graph / Facebook -->
+  <!-- http://ogp.me/ -->
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://perfiles.osuc.dev/admin/" />
+  <meta property="og:title" content="Admin | Perfiles OSUC" />
+  <meta property="og:description"
+    content="Perfiles OSUC es la plataforma comunitaria de Open Source UC. Aquí puedes encontrar un registro de todes nuestros integrantes, sus logros, biografías y más." />
+  <meta property="og:image" content="/assets/images/banner.png" />
 
-    <link rel="canonical" href="https://perfiles.osuc.dev/admin/" />
+  <!-- Twitter Card -->
+  <!-- https://dev.twitter.com/cards/overview  -->
+  <meta property="twitter:card" content="summary_large_image" />
+  <meta property="twitter:url" content="https://perfiles.osuc.dev/" />
+  <meta property="twitter:title" content="Inicio | Perfiles OSUC" />
+  <meta property="twitter:description"
+    content="Perfiles OSUC es la plataforma comunitaria de Open Source UC. Aquí puedes encontrar un registro de todes nuestros integrantes, sus logros, biografías y más." />
+  <meta property="twitter:image" content="/assets/images/banner.png" />
 
-    <!-- Icons and favicons -->
-    <link rel="icon" href="/assets/images/favicon.ico" />
-    <link rel="apple-touch-icon" href="/assets/images/apple-touch-icon.png" />
-    <link rel="manifest" href="/site.webmanifest" />
+  <link rel="canonical" href="https://perfiles.osuc.dev/admin/" />
 
-    <!-- fontawesome -->
-    <script
-      src="https://kit.fontawesome.com/0928ae0e39.js"
-      crossorigin="anonymous"
-    ></script>
+  <!-- Icons and favicons -->
+  <link rel="icon" href="/assets/images/favicon.ico" />
+  <link rel="apple-touch-icon" href="/assets/images/apple-touch-icon.png" />
+  <link rel="manifest" href="/site.webmanifest" />
 
-    <!-- Styles -->
-    <link rel="stylesheet" href="/assets/styles/index.css" />
+  <!-- fontawesome -->
+  <script src="https://kit.fontawesome.com/0928ae0e39.js" crossorigin="anonymous"></script>
 
-    <!-- Fonts -->
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=League+Spartan:wght@400;700&display=swap"
-      rel="stylesheet"
-    />
-    <script defer src="/assets/scripts/index.js"></script>
-  </head>
+  <!-- Styles -->
+  <link rel="stylesheet" href="/assets/styles/index.css" />
 
-  <body>
-    <!-- Let's use as much semantic HTML as we can -->
-    <header>
-      <!-- Logo -->
-      <a href="/" class="logo">
-        <img src="/assets/images/logo.svg" alt="Perfiles OSUC" />
-      </a>
-      <!-- Navbar -->
-      <nav class="nav-main">
-        <input type="checkbox" id="check" />
-        <label for="check" class="checkbtn">
-          <i class="fa-solid fa-bars"></i>
-        </label>
-        <ul>
-          <li>
-            <button class="switchtheme" id="switchtheme">
-              <span> <i class="fa-solid fa-sun"></i> </span>
-              <span> <i class="fa-solid fa-moon"></i> </span>
-            </button>
-          </li>
-          <li><a href="/logros.html">🏅 Logros</a></li>
-          <li><a href="/estatutos.html">📖 Estatutos</a></li>
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=League+Spartan:wght@400;700&display=swap"
+    rel="stylesheet" />
+  <script defer src="/assets/scripts/index.js"></script>
+</head>
 
-          <input type="checkbox" id="check-profile" />
-          <label for="check-profile" class="checkbtn-profile">
-            <li>
-              <img
-                class="login-picture"
-                src="https://avatars.githubusercontent.com/barbaraim?s=120"
-              />
-              <!--<span>barbaraim</span>-->
-            </li>
-          </label>
-
-          <ul class="profile-dropdown">
-            <li><a href="/perfil.html">👤 Perfil</a></li>
-            <li><a href="/admin">👨‍💻 Admin</a></li>
-            <li><a href="/logout">🚪 Cerrar sesión</a></li>
-          </ul>
-        </ul>
-      </nav>
-    </header>
-    <aside class="nav-admin">
-      <nav class="nav-admin__nav" aria-label="Navegación de Admin">
-        <ul class="nav-admin__ul">
-          <li class="active"><a href="/admin/">📈</a></li>
-          <li><a href="/admin/rrhh.html">👥</a></li>
-          <li><a href="/admin/logros.html">🏅</a></li>
-          <li><a href="/admin/config.html">⚙️</a></li>
-        </ul>
-      </nav>
-    </aside>
-    <main class="admin__main">
-      <!-- adminindexbox1-->
-      <ol class="adminindexbox">
-        <li class="adminindexbox-item">
-          <a href="/admin/index.html">Admin</a>
+<body>
+  <!-- Let's use as much semantic HTML as we can -->
+  <header>
+    <!-- Logo -->
+    <a href="/" class="logo">
+      <img src="/assets/images/logo.svg" alt="Perfiles OSUC" />
+    </a>
+    <!-- Navbar -->
+    <nav class="nav-main">
+      <input type="checkbox" id="check" />
+      <label for="check" class="checkbtn">
+        <i class="fa-solid fa-bars"></i>
+      </label>
+      <ul>
+        <li>
+          <button class="switchtheme" id="switchtheme">
+            <span> <i class="fa-solid fa-sun"></i> </span>
+            <span> <i class="fa-solid fa-moon"></i> </span>
+          </button>
         </li>
-      </ol>
-      <p class="admin__welcome">Bienvenida, Bárbara 👋</p>
-      <h2>Actividad reciente</h2>
-      <table class="tableadmin">
-        <tbody>
-          <tr>
-            <td>Agustin Covarrubias actualizo su perfil. Hace 4 minutos.</td>
-          </tr>
-          <tr>
-            <td>Diego Costa cargo 15 aplicantes. Hace 8 minutos.</td>
-          </tr>
-          <tr>
-            <td>Lucas Natero creo un nuevo evento.Hace 40 minutos.</td>
-          </tr>
-          <tr>
-            <td>
-              Fernando Smith entrego un logro a Martin Atria. Hace 3 dias.
-            </td>
-          </tr>
-        </tbody>
-      </table>
-      <button class="btn-scrollup btn_scrollup--visible" id="btn_scrollup">
-        <i class="fa-solid fa-chevron-up"></i>
-      </button>
-    </main>
-    <footer>
-      <!-- Código autogenerado por https://chooser-beta.creativecommons.org/ -->
-      <p
-        xmlns:cc="http://creativecommons.org/ns#"
-        xmlns:dct="http://purl.org/dc/terms/"
-      >
-        <a
-          property="dct:title"
-          rel="cc:attributionURL"
-          href="https://perfiles.osuc.dev/"
-          >Perfiles OSUC</a
-        >
-        de
-        <a
-          rel="cc:attributionURL dct:creator"
-          property="cc:attributionName"
-          href="https://osuc.dev/"
-          >Open Source UC</a
-        >
-        está licenciado bajo
-        <a
-          href="http://creativecommons.org/licenses/by-nc-sa/4.0/?ref=chooser-v1"
-          target="_blank"
-          rel="license noopener noreferrer"
-          style="display: inline-block"
-          >CC BY-NC-SA 4.0<img
-            style="margin-left: 3px; vertical-align: text-bottom"
-            src="https://mirrors.creativecommons.org/presskit/icons/cc.svg?ref=chooser-v1"
-            height="22px"
-            alt="CC"
-            title="Creative Commons" /><img
-            style="margin-left: 3px; vertical-align: text-bottom"
-            src="https://mirrors.creativecommons.org/presskit/icons/by.svg?ref=chooser-v1"
-            height="22px"
-            alt="Persona"
-            title="Atribución" /><img
-            style="margin-left: 3px; vertical-align: text-bottom"
-            src="https://mirrors.creativecommons.org/presskit/icons/nc.svg?ref=chooser-v1"
-            height="22px"
-            alt="Un signo de dólar tachado"
-            title="No comercial" /><img
-            style="margin-left: 3px; vertical-align: text-bottom"
-            src="https://mirrors.creativecommons.org/presskit/icons/sa.svg?ref=chooser-v1"
-            height="22px"
-            alt="Flecha curvándose hacia si misma"
-            title="ShareAlike"
-        /></a>
-      </p>
-    </footer>
-  </body>
+        <li><a href="/logros.html">🏅 Logros</a></li>
+        <li><a href="/estatutos.html">📖 Estatutos</a></li>
+
+        <input type="checkbox" id="check-profile" />
+        <label for="check-profile" class="checkbtn-profile">
+          <li>
+            <img class="login-picture" src="https://avatars.githubusercontent.com/barbaraim?s=120" />
+            <!--<span>barbaraim</span>-->
+          </li>
+        </label>
+
+        <ul class="profile-dropdown">
+          <li><a href="/perfil.html">👤 Perfil</a></li>
+          <li><a href="/admin">👨‍💻 Admin</a></li>
+          <li><a href="/logout">🚪 Cerrar sesión</a></li>
+        </ul>
+      </ul>
+    </nav>
+  </header>
+  <aside class="nav-admin">
+    <nav class="nav-admin__nav" aria-label="Navegación de Admin">
+      <ul class="nav-admin__ul">
+        <li class="active"><a href="/admin/">📈</a></li>
+        <li><a href="/admin/rrhh.html">👥</a></li>
+        <li><a href="/admin/logros.html">🏅</a></li>
+        <li><a href="/admin/config.html">⚙️</a></li>
+      </ul>
+    </nav>
+  </aside>
+  <main class="admin__main">
+    <!-- adminindexbox1-->
+    <ol class="adminindexbox">
+      <li class="adminindexbox-item">
+        <a href="/admin/index.html">Admin</a>
+      </li>
+    </ol>
+    <p class="admin__welcome">Bienvenida, Bárbara 👋</p>
+    <h2>Actividad reciente</h2>
+    <table class="tableadmin">
+      <tbody>
+        <tr>
+          <td>Agustin Covarrubias actualizó su perfil. <time>Hace 4 minutos.</time></td>
+        </tr>
+        <tr>
+          <td>Diego Costa cargó 15 aplicantes. <time>Hace 8 minutos.</time></td>
+        </tr>
+        <tr>
+          <td>Lucas Natero creó un nuevo evento. <time>Hace 1 hora.</time></td>
+        </tr>
+        <tr>
+          <td>
+            Fernando Smith entregó un logro a Martin Atria. <time>Hace 3 dias.</time>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            Bárbara Irarrázaval entregó un logro a Nicolás Berríos. <time>Hace 5 dias.</time>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <button class="btn-scrollup btn_scrollup--visible" id="btn_scrollup">
+      <i class="fa-solid fa-chevron-up"></i>
+    </button>
+  </main>
+  <footer>
+    <!-- Código autogenerado por https://chooser-beta.creativecommons.org/ -->
+    <p xmlns:cc="http://creativecommons.org/ns#" xmlns:dct="http://purl.org/dc/terms/">
+      <a property="dct:title" rel="cc:attributionURL" href="https://perfiles.osuc.dev/">Perfiles OSUC</a>
+      de
+      <a rel="cc:attributionURL dct:creator" property="cc:attributionName" href="https://osuc.dev/">Open Source UC</a>
+      está licenciado bajo
+      <a href="http://creativecommons.org/licenses/by-nc-sa/4.0/?ref=chooser-v1" target="_blank"
+        rel="license noopener noreferrer" style="display: inline-block">CC BY-NC-SA 4.0<img
+          style="margin-left: 3px; vertical-align: text-bottom"
+          src="https://mirrors.creativecommons.org/presskit/icons/cc.svg?ref=chooser-v1" height="22px" alt="CC"
+          title="Creative Commons" /><img style="margin-left: 3px; vertical-align: text-bottom"
+          src="https://mirrors.creativecommons.org/presskit/icons/by.svg?ref=chooser-v1" height="22px" alt="Persona"
+          title="Atribución" /><img style="margin-left: 3px; vertical-align: text-bottom"
+          src="https://mirrors.creativecommons.org/presskit/icons/nc.svg?ref=chooser-v1" height="22px"
+          alt="Un signo de dólar tachado" title="No comercial" /><img
+          style="margin-left: 3px; vertical-align: text-bottom"
+          src="https://mirrors.creativecommons.org/presskit/icons/sa.svg?ref=chooser-v1" height="22px"
+          alt="Flecha curvándose hacia si misma" title="ShareAlike" /></a>
+    </p>
+  </footer>
+</body>
+
 </html>

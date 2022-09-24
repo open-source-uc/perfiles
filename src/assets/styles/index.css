@@ -215,11 +215,11 @@ header {
   display: none;
 }
 
-#check-profile:checked ~ .profile-dropdown {
+#check-profile:checked~.profile-dropdown {
   display: block;
 }
 
-#check-profile:checked ~ .profile-dropdown li {
+#check-profile:checked~.profile-dropdown li {
   display: block;
 }
 
@@ -294,7 +294,7 @@ header {
     border-left: none;
   }
 
-  #check:checked ~ ul {
+  #check:checked~ul {
     display: block;
   }
 }
@@ -542,6 +542,7 @@ footer a {
 }
 
 @media screen and (max-width: 800px) {
+
   .col-50,
   .col-33,
   .col-25 {
@@ -692,12 +693,25 @@ figcaption {
   padding: 5px;
 }
 
-.tableadmin tbody td {
-  border-bottom: 1px solid var(--white--3);
+.tableadmin tr:nth-child(even) td {
+  background: var(--black--4);
+  color: var(--white--3);
 }
 
 .tableadmin tr:nth-child(odd) td {
   background: var(--white--4);
+  color: var(--black--1);
+}
+
+.tableadmin time {
+  text-align: right;
+  display: block;
+  font-size: 80%;
+}
+
+/* Give margin to the contents of each row */
+.tableadmin tr td {
+  padding: 15px;
 }
 
 /* Danger admin */
@@ -723,11 +737,13 @@ figcaption {
   border: 4px dashed rgb(0, 0, 0);
   margin-bottom: 40px;
 }
+
 .import-members p {
   text-align: center;
   line-height: 170px;
   color: #000000;
 }
+
 .import-members input {
   position: absolute;
   width: 100%;
@@ -735,6 +751,7 @@ figcaption {
   outline: none;
   opacity: 0;
 }
+
 .import-members button {
   width: 508px;
   height: 35px;
