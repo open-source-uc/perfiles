@@ -713,7 +713,7 @@ figcaption {
   color: var(--black--4);
   font-weight: 600;
   font-size: 16px;
-  margin-bottom: 2px;
+  line-height: 1.2;
 }
 
 .badge-container-empty {
