@@ -470,7 +470,7 @@ footer a {
   list-style: none;
   background-color: var(--white--3);
   border-radius: 0.5rem;
-  margin: 0 0.5rem 1rem 0.5rem;
+  margin: 0 0 1rem 0;
 }
 
 .adminindexbox li {
@@ -495,19 +495,72 @@ footer a {
 }
 
 .admin-box {
-  flex-wrap: wrap;
-  display: flex;
-  justify-content: flex-start;
+  /* Add a border */
+  border: 3px solid var(--black--1);
+  /* Add some padding */
+  padding: 1em;
+  /* Add some bottom margin */
+  margin-bottom: 1em;
 }
 
-.admin-box article {
-  background: var(--white--1);
-  box-shadow: var(--box-shadow);
-  border-radius: 0.8rem;
-  margin: 0 0.5rem 30px 0.5rem;
-  padding: 20px;
-  box-sizing: border-box;
-  min-height: 20rem;
+.admin-box h2,
+.admin-box h3,
+.admin-box h4,
+.admin-box p {
+  margin-left: 20px;
+}
+
+.admin-box table {
+  /* Tables must be tighly fit inside the box */
+  width: 100%;
+  /* Remove all padding */
+  padding: 0;
+  margin: 0;
+}
+
+/* Make tables responsive */
+@media (max-width: 600px) {
+  .admin-box table {
+    /* Make the table scroll horizontally */
+    overflow-x: auto;
+  }
+}
+
+/* Highlight thead */
+.admin-box thead {
+  background-color: var(--black--3);
+  color: var(--white--1);
+}
+
+/* Center rows */
+.admin-box tr {
+  text-align: center;
+}
+
+/* Center cells */
+.admin-box td,
+.admin-box th {
+  text-align: center;
+}
+
+.admin-members {
+  padding: 0px;
+}
+
+.admin-members table {
+  /* Tables must be tighly fit inside the box */
+  width: 100%;
+  /* Remove all padding */
+  padding: 0;
+  margin: 0;
+}
+
+/* Make the table a grid on mobile */
+@media (max-width: 600px) {
+  .admin-members table {
+    /* Make the table scroll horizontally */
+    overflow-x: auto;
+  }
 }
 
 .admin-box ul {
@@ -526,6 +579,86 @@ footer a {
   cursor: pointer;
 }
 
+/* Make buttons responsive */
+@media (max-width: 600px) {
+  .admin-box button {
+    width: 100%;
+  }
+}
+
+/* Search for the members section */
+
+.admin-members-search__input {
+  padding: 10px 20px;
+  border-radius: 5px;
+  font-size: 1.2em;
+  font-family: "Inter";
+  font-weight: 400;
+  max-width: 60%;
+  width: 100%;
+  text-align: center;
+  /* Center */
+  margin: 0 auto;
+}
+
+.admin-members-search__title {
+  font-size: 1.1em;
+  margin-bottom: 0.5em;
+}
+
+.admin-members-search {
+  text-align: center;
+  width: 90%;
+  margin-bottom: 20px;
+  display: flex;
+  justify-content: center;
+}
+
+/* Make column on mobile */
+@media (max-width: 600px) {
+  .admin-members-search {
+    flex-direction: column;
+    /* Gap */
+    gap: 10px;
+    /* Left margin  */
+    margin-left: 5%;
+  }
+}
+
+/* Styles for the report sections in human resources */
+.admin-reports-buttons {
+  display: flex;
+  flex-direction: row;
+  /* Distribute buttons along the row */
+  justify-content: space-around;
+  /* Center buttons vertically */
+  align-items: center;
+}
+
+/* Make column in mobile */
+@media (max-width: 600px) {
+  .admin-reports-buttons {
+    flex-direction: column;
+  }
+}
+
+.admin-reports-buttons button {
+  height: 100px;
+  margin-top: 40px;
+  margin-bottom: 30px;
+  background-color: var(--main--nabyblue);
+  color: var(--white--3);
+}
+
+/* Reduce margins on mobile */
+@media (max-width: 600px) {
+  .admin-reports-buttons button {
+    margin-top: 20px;
+    margin-bottom: 20px;
+  }
+}
+
+/* Miscellaneous stuff */
 .save {
   background: var(--main--nabyblue) !important;
   color: var(--white--1);
@@ -680,6 +813,257 @@ figcaption {
   /* This means we just need to add the "active" class to */
   /* the current page. */
   background-color: var(--white--2);
+}
+
+/* Table admin */
+.tableadmin {
+  width: 100%;
+  margin: 10px;
+  font-size: 1.2em;
+  margin-bottom: 15px;
+  text-align: left;
+  box-shadow: var(--box-shadow2);
+}
+
+.tableadmin td {
+  padding: 4px;
+}
+
+.tableadmin thead {
+  cursor: pointer;
+  background: var(--black--1);
+  color: var(--white--1);
+}
+
+.tableadmin tbody {
+  background: var(--black--4);
+}
+
+.tableadmin thead th {
+  padding: 5px;
+}
+
+.tableadmin tr:nth-child(even) td {
+  background: var(--black--4);
+  color: var(--white--3);
+}
+
+.tableadmin tr:nth-child(odd) td {
+  background: var(--white--4);
+  color: var(--black--1);
+}
+
+.tableadmin time {
+  text-align: right;
+  display: block;
+  font-size: 80%;
+}
+
+/* Give margin to the contents of each row */
+.tableadmin tr td {
+  padding: 15px;
+}
+
+/* Danger admin */
+.border-danger {
+  border: 2px solid #dc3545;
+  box-shadow: 0 0 5px 5px rgba(255, 0, 0, 0.2),
+    inset 0 0 5px 5px rgba(130, 2, 2, 0.2) !important;
+}
+
+.text-danger {
+  color: #dc3545;
+}
+
+.btn-danger {
+  background-color: #dc3545 !important;
+  border-color: #dc3545 !important;
+  color: #fff !important;
+}
+
+/* --- */
+.import-members {
+  border: 4px dashed rgb(0, 0, 0);
+  padding: 20px;
+}
+
+.import-members p {
+  text-align: center;
+  color: #000000;
+  margin-top: 40px;
+  margin-bottom: 40px;
+}
+
+.import-members input {
+  position: absolute;
+  width: 100%;
+  height: 200px;
+  outline: none;
+  opacity: 0;
+}
+
+.import-members button {
+  width: 100%;
+  height: 40px;
+  transition: all 0.2s ease;
+  outline: none;
+  border: 10px;
+  margin-top: 20px;
+}
+
+.admin-danger-zone {
+  /* Give danger border */
+  border: 4px solid #dc3545;
+}
+
+.admin-danger-zone h2 {
+  margin-bottom: 30px;
+}
+
+.admin-danger-zone button {
+  height: 100px;
+}
+
+.admin-danger-zone-buttons {
+  display: flex;
+  justify-content: space-evenly;
+  margin-top: 20px;
+  /* Gap */
+  gap: 20px;
+}
+
+/* Make column on mobile */
+@media (max-width: 768px) {
+  .admin-danger-zone-buttons {
+    flex-direction: column;
+  }
+}
+
+.admin-integrations-inputs {
+  /* 2x2 button Grid */
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: 1fr 1fr;
+}
+
+/* Make responsive */
+@media (max-width: 768px) {
+  .admin-integrations-inputs {
+    grid-template-columns: 1fr;
+    grid-template-rows: 1fr 1fr 1fr 1fr;
+  }
+}
+
+.admin-integrations h2 {
+  margin-bottom: 30px;
+}
+
+.admin-integrations-inputs input {
+  width: 80%;
+  height: 30px;
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
+.admin-integrations-inputs button {
+  width: 80%;
+  height: 50px;
+  margin-top: 20px;
+  margin-bottom: 20px;
+  background-color: var(--main--nabyblue);
+  color: var(--white--1);
+}
+
+.admin-criteria-inputs {
+  /* 2x2 with second row unified */
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: 1fr 1fr;
+}
+
+/* Make responsive */
+@media (max-width: 768px) {
+  .admin-criteria-inputs {
+    grid-template-columns: 1fr;
+    grid-template-rows: 1fr 1fr 1fr 1fr;
+  }
+}
+
+.admin-criteria-inputs input {
+  width: 80%;
+  height: 30px;
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
+.admin-criteria-inputs button {
+  width: 80%;
+  height: 50px;
+  margin-top: 20px;
+  margin-bottom: 20px;
+  background-color: var(--main--nabyblue);
+  color: var(--white--1);
+}
+
+.admin-criteria h2 {
+  margin-bottom: 30px;
+}
+
+.admin-statistics__stats {
+  /* Grid */
+  display: grid;
+  /* three columns */
+  grid-template-columns: 1fr 1fr 1fr;
+}
+
+/* Make stats grid responsive */
+
+@media (max-width: 768px) {
+  .admin-statistics__stats {
+    /* Grid */
+    display: grid;
+    /* one column */
+    grid-template-columns: 1fr;
+  }
+}
+
+.admin-link__grid {
+  /* Grid */
+  display: grid;
+  /* three columns */
+  grid-template-columns: 1fr 1fr;
+  /* Gap */
+  grid-gap: 20px;
+}
+
+/* Make grid responsive */
+
+@media (max-width: 768px) {
+  .admin-link__grid {
+    /* Grid */
+    display: grid;
+    /* one column */
+    grid-template-columns: 1fr;
+  }
+}
+
+.admin-link__search-button {
+  width: 100%;
+}
+
+.admin-link__select select {
+  width: 100%;
+  height: 50px;
+}
+
+/* Make admin-achievements__table responsive */
+@media (max-width: 600px) {
+  .admin-achievements__table {
+    /* Grid */
+    display: grid;
+    /* one column */
+    grid-template-columns: 1fr;
+  }
 }
 
 .badge-container {
