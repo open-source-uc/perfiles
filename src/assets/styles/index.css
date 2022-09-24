@@ -47,6 +47,11 @@ img {
   --red: rgba(191, 97, 106, 1);
   --box-shadow: 0 0 10px -2px rgba(0, 0, 0, 0.075);
   --box-shadow2: 0 0 2px 2px rgba(0, 0, 0, 0.2);
+  /* Colors for the Logros Page*/
+  --connector-color: #369;
+  --shadow-color: #8f949a;
+  --box-color: #afafaf;
+  --box-shadow-logros: 1px 1px 4px var(--shadow-color);
 }
 
 .dark {
@@ -1166,3 +1171,29 @@ figcaption {
   margin: 0 auto;
   padding: 1rem;
 }
+
+/* The following CSS is for the logros page */
+/* https://konvajs.org/docs/sandbox/Canvas_Scrolling.html */
+.logros-container {
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+}
+
+.no-min-height {
+  min-height: 0;
+}
+
+/*
+.logros-scrollable {
+  width: 80vw;
+  overflow-x: auto;
+  white-space: nowrap;
+}
+
+.fa-hand-style {
+  font-size: 2rem;
+  color: var(--yellow);
+} */

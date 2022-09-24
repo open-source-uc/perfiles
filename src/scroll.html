@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+  <head> </head>
+  <body>
+    <script>
+      const ctx = canvas.getContext("2d"),
+        mouse = { x: 0, y: 0, overPath: null };
+      const styles = {
+        default: { fillStyle: "#0C0", strokeStyle: "#F00", lineWidth: 4 },
+        over: { fillStyle: "#C008", strokeStyle: "#F0F8", lineWidth: 10 }
+      };
+      const paths = [
+        [100, 50, 350, 50, 500, 45, 500, 80, 350, 85, 100, 80],
+        [100, 150, 350, 150, 500, 145, 500, 180, 350, 185, 100, 180]
+      ].map(createPath);
+      canvas.addEventListener("mousemove", (e) => {
+        mouse.x = e.offsetX;
+        mouse.y = e.offsetY;
+        checkMouseOver(paths);
+        canvas.style.cursor = mouse.overPath ? "pointer" : "default";
+      });
+      function checkMouseOver(paths) {
+        var over;
+        for (const p of paths) {
+          ctx.isPointInPath(p, mouse.x, mouse.y) && (over = p);
+        }
+        if (over !== mouse.overPath) {
+          mouse.overPath = over;
+          ctx.clearRect(0, 0, 600, 200);
+          for (const p of paths) {
+            if (p === over) {
+              drawPath(p, styles.over);
+            } else {
+              drawPath(p);
+            }
+          }
+        }
+      }
+      function createPath(path) {
+        var i = 0,
+          p = new Path2D();
+        while (i < path.length) {
+          p.lineTo(path[i++], path[i++]);
+        }
+        p.closePath();
+        return p;
+      }
+      function drawPath(path, style = styles.default) {
+        Object.assign(ctx, style).fill(path);
+        ctx.stroke(path);
+      }
+    </script>
+    <canvas id="canvas" width="600" height="200"></canvas>
+  </body>
+</html>
