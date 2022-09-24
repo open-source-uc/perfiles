@@ -109,30 +109,44 @@
       <li class="adminindexbox-item active">Configuración</li>
     </ol>
     <!-- adminBox-->
-    <section class="admin-box">
-      <article class="col-100">
-        <h2>Integraciones</h2>
-        <ul>
-          <li>GitHub<button>GH_API_TOKEN</button></li>
-          <li>Telegram<button>TG_API_TOKEN</button></li>
-          <li>ForwardEmail<button>FW_API_TOKEN</button></li>
-          <li><button class="save">Guardar</button></li>
-        </ul>
-      </article>
-      <article class="col-100">
-        <h2>Criterios de membresía y permanencia</h2>
-        <ul>
-          <li>Puntaje de Membresía <input></input></li>
-          <li>Puntaje de permanencia <input></input></li>
-          <li><button class="save">Guardar</button></li>
-        </ul>
-      </article>
-      <article class="col-50"></article>
-      <article class="col-50"></article>
-      <article class="col-33"></article>
-      <article class="col-33"></article>
-      <article class="col-33"></article>
-      <article class="col-25"></article>
+    <section class="admin-box admin-integrations">
+      <h2>Integraciones</h2>
+      <div class="admin-integrations-inputs">
+        <!-- Text inputs: GH_API_TOKEN (GitHub), TG_API_TOKEN (Telegram), FW_API_TOKEN (ForwardEmail)  -->
+        <div class="admin-integrations-inputs__input">
+          <label for="gh_api_token">GitHub API Token</label>
+          <input type="text" id="gh_api_token" name="gh_api_token" value="" />
+        </div>
+        <div class="admin-integrations-inputs__input">
+          <label for="tg_api_token">Telegram API Token</label>
+          <input type="text" id="tg_api_token" name="tg_api_token" value="" />
+        </div>
+        <div class="admin-integrations-inputs__input">
+          <label for="fw_api_token">ForwardEmail API Token</label>
+          <input type="text" id="fw_api_token" name="fw_api_token" value="" />
+        </div>
+        <!-- Guardar button -->
+        <div class="admin-integrations-inputs__input">
+          <button class="admin-integrations-inputs__input__button" id="save-integrations">Guardar</button>
+        </div>
+    </section>
+    <section class="admin-box admin-criteria">
+      <h2>Criterios de membresía y permanencia</h2>
+      <div class="admin-criteria-inputs">
+        <!-- Two inputs: Puntaje de Membresía y Puntaje de Permanencia -->
+        <div class="admin-criteria-inputs__input">
+          <label for="membership_score">Puntaje de Membresía</label>
+          <input type="number" id="membership_score" name="membership_score" value="" />
+        </div>
+        <div class="admin-criteria-inputs__input">
+          <label for="staying_score">Puntaje de Permanencia</label>
+          <input type="number" id="staying_score" name="staying_score" value="" />
+        </div>
+        <!-- Guardar button -->
+        <div class="admin-criteria-inputs__input admin-criteria-button">
+          <button class="admin-criteria-inputs__input__button" id="save-criteria">Guardar</button>
+        </div>
+      </div>
     </section>
     <button class="btn-scrollup btn_scrollup--visible" id="btn_scrollup">
       <i class="fa-solid fa-chevron-up"></i>

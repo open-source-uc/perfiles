@@ -490,7 +490,7 @@ footer a {
 
 .admin-box {
   /* Add a border */
-  border: 3px solid var(--black--3);
+  border: 3px solid var(--black--1);
   /* Add some padding */
   padding: 1em;
   /* Add some bottom margin */
@@ -856,4 +856,59 @@ figcaption {
   justify-content: space-evenly;
   margin-top: 20px;
   width: 100%;
+}
+
+.admin-integrations-inputs {
+  /* 2x2 button Grid */
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: 1fr 1fr;
+}
+
+.admin-integrations h2 {
+  margin-bottom: 30px;
+}
+
+.admin-integrations-inputs input {
+  width: 80%;
+  height: 30px;
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
+.admin-integrations-inputs button {
+  width: 80%;
+  height: 50px;
+  margin-top: 20px;
+  margin-bottom: 20px;
+  background-color: var(--main--nabyblue);
+  color: var(--white--1)
+}
+
+.admin-criteria-inputs {
+  /* 2x2 with second row unified */
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: 1fr 1fr;
+}
+
+.admin-criteria-inputs input {
+  width: 80%;
+  height: 30px;
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
+.admin-criteria-inputs button {
+  width: 80%;
+  height: 50px;
+  margin-top: 20px;
+  margin-bottom: 20px;
+  background-color: var(--main--nabyblue);
+  color: var(--white--1);
+}
+
+
+.admin-criteria h2 {
+  margin-bottom: 30px;
 }
