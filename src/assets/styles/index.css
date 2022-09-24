@@ -215,11 +215,11 @@ header {
   display: none;
 }
 
-#check-profile:checked~.profile-dropdown {
+#check-profile:checked ~ .profile-dropdown {
   display: block;
 }
 
-#check-profile:checked~.profile-dropdown li {
+#check-profile:checked ~ .profile-dropdown li {
   display: block;
 }
 
@@ -294,7 +294,7 @@ header {
     border-left: none;
   }
 
-  #check:checked~ul {
+  #check:checked ~ ul {
     display: block;
   }
 }
@@ -464,7 +464,7 @@ footer a {
   list-style: none;
   background-color: var(--white--3);
   border-radius: 0.5rem;
-  margin: 0 0.5rem 1rem 0.5rem;
+  margin: 0 0 1rem 0;
 }
 
 .adminindexbox li {
@@ -629,7 +629,6 @@ footer a {
   align-items: center;
 }
 
-
 /* Make column in mobile */
 @media (max-width: 600px) {
   .admin-reports-buttons {
@@ -676,7 +675,6 @@ footer a {
 }
 
 @media screen and (max-width: 800px) {
-
   .col-50,
   .col-33,
   .col-25 {
@@ -955,7 +953,7 @@ figcaption {
   margin-top: 20px;
   margin-bottom: 20px;
   background-color: var(--main--nabyblue);
-  color: var(--white--1)
+  color: var(--white--1);
 }
 
 .admin-criteria-inputs {
@@ -989,7 +987,6 @@ figcaption {
   color: var(--white--1);
 }
 
-
 .admin-criteria h2 {
   margin-bottom: 30px;
 }
@@ -1011,7 +1008,6 @@ figcaption {
     grid-template-columns: 1fr;
   }
 }
-
 
 .admin-link__grid {
   /* Grid */
