@@ -169,18 +169,18 @@ if (window.location.pathname === "/logros.html") {
   // const HEIGHT = 3000;
   // const NUMBER = 200;
 
-  const imageObj3 = new Image();
-  imageObj3.onload = function () {
+  const emojiObj = new Image();
+  emojiObj.onload = function () {
     const raisedEmoji = new Konva.Image({
       x: 140,
       y: 0,
-      image: imageObj3,
+      image: emojiObj,
       width: 50,
       height: 50,
     });
     layer.add(raisedEmoji);
   };
-  imageObj3.src = "/assets/images/emoji/raised-back.svg";
+  emojiObj.src = "/assets/images/emoji/raised-back.svg";
 
   const simpleText = new Konva.Text({
     x: 0,
@@ -283,107 +283,107 @@ if (window.location.pathname === "/logros.html") {
   });
   layer.add(vertLine2);
 
-  const imageObj = new Image();
-  imageObj.onload = function () {
+  const badgeObj = new Image();
+  badgeObj.onload = function () {
     const chicken = new Konva.Image({
       x: 50,
       y: 250,
-      image: imageObj,
+      image: badgeObj,
       width: 100,
       height: 100,
     });
     layer.add(chicken);
   };
-  imageObj.src = "/assets/images/badges/chicken.png";
+  badgeObj.src = "/assets/images/badges/chicken.png";
 
-  const imageObj2 = new Image();
-  imageObj2.onload = function () {
+  const badgeObj2 = new Image();
+  badgeObj2.onload = function () {
     const fox = new Konva.Image({
       x: 350,
       y: 250,
-      image: imageObj2,
+      image: badgeObj2,
       width: 100,
       height: 100,
     });
     layer.add(fox);
   };
-  imageObj2.src = "/assets/images/badges/fox.png";
+  badgeObj2.src = "/assets/images/badges/pull-request.png";
 
-  const imageObj8 = new Image();
-  imageObj8.onload = function () {
+  const badgeObj3 = new Image();
+  badgeObj3.onload = function () {
     const eight = new Konva.Image({
       x: 850,
       y: 50,
-      image: imageObj8,
+      image: badgeObj3,
       width: 100,
       height: 100,
     });
     layer.add(eight);
   };
-  imageObj8.src = "/assets/images/badges/fox.png";
+  badgeObj3.src = "/assets/images/badges/pyramids.png";
 
-  const imageObj5 = new Image();
-  imageObj5.onload = function () {
+  const badgeObj4 = new Image();
+  badgeObj4.onload = function () {
     const five = new Konva.Image({
       x: 850,
       y: 250,
-      image: imageObj5,
+      image: badgeObj4,
       width: 100,
       height: 100,
     });
     layer.add(five);
   };
-  imageObj5.src = "/assets/images/badges/fox.png";
+  badgeObj4.src = "/assets/images/badges/lock-key.png";
 
-  const imageObj6 = new Image();
-  imageObj6.onload = function () {
+  const badgeObj5 = new Image();
+  badgeObj5.onload = function () {
     const six = new Konva.Image({
       x: 850,
       y: 450,
-      image: imageObj6,
+      image: badgeObj5,
       width: 100,
       height: 100,
     });
     layer.add(six);
   };
-  imageObj6.src = "/assets/images/badges/fox.png";
+  badgeObj5.src = "/assets/images/badges/space-invader.png";
 
-  const imageObj4 = new Image();
-  imageObj4.onload = function () {
+  const badgeObj6 = new Image();
+  badgeObj6.onload = function () {
     const four = new Konva.Image({
       x: 1150,
       y: 250,
-      image: imageObj4,
+      image: badgeObj6,
       width: 100,
       height: 100,
     });
     layer.add(four);
   };
-  imageObj4.src = "/assets/images/badges/fox.png";
+  badgeObj6.src = "/assets/images/badges/fox.png";
 
-  const imageObj7 = new Image();
-  imageObj7.onload = function () {
+  const badgeObj7 = new Image();
+  badgeObj7.onload = function () {
     const seven = new Konva.Image({
       x: 1150,
       y: 450,
-      image: imageObj7,
+      image: badgeObj7,
       width: 100,
       height: 100,
     });
     layer.add(seven);
   };
-  imageObj7.src = "/assets/images/badges/fox.png";
+  badgeObj7.src = "/assets/images/badges/two-hearts.png";
 
-  const imageObj9 = new Image();
-  imageObj9.onload = function () {
+  const badgeObj8 = new Image();
+  badgeObj8.onload = function () {
     const nine = new Konva.Image({
       x: 1450,
       y: 250,
-      image: imageObj9,
+      image: badgeObj8,
       width: 100,
       height: 100,
     });
     layer.add(nine);
   };
-  imageObj9.src = "/assets/images/badges/fox.png";
+  badgeObj8.src = "/assets/images/badges/rocketship.png";
 }
