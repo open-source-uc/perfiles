@@ -1,3 +1,4 @@
+/* eslint-disable no-undef */
 function createProfile(member) {
   // Create the profile div from the member object
   const profile = document.createElement("div");
@@ -154,7 +155,7 @@ if (
 }
 
 // If on logros
-if (window.location.pathname === "/logros.html") {
+if (window.location.pathname.startsWith("/logros")) {
   const width = window.innerWidth * 0.8;
   const height = window.innerHeight * 0.8;
 
@@ -178,6 +179,7 @@ if (window.location.pathname === "/logros.html") {
   stage.add(layer);
 
   const dragEmoji = new Image();
+  // eslint-disable-next-line func-names
   dragEmoji.onload = function () {
     const raisedEmoji = new Konva.Image({
       x: 140,
@@ -191,6 +193,7 @@ if (window.location.pathname === "/logros.html") {
   dragEmoji.src = "/assets/images/emoji/raised-back.svg";
 
   const hoverEmoji = new Image();
+  // eslint-disable-next-line func-names
   hoverEmoji.onload = function () {
     const raisedEmoji = new Konva.Image({
       x: 370,
