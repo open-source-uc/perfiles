@@ -512,6 +512,14 @@ footer a {
   margin: 0;
 }
 
+/* Make tables responsive */
+@media (max-width: 600px) {
+  .admin-box table {
+    /* Make the table scroll horizontally */
+    overflow-x: auto;
+  }
+}
+
 /* Highlight thead */
 .admin-box thead {
   background-color: var(--black--3);
@@ -533,6 +541,22 @@ footer a {
   padding: 0px;
 }
 
+.admin-members table {
+  /* Tables must be tighly fit inside the box */
+  width: 100%;
+  /* Remove all padding */
+  padding: 0;
+  margin: 0;
+}
+
+/* Make the table a grid on mobile */
+@media (max-width: 600px) {
+  .admin-members table {
+    /* Make the table scroll horizontally */
+    overflow-x: auto;
+  }
+}
+
 .admin-box ul {
   list-style: none;
   line-height: 4rem;
@@ -547,6 +571,13 @@ footer a {
   padding: 0.5rem 1rem;
   font-size: 1.2rem;
   cursor: pointer;
+}
+
+/* Make buttons responsive */
+@media (max-width: 600px) {
+  .admin-box button {
+    width: 100%;
+  }
 }
 
 /* Search for the members section */
@@ -577,23 +608,49 @@ footer a {
   justify-content: center;
 }
 
+/* Make column on mobile */
+@media (max-width: 600px) {
+  .admin-members-search {
+    flex-direction: column;
+    /* Gap */
+    gap: 10px;
+    /* Left margin  */
+    margin-left: 5%;
+  }
+}
+
 /* Styles for the report sections in human resources */
 .admin-reports-buttons {
   display: flex;
   flex-direction: row;
   /* Distribute buttons along the row */
-  justify-content: space-evenly;
+  justify-content: space-around;
   /* Center buttons vertically */
   align-items: center;
-  margin-top: 40px;
-  margin-bottom: 30px;
+}
+
+
+/* Make column in mobile */
+@media (max-width: 600px) {
+  .admin-reports-buttons {
+    flex-direction: column;
+  }
 }
 
 .admin-reports-buttons button {
-  width: 300px;
   height: 100px;
+  margin-top: 40px;
+  margin-bottom: 30px;
   background-color: var(--main--nabyblue);
   color: var(--white--3);
+}
+
+/* Reduce margins on mobile */
+@media (max-width: 600px) {
+  .admin-reports-buttons button {
+    margin-top: 20px;
+    margin-bottom: 20px;
+  }
 }
 
 /* Miscellaneous stuff */
@@ -816,8 +873,9 @@ figcaption {
 
 .import-members p {
   text-align: center;
-  line-height: 170px;
   color: #000000;
+  margin-top: 40px;
+  margin-bottom: 40px;
 }
 
 .import-members input {
@@ -847,7 +905,6 @@ figcaption {
 }
 
 .admin-danger-zone button {
-  width: 300px;
   height: 100px;
 }
 
@@ -855,7 +912,15 @@ figcaption {
   display: flex;
   justify-content: space-evenly;
   margin-top: 20px;
-  width: 100%;
+  /* Gap */
+  gap: 20px;
+}
+
+/* Make column on mobile */
+@media (max-width: 768px) {
+  .admin-danger-zone-buttons {
+    flex-direction: column;
+  }
 }
 
 .admin-integrations-inputs {
@@ -863,6 +928,14 @@ figcaption {
   display: grid;
   grid-template-columns: 1fr 1fr;
   grid-template-rows: 1fr 1fr;
+}
+
+/* Make responsive */
+@media (max-width: 768px) {
+  .admin-integrations-inputs {
+    grid-template-columns: 1fr;
+    grid-template-rows: 1fr 1fr 1fr 1fr;
+  }
 }
 
 .admin-integrations h2 {
@@ -892,6 +965,14 @@ figcaption {
   grid-template-rows: 1fr 1fr;
 }
 
+/* Make responsive */
+@media (max-width: 768px) {
+  .admin-criteria-inputs {
+    grid-template-columns: 1fr;
+    grid-template-rows: 1fr 1fr 1fr 1fr;
+  }
+}
+
 .admin-criteria-inputs input {
   width: 80%;
   height: 30px;
@@ -911,4 +992,62 @@ figcaption {
 
 .admin-criteria h2 {
   margin-bottom: 30px;
+}
+
+.admin-statistics__stats {
+  /* Grid */
+  display: grid;
+  /* three columns */
+  grid-template-columns: 1fr 1fr 1fr;
+}
+
+/* Make stats grid responsive */
+
+@media (max-width: 768px) {
+  .admin-statistics__stats {
+    /* Grid */
+    display: grid;
+    /* one column */
+    grid-template-columns: 1fr;
+  }
+}
+
+
+.admin-link__grid {
+  /* Grid */
+  display: grid;
+  /* three columns */
+  grid-template-columns: 1fr 1fr;
+  /* Gap */
+  grid-gap: 20px;
+}
+
+/* Make grid responsive */
+
+@media (max-width: 768px) {
+  .admin-link__grid {
+    /* Grid */
+    display: grid;
+    /* one column */
+    grid-template-columns: 1fr;
+  }
+}
+
+.admin-link__search-button {
+  width: 100%;
+}
+
+.admin-link__select select {
+  width: 100%;
+  height: 50px;
+}
+
+/* Make admin-achievements__table responsive */
+@media (max-width: 600px) {
+  .admin-achievements__table {
+    /* Grid */
+    display: grid;
+    /* one column */
+    grid-template-columns: 1fr;
+  }
 }

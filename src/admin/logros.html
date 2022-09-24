@@ -1,238 +1,224 @@
 <!DOCTYPE html>
 <html lang="es">
-  <head>
-    <meta charset="UTF-8" />
-    <meta
-      name="viewport"
-      content="width=device-width, initial-scale=1, minimum-scale=1"
-    />
 
-    <!-- Primary Meta Tags -->
-    <title>Admin | Perfiles OSUC</title>
-    <meta name="title" content="Admin | Perfiles OSUC" />
-    <meta
-      name="description"
-      content="Perfiles OSUC es la plataforma comunitaria de Open Source UC. Aquí puedes encontrar un registro de todes nuestros integrantes, sus logros, biografías y más."
-    />
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1" />
 
-    <!-- Open Graph / Facebook -->
-    <!-- http://ogp.me/ -->
-    <meta property="og:type" content="website" />
-    <meta property="og:url" content="https://perfiles.osuc.dev/admin/" />
-    <meta property="og:title" content="Admin | Perfiles OSUC" />
-    <meta
-      property="og:description"
-      content="Perfiles OSUC es la plataforma comunitaria de Open Source UC. Aquí puedes encontrar un registro de todes nuestros integrantes, sus logros, biografías y más."
-    />
-    <meta property="og:image" content="/assets/images/banner.png" />
+  <!-- Primary Meta Tags -->
+  <title>Admin | Perfiles OSUC</title>
+  <meta name="title" content="Admin | Perfiles OSUC" />
+  <meta name="description"
+    content="Perfiles OSUC es la plataforma comunitaria de Open Source UC. Aquí puedes encontrar un registro de todes nuestros integrantes, sus logros, biografías y más." />
 
-    <!-- Twitter Card -->
-    <!-- https://dev.twitter.com/cards/overview  -->
-    <meta property="twitter:card" content="summary_large_image" />
-    <meta property="twitter:url" content="https://perfiles.osuc.dev/" />
-    <meta property="twitter:title" content="Inicio | Perfiles OSUC" />
-    <meta
-      property="twitter:description"
-      content="Perfiles OSUC es la plataforma comunitaria de Open Source UC. Aquí puedes encontrar un registro de todes nuestros integrantes, sus logros, biografías y más."
-    />
-    <meta property="twitter:image" content="/assets/images/banner.png" />
+  <!-- Open Graph / Facebook -->
+  <!-- http://ogp.me/ -->
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://perfiles.osuc.dev/admin/" />
+  <meta property="og:title" content="Admin | Perfiles OSUC" />
+  <meta property="og:description"
+    content="Perfiles OSUC es la plataforma comunitaria de Open Source UC. Aquí puedes encontrar un registro de todes nuestros integrantes, sus logros, biografías y más." />
+  <meta property="og:image" content="/assets/images/banner.png" />
 
-    <link rel="canonical" href="https://perfiles.osuc.dev/admin/" />
+  <!-- Twitter Card -->
+  <!-- https://dev.twitter.com/cards/overview  -->
+  <meta property="twitter:card" content="summary_large_image" />
+  <meta property="twitter:url" content="https://perfiles.osuc.dev/" />
+  <meta property="twitter:title" content="Inicio | Perfiles OSUC" />
+  <meta property="twitter:description"
+    content="Perfiles OSUC es la plataforma comunitaria de Open Source UC. Aquí puedes encontrar un registro de todes nuestros integrantes, sus logros, biografías y más." />
+  <meta property="twitter:image" content="/assets/images/banner.png" />
 
-    <!-- Icons and favicons -->
-    <link rel="icon" href="/assets/images/favicon.ico" />
-    <link rel="apple-touch-icon" href="/assets/images/apple-touch-icon.png" />
-    <link rel="manifest" href="/site.webmanifest" />
+  <link rel="canonical" href="https://perfiles.osuc.dev/admin/" />
 
-    <!-- fontawesome -->
-    <script
-      src="https://kit.fontawesome.com/0928ae0e39.js"
-      crossorigin="anonymous"
-    ></script>
+  <!-- Icons and favicons -->
+  <link rel="icon" href="/assets/images/favicon.ico" />
+  <link rel="apple-touch-icon" href="/assets/images/apple-touch-icon.png" />
+  <link rel="manifest" href="/site.webmanifest" />
 
-    <!-- Styles -->
-    <link rel="stylesheet" href="/assets/styles/index.css" />
+  <!-- fontawesome -->
+  <script src="https://kit.fontawesome.com/0928ae0e39.js" crossorigin="anonymous"></script>
 
-    <!-- Fonts -->
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=League+Spartan:wght@400;700&display=swap"
-      rel="stylesheet"
-    />
-    <script defer src="/assets/scripts/index.js"></script>
-  </head>
+  <!-- Styles -->
+  <link rel="stylesheet" href="/assets/styles/index.css" />
 
-  <body>
-    <!-- Let's use as much semantic HTML as we can -->
-    <header>
-      <!-- Logo -->
-      <a href="/" class="logo">
-        <img src="/assets/images/logo.svg" alt="Perfiles OSUC" />
-      </a>
-      <!-- Navbar -->
-      <nav class="nav-main">
-        <input type="checkbox" id="check" />
-        <label for="check" class="checkbtn">
-          <i class="fa-solid fa-bars"></i>
-        </label>
-        <ul>
-          <li>
-            <button class="switchtheme" id="switchtheme">
-              <span> <i class="fa-solid fa-sun"></i> </span>
-              <span> <i class="fa-solid fa-moon"></i> </span>
-            </button>
-          </li>
-          <li><a href="/logros.html">🏅 Logros</a></li>
-          <li><a href="/estatutos.html">📖 Estatutos</a></li>
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=League+Spartan:wght@400;700&display=swap"
+    rel="stylesheet" />
+  <script defer src="/assets/scripts/index.js"></script>
+</head>
 
-          <input type="checkbox" id="check-profile" />
-          <label for="check-profile" class="checkbtn-profile">
-            <li>
-              <img
-                class="login-picture"
-                src="https://avatars.githubusercontent.com/barbaraim?s=120"
-              />
-              <!--<span>barbaraim</span>-->
-            </li>
-          </label>
-
-          <ul class="profile-dropdown">
-            <li><a href="/perfil.html">👤 Perfil</a></li>
-            <li><a href="/admin">👨‍💻 Admin</a></li>
-            <li><a href="/logout">🚪 Cerrar sesión</a></li>
-          </ul>
-        </ul>
-      </nav>
-    </header>
-    <aside class="nav-admin">
-      <nav class="nav-admin__nav" aria-label="Navegación de Admin">
-        <ul class="nav-admin__ul">
-          <li><a href="/admin/">📈</a></li>
-          <li><a href="/admin/rrhh.html">👥</a></li>
-          <li class="active"><a href="/admin/logros.html">🏅</a></li>
-          <li><a href="/admin/config.html">⚙️</a></li>
-        </ul>
-      </nav>
-    </aside>
-    <main class="admin__main">
-      <!-- adminindexbox1-->
-      <ol class="adminindexbox">
-        <li class="adminindexbox-item">
-          <a href="/admin/index.html">Admin</a>
+<body>
+  <!-- Let's use as much semantic HTML as we can -->
+  <header>
+    <!-- Logo -->
+    <a href="/" class="logo">
+      <img src="/assets/images/logo.svg" alt="Perfiles OSUC" />
+    </a>
+    <!-- Navbar -->
+    <nav class="nav-main">
+      <input type="checkbox" id="check" />
+      <label for="check" class="checkbtn">
+        <i class="fa-solid fa-bars"></i>
+      </label>
+      <ul>
+        <li>
+          <button class="switchtheme" id="switchtheme">
+            <span> <i class="fa-solid fa-sun"></i> </span>
+            <span> <i class="fa-solid fa-moon"></i> </span>
+          </button>
         </li>
-        <li class="adminindexbox-item active">Logros y contadores</li>
-      </ol>
-      <!-- adminBox-->
-      <section class="admin-box">
-        <article class="col-100">
-          <h2>Estadísticas</h2>
-        </article>
-        <article class="col-100">
-          <h2>Solicitudes de logros</h2>
-          <table class="tableadmin">
-            <thead>
-              <tr>
-                <th><span>Logro</span></th>
-                <th><span>Nombre</span></th>
-                <th><span>Estado</span></th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td>logro1</td>
-                <td>Miembro</td>
-                <td>Pendiente</td>
-              </tr>
-              <tr>
-                <td>logro2</td>
-                <td>Miembro</td>
-                <td>Aprobado</td>
-              </tr>
-              <tr>
-                <td>logro3</td>
-                <td>Miembro</td>
-                <td>Rechazado</td>
-              </tr>
-              <tr>
-                <td>logro4</td>
-                <td>Miembro</td>
-                <td>Pendiente</td>
-              </tr>
-              <tr>
-                <td>logro5</td>
-                <td>Miembro</td>
-                <td>Pendiente</td>
-              </tr>
-            </tbody>
-          </table>
-        </article>
-        <article class="col-100">
-          <h2>Crear un nuevo enlace temporal de claimeo</h2>
-          <h3>Buscar chapita</h3>
-          <h3>Tiempo de expiracion</h3>
-          <button class="save">Generar</button>
-        </article>
-        <article class="col-100">
-          <h2>Crear un nuevo logro</h2>
-          <h3>Nombre</h3>
-          <h3>Nivel</h3>
-          <h3>Tipo</h3>
-          <button class="save">Guardar</button>
-        </article>
-      </section>
-      <button class="btn-scrollup btn_scrollup--visible" id="btn_scrollup">
-        <i class="fa-solid fa-chevron-up"></i>
-      </button>
-    </main>
-    <footer>
-      <!-- Código autogenerado por https://chooser-beta.creativecommons.org/ -->
-      <p
-        xmlns:cc="http://creativecommons.org/ns#"
-        xmlns:dct="http://purl.org/dc/terms/"
-      >
-        <a
-          property="dct:title"
-          rel="cc:attributionURL"
-          href="https://perfiles.osuc.dev/"
-          >Perfiles OSUC</a
-        >
-        de
-        <a
-          rel="cc:attributionURL dct:creator"
-          property="cc:attributionName"
-          href="https://osuc.dev/"
-          >Open Source UC</a
-        >
-        está licenciado bajo
-        <a
-          href="http://creativecommons.org/licenses/by-nc-sa/4.0/?ref=chooser-v1"
-          target="_blank"
-          rel="license noopener noreferrer"
-          style="display: inline-block"
-          >CC BY-NC-SA 4.0<img
-            style="margin-left: 3px; vertical-align: text-bottom"
-            src="https://mirrors.creativecommons.org/presskit/icons/cc.svg?ref=chooser-v1"
-            height="22px"
-            alt="CC"
-            title="Creative Commons" /><img
-            style="margin-left: 3px; vertical-align: text-bottom"
-            src="https://mirrors.creativecommons.org/presskit/icons/by.svg?ref=chooser-v1"
-            height="22px"
-            alt="Persona"
-            title="Atribución" /><img
-            style="margin-left: 3px; vertical-align: text-bottom"
-            src="https://mirrors.creativecommons.org/presskit/icons/nc.svg?ref=chooser-v1"
-            height="22px"
-            alt="Un signo de dólar tachado"
-            title="No comercial" /><img
-            style="margin-left: 3px; vertical-align: text-bottom"
-            src="https://mirrors.creativecommons.org/presskit/icons/sa.svg?ref=chooser-v1"
-            height="22px"
-            alt="Flecha curvándose hacia si misma"
-            title="ShareAlike"
-        /></a>
-      </p>
-    </footer>
-  </body>
+        <li><a href="/logros.html">🏅 Logros</a></li>
+        <li><a href="/estatutos.html">📖 Estatutos</a></li>
+
+        <input type="checkbox" id="check-profile" />
+        <label for="check-profile" class="checkbtn-profile">
+          <li>
+            <img class="login-picture" src="https://avatars.githubusercontent.com/barbaraim?s=120" />
+            <!--<span>barbaraim</span>-->
+          </li>
+        </label>
+
+        <ul class="profile-dropdown">
+          <li><a href="/perfil.html">👤 Perfil</a></li>
+          <li><a href="/admin">👨‍💻 Admin</a></li>
+          <li><a href="/logout">🚪 Cerrar sesión</a></li>
+        </ul>
+      </ul>
+    </nav>
+  </header>
+  <aside class="nav-admin">
+    <nav class="nav-admin__nav" aria-label="Navegación de Admin">
+      <ul class="nav-admin__ul">
+        <li><a href="/admin/">📈</a></li>
+        <li><a href="/admin/rrhh.html">👥</a></li>
+        <li class="active"><a href="/admin/logros.html">🏅</a></li>
+        <li><a href="/admin/config.html">⚙️</a></li>
+      </ul>
+    </nav>
+  </aside>
+  <main class="admin__main">
+    <!-- adminindexbox1-->
+    <ol class="adminindexbox">
+      <li class="adminindexbox-item">
+        <a href="/admin/index.html">Admin</a>
+      </li>
+      <li class="adminindexbox-item active">Logros y contadores</li>
+    </ol>
+    <section class="admin-box admin-statistics">
+      <h2 class="admin-box__title">Estadísticas</h2>
+      <div class="admin-statistics__stats">
+        <div class="admin-statistics__stat">
+          <h3 class="admin-statistics__stat-title">Logros obtenidos</h3>
+          <p class="admin-statistics__stat-value">0</p>
+        </div>
+        <div class="admin-statistics__stat">
+          <h3 class="admin-statistics__stat-title">Puntos Generados</h3>
+          <p class="admin-statistics__stat-value">0</p>
+        </div>
+        <div class="admin-statistics__stat">
+          <h3 class="admin-statistics__stat-title">Usuarios Activos</h3>
+          <p class="admin-statistics__stat-value">0</p>
+        </div>
+        <div class="admin-statistics__stat">
+          <h3 class="admin-statistics__stat-title">Asistencia Reciente a Eventos</h3>
+          <p class="admin-statistics__stat-value">0</p>
+        </div>
+        <div class="admin-statistics__stat">
+          <h3 class="admin-statistics__stat-title">Logros Disponibles</h3>
+          <p class="admin-statistics__stat-value">0</p>
+        </div>
+    </section>
+    <section class="admin-box admin-achievements">
+      <h2 class="admin-box__title">Solicitudes de logros</h2>
+      <table class="admin-achievements__table">
+        <thead>
+          <tr>
+            <th>Logro</th>
+            <th>Nombre</th>
+            <th>Estado</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Esquema Piramidal</td>
+            <td>Fernando Smith</td>
+            <td>Pendiente</td>
+          </tr>
+          <tr>
+            <td>"cruz@uc.cl@</td>
+            <td>Alister McCormack</td>
+            <td>Pendiente</td>
+          </tr>
+          <tr>
+            <td>Mente de tiburón</td>
+            <td>José Antonio Castro</td>
+            <td>Pendiente</td>
+          </tr>
+          <tr>
+            <td>Hello world</td>
+            <td>Hernán Valdivieso</td>
+            <td>Rechazada</td>
+          </tr>
+          <tr>
+            <td>Tenemos que Hablar</td>
+            <td>Victor Hernández</td>
+            <td>Aprobada</td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
+    <section class="admin-box admin-link">
+      <h2 class="admin-box__title">Crear nuevo enlace</h2>
+      <div class="admin-link__grid">
+        <input type="text" placeholder="Buscar logro" />
+        <button class="admin-link__search-button">
+          <i class="fa-solid fa-search"></i>
+        </button>
+        <div class="admin-link__select">
+          <select name="expiration" id="expiration">
+            <option value="1">1 día</option>
+            <option value="2">2 días</option>
+            <option value="3">3 días</option>
+            <option value="4">4 días</option>
+            <option value="5">5 días</option>
+            <option value="6">6 días</option>
+            <option value="7">7 días</option>
+          </select>
+        </div>
+        <div class="admin-link__generate">
+          <button class="admin-link__generate-button">Generar</button>
+        </div>
+      </div>
+    </section>
+    <button class="btn-scrollup btn_scrollup--visible" id="btn_scrollup">
+      <i class="fa-solid fa-chevron-up"></i>
+    </button>
+  </main>
+  <footer>
+    <!-- Código autogenerado por https://chooser-beta.creativecommons.org/ -->
+    <p xmlns:cc="http://creativecommons.org/ns#" xmlns:dct="http://purl.org/dc/terms/">
+      <a property="dct:title" rel="cc:attributionURL" href="https://perfiles.osuc.dev/">Perfiles OSUC</a>
+      de
+      <a rel="cc:attributionURL dct:creator" property="cc:attributionName" href="https://osuc.dev/">Open Source UC</a>
+      está licenciado bajo
+      <a href="http://creativecommons.org/licenses/by-nc-sa/4.0/?ref=chooser-v1" target="_blank"
+        rel="license noopener noreferrer" style="display: inline-block">CC BY-NC-SA 4.0<img
+          style="margin-left: 3px; vertical-align: text-bottom"
+          src="https://mirrors.creativecommons.org/presskit/icons/cc.svg?ref=chooser-v1" height="22px" alt="CC"
+          title="Creative Commons" /><img style="margin-left: 3px; vertical-align: text-bottom"
+          src="https://mirrors.creativecommons.org/presskit/icons/by.svg?ref=chooser-v1" height="22px" alt="Persona"
+          title="Atribución" /><img style="margin-left: 3px; vertical-align: text-bottom"
+          src="https://mirrors.creativecommons.org/presskit/icons/nc.svg?ref=chooser-v1" height="22px"
+          alt="Un signo de dólar tachado" title="No comercial" /><img
+          style="margin-left: 3px; vertical-align: text-bottom"
+          src="https://mirrors.creativecommons.org/presskit/icons/sa.svg?ref=chooser-v1" height="22px"
+          alt="Flecha curvándose hacia si misma" title="ShareAlike" /></a>
+    </p>
+  </footer>
+</body>
+
 </html>
