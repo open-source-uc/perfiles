@@ -114,6 +114,12 @@ header {
   z-index: 10;
 }
 
+/* Links */
+a {
+  color: var(--main--nabyblue);
+  text-decoration: none;
+}
+
 /* Button theme switch */
 .switchtheme {
   background: var(--black--1);
