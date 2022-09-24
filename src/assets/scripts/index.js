@@ -155,6 +155,15 @@ if (window.location.pathname === "/logros.html") {
   const width = window.innerWidth * 0.8;
   const height = window.innerHeight * 0.8;
 
+  const badgeObj = new Image();
+  const badgeObj2 = new Image();
+  const badgeObj3 = new Image();
+  const badgeObj4 = new Image();
+  const badgeObj5 = new Image();
+  const badgeObj6 = new Image();
+  const badgeObj7 = new Image();
+  const badgeObj8 = new Image();
+
   const stage = new Konva.Stage({
     container: "logros-canvas",
     width,
@@ -165,24 +174,33 @@ if (window.location.pathname === "/logros.html") {
   const layer = new Konva.Layer();
   stage.add(layer);
 
-  // const WIDTH = 3000;
-  // const HEIGHT = 3000;
-  // const NUMBER = 200;
-
-  const emojiObj = new Image();
-  emojiObj.onload = function () {
+  const dragEmoji = new Image();
+  dragEmoji.onload = function () {
     const raisedEmoji = new Konva.Image({
       x: 140,
       y: 0,
-      image: emojiObj,
+      image: dragEmoji,
       width: 50,
       height: 50,
     });
     layer.add(raisedEmoji);
   };
-  emojiObj.src = "/assets/images/emoji/raised-back.svg";
+  dragEmoji.src = "/assets/images/emoji/raised-back.svg";
 
-  const simpleText = new Konva.Text({
+  const hoverEmoji = new Image();
+  hoverEmoji.onload = function () {
+    const raisedEmoji = new Konva.Image({
+      x: 370,
+      y: 380,
+      image: hoverEmoji,
+      width: 50,
+      height: 50,
+    });
+    layer.add(raisedEmoji);
+  };
+  hoverEmoji.src = "/assets/images/emoji/index-pointing.svg";
+
+  const dragInfoText = new Konva.Text({
     x: 0,
     y: 60,
     text: "¡Arrastra para moverte!",
@@ -190,7 +208,17 @@ if (window.location.pathname === "/logros.html") {
     fontFamily: "Inter",
     fill: "white",
   });
-  layer.add(simpleText);
+  layer.add(dragInfoText);
+
+  const hoverInfoText = new Konva.Text({
+    x: 260,
+    y: 450,
+    text: "¡Haz hover sobre un logro\npara ver su descripción!",
+    fontSize: 25,
+    fontFamily: "Inter",
+    fill: "white",
+  });
+  layer.add(hoverInfoText);
 
   const horLine1 = new Konva.Line({
     points: [150, 300, 360, 300],
@@ -283,107 +311,492 @@ if (window.location.pathname === "/logros.html") {
   });
   layer.add(vertLine2);
 
-  const badgeObj = new Image();
-  badgeObj.onload = function () {
-    const chicken = new Konva.Image({
-      x: 50,
-      y: 250,
-      image: badgeObj,
-      width: 100,
-      height: 100,
-    });
-    layer.add(chicken);
-  };
+  const chickenBadge = new Konva.Image({
+    x: 50,
+    y: 250,
+    image: badgeObj,
+    width: 100,
+    height: 100,
+  });
+  layer.add(chickenBadge);
   badgeObj.src = "/assets/images/badges/chicken.png";
 
-  const badgeObj2 = new Image();
-  badgeObj2.onload = function () {
-    const fox = new Konva.Image({
-      x: 350,
-      y: 250,
-      image: badgeObj2,
-      width: 100,
-      height: 100,
-    });
-    layer.add(fox);
-  };
+  const pullRequestBadge = new Konva.Image({
+    x: 350,
+    y: 250,
+    image: badgeObj2,
+    width: 100,
+    height: 100,
+  });
+  layer.add(pullRequestBadge);
   badgeObj2.src = "/assets/images/badges/pull-request.png";
 
-  const badgeObj3 = new Image();
-  badgeObj3.onload = function () {
-    const eight = new Konva.Image({
-      x: 850,
-      y: 50,
-      image: badgeObj3,
-      width: 100,
-      height: 100,
-    });
-    layer.add(eight);
-  };
+  const pyramidsBadge = new Konva.Image({
+    x: 850,
+    y: 50,
+    image: badgeObj3,
+    width: 100,
+    height: 100,
+  });
+  layer.add(pyramidsBadge);
   badgeObj3.src = "/assets/images/badges/pyramids.png";
 
-  const badgeObj4 = new Image();
-  badgeObj4.onload = function () {
-    const five = new Konva.Image({
-      x: 850,
-      y: 250,
-      image: badgeObj4,
-      width: 100,
-      height: 100,
-    });
-    layer.add(five);
-  };
+  const lockKeyBadge = new Konva.Image({
+    x: 850,
+    y: 250,
+    image: badgeObj4,
+    width: 100,
+    height: 100,
+  });
+  layer.add(lockKeyBadge);
   badgeObj4.src = "/assets/images/badges/lock-key.png";
 
-  const badgeObj5 = new Image();
-  badgeObj5.onload = function () {
-    const six = new Konva.Image({
-      x: 850,
-      y: 450,
-      image: badgeObj5,
-      width: 100,
-      height: 100,
-    });
-    layer.add(six);
-  };
+  const spaceInvaderBadge = new Konva.Image({
+    x: 850,
+    y: 450,
+    image: badgeObj5,
+    width: 100,
+    height: 100,
+  });
+  layer.add(spaceInvaderBadge);
   badgeObj5.src = "/assets/images/badges/space-invader.png";
 
-  const badgeObj6 = new Image();
-  badgeObj6.onload = function () {
-    const four = new Konva.Image({
-      x: 1150,
-      y: 250,
-      image: badgeObj6,
-      width: 100,
-      height: 100,
-    });
-    layer.add(four);
-  };
+  const foxBadge = new Konva.Image({
+    x: 1150,
+    y: 250,
+    image: badgeObj6,
+    width: 100,
+    height: 100,
+  });
+  layer.add(foxBadge);
   badgeObj6.src = "/assets/images/badges/fox.png";
 
-  const badgeObj7 = new Image();
-  badgeObj7.onload = function () {
-    const seven = new Konva.Image({
-      x: 1150,
-      y: 450,
-      image: badgeObj7,
-      width: 100,
-      height: 100,
-    });
-    layer.add(seven);
-  };
+  const twoHeartsBadge = new Konva.Image({
+    x: 1150,
+    y: 450,
+    image: badgeObj7,
+    width: 100,
+    height: 100,
+  });
+  layer.add(twoHeartsBadge);
   badgeObj7.src = "/assets/images/badges/two-hearts.png";
 
-  const badgeObj8 = new Image();
-  badgeObj8.onload = function () {
-    const nine = new Konva.Image({
-      x: 1450,
-      y: 250,
-      image: badgeObj8,
-      width: 100,
-      height: 100,
-    });
-    layer.add(nine);
-  };
+  const rocketshipBadge = new Konva.Image({
+    x: 1450,
+    y: 250,
+    image: badgeObj8,
+    width: 100,
+    height: 100,
+  });
+  layer.add(rocketshipBadge);
   badgeObj8.src = "/assets/images/badges/rocketship.png";
+
+  // tooltips
+  const tooltipText1 = new Konva.Text({
+    x: -50,
+    y: 60,
+    text: "COMPLEX TEXT\n\nAll the world's a stage, and all the men and women merely players. They have their exits and their entrances.",
+    fontSize: 18,
+    fontFamily: "Calibri",
+    fill: "#555",
+    width: 300,
+    padding: 20,
+    align: "center",
+  });
+  const tooltipRect1 = new Konva.Rect({
+    x: tooltipText1.x(),
+    y: tooltipText1.y(),
+    stroke: "#555",
+    strokeWidth: 5,
+    fill: "#ddd",
+    width: 300,
+    height: tooltipText1.height(),
+    shadowColor: "black",
+    shadowBlur: 10,
+    shadowOffsetX: 10,
+    shadowOffsetY: 10,
+    shadowOpacity: 0.2,
+    cornerRadius: 10,
+  });
+  layer.add(tooltipRect1);
+  layer.add(tooltipText1);
+  // tooltipText1.hide();
+  // tooltipRect1.hide();
+
+  const tooltipText2 = new Konva.Text({
+    x: 250,
+    y: 60,
+    text: "COMPLEX TEXT\n\nAll the world's a stage, and all the men and women merely players. They have their exits and their entrances.",
+    fontSize: 18,
+    fontFamily: "Calibri",
+    fill: "#555",
+    width: 300,
+    padding: 20,
+    align: "center",
+  });
+  const tooltipRect2 = new Konva.Rect({
+    x: tooltipText2.x(),
+    y: tooltipText2.y(),
+    stroke: "#555",
+    strokeWidth: 5,
+    fill: "#ddd",
+    width: 300,
+    height: tooltipText2.height(),
+    shadowColor: "black",
+    shadowBlur: 10,
+    shadowOffsetX: 10,
+    shadowOffsetY: 10,
+    shadowOpacity: 0.2,
+    cornerRadius: 10,
+  });
+  layer.add(tooltipRect2);
+  layer.add(tooltipText2);
+  // tooltipText2.hide();
+  // tooltipRect2.hide();
+
+  const tooltipText3 = new Konva.Text({
+    x: 750,
+    y: -150,
+    text: "COMPLEX TEXT\n\nAll the world's a stage, and all the men and women merely players. They have their exits and their entrances.",
+    fontSize: 18,
+    fontFamily: "Calibri",
+    fill: "#555",
+    width: 300,
+    padding: 20,
+    align: "center",
+  });
+  const tooltipRect3 = new Konva.Rect({
+    x: tooltipText3.x(),
+    y: tooltipText3.y(),
+    stroke: "#555",
+    strokeWidth: 5,
+    fill: "#ddd",
+    width: 300,
+    height: tooltipText3.height(),
+    shadowColor: "black",
+    shadowBlur: 10,
+    shadowOffsetX: 10,
+    shadowOffsetY: 10,
+    shadowOpacity: 0.2,
+    cornerRadius: 10,
+  });
+  layer.add(tooltipRect3);
+  layer.add(tooltipText3);
+  // tooltipText3.hide();
+  // tooltipRect3.hide();
+
+  const tooltipText4 = new Konva.Text({
+    x: 750,
+    y: 50,
+    text: "COMPLEX TEXT\n\nAll the world's a stage, and all the men and women merely players. They have their exits and their entrances.",
+    fontSize: 18,
+    fontFamily: "Calibri",
+    fill: "#555",
+    width: 300,
+    padding: 20,
+    align: "center",
+  });
+  const tooltipRect4 = new Konva.Rect({
+    x: tooltipText4.x(),
+    y: tooltipText4.y(),
+    stroke: "#555",
+    strokeWidth: 5,
+    fill: "#ddd",
+    width: 300,
+    height: tooltipText4.height(),
+    shadowColor: "black",
+    shadowBlur: 10,
+    shadowOffsetX: 10,
+    shadowOffsetY: 10,
+    shadowOpacity: 0.2,
+    cornerRadius: 10,
+  });
+  layer.add(tooltipRect4);
+  layer.add(tooltipText4);
+  // tooltipText4.hide();
+  // tooltipRect4.hide();
+
+  const tooltipText5 = new Konva.Text({
+    x: 750,
+    y: 250,
+    text: "COMPLEX TEXT\n\nAll the world's a stage, and all the men and women merely players. They have their exits and their entrances.",
+    fontSize: 18,
+    fontFamily: "Calibri",
+    fill: "#555",
+    width: 300,
+    padding: 20,
+    align: "center",
+  });
+  const tooltipRect5 = new Konva.Rect({
+    x: tooltipText5.x(),
+    y: tooltipText5.y(),
+    stroke: "#555",
+    strokeWidth: 5,
+    fill: "#ddd",
+    width: 300,
+    height: tooltipText5.height(),
+    shadowColor: "black",
+    shadowBlur: 10,
+    shadowOffsetX: 10,
+    shadowOffsetY: 10,
+    shadowOpacity: 0.2,
+    cornerRadius: 10,
+  });
+  layer.add(tooltipRect5);
+  layer.add(tooltipText5);
+  // tooltipText5.hide();
+  // tooltipRect5.hide();
+
+  const tooltipText6 = new Konva.Text({
+    x: 1050,
+    y: 50,
+    text: "COMPLEX TEXT\n\nAll the world's a stage, and all the men and women merely players. They have their exits and their entrances.",
+    fontSize: 18,
+    fontFamily: "Calibri",
+    fill: "#555",
+    width: 300,
+    padding: 20,
+    align: "center",
+  });
+  const tooltipRect6 = new Konva.Rect({
+    x: tooltipText6.x(),
+    y: tooltipText6.y(),
+    stroke: "#555",
+    strokeWidth: 5,
+    fill: "#ddd",
+    width: 300,
+    height: tooltipText6.height(),
+    shadowColor: "black",
+    shadowBlur: 10,
+    shadowOffsetX: 10,
+    shadowOffsetY: 10,
+    shadowOpacity: 0.2,
+    cornerRadius: 10,
+  });
+  layer.add(tooltipRect6);
+  layer.add(tooltipText6);
+  // tooltipText6.hide();
+  // tooltipRect6.hide();
+
+  const tooltipText7 = new Konva.Text({
+    x: 1050,
+    y: 250,
+    text: "COMPLEX TEXT\n\nAll the world's a stage, and all the men and women merely players. They have their exits and their entrances.",
+    fontSize: 18,
+    fontFamily: "Calibri",
+    fill: "#555",
+    width: 300,
+    padding: 20,
+    align: "center",
+  });
+  const tooltipRect7 = new Konva.Rect({
+    x: tooltipText7.x(),
+    y: tooltipText7.y(),
+    stroke: "#555",
+    strokeWidth: 5,
+    fill: "#ddd",
+    width: 300,
+    height: tooltipText7.height(),
+    shadowColor: "black",
+    shadowBlur: 10,
+    shadowOffsetX: 10,
+    shadowOffsetY: 10,
+    shadowOpacity: 0.2,
+    cornerRadius: 10,
+  });
+  layer.add(tooltipRect7);
+  layer.add(tooltipText7);
+  // tooltipText7.hide();
+  // tooltipRect7.hide();
+
+  const tooltipText8 = new Konva.Text({
+    x: 1350,
+    y: 50,
+    text: "COMPLEX TEXT\n\nAll the world's a stage, and all the men and women merely players. They have their exits and their entrances.",
+    fontSize: 18,
+    fontFamily: "Calibri",
+    fill: "#555",
+    width: 300,
+    padding: 20,
+    align: "center",
+  });
+  const tooltipRect8 = new Konva.Rect({
+    x: tooltipText8.x(),
+    y: tooltipText8.y(),
+    stroke: "#555",
+    strokeWidth: 5,
+    fill: "#ddd",
+    width: 300,
+    height: tooltipText8.height(),
+    shadowColor: "black",
+    shadowBlur: 10,
+    shadowOffsetX: 10,
+    shadowOffsetY: 10,
+    shadowOpacity: 0.2,
+    cornerRadius: 10,
+  });
+  layer.add(tooltipRect8);
+  layer.add(tooltipText8);
+  // tooltipText8.hide();
+  // tooltipRect8.hide();
+
+  chickenBadge.on("mouseover", (evt) => {
+    const shape = evt.target;
+    document.body.style.cursor = "pointer";
+    tooltipText1.show();
+    tooltipRect1.show();
+    shape.scaleX(1.2);
+    shape.scaleY(1.2);
+  });
+  chickenBadge.on("mouseout", (evt) => {
+    const shape = evt.target;
+    document.body.style.cursor = "default";
+    tooltipText1.hide();
+    tooltipRect1.hide();
+    shape.scaleX(1);
+    shape.scaleY(1);
+  });
+  setTimeout(() => {
+    layer.batchDraw();
+  }, 100);
+
+  pullRequestBadge.on("mouseover", (evt) => {
+    const shape = evt.target;
+    document.body.style.cursor = "pointer";
+    tooltipText2.show();
+    tooltipRect2.show();
+    shape.scaleX(1.2);
+    shape.scaleY(1.2);
+  });
+  pullRequestBadge.on("mouseout", (evt) => {
+    const shape = evt.target;
+    document.body.style.cursor = "default";
+    tooltipText2.hide();
+    tooltipRect2.hide();
+    shape.scaleX(1);
+    shape.scaleY(1);
+  });
+  setTimeout(() => {
+    layer.batchDraw();
+  }, 100);
+
+  pyramidsBadge.on("mouseover", (evt) => {
+    const shape = evt.target;
+    document.body.style.cursor = "pointer";
+    tooltipText3.show();
+    tooltipRect3.show();
+    shape.scaleX(1.2);
+    shape.scaleY(1.2);
+  });
+  pyramidsBadge.on("mouseout", (evt) => {
+    const shape = evt.target;
+    document.body.style.cursor = "default";
+    tooltipText3.hide();
+    tooltipRect3.hide();
+    shape.scaleX(1);
+    shape.scaleY(1);
+  });
+  setTimeout(() => {
+    layer.batchDraw();
+  }, 100);
+
+  lockKeyBadge.on("mouseover", (evt) => {
+    const shape = evt.target;
+    document.body.style.cursor = "pointer";
+    tooltipText4.show();
+    tooltipRect4.show();
+    shape.scaleX(1.2);
+    shape.scaleY(1.2);
+  });
+  lockKeyBadge.on("mouseout", (evt) => {
+    const shape = evt.target;
+    document.body.style.cursor = "default";
+    tooltipText4.hide();
+    tooltipRect4.hide();
+    shape.scaleX(1);
+    shape.scaleY(1);
+  });
+  setTimeout(() => {
+    layer.batchDraw();
+  }, 100);
+
+  spaceInvaderBadge.on("mouseover", (evt) => {
+    const shape = evt.target;
+    document.body.style.cursor = "pointer";
+    tooltipText5.show();
+    tooltipRect5.show();
+    shape.scaleX(1.2);
+    shape.scaleY(1.2);
+  });
+  spaceInvaderBadge.on("mouseout", (evt) => {
+    const shape = evt.target;
+    document.body.style.cursor = "default";
+    tooltipText5.hide();
+    tooltipRect5.hide();
+    shape.scaleX(1);
+    shape.scaleY(1);
+  });
+  setTimeout(() => {
+    layer.batchDraw();
+  }, 100);
+
+  foxBadge.on("mouseover", (evt) => {
+    const shape = evt.target;
+    document.body.style.cursor = "pointer";
+    tooltipText6.show();
+    tooltipRect6.show();
+    shape.scaleX(1.2);
+    shape.scaleY(1.2);
+  });
+  foxBadge.on("mouseout", (evt) => {
+    const shape = evt.target;
+    document.body.style.cursor = "default";
+    tooltipText6.hide();
+    tooltipRect6.hide();
+    shape.scaleX(1);
+    shape.scaleY(1);
+  });
+  setTimeout(() => {
+    layer.batchDraw();
+  }, 100);
+
+  twoHeartsBadge.on("mouseover", (evt) => {
+    const shape = evt.target;
+    document.body.style.cursor = "pointer";
+    tooltipText7.show();
+    tooltipRect7.show();
+    shape.scaleX(1.2);
+    shape.scaleY(1.2);
+  });
+  twoHeartsBadge.on("mouseout", (evt) => {
+    const shape = evt.target;
+    document.body.style.cursor = "default";
+    tooltipText7.hide();
+    tooltipRect7.hide();
+    shape.scaleX(1);
+    shape.scaleY(1);
+  });
+  setTimeout(() => {
+    layer.batchDraw();
+  }, 100);
+
+  rocketshipBadge.on("mouseover", (evt) => {
+    const shape = evt.target;
+    document.body.style.cursor = "pointer";
+    tooltipText8.show();
+    tooltipRect8.show();
+    shape.scaleX(1.2);
+    shape.scaleY(1.2);
+  });
+  rocketshipBadge.on("mouseout", (evt) => {
+    const shape = evt.target;
+    document.body.style.cursor = "default";
+    tooltipText8.hide();
+    tooltipRect8.hide();
+    shape.scaleX(1);
+    shape.scaleY(1);
+  });
+  setTimeout(() => {
+    layer.batchDraw();
+  }, 100);
 }
