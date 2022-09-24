@@ -140,7 +140,10 @@ if (localStorage.getItem("dark-mode") === "true") {
 
 // If on homepage
 // Load members on page load and fill their profiles on the profiles div
-if (window.location.pathname === "/") {
+if (
+  window.location.pathname === "/" ||
+  window.location.pathname === "/index.html"
+) {
   // Fetch from /assets/members.json and save on window.members
   fetch("/assets/members.json")
     .then((response) => response.json())
