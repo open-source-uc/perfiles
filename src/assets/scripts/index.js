@@ -149,3 +149,241 @@ if (window.location.pathname === "/") {
       fillProfiles(data);
     });
 }
+
+// If on logros
+if (window.location.pathname === "/logros.html") {
+  const width = window.innerWidth * 0.8;
+  const height = window.innerHeight * 0.8;
+
+  const stage = new Konva.Stage({
+    container: "logros-canvas",
+    width,
+    height,
+    draggable: true,
+  });
+
+  const layer = new Konva.Layer();
+  stage.add(layer);
+
+  // const WIDTH = 3000;
+  // const HEIGHT = 3000;
+  // const NUMBER = 200;
+
+  const imageObj3 = new Image();
+  imageObj3.onload = function () {
+    const raisedEmoji = new Konva.Image({
+      x: 140,
+      y: 0,
+      image: imageObj3,
+      width: 50,
+      height: 50,
+    });
+    layer.add(raisedEmoji);
+  };
+  imageObj3.src = "/assets/images/emoji/raised-back.svg";
+
+  const simpleText = new Konva.Text({
+    x: 0,
+    y: 60,
+    text: "¡Arrastra para moverte!",
+    fontSize: 30,
+    fontFamily: "Inter",
+    fill: "white",
+  });
+  layer.add(simpleText);
+
+  const horLine1 = new Konva.Line({
+    points: [150, 300, 360, 300],
+    stroke: "black",
+    strokeWidth: 10,
+    lineCap: "round",
+    lineJoin: "round",
+  });
+  layer.add(horLine1);
+
+  const horLine2 = new Konva.Line({
+    points: [440, 300, 650, 300],
+    stroke: "black",
+    strokeWidth: 10,
+    lineCap: "round",
+    lineJoin: "round",
+  });
+  layer.add(horLine2);
+
+  const horLine3 = new Konva.Line({
+    points: [650, 100, 900, 100],
+    stroke: "black",
+    strokeWidth: 10,
+    lineCap: "round",
+    lineJoin: "round",
+  });
+  layer.add(horLine3);
+
+  const horLine4 = new Konva.Line({
+    points: [650, 300, 950, 300],
+    stroke: "black",
+    strokeWidth: 10,
+    lineCap: "round",
+    lineJoin: "round",
+  });
+  layer.add(horLine4);
+
+  const horLine5 = new Konva.Line({
+    points: [650, 500, 950, 500],
+    stroke: "black",
+    strokeWidth: 10,
+    lineCap: "round",
+    lineJoin: "round",
+  });
+  layer.add(horLine5);
+
+  const horLine6 = new Konva.Line({
+    /* [440, 300, 660, 300] */
+    points: [900, 300, 1200, 300],
+    stroke: "black",
+    strokeWidth: 10,
+    lineCap: "round",
+    lineJoin: "round",
+  });
+  layer.add(horLine6);
+
+  const horLine7 = new Konva.Line({
+    points: [900, 500, 1200, 500],
+    stroke: "black",
+    strokeWidth: 10,
+    lineCap: "round",
+    lineJoin: "round",
+  });
+  layer.add(horLine7);
+
+  const horLine8 = new Konva.Line({
+    points: [1200, 300, 1500, 300],
+    stroke: "black",
+    strokeWidth: 10,
+    lineCap: "round",
+    lineJoin: "round",
+  });
+  layer.add(horLine8);
+
+  const vertLine1 = new Konva.Line({
+    points: [650, 300, 650, 100],
+    stroke: "black",
+    strokeWidth: 10,
+    lineCap: "round",
+    lineJoin: "round",
+  });
+  layer.add(vertLine1);
+
+  const vertLine2 = new Konva.Line({
+    points: [650, 300, 650, 500],
+    stroke: "black",
+    strokeWidth: 10,
+    lineCap: "round",
+    lineJoin: "round",
+  });
+  layer.add(vertLine2);
+
+  const imageObj = new Image();
+  imageObj.onload = function () {
+    const chicken = new Konva.Image({
+      x: 50,
+      y: 250,
+      image: imageObj,
+      width: 100,
+      height: 100,
+    });
+    layer.add(chicken);
+  };
+  imageObj.src = "/assets/images/badges/chicken.png";
+
+  const imageObj2 = new Image();
+  imageObj2.onload = function () {
+    const fox = new Konva.Image({
+      x: 350,
+      y: 250,
+      image: imageObj2,
+      width: 100,
+      height: 100,
+    });
+    layer.add(fox);
+  };
+  imageObj2.src = "/assets/images/badges/fox.png";
+
+  const imageObj8 = new Image();
+  imageObj8.onload = function () {
+    const eight = new Konva.Image({
+      x: 850,
+      y: 50,
+      image: imageObj8,
+      width: 100,
+      height: 100,
+    });
+    layer.add(eight);
+  };
+  imageObj8.src = "/assets/images/badges/fox.png";
+
+  const imageObj5 = new Image();
+  imageObj5.onload = function () {
+    const five = new Konva.Image({
+      x: 850,
+      y: 250,
+      image: imageObj5,
+      width: 100,
+      height: 100,
+    });
+    layer.add(five);
+  };
+  imageObj5.src = "/assets/images/badges/fox.png";
+
+  const imageObj6 = new Image();
+  imageObj6.onload = function () {
+    const six = new Konva.Image({
+      x: 850,
+      y: 450,
+      image: imageObj6,
+      width: 100,
+      height: 100,
+    });
+    layer.add(six);
+  };
+  imageObj6.src = "/assets/images/badges/fox.png";
+
+  const imageObj4 = new Image();
+  imageObj4.onload = function () {
+    const four = new Konva.Image({
+      x: 1150,
+      y: 250,
+      image: imageObj4,
+      width: 100,
+      height: 100,
+    });
+    layer.add(four);
+  };
+  imageObj4.src = "/assets/images/badges/fox.png";
+
+  const imageObj7 = new Image();
+  imageObj7.onload = function () {
+    const seven = new Konva.Image({
+      x: 1150,
+      y: 450,
+      image: imageObj7,
+      width: 100,
+      height: 100,
+    });
+    layer.add(seven);
+  };
+  imageObj7.src = "/assets/images/badges/fox.png";
+
+  const imageObj9 = new Image();
+  imageObj9.onload = function () {
+    const nine = new Konva.Image({
+      x: 1450,
+      y: 250,
+      image: imageObj9,
+      width: 100,
+      height: 100,
+    });
+    layer.add(nine);
+  };
+  imageObj9.src = "/assets/images/badges/fox.png";
+}

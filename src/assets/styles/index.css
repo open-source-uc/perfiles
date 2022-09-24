@@ -670,7 +670,7 @@ figcaption {
 }
 
 /* The following CSS is for the logros page */
-/* Inspired by https://codepen.io/Hojy/pen/ppRJBw */
+/* https://konvajs.org/docs/sandbox/Canvas_Scrolling.html */
 .logros-container {
   width: 100%;
   display: flex;
@@ -679,6 +679,11 @@ figcaption {
   align-items: center;
 }
 
+.no-min-height {
+  min-height: 0;
+}
+
+/*
 .logros-scrollable {
   width: 80vw;
   overflow-x: auto;
@@ -688,139 +693,4 @@ figcaption {
 .fa-hand-style {
   font-size: 2rem;
   color: var(--yellow);
-}
-
-.tree ul {
-  margin: 0 0 0 15em;
-  padding: 0;
-  list-style: none;
-  color: var(--connector-color);
-  position: relative;
-}
-
-.tree ul:before {
-  content: "";
-  display: block;
-  width: 0px;
-  position: absolute;
-  top: 0;
-  bottom: 0;
-  left: 0;
-  border-left: 1px solid; /* Vertical Connectors */
-  z-index: -2;
-}
-
-.tree li {
-  font-weight: bold;
-  line-height: 3 em;
-  margin: 0;
-  padding: 2em 0 0 2em; /* indentation + .5em */
-  position: relative;
-  z-index: -1;
-}
-
-.tree li:before {
-  content: "";
-  display: block;
-  height: 100%;
-  left: 0;
-  margin-top: 1em;
-  position: absolute;
-  top: 2em;
-  width: 2em; /* same with indentation */
-  z-index: -2;
-}
-
-.tree li:first-child > .category .up {
-  border-left: none;
-}
-
-.tree li:last-child > .category .down,
-.tree li:last-child > .sub-category .down,
-.tree li:last-child > .skill .down,
-.tree li:last-child > .attribute .down {
-  border-left: none;
-}
-
-.tree li:last-child:before {
-  bottom: 0;
-  height: auto;
-  top: 2em; /* (line-height/2) */
-}
-
-.tree .category .up,
-.down,
-.tree .sub-category .up,
-.down,
-.tree .skill .up,
-.down,
-.tree .attribute .up,
-.down {
-  border-left: solid 1px var(--connector-color);
-}
-
-.tree .entry {
-  box-sizing: border-box;
-  position: relative;
-  left: -2em;
-  height: 3.5em;
-  width: 15em+2em * 1.5;
-}
-
-.tree .entry .up,
-.down {
-  box-sizing: border-box;
-  height: 50%;
-  min-width: 2em;
-}
-
-.tree .entry .down {
-  border-top: solid 1px var(--connector-color);
-}
-
-.tree .entry .card {
-  box-sizing: border-box;
-  position: absolute;
-  top: 0px;
-  right: 0px;
-  height: 3.5em;
-  width: 15em;
-
-  border-radius: 5px;
-  border: 1px solid var(--box-color);
-  margin: 0;
-  max-width: 15em+2em * 0.5;
-  min-width: 15em+2em * 0.5;
-  padding: 0px 5px 0px 5px;
-
-  box-shadow: var(--box-shadow);
-  color: var(--connector-color);
-  font-weight: bold;
-  z-index: 1;
-}
-
-ul.tree {
-  margin-left: 10px;
-}
-
-ul.tree div.category {
-  top: 0px;
-}
-
-ul.tree > li:before {
-  content: "";
-  display: block;
-  width: 0px;
-  position: absolute;
-  bottom: 0;
-  border-left: 1px solid var(--connector-color); /* vertical connectors¨*/
-  z-index: -2;
-}
-
-ul.tree > li:last-child:before {
-  border-left: none !important;
-}
-
-ul.tree > li:last-child .up {
-  border-left: 1px solid var(--connector-color);
-}
+} */

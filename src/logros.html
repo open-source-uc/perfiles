@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="es">
   <head>
+    <script src="https://unpkg.com/konva@8.3.12/konva.min.js"></script>
     <meta charset="UTF-8" />
     <meta
       name="viewport"
@@ -95,31 +96,11 @@
         </ul>
       </nav>
     </header>
-    <main>
+    <main class="no-min-height">
       <p class="admin__welcome">Logros</p>
-      <section class="logros-container">
-        <div class="logros-scrollable">
-          <i class="fa-solid fa-hand fa-hand-style"></i>
-          <p>¡Arrastra para moverte!</p>
-
-          <ul class="tree">
-            <!-- Category -->
-            <li>
-              <div class="category">
-                <div class="entry">
-                  <div class="up"></div>
-                  <div class="down"></div>
-                  <div class="card">Lorem Ipsum</div>
-                </div>
-              </div>
-            </li>
-          </ul>
-
-          <li>
-            <div class="sub-category"></div>
-          </li>
-        </div>
-      </section>
+      <div class="logros-container">
+        <div id="logros-canvas"></div>
+      </div>
       <button class="btn-scrollup btn_scrollup--visible" id="btn_scrollup">
         <i class="fa-solid fa-chevron-up"></i>
       </button>
