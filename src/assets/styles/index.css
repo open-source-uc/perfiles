@@ -680,25 +680,24 @@ figcaption {
 
 .tableadmin thead {
   cursor: pointer;
-  background: var(--black--3);
-  color: #fff;
+  background: var(--black--1);
+  color: var(--white--1);
 }
 
 .tableadmin tbody {
-  background: #e5ebf1;
+  background: var(--black--4);
 }
 
 .tableadmin thead th {
-  padding: 4px;
-  border-bottom: 4px solid #9ea7af;
+  padding: 5px;
 }
 
 .tableadmin tbody td {
-  border-bottom: 1px solid #9ea7af;
+  border-bottom: 1px solid var(--white--3);
 }
 
 .tableadmin tr:nth-child(odd) td {
-  background: #dedee1;
+  background: var(--white--4);
 }
 
 /* Danger admin */
