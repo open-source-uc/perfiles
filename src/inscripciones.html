@@ -8,8 +8,8 @@
     />
 
     <!-- Primary Meta Tags -->
-    <title>Admin | Perfiles OSUC</title>
-    <meta name="title" content="Admin | Perfiles OSUC" />
+    <title>Inicio | Perfiles OSUC</title>
+    <meta name="title" content="Inicio | Perfiles OSUC" />
     <meta
       name="description"
       content="Perfiles OSUC es la plataforma comunitaria de Open Source UC. Aquí puedes encontrar un registro de todes nuestros integrantes, sus logros, biografías y más."
@@ -18,8 +18,8 @@
     <!-- Open Graph / Facebook -->
     <!-- http://ogp.me/ -->
     <meta property="og:type" content="website" />
-    <meta property="og:url" content="https://perfiles.osuc.dev/admin/" />
-    <meta property="og:title" content="Admin | Perfiles OSUC" />
+    <meta property="og:url" content="https://perfiles.osuc.dev/" />
+    <meta property="og:title" content="Inicio | Perfiles OSUC" />
     <meta
       property="og:description"
       content="Perfiles OSUC es la plataforma comunitaria de Open Source UC. Aquí puedes encontrar un registro de todes nuestros integrantes, sus logros, biografías y más."
@@ -37,7 +37,7 @@
     />
     <meta property="twitter:image" content="/assets/images/banner.png" />
 
-    <link rel="canonical" href="https://perfiles.osuc.dev/admin/" />
+    <link rel="canonical" href="https://perfiles.osuc.dev/" />
 
     <!-- Icons and favicons -->
     <link rel="icon" href="/assets/images/favicon.ico" />
@@ -85,77 +85,61 @@
           </li>
           <li><a href="/logros.html">🏅 Logros</a></li>
           <li><a href="/estatutos.html">📖 Estatutos</a></li>
-
-          <input type="checkbox" id="check-profile" />
-          <label for="check-profile" class="checkbtn-profile">
-            <li>
-              <img
-                class="login-picture"
-                src="https://avatars.githubusercontent.com/barbaraim?s=120"
-              />
-              <!--<span>barbaraim</span>-->
-            </li>
-          </label>
-
-          <ul class="profile-dropdown">
-            <li><a href="/perfil.html">👤 Perfil</a></li>
-            <li><a href="/admin">👨‍💻 Admin</a></li>
-            <li><a href="/logout">🚪 Cerrar sesión</a></li>
-          </ul>
+          <li>
+            <a
+              href="https://github.com/login/oauth/authorize?client_id=77a88aaa5e4cd67cff18"
+            >
+              👩‍💻 Iniciar sesión</a
+            >
+          </li>
         </ul>
       </nav>
     </header>
-    <aside class="nav-admin">
-      <nav class="nav-admin__nav" aria-label="Navegación de Admin">
-        <ul class="nav-admin__ul">
-          <li class="active"><a href="/admin/">📈</a></li>
-          <li><a href="/admin/rrhh.html">👥</a></li>
-          <li><a href="/admin/logros.html">🏅</a></li>
-          <li><a href="/admin/config.html">⚙️</a></li>
-        </ul>
-      </nav>
-    </aside>
-    <main class="admin__main">
-      <!-- adminindexbox1-->
-      <ol class="adminindexbox">
-        <li class="adminindexbox-item">
-          <a href="/admin/index.html">Admin</a>
-        </li>
-      </ol>
-      <p class="admin__welcome">Bienvenida, Bárbara 👋</p>
-      <h2>Actividad reciente</h2>
-      <table class="tableadmin">
-        <tbody>
-          <tr>
-            <td>
-              Agustin Covarrubias actualizó su perfil.
-              <time>Hace 4 minutos.</time>
-            </td>
-          </tr>
-          <tr>
-            <td>
-              Diego Costa cargó 15 aplicantes. <time>Hace 8 minutos.</time>
-            </td>
-          </tr>
-          <tr>
-            <td>
-              Lucas Natero creó un nuevo evento. <time>Hace 1 hora.</time>
-            </td>
-          </tr>
-          <tr>
-            <td>
-              Fernando Smith entregó un logro a Martin Atria.
-              <time>Hace 3 dias.</time>
-            </td>
-          </tr>
-          <tr>
-            <td>
-              Bárbara Irarrázaval entregó un logro a Nicolás Berríos.
-              <time>Hace 5 dias.</time>
-            </td>
-          </tr>
-        </tbody>
-      </table>
+    <main>
+      <section class="styleword">
+        <h1>Guía de inscripción</h1>
+        <p>
+          Una vez por semestre se realiza un proceso de Onboarding en el cual
+          los aspirantes a integrantes de OSUC deben completar una serie de
+          tareas para poder ser aceptados en la comunidad.
+        </p>
+        <p>
+          El proceso de Onboarding durara una semana en la cual se realizaran
+          una serie de charlas, talleres, reuniones y desafios interesantes.
+        </p>
+        <p>
+          Para poder participar en el proceso del proximo Onboarding debes
+          completar el formulario de inscripción que se encuentra en el
+          siguiente link:
+        </p>
+        <p>
+          <a href="#">Formulario de inscripción</a>
+        </p>
+        <p>
+          Una vez completado el formulario, puedes esperar a que el equipo de
+          coordinadores te contacte por correo para informarte de las fechas o
+          puedes estar atento a nuestras redes sociales.
+        </p>
+        <h2>Links de interes</h2>
+        <p>
+          Si tienes alguna duda, puedes contactarte a traves de alguna de
+          nuestras redes, tales como Telegram o Discord.
+        </p>
+        <iframe id="linksOSUC" src="https://links.osuc.dev"></iframe>
+        <h2>Roles en la comunidad</h2>
+        <p>
+          Los roles en OSUC no te impiden participar en las actividades y
+          proyectos de la comunidad, pero si definimos un antes y un despues
+          para hacer un seguimiento efectivo.
+        </p>
+        <figure>
+          <img
+            src="/assets/images/flujo-de-miembros.svg"
+            alt="Flujo de miembros"
+          />
+          <figcaption>Flujo de miembros</figcaption>
+        </figure>
+      </section>
       <button class="btn-scrollup btn_scrollup--visible" id="btn_scrollup">
         <i class="fa-solid fa-chevron-up"></i>
       </button>

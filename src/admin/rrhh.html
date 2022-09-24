@@ -71,7 +71,7 @@
             <span> <i class="fa-solid fa-moon"></i> </span>
           </button>
         </li>
-        <li><a href="/logros">🏅 Logros</a></li>
+        <li><a href="/logros.html">🏅 Logros</a></li>
         <li><a href="/estatutos.html">📖 Estatutos</a></li>
 
         <input type="checkbox" id="check-profile" />
@@ -83,7 +83,7 @@
         </label>
 
         <ul class="profile-dropdown">
-          <li><a href="/perfil">👤 Perfil</a></li>
+          <li><a href="/perfil.html">👤 Perfil</a></li>
           <li><a href="/admin">👨‍💻 Admin</a></li>
           <li><a href="/logout">🚪 Cerrar sesión</a></li>
         </ul>
@@ -109,18 +109,84 @@
       <li class="adminindexbox-item active">Recursos humanos</li>
     </ol>
     <!-- adminBox-->
-    <section class="admin-box">
-      <article class="col-100"></article>
-      <article class="col-50"></article>
-      <article class="col-50"></article>
-      <article class="col-33"></article>
-      <article class="col-33"></article>
-      <article class="col-33"></article>
-      <article class="col-25"></article>
+    <section class="admin-box admin-members">
+      <h2>Miembros</h2>
+      <p class="admin-members-search__title">Buscar miembros...</p>
+      <div class="admin-members-search">
+        <input type="text" name="name" class="admin-members-search__input" placeholder="Escribe un nombre..." />
+        <button class="admin-members-search__button">
+          <i class="fa-solid fa-search"></i> Buscar
+        </button>
+      </div>
+      <table>
+        <thead>
+          <tr>
+            <th><span>Nombre</span></th>
+            <th><span>Rol</span></th>
+            <th><span>Estado</span></th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Fernando Smith</td>
+            <td>Coordinador</td>
+            <td>Activo</td>
+          </tr>
+          <tr>
+            <td>Agustín Covarrubias</td>
+            <td>Mentor</td>
+            <td>Activo</td>
+          </tr>
+          <tr>
+            <td>Martín Atria</td>
+            <td>Mentor</td>
+            <td>Activo</td>
+          </tr>
+          <tr>
+            <td>Lucas Natero</td>
+            <td>Miembro</td>
+            <td>Activo</td>
+          </tr>
+          <tr>
+            <td>Ria Deane</td>
+            <td>Integrante</td>
+            <td>Inactivo</td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
+    <section class="admin-box admin-reports">
+      <h2>Generar reportes de actividad</h2>
+
+      <div class="admin-reports-buttons">
+        <button>Reporte de aplicantes</button>
+        <button>Reporte de outboarding</button>
+      </div>
+    </section>
+    <section class="admin-box admin-import-aplicants">
+      <h2>Importar aplicantes</h2>
+      <p>
+        Los aplicantes recibiran invitaciones a Telegram, Discord, GitHub y
+        el sistema de mails de OSUC
+      </p>
+      <form class="import-members">
+        <input type="file" />
+        <p>Arrastre sus archivos aquí o haga clic en esta área.</p>
+        <button type="submit">Subir</button>
+      </form>
+    </section>
+    <section class="admin-box admin-danger-zone">
+      <!-- DANGER ZONE -->
+      <h2 class="text-danger">Zona de peligro</h2>
+      <div class="admin-danger-zone-buttons">
+        <button class="btn-danger">Generar cambio de coordinación</button>
+        <button class="btn-danger">Reiniciar onboarding</button>
+      </div>
     </section>
     <button class="btn-scrollup btn_scrollup--visible" id="btn_scrollup">
       <i class="fa-solid fa-chevron-up"></i>
     </button>
+    </section>
   </main>
   <footer>
     <!-- Código autogenerado por https://chooser-beta.creativecommons.org/ -->
