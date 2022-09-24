@@ -1,163 +1,238 @@
 <!DOCTYPE html>
 <html lang="es">
-  <head>
-    <meta charset="UTF-8" />
-    <meta
-      name="viewport"
-      content="width=device-width, initial-scale=1, minimum-scale=1"
-    />
 
-    <!-- Primary Meta Tags -->
-    <title>Inicio | Perfiles OSUC</title>
-    <meta name="title" content="Inicio | Perfiles OSUC" />
-    <meta
-      name="description"
-      content="Perfiles OSUC es la plataforma comunitaria de Open Source UC. Aquí puedes encontrar un registro de todes nuestros integrantes, sus logros, biografías y más."
-    />
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1" />
 
-    <!-- Open Graph / Facebook -->
-    <!-- http://ogp.me/ -->
-    <meta property="og:type" content="website" />
-    <meta property="og:url" content="https://perfiles.osuc.dev/" />
-    <meta property="og:title" content="Inicio | Perfiles OSUC" />
-    <meta
-      property="og:description"
-      content="Perfiles OSUC es la plataforma comunitaria de Open Source UC. Aquí puedes encontrar un registro de todes nuestros integrantes, sus logros, biografías y más."
-    />
-    <meta property="og:image" content="/assets/images/banner.png" />
+  <!-- Primary Meta Tags -->
+  <title>Inicio | Perfiles OSUC</title>
+  <meta name="title" content="Inicio | Perfiles OSUC" />
+  <meta name="description"
+    content="Perfiles OSUC es la plataforma comunitaria de Open Source UC. Aquí puedes encontrar un registro de todes nuestros integrantes, sus logros, biografías y más." />
 
-    <!-- Twitter Card -->
-    <!-- https://dev.twitter.com/cards/overview  -->
-    <meta property="twitter:card" content="summary_large_image" />
-    <meta property="twitter:url" content="https://perfiles.osuc.dev/" />
-    <meta property="twitter:title" content="Inicio | Perfiles OSUC" />
-    <meta
-      property="twitter:description"
-      content="Perfiles OSUC es la plataforma comunitaria de Open Source UC. Aquí puedes encontrar un registro de todes nuestros integrantes, sus logros, biografías y más."
-    />
-    <meta property="twitter:image" content="/assets/images/banner.png" />
+  <!-- Open Graph / Facebook -->
+  <!-- http://ogp.me/ -->
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://perfiles.osuc.dev/" />
+  <meta property="og:title" content="Inicio | Perfiles OSUC" />
+  <meta property="og:description"
+    content="Perfiles OSUC es la plataforma comunitaria de Open Source UC. Aquí puedes encontrar un registro de todes nuestros integrantes, sus logros, biografías y más." />
+  <meta property="og:image" content="/assets/images/banner.png" />
 
-    <link rel="canonical" href="https://perfiles.osuc.dev/" />
+  <!-- Twitter Card -->
+  <!-- https://dev.twitter.com/cards/overview  -->
+  <meta property="twitter:card" content="summary_large_image" />
+  <meta property="twitter:url" content="https://perfiles.osuc.dev/" />
+  <meta property="twitter:title" content="Inicio | Perfiles OSUC" />
+  <meta property="twitter:description"
+    content="Perfiles OSUC es la plataforma comunitaria de Open Source UC. Aquí puedes encontrar un registro de todes nuestros integrantes, sus logros, biografías y más." />
+  <meta property="twitter:image" content="/assets/images/banner.png" />
 
-    <!-- Icons and favicons -->
-    <link rel="icon" href="/assets/images/favicon.ico" />
-    <link rel="apple-touch-icon" href="/assets/images/apple-touch-icon.png" />
-    <link rel="manifest" href="/site.webmanifest" />
+  <link rel="canonical" href="https://perfiles.osuc.dev/" />
 
-    <!-- fontawesome -->
-    <script
-      src="https://kit.fontawesome.com/0928ae0e39.js"
-      crossorigin="anonymous"
-    ></script>
+  <!-- Icons and favicons -->
+  <link rel="icon" href="/assets/images/favicon.ico" />
+  <link rel="apple-touch-icon" href="/assets/images/apple-touch-icon.png" />
+  <link rel="manifest" href="/site.webmanifest" />
 
-    <!-- Styles -->
-    <link rel="stylesheet" href="/assets/styles/index.css" />
+  <!-- fontawesome -->
+  <script src="https://kit.fontawesome.com/0928ae0e39.js" crossorigin="anonymous"></script>
 
-    <!-- Fonts -->
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=League+Spartan:wght@400;700&display=swap"
-      rel="stylesheet"
-    />
-  </head>
+  <!-- Styles -->
+  <link rel="stylesheet" href="/assets/styles/index.css" />
 
-  <body>
-    <!-- Let's use as much semantic HTML as we can -->
-    <header>
-      <!-- Logo -->
-      <a href="/" class="logo">
-        <img src="/assets/images/logo.svg" alt="Perfiles OSUC" />
-      </a>
-      <!-- Navbar -->
-      <nav class="nav-main">
-        <input type="checkbox" id="check" />
-        <label for="check" class="checkbtn">
-          <i class="fa-solid fa-bars"></i>
-        </label>
-        <ul>
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=League+Spartan:wght@400;700&display=swap"
+    rel="stylesheet" />
+</head>
+
+<body>
+  <!-- Let's use as much semantic HTML as we can -->
+  <header>
+    <!-- Logo -->
+    <a href="/" class="logo">
+      <img src="/assets/images/logo.svg" alt="Perfiles OSUC" />
+    </a>
+    <!-- Navbar -->
+    <nav class="nav-main">
+      <input type="checkbox" id="check" />
+      <label for="check" class="checkbtn">
+        <i class="fa-solid fa-bars"></i>
+      </label>
+      <ul>
+        <li>
+          <button class="switchtheme" id="switchtheme">
+            <span> <i class="fa-solid fa-sun"></i> </span>
+            <span> <i class="fa-solid fa-moon"></i> </span>
+          </button>
+        </li>
+        <li><a href="/logros.html">🏅 Logros</a></li>
+        <li><a href="/estatutos.html">📖 Estatutos</a></li>
+
+        <input type="checkbox" id="check-profile" />
+        <label for="check-profile" class="checkbtn-profile">
           <li>
-            <button class="switchtheme" id="switchtheme">
-              <span> <i class="fa-solid fa-sun"></i> </span>
-              <span> <i class="fa-solid fa-moon"></i> </span>
-            </button>
+            <img class="login-picture" src="https://avatars.githubusercontent.com/barbaraim?s=120" />
+            <!--<span>barbaraim</span>-->
           </li>
-          <li><a href="/logros.html">🏅 Logros</a></li>
-          <li><a href="/estatutos.html">📖 Estatutos</a></li>
+        </label>
 
-          <input type="checkbox" id="check-profile" />
-          <label for="check-profile" class="checkbtn-profile">
-            <li>
-              <img
-                class="login-picture"
-                src="https://avatars.githubusercontent.com/barbaraim?s=120"
-              />
-              <!--<span>barbaraim</span>-->
-            </li>
-          </label>
-
-          <ul class="profile-dropdown">
-            <li><a href="/perfil.html">👤 Perfil</a></li>
-            <li><a href="/admin">👨‍💻 Admin</a></li>
-            <li><a href="/logout">🚪 Cerrar sesión</a></li>
-          </ul>
+        <ul class="profile-dropdown">
+          <li><a href="/perfil.html">👤 Perfil</a></li>
+          <li><a href="/admin">👨‍💻 Admin</a></li>
+          <li><a href="/logout">🚪 Cerrar sesión</a></li>
         </ul>
-      </nav>
-    </header>
-    <main>
-      <section id="profile"></section>
-      <button class="btn-scrollup btn_scrollup--visible" id="btn_scrollup">
-        <i class="fa-solid fa-chevron-up"></i>
-      </button>
-    </main>
-    <footer>
-      <p
-        xmlns:cc="http://creativecommons.org/ns#"
-        xmlns:dct="http://purl.org/dc/terms/"
-      >
-        <a
-          property="dct:title"
-          rel="cc:attributionURL"
-          href="https://perfiles.osuc.dev/"
-          >Perfiles OSUC</a
-        >
-        de
-        <a
-          rel="cc:attributionURL dct:creator"
-          property="cc:attributionName"
-          href="https://osuc.dev/"
-          >Open Source UC</a
-        >
-        está licenciado bajo
-        <a
-          href="http://creativecommons.org/licenses/by-nc-sa/4.0/?ref=chooser-v1"
-          target="_blank"
-          rel="license noopener noreferrer"
-          style="display: inline-block"
-          >CC BY-NC-SA 4.0<img
-            style="margin-left: 3px; vertical-align: text-bottom"
-            src="https://mirrors.creativecommons.org/presskit/icons/cc.svg?ref=chooser-v1"
-            height="22px"
-            alt="CC"
-            title="Creative Commons" /><img
-            style="margin-left: 3px; vertical-align: text-bottom"
-            src="https://mirrors.creativecommons.org/presskit/icons/by.svg?ref=chooser-v1"
-            height="22px"
-            alt="Persona"
-            title="Atribución" /><img
-            style="margin-left: 3px; vertical-align: text-bottom"
-            src="https://mirrors.creativecommons.org/presskit/icons/nc.svg?ref=chooser-v1"
-            height="22px"
-            alt="Un signo de dólar tachado"
-            title="No comercial" /><img
-            style="margin-left: 3px; vertical-align: text-bottom"
-            src="https://mirrors.creativecommons.org/presskit/icons/sa.svg?ref=chooser-v1"
-            height="22px"
-            alt="Flecha curvándose hacia si misma"
-            title="ShareAlike"
-        /></a>
-      </p>
-    </footer>
-    <script src="/assets/scripts/index.js"></script>
-  </body>
+      </ul>
+    </nav>
+  </header>
+  <main>
+    <section class="personal-profile">
+      <div class="profile-header">
+        <div class="profile-picture">
+          <img src="https://avatars.githubusercontent.com/barbaraim?s=120" alt="barbaraim" />
+        </div>
+        <div class="profile-info">
+          <h1>Bárbara Irarrázaval</h1>
+          <p>Entró en 2022. Nivel 17</p>
+        </div>
+      </div>
+      <h1>Logros</h1>
+      <article class="badge-article">
+        <a class="badge-container badge-container-empty" href="#">
+          <div class="badge-image-container">
+            <img class="badge-image" src="/assets/images/badges/1.svg" />
+          </div>
+          <div class="badge-info-container">
+            <div class="badge-title">Aplicante</div>
+          </div>
+        </a>
+        <a class="badge-container badge-container-empty" href="#">
+          <div class="badge-image-container">
+            <img class="badge-image" src="/assets/images/badges/2.svg" />
+          </div>
+          <div class="badge-info-container">
+            <div class="badge-title">Primer proyecto</div>
+          </div>
+        </a>
+        <a class="badge-container badge-container-empty" href="#">
+          <div class="badge-image-container">
+            <img class="badge-image" src="/assets/images/badges/3.svg" />
+          </div>
+          <div class="badge-info-container">
+            <div class="badge-title">Primera PR</div>
+          </div>
+        </a>
+        <a class="badge-container badge-container-empty" href="#">
+          <div class="badge-image-container hexagon"></div>
+          <div class="badge-info-container">
+            <div class="badge-title">Insignia aún no obtenida</div>
+          </div>
+        </a>
+        <a class="badge-container badge-container-empty" href="#">
+          <div class="badge-image-container circle"></div>
+          <div class="badge-info-container">
+            <div class="badge-title">Insignia aún no obtenida</div>
+          </div>
+        </a>
+        <a class="badge-container badge-container-empty" href="#">
+          <div class="badge-image-container shield"></div>
+          <div class="badge-info-container">
+            <div class="badge-title">Insignia aún no obtenida</div>
+          </div>
+        </a>
+        <a class="badge-container badge-container-empty" href="#">
+          <div class="badge-image-container hexagon"></div>
+          <div class="badge-info-container">
+            <div class="badge-title">Insignia aún no obtenida</div>
+          </div>
+        </a>
+        <a class="badge-container badge-container-empty" href="#">
+          <div class="badge-image-container circle"></div>
+          <div class="badge-info-container">
+            <div class="badge-title">Insignia aún no obtenida</div>
+          </div>
+        </a>
+        <a class="badge-container badge-container-empty" href="#">
+          <div class="badge-image-container shield"></div>
+          <div class="badge-info-container">
+            <div class="badge-title">Insignia aún no obtenida</div>
+          </div>
+        </a>
+      </article>
+      <h2>Biografía</h1>
+        <blockquote>
+          <p>
+            &ldquo;Somewhere, something incredible is waiting to be known.&rdquo;
+            — Carl Sagan
+          </p>
+        </blockquote>
+        <p>
+          I&rsquo;m an engineering student and
+          <a href="https://github.com/agucova">open sourcerer</a> that does a bit
+          of everything, but nothing specially well. I&rsquo;m currently an
+          undergraduate majoring in Computer Science Engineering 👨‍💻 at
+          <a href="https://www.uc.cl/en">UC Chile</a>.
+        </p>
+        <p>
+          I&rsquo;m very passionate about computer science, cybersecurity and
+          using tech for social impact. Most of my work is interdisciplinary,
+          spanning everything from edtech to metascience, and I&rsquo;ve also been
+          involved in public policy, campaigning and consultancy. Lately,
+          I&rsquo;ve started to work under the umbrella of the
+          <a href="https://www.effectivealtruism.org/">Effective Altruism</a>
+          community.
+        </p>
+        <p>
+          I&rsquo;m also the Digital Platforms Lead at
+          <a href="https://americatransparente.org/">América Transparente</a>, an
+          NGO working on enabling government transparency throughout Latin America
+          by building open source tools for journalists. I&rsquo;ve also been an
+          organizer of
+          <a href="https://marchforscience.org/">March for Science</a> Chile since
+          2017, working to push for better scientific policy in Chile.
+        </p>
+        <p>
+          Along with some friends, I co-founded
+          <a href="https://osuc.dev/">Open Source UC</a>, an organization that
+          brings together students and professors to build awesome open source
+          projects.
+        </p>
+        <p>
+          ℹ️ I hold drop-in hours each saturday to talk about Effective Altruism
+          and my open source projects. Feel free to
+          <a href="https://calendly.com/agucova/drop-in-hours">pass by</a>.
+        </p>
+        <p>My pronouns are he/him.</p>
+    </section>
+    <button class="btn-scrollup btn_scrollup--visible" id="btn_scrollup">
+      <i class="fa-solid fa-chevron-up"></i>
+    </button>
+  </main>
+  <footer>
+    <p xmlns:cc="http://creativecommons.org/ns#" xmlns:dct="http://purl.org/dc/terms/">
+      <a property="dct:title" rel="cc:attributionURL" href="https://perfiles.osuc.dev/">Perfiles OSUC</a>
+      de
+      <a rel="cc:attributionURL dct:creator" property="cc:attributionName" href="https://osuc.dev/">Open Source UC</a>
+      está licenciado bajo
+      <a href="http://creativecommons.org/licenses/by-nc-sa/4.0/?ref=chooser-v1" target="_blank"
+        rel="license noopener noreferrer" style="display: inline-block">CC BY-NC-SA 4.0<img
+          style="margin-left: 3px; vertical-align: text-bottom"
+          src="https://mirrors.creativecommons.org/presskit/icons/cc.svg?ref=chooser-v1" height="22px" alt="CC"
+          title="Creative Commons" /><img style="margin-left: 3px; vertical-align: text-bottom"
+          src="https://mirrors.creativecommons.org/presskit/icons/by.svg?ref=chooser-v1" height="22px" alt="Persona"
+          title="Atribución" /><img style="margin-left: 3px; vertical-align: text-bottom"
+          src="https://mirrors.creativecommons.org/presskit/icons/nc.svg?ref=chooser-v1" height="22px"
+          alt="Un signo de dólar tachado" title="No comercial" /><img
+          style="margin-left: 3px; vertical-align: text-bottom"
+          src="https://mirrors.creativecommons.org/presskit/icons/sa.svg?ref=chooser-v1" height="22px"
+          alt="Flecha curvándose hacia si misma" title="ShareAlike" /></a>
+    </p>
+  </footer>
+  <script src="/assets/scripts/index.js"></script>
+</body>
+
 </html>
