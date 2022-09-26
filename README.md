@@ -24,7 +24,9 @@ Este repositorio contiene el código fuente para la plataforma comunitaria de [O
 
 ## Supuestos (Entrega 1)
 
-Para correr el código, se sugiere utilizar la extensión "Live Server" de Vscode mencionada en una ayudantía, para evitar tener problemas con los paths al abrir directamente una vista.
+* Para correr el código, se sugiere utilizar la extensión "Live Server" de Vscode mencionada en una ayudantía, para evitar tener problemas con los paths al abrir directamente una vista.
+
+* Al darle al botón "Iniciar Sesión" realmente se está haciendo un llamado al autenticador de GitHub (el cual solo pide permisos de lectura, no se recolectarán datos). Esto significa que al autorizar el login, se hará una redirección automática a [Nuestro dominio oficial](https://perfiles.osuc.dev) para las vistas de admin. A pesar de que este deploy es exactamente el de nuestra branch `main`, se puede volver a local simplemente yendo a `/admin/index.html`. 
 
 ### Contribuir
 
