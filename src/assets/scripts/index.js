@@ -796,7 +796,7 @@ function createCanvas(mode) {
   });
   setTimeout(() => {
     layer.batchDraw();
-  }, 100);
+  }, 200);
 }
 
 // If on logros
