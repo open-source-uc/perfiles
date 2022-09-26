@@ -1,3 +1,4 @@
+/* eslint-disable no-undef */
 function createProfile(member) {
   // Create the profile div from the member object
   const profile = document.createElement("div");
@@ -128,6 +129,9 @@ btnSwitch.addEventListener("click", () => {
   } else {
     localStorage.setItem("dark-mode", "false");
   }
+  if (window.location.pathname.startsWith("/logros")) {
+    createCanvas(localStorage.getItem("dark-mode"));
+  }
 });
 
 // revisamos el localStorage TODO: hacer antes de que cargue la pagina
@@ -153,8 +157,18 @@ if (
     });
 }
 
-// If on logros
-if (window.location.pathname === "/logros.html") {
+// define a function
+function createCanvas(mode) {
+  let colorWhite = "#ffffff";
+  let colorBlack = "#000000";
+  if (mode === "true") {
+    colorWhite = "#2e3440";
+    colorBlack = "#f2f4f8";
+  } else if (mode === "false") {
+    colorWhite = "#f2f4f8";
+    colorBlack = "#2e3440";
+  }
+  colorWhite = colorBlack;
   const width = window.innerWidth * 0.8;
   const height = window.innerHeight * 0.8;
 
@@ -178,6 +192,7 @@ if (window.location.pathname === "/logros.html") {
   stage.add(layer);
 
   const dragEmoji = new Image();
+  // eslint-disable-next-line func-names
   dragEmoji.onload = function () {
     const raisedEmoji = new Konva.Image({
       x: 140,
@@ -191,6 +206,7 @@ if (window.location.pathname === "/logros.html") {
   dragEmoji.src = "/assets/images/emoji/raised-back.svg";
 
   const hoverEmoji = new Image();
+  // eslint-disable-next-line func-names
   hoverEmoji.onload = function () {
     const raisedEmoji = new Konva.Image({
       x: 370,
@@ -209,7 +225,7 @@ if (window.location.pathname === "/logros.html") {
     text: "¡Arrastra para moverte!",
     fontSize: 30,
     fontFamily: "Inter",
-    fill: "white",
+    fill: colorWhite,
   });
   layer.add(dragInfoText);
 
@@ -219,13 +235,13 @@ if (window.location.pathname === "/logros.html") {
     text: "¡Haz hover sobre un logro\npara ver su descripción!",
     fontSize: 25,
     fontFamily: "Inter",
-    fill: "white",
+    fill: colorWhite,
   });
   layer.add(hoverInfoText);
 
   const horLine1 = new Konva.Line({
     points: [150, 300, 360, 300],
-    stroke: "black",
+    stroke: colorBlack,
     strokeWidth: 10,
     lineCap: "round",
     lineJoin: "round",
@@ -234,7 +250,7 @@ if (window.location.pathname === "/logros.html") {
 
   const horLine2 = new Konva.Line({
     points: [440, 300, 650, 300],
-    stroke: "black",
+    stroke: colorBlack,
     strokeWidth: 10,
     lineCap: "round",
     lineJoin: "round",
@@ -243,7 +259,7 @@ if (window.location.pathname === "/logros.html") {
 
   const horLine3 = new Konva.Line({
     points: [650, 100, 900, 100],
-    stroke: "black",
+    stroke: colorBlack,
     strokeWidth: 10,
     lineCap: "round",
     lineJoin: "round",
@@ -252,7 +268,7 @@ if (window.location.pathname === "/logros.html") {
 
   const horLine4 = new Konva.Line({
     points: [650, 300, 950, 300],
-    stroke: "black",
+    stroke: colorBlack,
     strokeWidth: 10,
     lineCap: "round",
     lineJoin: "round",
@@ -261,7 +277,7 @@ if (window.location.pathname === "/logros.html") {
 
   const horLine5 = new Konva.Line({
     points: [650, 500, 950, 500],
-    stroke: "black",
+    stroke: colorBlack,
     strokeWidth: 10,
     lineCap: "round",
     lineJoin: "round",
@@ -271,7 +287,7 @@ if (window.location.pathname === "/logros.html") {
   const horLine6 = new Konva.Line({
     /* [440, 300, 660, 300] */
     points: [900, 300, 1200, 300],
-    stroke: "black",
+    stroke: colorBlack,
     strokeWidth: 10,
     lineCap: "round",
     lineJoin: "round",
@@ -280,7 +296,7 @@ if (window.location.pathname === "/logros.html") {
 
   const horLine7 = new Konva.Line({
     points: [900, 500, 1200, 500],
-    stroke: "black",
+    stroke: colorBlack,
     strokeWidth: 10,
     lineCap: "round",
     lineJoin: "round",
@@ -289,7 +305,7 @@ if (window.location.pathname === "/logros.html") {
 
   const horLine8 = new Konva.Line({
     points: [1200, 300, 1500, 300],
-    stroke: "black",
+    stroke: colorBlack,
     strokeWidth: 10,
     lineCap: "round",
     lineJoin: "round",
@@ -298,7 +314,7 @@ if (window.location.pathname === "/logros.html") {
 
   const vertLine1 = new Konva.Line({
     points: [650, 300, 650, 100],
-    stroke: "black",
+    stroke: colorBlack,
     strokeWidth: 10,
     lineCap: "round",
     lineJoin: "round",
@@ -307,7 +323,7 @@ if (window.location.pathname === "/logros.html") {
 
   const vertLine2 = new Konva.Line({
     points: [650, 300, 650, 500],
-    stroke: "black",
+    stroke: colorBlack,
     strokeWidth: 10,
     lineCap: "round",
     lineJoin: "round",
@@ -414,7 +430,7 @@ if (window.location.pathname === "/logros.html") {
     fill: "#ddd",
     width: 300,
     height: tooltipText1.height(),
-    shadowColor: "black",
+    shadowColor: colorBlack,
     shadowBlur: 10,
     shadowOffsetX: 10,
     shadowOffsetY: 10,
@@ -445,7 +461,7 @@ if (window.location.pathname === "/logros.html") {
     fill: "#ddd",
     width: 300,
     height: tooltipText2.height(),
-    shadowColor: "black",
+    shadowColor: colorBlack,
     shadowBlur: 10,
     shadowOffsetX: 10,
     shadowOffsetY: 10,
@@ -476,7 +492,7 @@ if (window.location.pathname === "/logros.html") {
     fill: "#ddd",
     width: 300,
     height: tooltipText3.height(),
-    shadowColor: "black",
+    shadowColor: colorBlack,
     shadowBlur: 10,
     shadowOffsetX: 10,
     shadowOffsetY: 10,
@@ -507,7 +523,7 @@ if (window.location.pathname === "/logros.html") {
     fill: "#ddd",
     width: 300,
     height: tooltipText4.height(),
-    shadowColor: "black",
+    shadowColor: colorBlack,
     shadowBlur: 10,
     shadowOffsetX: 10,
     shadowOffsetY: 10,
@@ -538,7 +554,7 @@ if (window.location.pathname === "/logros.html") {
     fill: "#ddd",
     width: 300,
     height: tooltipText5.height(),
-    shadowColor: "black",
+    shadowColor: colorBlack,
     shadowBlur: 10,
     shadowOffsetX: 10,
     shadowOffsetY: 10,
@@ -569,7 +585,7 @@ if (window.location.pathname === "/logros.html") {
     fill: "#ddd",
     width: 300,
     height: tooltipText6.height(),
-    shadowColor: "black",
+    shadowColor: colorBlack,
     shadowBlur: 10,
     shadowOffsetX: 10,
     shadowOffsetY: 10,
@@ -600,7 +616,7 @@ if (window.location.pathname === "/logros.html") {
     fill: "#ddd",
     width: 300,
     height: tooltipText7.height(),
-    shadowColor: "black",
+    shadowColor: colorBlack,
     shadowBlur: 10,
     shadowOffsetX: 10,
     shadowOffsetY: 10,
@@ -631,7 +647,7 @@ if (window.location.pathname === "/logros.html") {
     fill: "#ddd",
     width: 300,
     height: tooltipText8.height(),
-    shadowColor: "black",
+    shadowColor: colorBlack,
     shadowBlur: 10,
     shadowOffsetX: 10,
     shadowOffsetY: 10,
@@ -659,9 +675,6 @@ if (window.location.pathname === "/logros.html") {
     shape.scaleX(1);
     shape.scaleY(1);
   });
-  setTimeout(() => {
-    layer.batchDraw();
-  }, 100);
 
   pullRequestBadge.on("mouseover", (evt) => {
     const shape = evt.target;
@@ -679,9 +692,6 @@ if (window.location.pathname === "/logros.html") {
     shape.scaleX(1);
     shape.scaleY(1);
   });
-  setTimeout(() => {
-    layer.batchDraw();
-  }, 100);
 
   pyramidsBadge.on("mouseover", (evt) => {
     const shape = evt.target;
@@ -699,9 +709,6 @@ if (window.location.pathname === "/logros.html") {
     shape.scaleX(1);
     shape.scaleY(1);
   });
-  setTimeout(() => {
-    layer.batchDraw();
-  }, 100);
 
   lockKeyBadge.on("mouseover", (evt) => {
     const shape = evt.target;
@@ -719,9 +726,6 @@ if (window.location.pathname === "/logros.html") {
     shape.scaleX(1);
     shape.scaleY(1);
   });
-  setTimeout(() => {
-    layer.batchDraw();
-  }, 100);
 
   spaceInvaderBadge.on("mouseover", (evt) => {
     const shape = evt.target;
@@ -739,9 +743,6 @@ if (window.location.pathname === "/logros.html") {
     shape.scaleX(1);
     shape.scaleY(1);
   });
-  setTimeout(() => {
-    layer.batchDraw();
-  }, 100);
 
   foxBadge.on("mouseover", (evt) => {
     const shape = evt.target;
@@ -759,9 +760,6 @@ if (window.location.pathname === "/logros.html") {
     shape.scaleX(1);
     shape.scaleY(1);
   });
-  setTimeout(() => {
-    layer.batchDraw();
-  }, 100);
 
   twoHeartsBadge.on("mouseover", (evt) => {
     const shape = evt.target;
@@ -779,9 +777,6 @@ if (window.location.pathname === "/logros.html") {
     shape.scaleX(1);
     shape.scaleY(1);
   });
-  setTimeout(() => {
-    layer.batchDraw();
-  }, 100);
 
   rocketshipBadge.on("mouseover", (evt) => {
     const shape = evt.target;
@@ -802,4 +797,9 @@ if (window.location.pathname === "/logros.html") {
   setTimeout(() => {
     layer.batchDraw();
   }, 100);
+}
+
+// If on logros
+if (window.location.pathname.startsWith("/logros")) {
+  createCanvas(localStorage.getItem("dark-mode"));
 }

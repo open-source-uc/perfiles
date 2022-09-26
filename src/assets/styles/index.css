@@ -34,11 +34,11 @@ img {
   --main--munsell: rgba(63, 144, 169, 1);
   --main--nabyblue: rgba(0, 115, 222, 1);
   --main--bluedark: rgba(39, 46, 145, 1);
-  --black--1: rgba(46, 52, 64, 1);
+  --black--1: #2e3440;
   --black--2: rgba(59, 66, 82, 1);
   --black--3: rgba(67, 76, 94, 1);
   --black--4: rgba(76, 86, 106, 1);
-  --white--1: rgba(242, 244, 248, 1);
+  --white--1: #f2f4f8;
   --white--2: rgba(229, 233, 240, 1);
   --white--3: rgba(216, 222, 233, 1);
   --white--4: rgba(193, 200, 215, 1);
@@ -55,11 +55,11 @@ img {
 }
 
 .dark {
-  --white--1: rgba(46, 52, 64, 1);
+  --white--1: #2e3440;
   --white--2: rgba(59, 66, 82, 1);
   --white--3: rgba(67, 76, 94, 1);
   --white--4: rgba(76, 86, 106, 1);
-  --black--1: rgba(242, 244, 248, 1);
+  --black--1: #f2f4f8;
   --black--2: rgba(229, 233, 240, 1);
   --black--3: rgba(216, 222, 233, 1);
   --black--4: rgba(193, 200, 215, 1);
