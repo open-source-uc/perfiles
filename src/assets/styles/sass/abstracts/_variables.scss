@@ -1,0 +1,40 @@
+/* Variables */
+
+:root {
+    /* Colors (from the OSUC Design Kit) */
+    --main--white: rgba(253, 251, 247, 1);
+    --main--bluegreen: rgba(150, 230, 215, 1);
+    --main--munsell: rgba(63, 144, 169, 1);
+    --main--nabyblue: rgba(0, 115, 222, 1);
+    --main--bluedark: rgba(39, 46, 145, 1);
+    --black--1: rgba(46, 52, 64, 1);
+    --black--2: rgba(59, 66, 82, 1);
+    --black--3: rgba(67, 76, 94, 1);
+    --black--4: rgba(76, 86, 106, 1);
+    --white--1: rgba(242, 244, 248, 1);
+    --white--2: rgba(229, 233, 240, 1);
+    --white--3: rgba(216, 222, 233, 1);
+    --white--4: rgba(193, 200, 215, 1);
+    --blue: rgba(94, 129, 172, 1);
+    --yellow: rgba(235, 203, 139, 1);
+    --red: rgba(191, 97, 106, 1);
+    --box-shadow: 0 0 10px -2px rgba(0, 0, 0, 0.075);
+    --box-shadow2: 0 0 2px 2px rgba(0, 0, 0, 0.2);
+    /* Colors for the Logros Page*/
+    --connector-color: #369;
+    --shadow-color: #8f949a;
+    --box-color: #afafaf;
+    --box-shadow-logros: 1px 1px 4px var(--shadow-color);
+}
+
+.dark {
+    --white--1: rgba(46, 52, 64, 1);
+    --white--2: rgba(59, 66, 82, 1);
+    --white--3: rgba(67, 76, 94, 1);
+    --white--4: rgba(76, 86, 106, 1);
+    --black--1: rgba(242, 244, 248, 1);
+    --black--2: rgba(229, 233, 240, 1);
+    --black--3: rgba(216, 222, 233, 1);
+    --black--4: rgba(193, 200, 215, 1);
+    --main--nabyblue: hsl(209, 100%, 60%);
+}

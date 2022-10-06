@@ -1,0 +1,111 @@
+/* Defensive CSS Reset */
+/* https://defensivecss.dev/articles/intro-defensive-css/ */
+
+/* [1] Break words when there is enough space */
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+a {
+    overflow-wrap: break-word;
+    /* [1] */
+}
+
+/*
+[1] Set a maximum width for an image
+[2] Let the image cover its bounding box to avoid distortion.
+*/
+img {
+    max-width: 100%;
+    /* [1] */
+    object-fit: cover;
+    /* [2] */
+}
+
+/* Set default text styles */
+body {
+    font-family: "Inter", sans-serif;
+    font-size: 1rem;
+    line-height: 1.4;
+    color: var(--black--1);
+    background: var(--white--1);
+    margin: 20px auto;
+    word-wrap: break-word;
+    text-rendering: optimizeLegibility;
+    margin: 0px auto;
+}
+
+main {
+    min-height: 800px;
+}
+
+h1 h2 {
+    font-family: "League Spartan", sans-serif;
+    font-weight: 700;
+    font-size: 2.2em;
+}
+
+h1 {
+    margin-top: 0;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    margin-bottom: 12px;
+    margin-top: 24px;
+}
+
+/* Header + Navbar */
+header {
+    background-color: var(--black--2);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    position: sticky;
+    width: 100%;
+    max-height: 70px;
+    z-index: 10;
+}
+
+/* Links */
+a {
+    color: var(--main--nabyblue);
+    text-decoration: none;
+}
+
+li {
+    list-style: none;
+}
+
+a {
+    text-decoration: none;
+}
+
+button {
+    border: none;
+    background: none;
+}
+
+/* Footer */
+footer {
+    background-color: var(--black--3);
+    color: var(--white--3);
+    padding: 1.5rem 0;
+    text-align: center;
+    position: relative;
+    bottom: 0;
+    width: 100%;
+}
+
+/* Make text-decoration play well on the black background */
+footer a {
+    color: var(--white--3);
+    text-decoration: underline;
+}

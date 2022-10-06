@@ -5,7 +5,8 @@
   "main": "src/assets/scripts/index.js",
   "scripts": {
     "format": "prettier-eslint --write \"**/*.{js,jsx,ts,tsx,json,css,scss,md}\"",
-    "lint": "eslint \"src/**/*.{js,jsx}\" --quiet"
+    "lint": "eslint \"src/**/*.{js,jsx}\" --quiet",
+    "compile:sass": "node-sass src/assets/styles/sass/main.scss src/assets/styles/style.css --watch"
   },
   "repository": {
     "type": "git",
@@ -31,6 +32,7 @@
     "prettier-eslint": "^15.0.1"
   },
   "dependencies": {
+    "node-sass": "^7.0.3",
     "prettier-eslint-cli": "^7.1.0"
   }
 }
