@@ -9,58 +9,65 @@
     outline: none;
     padding: 0;
     margin: 0 auto;
-}
 
-.switchtheme::after {
-    content: "";
-    display: block;
-    width: 2rem;
-    height: 2rem;
-    position: absolute;
-    border-radius: 100px;
-    background: var(--white--3);
-    box-shadow: var(--box-shadow2);
-    transition: all 0.3s ease;
-    left: 0;
-    right: unset;
+    &::after {
+        content: "";
+        display: block;
+        width: 2rem;
+        height: 2rem;
+        position: absolute;
+        border-radius: 100px;
+        background: var(--white--3);
+        box-shadow: var(--box-shadow2);
+        transition: all 0.3s ease;
+        left: 0;
+        right: unset;
+    }
+
+    span {
+        width: 2rem;
+        height: 2rem;
+        line-height: 2rem;
+        display: block;
+        background: none;
+        color: var(--white--1);
+    }
 }
 
 .activetheme {
     background: var(--main--nabyblue);
-}
 
-.activetheme::after {
-    left: unset !important;
-    right: 0 !important;
-}
-
-.switchtheme span {
-    width: 2rem;
-    height: 2rem;
-    line-height: 2rem;
-    display: block;
-    background: none;
-    color: var(--white--1);
+    &::after {
+        left: unset !important;
+        right: 0 !important;
+    }
 }
 
 /* Make navbar an horizontal flex */
-.nav-main ul {
-    display: flex;
-    align-items: center;
-}
+.nav-main {
+    ul {
+        display: flex;
+        align-items: center;
+    }
 
-/* Make navbar an right-aligned horizontal flex */
-.nav-main li {
-    display: inline-block;
-    padding: 0.5rem 1rem;
-}
+    /* Make navbar an right-aligned horizontal flex */
+    li {
+        display: inline-block;
+        padding: 0.5rem 1rem;
+    }
 
-/* Link styling */
-.nav-main a {
-    color: var(--white--3);
-    text-decoration: none;
-    font-family: "Inter";
-    font-weight: 400;
+    /* Link styling */
+    a {
+        color: var(--white--3);
+        text-decoration: none;
+        font-family: "Inter";
+        font-weight: 400;
+
+        /* Make navbar links whiter on hover */
+        &:hover {
+            color: var(--white--1);
+        }
+    }
 }
 
 /* Make profile picture visible*/
@@ -68,6 +75,9 @@
     width: 50px;
     height: 50px;
     border-radius: 50%;
+    border-radius: 50%;
+    width: 60px;
+    height: 60px;
 }
 
 /* Make the hamburger unfold*/
@@ -97,14 +107,14 @@
 
 #check-profile {
     display: none;
-}
 
-#check-profile:checked~.profile-dropdown {
-    display: block;
-}
+    &:checked~.profile-dropdown {
+        display: block;
 
-#check-profile:checked~.profile-dropdown li {
-    display: block;
+        li {
+            display: block;
+        }
+    }
 }
 
 /* Drop down list */
@@ -119,76 +129,27 @@
     display: none;
     border: 1px solid var(--white--4);
     border-top: 0;
-}
 
-.profile-dropdown li {
-    display: none;
-    margin: 0;
-    font-size: 1.1rem;
-    line-height: 30px;
-    border-top-width: 1.3px;
-    border-top-style: solid;
-    border-top-color: var(--white--4);
-    border-left: 30px solid transparent;
-    border-right: 30px solid transparent;
-}
-
-/* Make navbar links whiter on hover */
-.nav-main a:hover {
-    color: var(--white--1);
-}
-
-/* If on a phone, make header vertical */
-@media (max-width: 600px) {
-    .nav-main ul {
-        position: absolute;
-        width: 100%;
-        background: var(--black--2);
-        z-index: -1;
-        left: 0;
-        text-align: center;
-        margin-top: 70px;
-        padding: 0;
+    li {
         display: none;
-    }
-
-    .nav-main li {
-        display: block;
         margin: 0;
         font-size: 1.1rem;
         line-height: 30px;
         border-top-width: 1.3px;
         border-top-style: solid;
-        border-top-color: var(--white--2);
+        border-top-color: var(--white--4);
         border-left: 30px solid transparent;
         border-right: 30px solid transparent;
     }
-
-    .checkbtn {
-        display: block;
-    }
-
-    .checkbtn-profile {
-        float: none;
-        display: block;
-    }
-
-    .profile-dropdown {
-        top: 50%;
-        border-left: none;
-    }
-
-    #check:checked~ul {
-        display: block;
-    }
 }
 
-/* Logo */
-.logo img {
-    width: 280px;
-    object-fit: contain;
-    margin: 0px 15px;
-    max-width: 12rem;
+.logo {
+    img {
+        width: 280px;
+        object-fit: contain;
+        margin: 0px 15px;
+        max-width: 12rem;
+    }
 }
 
 /* Scroll to top button */
@@ -204,19 +165,18 @@
     cursor: pointer;
     transform: translateY(100px);
     transition: 0.3s;
+
+    &:hover {
+        transform: translateY(-6px);
+        transition: all 0.2s ease-in-out;
+    }
 }
 
 .btn_scrollup--visible {
     transform: translateY(0px);
 }
 
-.btn-scrollup:hover {
-    transform: translateY(-6px);
-    transition: all 0.2s ease-in-out;
-}
-
 /* Landing page content */
-
 #welcome-hero {
     background-color: var(--white--3);
     padding: 20px 50px;
@@ -245,23 +205,9 @@
     max-width: 60%;
     width: 100%;
     text-align: center;
-    /* Center */
     margin: 0 auto;
 }
 
-/* Make the search box responsive */
-@media (max-width: 600px) {
-    .search-box {
-        width: 85%;
-        flex-direction: column;
-    }
-
-    .search-box input {
-        margin-bottom: 10px;
-    }
-}
-
-/* Profiles */
 .profile__list {
     /* Flex for team members' avatars */
     display: flex;
@@ -270,14 +216,6 @@
     align-content: flex-start;
     max-width: 80%;
     margin: 0 auto;
-}
-
-/* Center on mobile */
-@media (max-width: 600px) {
-    .profile__list {
-        max-width: 100%;
-        justify-content: center;
-    }
 }
 
 .profile {
@@ -290,10 +228,8 @@
     border-radius: 5px;
     background-color: var(--white--1);
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    /* Fixed size */
     width: 250px;
     height: 290px;
-    /* Center vertically */
     justify-content: center;
 }
 
@@ -304,23 +240,21 @@
     object-fit: cover;
 }
 
-.profile__name,
-.profile__title {
-    /* Wrap */
+.profile__name {
     overflow-wrap: break-word;
     /* Center */
     text-align: center;
     /* Max width and break words */
     max-width: 200px;
-}
-
-.profile__name {
     font-size: 1.5em;
     font-weight: 700;
     margin: 10px 0;
 }
 
 .profile__title {
+    overflow-wrap: break-word;
+    text-align: center;
+    max-width: 200px;
     font-size: 1em;
     font-weight: 400;
     margin: 0;
@@ -332,27 +266,27 @@
     background-color: var(--white--3);
     border-radius: 0.5rem;
     margin: 0 0 1rem 0;
-}
 
-.adminindexbox li {
-    display: inline-block;
-    margin: 0 0.1rem;
-    font-size: 1.4rem;
-}
+    li {
+        display: inline-block;
+        margin: 0 0.1rem;
+        font-size: 1.4rem;
 
-.adminindexbox li:before {
-    content: "/\00a0";
-}
+        &:before {
+            content: "/\00a0";
+        }
 
-.adminindexbox li a {
-    color: var(--main--nabyblue);
-    text-decoration: none;
-    font-weight: 600;
-}
+        a {
+            color: var(--main--nabyblue);
+            text-decoration: none;
+            font-weight: 600;
 
-.adminindexbox li a:hover {
-    color: #01447e;
-    text-decoration: underline;
+            &:hover {
+                color: #01447e;
+                text-decoration: underline;
+            }
+        }
+    }
 }
 
 .admin-box {
@@ -362,88 +296,72 @@
     padding: 1em;
     /* Add some bottom margin */
     margin-bottom: 1em;
-}
 
-.admin-box h2,
-.admin-box h3,
-.admin-box h4,
-.admin-box p {
-    margin-left: 20px;
-}
-
-.admin-box table {
-    /* Tables must be tighly fit inside the box */
-    width: 100%;
-    /* Remove all padding */
-    padding: 0;
-    margin: 0;
-}
-
-/* Make tables responsive */
-@media (max-width: 600px) {
-    .admin-box table {
-        /* Make the table scroll horizontally */
-        overflow-x: auto;
+    h2 {
+        margin-left: 20px;
     }
-}
 
-/* Highlight thead */
-.admin-box thead {
-    background-color: var(--black--3);
-    color: var(--white--1);
-}
+    h3 {
+        margin-left: 20px;
+    }
 
-/* Center rows */
-.admin-box tr {
-    text-align: center;
-}
+    h4 {
+        margin-left: 20px;
+    }
 
-/* Center cells */
-.admin-box td,
-.admin-box th {
-    text-align: center;
+    p {
+        margin-left: 20px;
+    }
+
+    table {
+        width: 100%;
+        /* Remove all padding */
+        padding: 0;
+        margin: 0;
+    }
+
+    /* Highlight thead */
+    thead {
+        background-color: var(--black--3);
+        color: var(--white--1);
+    }
+
+    tr {
+        text-align: center;
+    }
+
+    td {
+        text-align: center;
+    }
+
+    th {
+        text-align: center;
+    }
+
+    ul {
+        list-style: none;
+        line-height: 4rem;
+    }
+
+    button {
+        background: var(--white--4);
+        height: 3rem;
+        width: 14rem;
+        border: none;
+        border-radius: 0.5rem;
+        padding: 0.5rem 1rem;
+        font-size: 1.2rem;
+        cursor: pointer;
+    }
 }
 
 .admin-members {
     padding: 0px;
-}
 
-.admin-members table {
-    /* Tables must be tighly fit inside the box */
-    width: 100%;
-    /* Remove all padding */
-    padding: 0;
-    margin: 0;
-}
-
-/* Make the table a grid on mobile */
-@media (max-width: 600px) {
-    .admin-members table {
-        /* Make the table scroll horizontally */
-        overflow-x: auto;
-    }
-}
-
-.admin-box ul {
-    list-style: none;
-    line-height: 4rem;
-}
-
-.admin-box button {
-    background: var(--white--4);
-    height: 3rem;
-    width: 14rem;
-    border: none;
-    border-radius: 0.5rem;
-    padding: 0.5rem 1rem;
-    font-size: 1.2rem;
-    cursor: pointer;
-}
-
-/* Make buttons responsive */
-@media (max-width: 600px) {
-    .admin-box button {
+    table {
         width: 100%;
+        padding: 0;
+        margin: 0;
     }
 }
 
@@ -458,7 +376,6 @@
     max-width: 60%;
     width: 100%;
     text-align: center;
-    /* Center */
     margin: 0 auto;
 }
 
@@ -475,17 +392,6 @@
     justify-content: center;
 }
 
-/* Make column on mobile */
-@media (max-width: 600px) {
-    .admin-members-search {
-        flex-direction: column;
-        /* Gap */
-        gap: 10px;
-        /* Left margin  */
-        margin-left: 5%;
-    }
-}
-
 /* Styles for the report sections in human resources */
 .admin-reports-buttons {
     display: flex;
@@ -494,28 +400,13 @@
     justify-content: space-around;
     /* Center buttons vertically */
     align-items: center;
-}
 
-/* Make column in mobile */
-@media (max-width: 600px) {
-    .admin-reports-buttons {
-        flex-direction: column;
-    }
-}
-
-.admin-reports-buttons button {
-    height: 100px;
-    margin-top: 40px;
-    margin-bottom: 30px;
-    background-color: var(--main--nabyblue);
-    color: var(--white--3);
-}
-
-/* Reduce margins on mobile */
-@media (max-width: 600px) {
-    .admin-reports-buttons button {
-        margin-top: 20px;
-        margin-bottom: 20px;
+    button {
+        height: 100px;
+        margin-top: 40px;
+        margin-bottom: 30px;
+        background-color: var(--main--nabyblue);
+        color: var(--white--3);
     }
 }
 
@@ -541,16 +432,6 @@
     width: calc(25% - 1rem);
 }
 
-@media screen and (max-width: 800px) {
-
-    .col-50,
-    .col-33,
-    .col-25 {
-        width: calc(100% - 1rem);
-    }
-}
-
-/* statutes and inscriptions */
 .styleword {
     text-align: justify;
     margin: 0 auto;
@@ -562,15 +443,17 @@
     overflow-wrap: break-word;
     text-rendering: optimizeLegibility;
     font-kerning: normal;
-}
 
-.styleword span {
-    font-weight: bold;
-}
+    span {
+        font-weight: bold;
+    }
 
-.styleword li p {
-    margin: 1em 0 1em 1.7em;
-    padding-left: 1em;
+    li {
+        p {
+            margin: 1em 0 1em 1.7em;
+            padding-left: 1em;
+        }
+    }
 }
 
 figcaption {
@@ -599,28 +482,18 @@ figcaption {
     border: none;
 }
 
-/* Admin */
-.login-picture {
-    /* Round login picture in the top right */
-    border-radius: 50%;
-    width: 60px;
-    height: 60px;
-}
-
 .admin__main {
     padding: 20px 50px;
     margin-left: 60px;
 }
 
 .admin__welcome {
-    /* This is the "Hola, <persona> 👋" */
     font-size: 2.3em;
     margin: 10px 0;
     text-align: center;
     margin-top: 30px;
 }
 
-/* aside */
 .nav-admin {
     background-color: var(--white--3);
     box-shadow: var(--box-shadow);
@@ -631,9 +504,26 @@ figcaption {
     top: 0;
     transition: all 0.4s ease-in-out;
     padding-top: 70px;
+
+    ul {
+        li {
+            position: relative;
+            height: 50px;
+            line-height: 50px;
+            width: 100%;
+
+            a {
+                padding: auto;
+                text-decoration: none;
+            }
+        }
+    }
+
+    li.active {
+        background-color: var(--white--2);
+    }
 }
 
-/* nav */
 .nav-admin__nav {
     /* This is a lateral navbar that goes on left of the page */
     display: flex;
@@ -653,30 +543,6 @@ figcaption {
     text-align: center;
 }
 
-.nav-admin ul li {
-    /* Each list item has a relative position from the fixed bar */
-    position: relative;
-    /* This is important to ensure it is centered vertically */
-    height: 50px;
-    line-height: 50px;
-    width: 100%;
-}
-
-.nav-admin ul li a {
-    padding: auto;
-    /* This is to disable underlines for the links */
-    text-decoration: none;
-}
-
-/* Selected li */
-.nav-admin li.active {
-    /* This changes the background of the active element */
-    /* This means we just need to add the "active" class to */
-    /* the current page. */
-    background-color: var(--white--2);
-}
-
-/* Table admin */
 .tableadmin {
     width: 100%;
     margin: 10px;
@@ -684,52 +550,55 @@ figcaption {
     margin-bottom: 15px;
     text-align: left;
     box-shadow: var(--box-shadow2);
+
+    td {
+        padding: 4px;
+    }
+
+    thead {
+        cursor: pointer;
+        background: var(--black--1);
+        color: var(--white--1);
+
+        th {
+            padding: 5px;
+        }
+    }
+
+    tbody {
+        background: var(--black--4);
+    }
+
+    tr {
+        &:nth-child(even) {
+            td {
+                background: var(--black--4);
+                color: var(--white--3);
+            }
+        }
+
+        &:nth-child(odd) {
+            td {
+                background: var(--white--4);
+                color: var(--black--1);
+            }
+        }
+
+        td {
+            padding: 15px;
+        }
+    }
+
+    time {
+        text-align: right;
+        display: block;
+        font-size: 80%;
+    }
 }
 
-.tableadmin td {
-    padding: 4px;
-}
-
-.tableadmin thead {
-    cursor: pointer;
-    background: var(--black--1);
-    color: var(--white--1);
-}
-
-.tableadmin tbody {
-    background: var(--black--4);
-}
-
-.tableadmin thead th {
-    padding: 5px;
-}
-
-.tableadmin tr:nth-child(even) td {
-    background: var(--black--4);
-    color: var(--white--3);
-}
-
-.tableadmin tr:nth-child(odd) td {
-    background: var(--white--4);
-    color: var(--black--1);
-}
-
-.tableadmin time {
-    text-align: right;
-    display: block;
-    font-size: 80%;
-}
-
-/* Give margin to the contents of each row */
-.tableadmin tr td {
-    padding: 15px;
-}
-
-/* Danger admin */
 .border-danger {
     border: 2px solid #dc3545;
-    box-shadow: 0 0 5px 5px rgba(255, 0, 0, 0.2),
-        inset 0 0 5px 5px rgba(130, 2, 2, 0.2) !important;
+    box-shadow: 0 0 5px 5px rgba(255, 0, 0, 0.2), inset 0 0 5px 5px rgba(130, 2, 2, 0.2) !important;
 }
 
 .text-danger {
@@ -742,188 +611,129 @@ figcaption {
     color: #fff !important;
 }
 
-/* --- */
 .import-members {
     border: 4px dashed rgb(0, 0, 0);
     padding: 20px;
-}
 
-.import-members p {
-    text-align: center;
-    color: #000000;
-    margin-top: 40px;
-    margin-bottom: 40px;
-}
+    p {
+        text-align: center;
+        color: #000000;
+        margin-top: 40px;
+        margin-bottom: 40px;
+    }
 
-.import-members input {
-    position: absolute;
-    width: 100%;
-    height: 200px;
-    outline: none;
-    opacity: 0;
-}
+    input {
+        position: absolute;
+        width: 100%;
+        height: 200px;
+        outline: none;
+        opacity: 0;
+    }
 
-.import-members button {
-    width: 100%;
-    height: 40px;
-    transition: all 0.2s ease;
-    outline: none;
-    border: 10px;
-    margin-top: 20px;
+    button {
+        width: 100%;
+        height: 40px;
+        transition: all 0.2s ease;
+        outline: none;
+        border: 10px;
+        margin-top: 20px;
+    }
 }
 
 .admin-danger-zone {
-    /* Give danger border */
     border: 4px solid #dc3545;
-}
 
-.admin-danger-zone h2 {
-    margin-bottom: 30px;
-}
+    h2 {
+        margin-bottom: 30px;
+    }
 
-.admin-danger-zone button {
-    height: 100px;
+    button {
+        height: 100px;
+    }
 }
 
 .admin-danger-zone-buttons {
     display: flex;
     justify-content: space-evenly;
     margin-top: 20px;
-    /* Gap */
     gap: 20px;
 }
 
-/* Make column on mobile */
-@media (max-width: 768px) {
-    .admin-danger-zone-buttons {
-        flex-direction: column;
-    }
-}
-
 .admin-integrations-inputs {
-    /* 2x2 button Grid */
     display: grid;
     grid-template-columns: 1fr 1fr;
     grid-template-rows: 1fr 1fr;
-}
 
-/* Make responsive */
-@media (max-width: 768px) {
-    .admin-integrations-inputs {
-        grid-template-columns: 1fr;
-        grid-template-rows: 1fr 1fr 1fr 1fr;
+    input {
+        width: 80%;
+        height: 30px;
+        margin-top: 10px;
+        margin-bottom: 10px;
+    }
+
+    button {
+        width: 80%;
+        height: 50px;
+        margin-top: 20px;
+        margin-bottom: 20px;
+        background-color: var(--main--nabyblue);
+        color: var(--white--1);
     }
 }
 
-.admin-integrations h2 {
-    margin-bottom: 30px;
-}
-
-.admin-integrations-inputs input {
-    width: 80%;
-    height: 30px;
-    margin-top: 10px;
-    margin-bottom: 10px;
-}
-
-.admin-integrations-inputs button {
-    width: 80%;
-    height: 50px;
-    margin-top: 20px;
-    margin-bottom: 20px;
-    background-color: var(--main--nabyblue);
-    color: var(--white--1);
+.admin-integrations {
+    h2 {
+        margin-bottom: 30px;
+    }
 }
 
 .admin-criteria-inputs {
-    /* 2x2 with second row unified */
     display: grid;
     grid-template-columns: 1fr 1fr;
     grid-template-rows: 1fr 1fr;
-}
 
-/* Make responsive */
-@media (max-width: 768px) {
-    .admin-criteria-inputs {
-        grid-template-columns: 1fr;
-        grid-template-rows: 1fr 1fr 1fr 1fr;
+    input {
+        width: 80%;
+        height: 30px;
+        margin-top: 10px;
+        margin-bottom: 10px;
+    }
+
+    button {
+        width: 80%;
+        height: 50px;
+        margin-top: 20px;
+        margin-bottom: 20px;
+        background-color: var(--main--nabyblue);
+        color: var(--white--1);
     }
 }
 
-.admin-criteria-inputs input {
-    width: 80%;
-    height: 30px;
-    margin-top: 10px;
-    margin-bottom: 10px;
-}
-
-.admin-criteria-inputs button {
-    width: 80%;
-    height: 50px;
-    margin-top: 20px;
-    margin-bottom: 20px;
-    background-color: var(--main--nabyblue);
-    color: var(--white--1);
-}
-
-.admin-criteria h2 {
-    margin-bottom: 30px;
+.admin-criteria {
+    h2 {
+        margin-bottom: 30px;
+    }
 }
 
 .admin-statistics__stats {
-    /* Grid */
     display: grid;
-    /* three columns */
     grid-template-columns: 1fr 1fr 1fr;
 }
 
-/* Make stats grid responsive */
-
-@media (max-width: 768px) {
-    .admin-statistics__stats {
-        /* Grid */
-        display: grid;
-        /* one column */
-        grid-template-columns: 1fr;
-    }
-}
-
 .admin-link__grid {
-    /* Grid */
     display: grid;
-    /* three columns */
     grid-template-columns: 1fr 1fr;
-    /* Gap */
     grid-gap: 20px;
-}
-
-/* Make grid responsive */
-
-@media (max-width: 768px) {
-    .admin-link__grid {
-        /* Grid */
-        display: grid;
-        /* one column */
-        grid-template-columns: 1fr;
-    }
 }
 
 .admin-link__search-button {
     width: 100%;
 }
 
-.admin-link__select select {
-    width: 100%;
-    height: 50px;
-}
-
-/* Make admin-achievements__table responsive */
-@media (max-width: 600px) {
-    .admin-achievements__table {
-        /* Grid */
-        display: grid;
-        /* one column */
-        grid-template-columns: 1fr;
+.admin-link__select {
+    select {
+        width: 100%;
+        height: 50px;
     }
 }
 
@@ -969,15 +779,17 @@ figcaption {
 
 .badge-container-empty {
     color: #9bacb0;
-}
 
-.badge-container-empty:hover .badge-image-container {
-    opacity: 0.8;
-    filter: alpha(opacity=80);
-}
+    &:hover {
+        .badge-image-container {
+            opacity: 0.8;
+            filter: alpha(opacity=80);
+        }
 
-.badge-container-empty:hover .badge-title {
-    color: #d4dcdd;
+        .badge-title {
+            color: #d4dcdd;
+        }
+    }
 }
 
 .personal-profile {
@@ -990,13 +802,23 @@ figcaption {
     padding-left: 10px;
     padding-right: 10px;
     padding-top: 10px;
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 1rem;
+
+    h1 {
+        font-size: 1.5rem;
+        margin: 0;
+    }
 }
 
-.profile-picture img {
-    border-radius: 50%;
-    max-width: 200px;
-    max-height: 200px;
-    padding: 1rem;
+.profile-picture {
+    img {
+        border-radius: 50%;
+        max-width: 200px;
+        max-height: 200px;
+        padding: 1rem;
+    }
 }
 
 .profile-header {
@@ -1004,16 +826,11 @@ figcaption {
     flex-direction: row;
     align-items: center;
     justify-content: center;
-}
 
-.profile-header h1 {
-    font-size: 3rem;
-    margin: 0;
-}
-
-.personal-profile h1 {
-    font-size: 1.5rem;
-    margin: 0;
+    h1 {
+        font-size: 3rem;
+        margin: 0;
+    }
 }
 
 .content-profile {
@@ -1022,15 +839,6 @@ figcaption {
     padding-bottom: 20px;
 }
 
-.personal-profile {
-    /* Give proper margin to the whole body */
-    max-width: 1000px;
-    margin: 0 auto;
-    padding: 1rem;
-}
-
-/* The following CSS is for the logros page */
-/* https://konvajs.org/docs/sandbox/Canvas_Scrolling.html */
 .logros-container {
     width: 100%;
     display: flex;
@@ -1041,4 +849,142 @@ figcaption {
 
 .no-min-height {
     min-height: 0;
+}
+
+@media (max-width: 600px) {
+    .nav-main {
+        ul {
+            position: absolute;
+            width: 100%;
+            background: var(--black--2);
+            z-index: -1;
+            left: 0;
+            text-align: center;
+            margin-top: 70px;
+            padding: 0;
+            display: none;
+        }
+
+        li {
+            display: block;
+            margin: 0;
+            font-size: 1.1rem;
+            line-height: 30px;
+            border-top-width: 1.3px;
+            border-top-style: solid;
+            border-top-color: var(--white--2);
+            border-left: 30px solid transparent;
+            border-right: 30px solid transparent;
+        }
+    }
+
+    .checkbtn {
+        display: block;
+    }
+
+    .checkbtn-profile {
+        float: none;
+        display: block;
+    }
+
+    .profile-dropdown {
+        top: 50%;
+        border-left: none;
+    }
+
+    #check {
+        &:checked~ul {
+            display: block;
+        }
+    }
+
+    .search-box {
+        width: 85%;
+        flex-direction: column;
+
+        input {
+            margin-bottom: 10px;
+        }
+    }
+
+    .profile__list {
+        max-width: 100%;
+        justify-content: center;
+    }
+
+    .admin-box {
+        table {
+            overflow-x: auto;
+        }
+
+        button {
+            width: 100%;
+        }
+    }
+
+    .admin-members {
+        table {
+            overflow-x: auto;
+        }
+    }
+
+    .admin-members-search {
+        flex-direction: column;
+        gap: 10px;
+        margin-left: 5%;
+    }
+
+    .admin-reports-buttons {
+        flex-direction: column;
+
+        button {
+            margin-top: 20px;
+            margin-bottom: 20px;
+        }
+    }
+
+    .admin-achievements__table {
+        display: grid;
+        grid-template-columns: 1fr;
+    }
+}
+
+@media screen and (max-width: 800px) {
+    .col-50 {
+        width: calc(100% - 1rem);
+    }
+
+    .col-33 {
+        width: calc(100% - 1rem);
+    }
+
+    .col-25 {
+        width: calc(100% - 1rem);
+    }
+}
+
+@media (max-width: 768px) {
+    .admin-danger-zone-buttons {
+        flex-direction: column;
+    }
+
+    .admin-integrations-inputs {
+        grid-template-columns: 1fr;
+        grid-template-rows: 1fr 1fr 1fr 1fr;
+    }
+
+    .admin-criteria-inputs {
+        grid-template-columns: 1fr;
+        grid-template-rows: 1fr 1fr 1fr 1fr;
+    }
+
+    .admin-statistics__stats {
+        display: grid;
+        grid-template-columns: 1fr;
+    }
+
+    .admin-link__grid {
+        display: grid;
+        grid-template-columns: 1fr;
+    }
 }
