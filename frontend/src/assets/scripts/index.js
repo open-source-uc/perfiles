@@ -118,22 +118,7 @@ window.onscroll = () => {
   }
 };
 
-// Dark mode
 const btnSwitch = document.getElementById("switchtheme");
-btnSwitch.addEventListener("click", () => {
-  document.body.classList.toggle("dark");
-  btnSwitch.classList.toggle("activetheme");
-  // Guardamos el modo en localstorage
-  if (document.body.classList.contains("dark")) {
-    localStorage.setItem("dark-mode", "true");
-  } else {
-    localStorage.setItem("dark-mode", "false");
-  }
-  if (window.location.pathname.startsWith("/logros")) {
-    createCanvas(localStorage.getItem("dark-mode"));
-  }
-});
-
 // revisamos el localStorage TODO: hacer antes de que cargue la pagina
 if (localStorage.getItem("dark-mode") === "true") {
   document.body.classList.add("dark");
@@ -798,6 +783,21 @@ function createCanvas(mode) {
     layer.batchDraw();
   }, 200);
 }
+
+// Dark mode
+btnSwitch.addEventListener("click", () => {
+  document.body.classList.toggle("dark");
+  btnSwitch.classList.toggle("activetheme");
+  // Guardamos el modo en localstorage
+  if (document.body.classList.contains("dark")) {
+    localStorage.setItem("dark-mode", "true");
+  } else {
+    localStorage.setItem("dark-mode", "false");
+  }
+  if (window.location.pathname.startsWith("/logros")) {
+    createCanvas(localStorage.getItem("dark-mode"));
+  }
+});
 
 // If on logros
 if (window.location.pathname.startsWith("/logros")) {
