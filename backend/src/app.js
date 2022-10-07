@@ -2,6 +2,7 @@ import Koa from "koa";
 import KoaBody from "koa-body";
 import KoaLogger from "koa-logger";
 import router from "./routes";
+import orm from "./models";
 
 const app = new Koa();
 
