@@ -1,4 +1,4 @@
-import Routes from "koa-router";
+import Routes from 'koa-router';
 
 const router = new Routes();
 

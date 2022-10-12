@@ -23,7 +23,7 @@ La comunidad existe en torno a dos propósitos:
     produce y puede producir a la sociedad.
 
 Artículo 2. La organización podrá también recibir el nombre de "Open
-Source UC", "Open Source" u \"OSUC\", en la medida que las políticas de
+Source UC", "Open Source" u “OSUC“, en la medida que las políticas de
 la universidad lo permitan.
 
 ## Título I
@@ -282,7 +282,7 @@ campaña con una extensión mínima de una semana, y una etapa de votación
 secreta, la cual se llevará a cabo posterior a la etapa de campaña.
 
 Artículo 22. Bajo ninguna circunstancia la etapa de votación deberá ser
-llevada a cabo en un formato \"First Past the Vote System\" (FPVS).
+llevada a cabo en un formato “First Past the Vote System“ (FPVS).
 
 Artículo 23. Se utilizará un método de votación de voto único
 transferible (STV).

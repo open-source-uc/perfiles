@@ -1,9 +1,12 @@
-import app from "./app";
-import orm from "../models";
+/* eslint-disable no-console */
+
+import app from './app.js';
+
+import sequelize from './models.js';
 
 const PORT = process.env.PORT || 3000;
 
-orm.sequelize
+sequelize
   .authenticate()
   .then(() => {
     console.log('Connection to the database has been established successfully.');
