@@ -1,7 +1,7 @@
-/* Defensive CSS Reset */
-/* https://defensivecss.dev/articles/intro-defensive-css/ */
+// Defensive CSS Reset 
+// https://defensivecss.dev/articles/intro-defensive-css/ 
 
-/* [1] Break words when there is enough space */
+// [1] Break words when there is enough space 
 h1,
 h2,
 h3,
@@ -11,21 +11,20 @@ h6,
 p,
 a {
     overflow-wrap: break-word;
-    /* [1] */
+    // [1] 
 }
 
-/*
-[1] Set a maximum width for an image
-[2] Let the image cover its bounding box to avoid distortion.
-*/
+
+// [1] Set a maximum width for an image
+//[2] Let the image cover its bounding box to avoid distortion.
 img {
     max-width: 100%;
-    /* [1] */
+    // [1] 
     object-fit: cover;
-    /* [2] */
+    // [2] 
 }
 
-/* Set default text styles */
+// Set default text styles 
 body {
     font-family: "Inter", sans-serif;
     font-size: 1rem;
@@ -62,7 +61,7 @@ h6 {
     margin-top: 24px;
 }
 
-/* Header + Navbar */
+// Header + Navbar 
 header {
     background-color: var(--black--2);
     display: flex;
@@ -74,7 +73,7 @@ header {
     z-index: 10;
 }
 
-/* Links */
+// Links 
 a {
     color: var(--main--nabyblue);
     text-decoration: none;
@@ -93,19 +92,18 @@ button {
     background: none;
 }
 
-/* Footer */
-footer {
-    background-color: var(--black--3);
-    color: var(--white--3);
-    padding: 1.5rem 0;
-    text-align: center;
-    position: relative;
-    bottom: 0;
-    width: 100%;
+.border-danger {
+    border: 2px solid #dc3545;
+    box-shadow: 0 0 5px 5px rgba(255, 0, 0, 0.2), inset 0 0 5px 5px rgba(130, 2, 2, 0.2) !important;
 }
 
-/* Make text-decoration play well on the black background */
-footer a {
-    color: var(--white--3);
-    text-decoration: underline;
+.text-danger {
+    color: #dc3545;
+}
+
+
+.btn-danger {
+    background-color: #dc3545 !important;
+    border-color: #dc3545 !important;
+    color: #fff !important;
 }

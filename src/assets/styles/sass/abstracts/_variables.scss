@@ -1,7 +1,7 @@
-/* Variables */
+// Variables 
 
 :root {
-    /* Colors (from the OSUC Design Kit) */
+    // Colors (from the OSUC Design Kit) 
     --main--white: rgba(253, 251, 247, 1);
     --main--bluegreen: rgba(150, 230, 215, 1);
     --main--munsell: rgba(63, 144, 169, 1);
@@ -20,7 +20,7 @@
     --red: rgba(191, 97, 106, 1);
     --box-shadow: 0 0 10px -2px rgba(0, 0, 0, 0.075);
     --box-shadow2: 0 0 2px 2px rgba(0, 0, 0, 0.2);
-    /* Colors for the Logros Page*/
+    // Colors for the Logros Page
     --connector-color: #369;
     --shadow-color: #8f949a;
     --box-color: #afafaf;
@@ -38,3 +38,12 @@
     --black--4: rgba(193, 200, 215, 1);
     --main--nabyblue: hsl(209, 100%, 60%);
 }
+
+// variables de sass 
+//////////////////////////////
+
+// Breackpoints media queries
+$phone: 479px;
+$tablet: 767px;
+$large: 991px;
+$desktop: 1024px;

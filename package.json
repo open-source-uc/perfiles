@@ -6,7 +6,8 @@
   "scripts": {
     "format": "prettier-eslint --write \"**/*.{js,jsx,ts,tsx,json,css,scss,md}\"",
     "lint": "eslint \"src/**/*.{js,jsx}\" --quiet",
-    "compile:sass": "node-sass src/assets/styles/sass/main.scss src/assets/styles/style.css --watch"
+    "sass-dev": "node-sass src/assets/styles/sass/main.scss src/assets/styles/style.css --watch --output-style=expanded",
+    "sass-prod": "node-sass src/assets/styles/sass/main.scss src/assets/styles/style.css --update --watch --output-style=compressed"
   },
   "repository": {
     "type": "git",

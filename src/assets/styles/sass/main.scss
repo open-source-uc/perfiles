@@ -1,8 +1,19 @@
 // abstracts
 @import "./abstracts/variables";
 @import "./abstracts/mixins";
+
 // base
 @import "./base/resets";
 @import "./base/base";
+
 // components
 @import "./components/all";
+@import "./components/_footer";
+@import "./components/_navbar";
+@import "./components/estatutos";
+@import "./components/admin";
+@import "./components/home";
+@import "./components/perfil";
+
+// media queries
+@import "./components/_media";

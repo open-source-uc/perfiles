@@ -1,0 +1,16 @@
+// Footer 
+footer {
+    background-color: var(--black--3);
+    color: var(--white--3);
+    padding: 1.5rem 0;
+    text-align: center;
+    position: relative;
+    bottom: 0;
+    width: 100%;
+}
+
+// Make text-decoration play well on the black background 
+footer a {
+    color: var(--white--3);
+    text-decoration: underline;
+}

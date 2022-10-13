@@ -1,0 +1,49 @@
+.styleword {
+    text-align: justify;
+    margin: 0 auto;
+    max-width: 36em;
+    padding-left: 50px;
+    padding-right: 50px;
+    padding-top: 50px;
+    padding-bottom: 50px;
+    overflow-wrap: break-word;
+    text-rendering: optimizeLegibility;
+    font-kerning: normal;
+
+    span {
+        font-weight: bold;
+    }
+
+    li {
+        p {
+            margin: 1em 0 1em 1.7em;
+            padding-left: 1em;
+        }
+    }
+}
+
+figcaption {
+    caption-side: bottom;
+    text-align: center;
+    font-size: 0.8em;
+    font-style: italic;
+}
+
+.footnote-ref {
+    font-size: 0.6rem;
+}
+
+.footnote-back {
+    font-size: 0.6rem;
+}
+
+// Iframe content links OSUC
+#linksOSUC {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    margin: 0 auto;
+    width: 400px;
+    height: 600px;
+    border: none;
+}
