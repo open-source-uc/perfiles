@@ -1,72 +1,72 @@
 [
   {
     "name": "Max Militzer",
-    "role": "coordinator",
+    "role": "COORDINATOR",
     "title": "Coordinador General",
     "username": "Dyotson"
   },
   {
     "name": "Diego Costa",
-    "role": "coordinator",
+    "role": "COORDINATOR",
     "title": "Coordinador de Comunidad e Inserción",
     "username": "diegocostares"
   },
   {
     "name": "Lucas Natero",
-    "role": "coordinator",
+    "role": "COORDINATOR",
     "title": "Coordinador Externo",
     "username": "lnatero"
   },
   {
     "name": "Fernando Smith",
-    "role": "coordinator",
+    "role": "COORDINATOR",
     "title": "Coordinador de Educación",
     "username": "fernandosmither"
   },
   {
     "name": "Benjamín Vicente",
-    "role": "coordinator",
+    "role": "COORDINATOR",
     "title": "Coordinador de Proyectos",
     "username": "benjavicente"
   },
   {
     "name": "Martín Atria",
-    "role": "member",
+    "role": "MEMBER",
     "username": "Maratripa"
   },
   {
     "name": "Agustín Covarrubias",
-    "role": "member",
+    "role": "MEMBER",
     "username": "agucova"
   },
   {
     "name": "Alister MacCormack",
-    "role": "member",
+    "role": "MEMBER",
     "username": "a-maccormack"
   },
   {
     "name": "José Antonio Castro",
-    "role": "member",
+    "role": "MEMBER",
     "username": "Baelfire18"
   },
   {
     "name": "Ignacio Palma",
-    "role": "member",
+    "role": "MEMBER",
     "username": "IgnacioPalma"
   },
   {
     "name": "Juan Vargas",
-    "role": "member",
+    "role": "MEMBER",
     "username": "v4rgas"
   },
   {
     "name": "Antonio Ossa-Guerra",
-    "role": "alumni",
+    "role": "ALUMNI",
     "username": "aaossa"
   },
   {
     "name": "Bárbara Irarrázaval",
-    "role": "alumni",
+    "role": "ALUMNI",
     "username": "barbaraim"
   }
 ]

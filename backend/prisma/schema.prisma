@@ -11,7 +11,7 @@ datasource db {
 }
 model Member {
   username         String                  @id @unique
-  telegramUsername String
+  telegramUsername String?
   name             String
   role             Role
   avatarURL        String?
@@ -81,6 +81,7 @@ enum Role {
   COORDINATOR
   MENTOR
   MEMBER
+  ALUMNI
   INACTIVE
   SUSPENDED
 }
