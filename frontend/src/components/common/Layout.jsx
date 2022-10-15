@@ -4,7 +4,7 @@ import Header from './Header';
 import Footer from './Footer';
 import Scrollup from './Scrollup';
 
-function Layout() {
+export default function Layout() {
   return (
     <div>
       <main>
@@ -16,5 +16,3 @@ function Layout() {
     </div>
   );
 }
-
-export default Layout;
