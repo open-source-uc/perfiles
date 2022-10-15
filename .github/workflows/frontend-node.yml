@@ -5,11 +5,13 @@ on: pull_request
 jobs:
   tests:
     name: Tests and linters
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-latest   
+    defaults:
+      run:
+        working-directory: frontend 
     timeout-minutes: 10
     steps:
       - uses: actions/checkout@v2
       - name: Install dependencies
         run: npm install
-      - name: Run ESLint
-        run: npm run lint
+      - uses: stefanoeb/eslint-action@1.0.2
