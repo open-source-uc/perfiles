@@ -3,6 +3,6 @@
         "ritwickdey.liveserver",
         "dbaeumer.vscode-eslint",
         "tonybaloney.vscode-pets",
-        "unifiedjs.vscode-mdx"
+        "Prisma.prisma"
     ]
 }

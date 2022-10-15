@@ -1,0 +1,105 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+model Member {
+  username         String                  @id @unique
+  telegramUsername String
+  name             String
+  role             Role
+  avatarURL        String?
+  email            String
+  joinedAt         DateTime
+  score            Int
+  level            Int
+  achievements     AchievementsOnMembers[]
+  Achievement      Achievement[]
+  Request          Request[]
+  ClaimLink        ClaimLink[]
+}
+
+model Achievement {
+  id             String                  @id @unique @default(cuid())
+  createdBy      Member?                 @relation(fields: [memberUsername], references: [username])
+  createdAt      DateTime
+  updatedAt      DateTime                @updatedAt
+  expiresAt      DateTime?
+  name           String                  @unique
+  description    String
+  imageURL       String
+  type           AchievementType
+  level          AchievementLevel
+  pointsOverride Int?
+  members        AchievementsOnMembers[]
+  memberUsername String?
+  Request        Request[]
+  ClaimLink      ClaimLink[]
+}
+
+model AchievementsOnMembers {
+  id             String       @id @unique @default(cuid())
+  obtainedAt     DateTime
+  member         Member?      @relation(fields: [memberUsername], references: [username])
+  achievement    Achievement? @relation(fields: [achievementId], references: [id])
+  manual         Boolean      @default(false)
+  memberUsername String?
+  achievementId  String?
+}
+
+model Request {
+  id             String        @id @unique @default(cuid())
+  achievement    Achievement   @relation(fields: [achievementId], references: [id])
+  openedBy       Member?       @relation(fields: [memberUsername], references: [username])
+  openedAt       DateTime
+  state          RequestState?
+  description    String?
+  documents      Bytes[]
+  achievementId  String
+  memberUsername String?
+}
+
+model ClaimLink {
+  id             String      @id @unique @default(cuid())
+  achievement    Achievement @relation(fields: [achievementId], references: [id])
+  createdBy      Member?     @relation(fields: [memberUsername], references: [username])
+  createdAt      DateTime
+  expiresAt      DateTime?
+  shortname      String
+  achievementId  String
+  memberUsername String?
+}
+
+enum Role {
+  SUPERUSER
+  COORDINATOR
+  MENTOR
+  MEMBER
+  INACTIVE
+  SUSPENDED
+}
+
+enum AchievementType {
+  PARTICIPATION
+  BY_REQUEST
+  MYSTERIOUS
+}
+
+enum AchievementLevel {
+  BRONZE
+  SILVER
+  GOLD
+  PLATINUM
+}
+
+enum RequestState {
+  OPEN
+  WAITING_REPLY
+  CLOSED
+}
