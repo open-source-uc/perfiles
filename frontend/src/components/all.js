@@ -1,31 +1,3 @@
-/* eslint-disable no-undef */
-function createProfile(member) {
-  // Create the profile div from the member object
-  const profile = document.createElement('div');
-  profile.classList.add('profile');
-
-  const avatar = document.createElement('img');
-  // Use GitHub avatar
-  avatar.src = `https://avatars.githubusercontent.com/${member.username}?s=120`;
-  avatar.alt = member.name;
-  avatar.classList.add('profile__avatar');
-  profile.appendChild(avatar);
-
-  // Add name
-  const name = document.createElement('p');
-  name.classList.add('profile__name');
-  name.innerText = member.name;
-  profile.appendChild(name);
-
-  // Add title
-  const title = document.createElement('p');
-  title.classList.add('profile__title');
-  title.innerText = member.title || 'Integrante';
-  profile.appendChild(title);
-
-  return profile;
-}
-
 function fillProfiles(members) {
   // Create all of the profile divs based on the list of members
 

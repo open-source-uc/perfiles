@@ -11,6 +11,11 @@ import Inscripciones from './components/Inscripciones';
 import Logros from './components/Logros';
 import NoMatch from './components/NoMatch';
 import Perfil from './components/Perfil';
+import ConfigAdmin from './components/admin/ConfigAdmin';
+import IndexAdmin from './components/admin/IndexAdmin';
+import LogrosAdmin from './components/admin/LogrosAdmin';
+import RRHHAdmin from './components/admin/RRHHAdmin';
+import LayoutAdmin from './components/admin/LayoutAdmin';
 
 export default function App() {
   return (
@@ -36,6 +41,12 @@ export default function App() {
                 routes for. */
           }
           <Route path="*" element={<NoMatch />} />
+        </Route>
+        <Route path="/admin" element={<LayoutAdmin />}>
+          <Route index element={<IndexAdmin />} />
+          <Route path="/admin/config.html" element={<ConfigAdmin />} />
+          <Route path="/admin/logros.html" element={<LogrosAdmin />} />
+          <Route path="/admin/rrhh.html" element={<RRHHAdmin />} />
         </Route>
       </Routes>
     </div>

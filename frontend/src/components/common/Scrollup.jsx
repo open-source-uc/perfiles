@@ -1,6 +1,7 @@
 import * as React from 'react';
 
-function Scrollup() {
+// TODO: ARREGLAR
+export default function Scrollup() {
   return (
     <div>
       <button className="btn-scrollup" type="button" id="btn_scrollup">
@@ -9,5 +10,3 @@ function Scrollup() {
     </div>
   );
 }
-
-export default Scrollup;

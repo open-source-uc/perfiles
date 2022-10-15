@@ -1,7 +1,7 @@
 import * as React from 'react';
 // import { Link } from 'react-router-dom';
 
-function Footer() {
+export default function Footer() {
   return (
     <footer>
       {/* Código autogenerado por https://chooser-beta.creativecommons.org/ */}
@@ -67,5 +67,3 @@ function Footer() {
     </footer>
   );
 }
-
-export default Footer;
