@@ -1,13 +1,13 @@
 import * as React from 'react';
 import { Link } from 'react-router-dom';
+import { ReactComponent as Logo } from '../../assets/images/logo.svg';
 
 function Header() {
   return (
     <header>
       {/* Logo */}
       <a href="/" className="logo">
-        {/* TODO: */}
-        <img src="./assets/images/logo.svg" alt="Perfiles OSUC" />
+        <Logo alt="Perfiles OSUC" className="logo-osuc" />
       </a>
       {/* Navbar */}
       <nav className="nav-main">

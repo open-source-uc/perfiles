@@ -3,10 +3,14 @@ import { Route, Routes } from 'react-router-dom';
 
 import Layout from './components/common/Layout';
 
-import Home from './components/Home';
 import About from './components/About';
 import Dashboard from './components/Dashboard';
+import Estatutos from './components/Estatutos';
+import Home from './components/Home';
+import Inscripciones from './components/Inscripciones';
+import Logros from './components/Logros';
 import NoMatch from './components/NoMatch';
+import Perfil from './components/Perfil';
 
 export default function App() {
   return (
@@ -21,6 +25,10 @@ export default function App() {
           <Route index element={<Home />} />
           <Route path="about" element={<About />} />
           <Route path="dashboard" element={<Dashboard />} />
+          <Route path="estatutos" element={<Estatutos />} />
+          <Route path="inscripciones" element={<Inscripciones />} />
+          <Route path="logros" element={<Logros />} />
+          <Route path="perfil" element={<Perfil />} />
 
           {
             /* Using path="*"" means "match anything", so this route

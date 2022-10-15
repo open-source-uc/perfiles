@@ -1,0 +1,68 @@
+// Button theme switch 
+.switchtheme {
+    background: var(--black--1);
+    border-radius: 1000px;
+    border: none;
+    position: relative;
+    cursor: pointer;
+    display: flex;
+    outline: none;
+    padding: 0;
+    margin: 0 auto;
+
+    &::after {
+        content: "";
+        display: block;
+        width: 2rem;
+        height: 2rem;
+        position: absolute;
+        border-radius: 100px;
+        background: var(--white--3);
+        box-shadow: var(--box-shadow2);
+        transition: all 0.3s ease;
+        left: 0;
+        right: unset;
+    }
+
+    span {
+        width: 2rem;
+        height: 2rem;
+        line-height: 2rem;
+        display: block;
+        background: none;
+        color: var(--white--1);
+    }
+}
+
+.activetheme {
+    background: var(--main--nabyblue);
+
+    &::after {
+        left: unset !important;
+        right: 0 !important;
+    }
+}
+
+// Scroll to top button 
+.btn-scrollup {
+    position: fixed;
+    bottom: 3%;
+    right: 1.5%;
+    padding: 1.5rem 1.5rem;
+    background-color: var(--main--nabyblue);
+    color: var(--white--1);
+    border: 0 solid transparent;
+    border-radius: 100%;
+    cursor: pointer;
+    transform: translateY(100px);
+    transition: 0.3s;
+
+    &:hover {
+        transform: translateY(-6px);
+        transition: all 0.2s ease-in-out;
+    }
+}
+
+.btn_scrollup--visible {
+    transform: translateY(0px);
+}

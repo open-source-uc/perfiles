@@ -1,6 +1,17 @@
 import * as React from 'react';
+// import ProfileCard from './components/common/ProfileCard';
 
 function Home() {
+  // const [data, setData] = React.useState([]);
+  // // Get Method
+  // const apiGet = () => {
+  //   fetch('/assets/members.json')
+  //     .then((response) => response.json())
+  //     .then((json) => {
+  //       setData(json);
+  //     });
+  // };
+
   return (
     <div>
       <section id="welcome-hero">
@@ -25,6 +36,7 @@ function Home() {
         <section id="profiles">
           <h2>Coordinación</h2>
           <div id="coordination-profiles" className="profile__list" />
+
           <h2>Integrantes</h2>
           <div id="members-profiles" className="profile__list" />
 
