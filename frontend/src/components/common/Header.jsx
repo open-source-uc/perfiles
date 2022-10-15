@@ -7,7 +7,7 @@ function Header() {
       {/* Logo */}
       <a href="/" className="logo">
         {/* TODO: */}
-        <img src="%PUBLIC_URL%/assets/images/logo.svg" alt="Perfiles OSUC" />
+        <img src="./assets/images/logo.svg" alt="Perfiles OSUC" />
       </a>
       {/* Navbar */}
       <nav className="nav-main">
