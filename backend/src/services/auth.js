@@ -55,6 +55,7 @@ router.get('/logout', async (ctx) => {
 
 // GitHub OAuth
 router.get('/callback', async (ctx) => {
+  // Visita http://127.0.0.1:3000/api/auth/callback?code=sdfjkdsfjkdfsjkdfskj
   const { code } = ctx.query;
   // Exchange code for access token
   const response = await axios.post('https://github.com/login/oauth/access_token', {
@@ -97,4 +98,38 @@ router.get('/callback', async (ctx) => {
   }
 });
 
+// Debugging routes
+const development = process.env.NODE_ENV === 'development';
+
+if (development) {
+  router.get('/debug/login', async (ctx) => {
+    // Login as an arbitrary username
+    const { username } = ctx.query;
+    const member = await prisma.member.findUnique({
+      where: {
+        username,
+      },
+    });
+    if (!member) {
+      // Return 404
+      ctx.status = 404;
+      ctx.body = {
+        message: `Member ${username} not found`,
+      };
+    }
+    // Create JWT
+    const token = jwt.sign({
+      username: member.username,
+      role: member.role,
+    }, process.env.JWT_SECRET);
+
+    // Redirect to frontend
+    const frontendUrl = process.env.FRONTEND_URL || 'http://localhost:3000';
+    if (member.role === 'CHAIR') {
+      ctx.redirect(`${frontendUrl}/admin?token=${token}`);
+    } else {
+      ctx.redirect(`${frontendUrl}/?token=${token}`);
+    }
+  });
+}
 export default router;

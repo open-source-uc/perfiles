@@ -105,6 +105,21 @@ function loadRequests() {
   });
 }
 
+function loadAchievementLevels() {
+  const levels = JSON.parse(
+    fs.readFileSync('data/achievement_levels.json', 'utf-8'),
+  );
+
+  Object.keys(levels).forEach((key) => {
+    // TO AGU: Debe llamarse con await el siguiente create de prisma?
+    prisma.achievementLevel.create({
+      data: {
+        level: key,
+        points: levels[key],
+      },
+  });
+}
+
 async function main() {
   loadMembers();
   loadAchievements();
