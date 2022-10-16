@@ -9,7 +9,7 @@ export default function Home() {
   const [search, setSearch] = React.useState('');
 
   const apiGet = async () => {
-    const response = await axios.get('/api/members', {
+    const response = await axios.get('/api/public/members', {
       headers: getAuthHeader(),
     });
     setUsers(response.data);

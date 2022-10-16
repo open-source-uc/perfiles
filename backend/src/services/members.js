@@ -1,12 +1,20 @@
 import Router from '@koa/router';
 
 import { PrismaClient } from '@prisma/client';
-import jwt from 'koa-jwt';
 
 const router = new Router({ prefix: '/members' });
 const prisma = new PrismaClient();
 
 router.get('/', async (ctx) => {
+  // Check that the user has a CHAIR or SERVICE role
+  if (!(['CHAIR', 'SERVICE'].includes(ctx.state.user.role))) {
+    ctx.status = 403;
+    ctx.body = {
+      message: 'You must be an admin to access this resource',
+    };
+    return;
+  }
+
   const members = await prisma.member.findMany({
     include: {
       profile: true,
@@ -17,7 +25,7 @@ router.get('/', async (ctx) => {
 
 router.get('/me', async (ctx) => {
   // Get username from JWT
-  const { username } = ctx.state;
+  const { username } = ctx.state.user;
   // Find member by username
   const member = await prisma.member.findUnique({
     where: {
@@ -31,6 +39,15 @@ router.get('/me', async (ctx) => {
 });
 
 router.get('/:username', async (ctx) => {
+  // Check that the user has a CHAIR or SERVICE role
+  if (!(['CHAIR', 'SERVICE'].includes(ctx.state.user.role))) {
+    ctx.status = 403;
+    ctx.body = {
+      message: 'You must be an admin to access this resource',
+    };
+    return;
+  }
+
   const { username } = ctx.params;
   const member = await prisma.member.findUnique({
     where: {
@@ -51,6 +68,14 @@ router.get('/:username', async (ctx) => {
 });
 
 router.get('/:username/achievements', async (ctx) => {
+  // Check that the user has a CHAIR or SERVICE role
+  if (!(['CHAIR', 'SERVICE'].includes(ctx.state.user.role))) {
+    ctx.status = 403;
+    ctx.body = {
+      message: 'You must be an admin to access this resource',
+    };
+    return;
+  }
   const { username } = ctx.params;
   const member = await prisma.member.findUnique({
     where: {
@@ -76,6 +101,14 @@ router.get('/:username/achievements', async (ctx) => {
 });
 
 router.get('/:username/requests', async (ctx) => {
+  // Check that the user has a CHAIR or SERVICE role
+  if (!(['CHAIR', 'SERVICE'].includes(ctx.state.user.role))) {
+    ctx.status = 403;
+    ctx.body = {
+      message: 'You must be an admin to access this resource',
+    };
+    return;
+  }
   const { username } = ctx.params;
   const member = await prisma.member.findUnique({
     where: {

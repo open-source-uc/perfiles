@@ -24,19 +24,30 @@ Este repositorio contiene el código fuente para la plataforma comunitaria de [O
 
 ## Uso
 
-Abrir el proyecto en el dev container de docker
-### Para el backend
-- Crear un .env segun la template
+Primero que todo hay que abrir el repositorio en el devcontainer, que se encarga de preparar el entorno de desarrollo, incluyendo PostgreSQL.
+
+### .env
+
+Hay que crear un archivo `.env` en la raíz del proyecto, en base al `.env.template`. Es necesario proveer el ID y secreto de GitHub para hacer funcionar el OAuth localmente, al igual que un secreto JWT (aleatorio) que gestione la emisión de tokens.
+
+### Para el Back-end
 - Ejecutar `cd backend`
 - Ejecutar `npm install`
-- Ejecutar `npx prisma migrate reset` para crear las tablas y migrar la base de datos
-- Opcional `npx prisma studio` para visualizar los datos
+- Ejecutar `npx prisma migrate reset` para crear las tablas y cargar el seed.
 - Ejecutar `npm run start` para ejecutar el backend
+- Opcionalmente, se puede correr `npx prisma studio` para visualizar los datos post-seed.
 
 ### Migraciones
 En caso de querer generar migraciones despues de un cambio de schema o de pullear nuevas migraciones, es necesario correr: `npx prisma migrate dev`
 
-### Para el frontend
+### Autenticación
+Si es que la variable `NODE_ENV` está definida como `development`, se puede acceder a las rutas de debugging de autenticación, que permiten asumir el rol de cualquier usuario, con tal de probar las distintas rutas. Por ejemplo:
+
+- Para acceder como Fernando (coordinador): http://localhost:3000/api/auth/debug/login?username=fernandosmither
+- Para acceder como Agustín (miembro): http://localhost:3000/api/auth/debug/login?username=agucova
+
+### Para el Front-end
+
 - Ejecutar `cd frontend`
 - Ejecutar `npm install`
 
@@ -44,7 +55,7 @@ En caso de querer generar migraciones despues de un cambio de schema o de pullea
 
 * Para correr el código, se sugiere utilizar la extensión "Live Server" de Vscode mencionada en una ayudantía, para evitar tener problemas con los paths al abrir directamente una vista.
 
-* Al darle al botón "Iniciar Sesión" realmente se está haciendo un llamado al autenticador de GitHub (el cual solo pide permisos de lectura, no se recolectarán datos). Esto significa que al autorizar el login, se hará una redirección automática a [Nuestro dominio oficial](https://perfiles.osuc.dev) para las vistas de admin. A pesar de que este deploy es exactamente el de nuestra branch `main`, se puede volver a local simplemente yendo a `/admin/index.html`. 
+* Al darle al botón "Iniciar Sesión" realmente se está haciendo un llamado al autenticador de GitHub (el cual solo pide permisos de lectura, no se recolectarán datos). Esto significa que al autorizar el login, se hará una redirección automática a [Nuestro dominio oficial](https://perfiles.osuc.dev) para las vistas de admin. A pesar de que este deploy es exactamente el de nuestra branch `main`, se puede volver a local simplemente yendo a `/admin/index.html`.
 
 ### Contribuir
 

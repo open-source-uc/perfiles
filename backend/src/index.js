@@ -9,6 +9,7 @@ import jwt from 'koa-jwt';
 import { PrismaClient } from '@prisma/client';
 import dotenv from 'dotenv';
 
+import publicRouter from './services/public.js';
 import authRouter from './services/auth.js';
 import achievementsRouter from './services/achievements.js';
 import membersRouter from './services/members.js';
@@ -43,18 +44,6 @@ app.use(json({
   pretty: development,
 }));
 
-// JWT Error Handling
-app.use((ctx, next) => next().catch((err) => {
-  if (err.status === 401) {
-    ctx.status = 401;
-    ctx.body = {
-      message: 'Unauthorized, please provide the appropiate Authorization header to get access.',
-    };
-  } else {
-    throw err;
-  }
-}));
-
 // Body parsing
 app.use(koaBody());
 
@@ -83,13 +72,29 @@ router.get('/health', async (ctx) => {
   }
 });
 app.use(router.routes()).use(router.allowedMethods());
+
 // Login
 app.use(authRouter.routes()).use(authRouter.allowedMethods());
 
-// Protect routes using JWT if not in development
-if (!development) {
-  app.use(jwt({ secret: process.env.JWT_SECRET }));
-}
+// Public routes
+app.use(publicRouter.routes()).use(publicRouter.allowedMethods());
+
+// PROTECTED ROUTES
+
+// JWT Error Handling
+app.use((ctx, next) => next().catch((err) => {
+  if (err.status === 401) {
+    ctx.status = 401;
+    ctx.body = {
+      message: 'Unauthorized, please provide the appropiate Authorization header to get access.',
+    };
+  } else {
+    throw err;
+  }
+}));
+
+// Protect routes using JWT
+app.use(jwt({ secret: process.env.JWT_SECRET }));
 
 // Achievements
 app.use(achievementsRouter.routes()).use(achievementsRouter.allowedMethods());

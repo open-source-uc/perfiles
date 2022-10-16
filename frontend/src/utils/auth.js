@@ -49,4 +49,5 @@ export {
   isLoggedIn,
   getAuthHeader,
   storeTokenIfGiven,
+  getUserInfo,
 };

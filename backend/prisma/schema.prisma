@@ -40,7 +40,7 @@ model Profile {
 
 model Achievement {
   id              String                  @id @unique @default(cuid())
-  creator       Member?                 @relation(fields: [creatorUsername], references: [username])
+  creator         Member?                 @relation(fields: [creatorUsername], references: [username])
   creatorUsername String?
   createdAt       DateTime
   updatedAt       DateTime                @updatedAt
@@ -49,7 +49,8 @@ model Achievement {
   description     String
   imageURL        String
   type            AchievementType
-  level           AchievementLevel
+  level           AchievementLevel        @relation(fields: [levelName], references: [level])
+  levelName       String
   pointsOverride  Int?
   members         AchievementsOnMembers[]
   requests        Request[]
@@ -82,7 +83,7 @@ model Request {
 model ClaimLink {
   id              String           @id @unique @default(cuid())
   achievement     Achievement      @relation(fields: [achievementId], references: [id])
-  creator       Member?          @relation(fields: [creatorUsername], references: [username])
+  creator         Member?          @relation(fields: [creatorUsername], references: [username])
   createdAt       DateTime
   expiresAt       DateTime?
   shortname       String
@@ -100,6 +101,12 @@ model ClaimLinkClaim {
   claimLink      ClaimLink @relation(fields: [claimLinkId], references: [id])
   memberUsername String
   claimLinkId    String
+}
+
+model AchievementLevel {
+  level       String        @id @unique
+  points      Int
+  Achievement Achievement[]
 }
 
 enum Role {
@@ -136,13 +143,6 @@ enum AchievementType {
   // e.g when a user joins the community or when
   // he finishes some automated challenge website
   AUTOMATIC
-}
-
-enum AchievementLevel {
-  BRONZE
-  SILVER
-  GOLD
-  PLATINUM
 }
 
 enum RequestState {

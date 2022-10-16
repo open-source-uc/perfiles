@@ -18,7 +18,8 @@
 				"Prisma.prisma",
 				"GitHub.copilot",
 				"GitHub.vscode-pull-request-github",
-				"CS50.vscode-presentation-mode"
+				"CS50.vscode-presentation-mode",
+				"eamodio.gitlens"
 			]
 		}
 	},
