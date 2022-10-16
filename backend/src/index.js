@@ -7,6 +7,9 @@ import json from 'koa-json';
 
 import { PrismaClient } from '@prisma/client';
 
+import achievementsRouter from './services/achievements.js';
+import membersRouter from './services/members.js';
+
 const app = new Koa();
 const router = new Router();
 const prisma = new PrismaClient();
@@ -62,29 +65,11 @@ router.get('/health', async (ctx) => {
   }
 });
 
-router.get('/members', async (ctx) => {
-  const members = await prisma.member.findMany();
-  ctx.body = members;
-});
-
-router.get('/members/:username', async (ctx) => {
-  const { username } = ctx.params;
-  const member = await prisma.member.findUnique({
-    where: {
-      username,
-    },
-  });
-  if (member) {
-    ctx.body = member;
-  } else {
-    ctx.status = 404;
-    ctx.body = {
-      message: `Member ${username} not found`,
-    };
-  }
-});
-
 app.use(router.routes()).use(router.allowedMethods());
+// Achievements
+app.use(achievementsRouter.routes()).use(achievementsRouter.allowedMethods());
+// Members
+app.use(membersRouter.routes()).use(membersRouter.allowedMethods());
 
 const port = process.env.PORT || 3100;
 

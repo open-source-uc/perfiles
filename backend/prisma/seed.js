@@ -3,18 +3,19 @@ import fs from 'fs';
 
 const prisma = new PrismaClient();
 
-async function main() {
-  // Load members
+function loadMembers() {
   // Open ../../data/members.json
   const members = JSON.parse(fs.readFileSync('../data/members.json', 'utf-8'));
+
   // Load members
   members.map(async (member) => {
     await prisma.member.create({
       data: {
         username: member.username,
+        telegramUsername: member.telegramUsername,
         name: member.name,
         role: member.role,
-        title: member.title ? member.title : null,
+        title: member.title,
         joinedAt: new Date(),
         score: 0,
         level: 0,
@@ -24,6 +25,33 @@ async function main() {
       },
     });
   });
+}
+
+function loadAchievements() {
+  // Open ../../data/achievements.json
+  const achievements = JSON.parse(
+    fs.readFileSync('../data/achievements.json', 'utf-8'),
+  );
+
+  // Load achievements
+  achievements.map(async (achievement) => {
+    await prisma.achievement.create({
+      data: {
+        name: achievement.name,
+        description: achievement.description,
+        imageURL: achievement.imageURL,
+        type: achievement.type,
+        level: achievement.level,
+        createdAt: new Date(),
+        creatorUsername: achievement.creatorUsername,
+      },
+    });
+  });
+}
+
+async function main() {
+  loadMembers();
+  loadAchievements();
 }
 
 main();

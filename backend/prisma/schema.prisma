@@ -18,6 +18,8 @@ model Member {
   avatarURL        String?
   email            String
   joinedAt         DateTime
+  // TODO: Make obsolete and only compute on the fly?
+  // We have the full history of achievements in AchievementsOnMember
   score            Int
   level            Int
   achievements     AchievementsOnMembers[]
@@ -28,7 +30,7 @@ model Member {
 
 model Achievement {
   id             String                  @id @unique @default(cuid())
-  createdBy      Member?                 @relation(fields: [memberUsername], references: [username])
+  createdBy      Member?                 @relation(fields: [creatorUsername], references: [username])
   createdAt      DateTime
   updatedAt      DateTime                @updatedAt
   expiresAt      DateTime?
@@ -39,7 +41,7 @@ model Achievement {
   level          AchievementLevel
   pointsOverride Int?
   members        AchievementsOnMembers[]
-  memberUsername String?
+  creatorUsername String?
   Request        Request[]
   ClaimLink      ClaimLink[]
 }
@@ -78,19 +80,39 @@ model ClaimLink {
 }
 
 enum Role {
+  // Used mostly for automation and testing
   SUPERUSER
+  // Formally appointed coordinators
   COORDINATOR
+  // The user is a mentor appointed by the
+  // Community & Insertion coordination
   MENTOR
+  //  The user is a formally appointed member
   MEMBER
+  // The user is no longer a student, but remains active
   ALUMNI
+  // The user is on the onboarding phase
+  APLICANT
+  // The user is no longer a member due to inactivity
   INACTIVE
+  // The user has been suspended for some reason
   SUSPENDED
 }
 
 enum AchievementType {
+  // Achieved automatically when a counter hits a certain value
+  // e.g. 10 PRs merged or 5 meetins attended
   PARTICIPATION
+  // The user has to submit a request to get this achievement
   BY_REQUEST
+  // The achievement can only be awarded manually
+  MANUAL
+  // The achievement description is hidden, and only admins can manually award it to users
   MYSTERIOUS
+  // The achievement is awarded automatically through the API
+  // e.g when a user joins the community or when
+  // he finishes some automated challenge website
+  AUTOMATIC
 }
 
 enum AchievementLevel {
@@ -101,7 +123,10 @@ enum AchievementLevel {
 }
 
 enum RequestState {
+  // The request is open and can be claimed by a coordinator
   OPEN
+  // The request is open but is awaiting a reply by the user
   WAITING_REPLY
+  // The request is closed (either because he was awarded the achievement or because it was rejected)
   CLOSED
 }

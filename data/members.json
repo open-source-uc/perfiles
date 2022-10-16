@@ -9,7 +9,8 @@
     "name": "Diego Costa",
     "role": "COORDINATOR",
     "title": "Coordinador de Comunidad e Inserción",
-    "username": "diegocostares"
+    "username": "diegocostares",
+    "telegramUsername": "diegocosta_no"
   },
   {
     "name": "Lucas Natero",
@@ -21,23 +22,26 @@
     "name": "Fernando Smith",
     "role": "COORDINATOR",
     "title": "Coordinador de Educación",
-    "username": "fernandosmither"
+    "username": "fernandosmither",
+    "telegramUsername": "fdsmith"
   },
   {
     "name": "Benjamín Vicente",
     "role": "COORDINATOR",
     "title": "Coordinador de Proyectos",
-    "username": "benjavicente"
+    "username": "benjavicente",
+    "telegramUsername": "benjavicente"
   },
   {
     "name": "Martín Atria",
-    "role": "MEMBER",
+    "role": "MENTOR",
     "username": "Maratripa"
   },
   {
     "name": "Agustín Covarrubias",
     "role": "MEMBER",
-    "username": "agucova"
+    "username": "agucova",
+    "telegramUsername": "agucova"
   },
   {
     "name": "Alister MacCormack",
