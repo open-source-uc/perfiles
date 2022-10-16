@@ -5,55 +5,67 @@ generator client {
   provider = "prisma-client-js"
 }
 
+generator dbml {
+  provider = "prisma-dbml-generator"
+}
+
 datasource db {
   provider = "postgresql"
   url      = env("DATABASE_URL")
 }
+
 model Member {
-  username         String                  @id @unique
-  telegramUsername String?
+  username             String                  @id @unique
+  profile              Profile?
+  role                 Role
+  joinedAt             DateTime
+  achievements         AchievementsOnMembers[] @relation("achieves")
+  created_achievements Achievement[]
+  given_achievements   AchievementsOnMembers[] @relation("awards")
+  created_requests     Request[]
+  created_claimlinks   ClaimLink[]
+  claimed_claimlinks   ClaimLinkClaim[]
+}
+
+model Profile {
+  id               String  @id @unique @default(cuid())
+  member           Member  @relation(fields: [memberUsername], references: [username])
+  memberUsername   String  @unique
   name             String
-  role             Role
-  title            String?
-  avatarURL        String?
   email            String
-  joinedAt         DateTime
-  // TODO: Make obsolete and only compute on the fly?
-  // We have the full history of achievements in AchievementsOnMember
-  score            Int
-  level            Int
-  achievements     AchievementsOnMembers[]
-  Achievement      Achievement[]
-  Request          Request[]
-  ClaimLink        ClaimLink[]
+  title            String?
+  telegramUsername String?
+  avatarURL        String?
 }
 
 model Achievement {
-  id             String                  @id @unique @default(cuid())
-  createdBy      Member?                 @relation(fields: [creatorUsername], references: [username])
-  createdAt      DateTime
-  updatedAt      DateTime                @updatedAt
-  expiresAt      DateTime?
-  name           String                  @unique
-  description    String
-  imageURL       String
-  type           AchievementType
-  level          AchievementLevel
-  pointsOverride Int?
-  members        AchievementsOnMembers[]
+  id              String                  @id @unique @default(cuid())
+  creator       Member?                 @relation(fields: [creatorUsername], references: [username])
   creatorUsername String?
-  Request        Request[]
-  ClaimLink      ClaimLink[]
+  createdAt       DateTime
+  updatedAt       DateTime                @updatedAt
+  expiresAt       DateTime?
+  name            String                  @unique
+  description     String
+  imageURL        String
+  type            AchievementType
+  level           AchievementLevel
+  pointsOverride  Int?
+  members         AchievementsOnMembers[]
+  requests        Request[]
+  claimlinks      ClaimLink[]
 }
 
 model AchievementsOnMembers {
-  id             String       @id @unique @default(cuid())
-  obtainedAt     DateTime
-  member         Member?      @relation(fields: [memberUsername], references: [username])
-  achievement    Achievement? @relation(fields: [achievementId], references: [id])
-  manual         Boolean      @default(false)
-  memberUsername String?
-  achievementId  String?
+  id                String      @id @unique @default(cuid())
+  obtainedAt        DateTime
+  member            Member      @relation("achieves", fields: [memberUsername], references: [username])
+  achievement       Achievement @relation(fields: [achievementId], references: [id])
+  // Whether the achievement was manually awarded by an admin
+  awardedBy         Member?     @relation("awards", fields: [awardedByUsername], references: [username])
+  memberUsername    String
+  achievementId     String
+  awardedByUsername String?
 }
 
 model Request {
@@ -63,27 +75,38 @@ model Request {
   openedAt       DateTime
   state          RequestState?
   description    String?
-  documents      Bytes[]
   achievementId  String
   memberUsername String?
 }
 
 model ClaimLink {
-  id             String      @id @unique @default(cuid())
-  achievement    Achievement @relation(fields: [achievementId], references: [id])
-  createdBy      Member?     @relation(fields: [memberUsername], references: [username])
-  createdAt      DateTime
-  expiresAt      DateTime?
-  shortname      String
-  achievementId  String
-  memberUsername String?
+  id              String           @id @unique @default(cuid())
+  achievement     Achievement      @relation(fields: [achievementId], references: [id])
+  creator       Member?          @relation(fields: [creatorUsername], references: [username])
+  createdAt       DateTime
+  expiresAt       DateTime?
+  shortname       String
+  achievementId   String
+  creatorUsername String?
+  user_limit      Int?
+  claims          ClaimLinkClaim[]
+}
+
+model ClaimLinkClaim {
+  // This represents a claim of a claimlink by a member
+  id             String    @id @unique @default(cuid())
+  claimedAt      DateTime
+  claimedBy      Member    @relation(fields: [memberUsername], references: [username])
+  claimLink      ClaimLink @relation(fields: [claimLinkId], references: [id])
+  memberUsername String
+  claimLinkId    String
 }
 
 enum Role {
   // Used mostly for automation and testing
-  SUPERUSER
+  SERVICE
   // Formally appointed coordinators
-  COORDINATOR
+  CHAIR
   // The user is a mentor appointed by the
   // Community & Insertion coordination
   MENTOR
@@ -125,8 +148,6 @@ enum AchievementLevel {
 enum RequestState {
   // The request is open and can be claimed by a coordinator
   OPEN
-  // The request is open but is awaiting a reply by the user
-  WAITING_REPLY
-  // The request is closed (either because he was awarded the achievement or because it was rejected)
-  CLOSED
+  APPROVED
+  REJECTED
 }

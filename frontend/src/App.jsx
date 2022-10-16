@@ -17,7 +17,21 @@ import LogrosAdmin from './components/admin/LogrosAdmin';
 import RRHHAdmin from './components/admin/RRHHAdmin';
 import LayoutAdmin from './components/admin/LayoutAdmin';
 
+import { removeToken, storeTokenIfGiven } from './utils/auth';
+
 export default function App() {
+  // Check if the URL contains a JWT token and save it in localStorage
+  if (storeTokenIfGiven()) {
+    // Remove the token from the URL
+    window.history.replaceState({}, document.title, '/');
+  }
+  // Check if the logout parameter is present in the URL
+  if (window.location.search.includes('logout')) {
+    // Remove the token from localStorage
+    removeToken();
+    // Remove the logout query parameter from the URL
+    window.history.replaceState({}, document.title, '/');
+  }
   return (
     <div>
       {

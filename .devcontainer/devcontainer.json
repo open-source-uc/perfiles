@@ -17,7 +17,8 @@
 				"tonybaloney.vscode-pets",
 				"Prisma.prisma",
 				"GitHub.copilot",
-				"GitHub.vscode-pull-request-github"
+				"GitHub.vscode-pull-request-github",
+				"CS50.vscode-presentation-mode"
 			]
 		}
 	},
