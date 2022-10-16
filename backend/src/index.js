@@ -2,10 +2,10 @@
 import Koa from 'koa';
 import Router from '@koa/router';
 
-import { Prisma, PrismaClient } from '@prisma/client';
-
 import koaBody from 'koa-body';
 import json from 'koa-json';
+
+import { PrismaClient } from '@prisma/client';
 
 const app = new Koa();
 const router = new Router();
@@ -36,6 +36,10 @@ app.use(json({
 }));
 
 app.use(koaBody());
+
+router.get('/', async (ctx) => {
+  ctx.body = { message: 'Hello World! 👀' };
+});
 
 router.get('/health', async (ctx) => {
   // Disable cache
