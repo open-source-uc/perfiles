@@ -1,7 +1,14 @@
 import * as React from 'react';
 import { Link } from 'react-router-dom';
+import { isLoggedIn } from '../../utils/auth';
 
 export default function Navbar() {
+  let button;
+  if (isLoggedIn()) {
+    button = <Link to="/api/auth/login">👩‍💻 Iniciar sesión</Link>;
+  } else {
+    button = <Link to="/?logout=yes">👩‍💻 Cerrar sesión</Link>;
+  }
   return (
     <nav className="nav-main">
       <label htmlFor="check" className="checkbtn">
@@ -30,10 +37,7 @@ export default function Navbar() {
           <Link to="/estatutos">📖 Estatutos</Link>
         </li>
         <li>
-          {/* TODO: */}
-          <a href="https://github.com/login/oauth/authorize?client_id=77a88aaa5e4cd67cff18">
-            👩‍💻 Iniciar sesión
-          </a>
+          {button}
         </li>
       </ul>
     </nav>

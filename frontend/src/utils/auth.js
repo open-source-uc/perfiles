@@ -1,3 +1,5 @@
+import axios from 'axios';
+
 /* eslint-disable no-unused-vars */
 function storeToken(token) {
   localStorage.setItem('token', token);
@@ -29,6 +31,15 @@ function storeTokenIfGiven() {
     return true;
   }
   return false;
+}
+
+async function getUserInfo() {
+  if (!isLoggedIn()) {
+    return null;
+  }
+  const authHeader = getAuthHeader();
+  const response = await axios.get('/api/members/me', { headers: authHeader });
+  return response.data;
 }
 
 export {

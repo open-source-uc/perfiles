@@ -1,6 +1,7 @@
 import Router from '@koa/router';
 
 import { PrismaClient } from '@prisma/client';
+import jwt from 'koa-jwt';
 
 const router = new Router({ prefix: '/members' });
 const prisma = new PrismaClient();
@@ -12,6 +13,21 @@ router.get('/', async (ctx) => {
     },
   });
   ctx.body = members;
+});
+
+router.get('/me', async (ctx) => {
+  // Get username from JWT
+  const { username } = ctx.state.username;
+  // Find member by username
+  const member = await prisma.member.findUnique({
+    where: {
+      username,
+    },
+    include: {
+      profile: true,
+    },
+  });
+  ctx.body = member;
 });
 
 router.get('/:username', async (ctx) => {
