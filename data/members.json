@@ -1,72 +1,76 @@
 [
   {
     "name": "Max Militzer",
-    "role": "coordinator",
+    "role": "COORDINATOR",
     "title": "Coordinador General",
     "username": "Dyotson"
   },
   {
     "name": "Diego Costa",
-    "role": "coordinator",
+    "role": "COORDINATOR",
     "title": "Coordinador de Comunidad e Inserción",
-    "username": "diegocostares"
+    "username": "diegocostares",
+    "telegramUsername": "diegocosta_no"
   },
   {
     "name": "Lucas Natero",
-    "role": "coordinator",
+    "role": "COORDINATOR",
     "title": "Coordinador Externo",
     "username": "lnatero"
   },
   {
     "name": "Fernando Smith",
-    "role": "coordinator",
+    "role": "COORDINATOR",
     "title": "Coordinador de Educación",
-    "username": "fernandosmither"
+    "username": "fernandosmither",
+    "telegramUsername": "fdsmith"
   },
   {
     "name": "Benjamín Vicente",
-    "role": "coordinator",
+    "role": "COORDINATOR",
     "title": "Coordinador de Proyectos",
-    "username": "benjavicente"
+    "username": "benjavicente",
+    "telegramUsername": "benjavicente"
   },
   {
     "name": "Martín Atria",
-    "role": "member",
+    "role": "MENTOR",
     "username": "Maratripa"
   },
   {
     "name": "Agustín Covarrubias",
-    "role": "member",
-    "username": "agucova"
+    "role": "MEMBER",
+    "username": "agucova",
+    "telegramUsername": "agucova"
   },
   {
     "name": "Alister MacCormack",
-    "role": "member",
+    "role": "MEMBER",
     "username": "a-maccormack"
   },
   {
     "name": "José Antonio Castro",
-    "role": "member",
+    "role": "MEMBER",
     "username": "Baelfire18"
   },
   {
     "name": "Ignacio Palma",
-    "role": "member",
+    "role": "MEMBER",
     "username": "IgnacioPalma"
   },
   {
     "name": "Juan Vargas",
-    "role": "member",
+    "role": "MEMBER",
     "username": "v4rgas"
   },
   {
     "name": "Antonio Ossa-Guerra",
-    "role": "alumni",
+    "role": "ALUMNI",
     "username": "aaossa"
   },
   {
     "name": "Bárbara Irarrázaval",
-    "role": "alumni",
+    "role": "ALUMNI",
     "username": "barbaraim"
   }
 ]
