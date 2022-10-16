@@ -18,10 +18,6 @@ model Member {
   avatarURL        String?
   email            String
   joinedAt         DateTime
-  // TODO: Make obsolete and only compute on the fly?
-  // We have the full history of achievements in AchievementsOnMember
-  score            Int
-  level            Int
   achievements     AchievementsOnMembers[]
   Achievement      Achievement[]
   Request          Request[]

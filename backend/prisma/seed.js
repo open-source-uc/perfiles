@@ -17,8 +17,6 @@ function loadMembers() {
         role: member.role,
         title: member.title,
         joinedAt: new Date(),
-        score: 0,
-        level: 0,
         avatarURL: `https://avatars.githubusercontent.com/${member.username}?s=120`,
         // This is a mock email
         email: `${member.username}@uc.cl`,
