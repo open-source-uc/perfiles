@@ -1,0 +1,22 @@
+[
+    {
+        "openedBy": "agucova",
+        "state": "OPEN",
+        "description": "I really want this medal."
+    },
+    {
+        "openedBy": "fernandosmither",
+        "state": "APPROVED",
+        "description": "I really want this medal."
+    },
+    {
+        "openedBy": "diegocostares",
+        "state": "REJECTED",
+        "description": "I really want this medal."
+    },
+    {
+        "openedBy": "Max Militzer",
+        "state": "OPEN",
+        "description": "I really want this medal."
+    }
+]

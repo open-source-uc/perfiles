@@ -1,0 +1,58 @@
+[
+    {
+        "creator": "agucova",
+        "name": "Aplicante",
+        "description": "Haber sobrevivido al onboarding, y haber sido aceptado como miembro de la comunidad!",
+        "imageURL": "assets/images/badges/chicken.png",
+        "type": "AUTOMATIC",
+        "level": "BRONZE"
+    },
+    {
+        "creator": "fernandosmither",
+        "name": "Primera PR",
+        "description": "Haber hecho tu primera PR a un proyecto de la comunidad",
+        "imageURL": "assets/images/badges/pull-request.png",
+        "type": "MANUAL",
+        "level": "BRONZE"
+    },
+    {
+        "creator": "fernandosmither",
+        "name": "Estafa Piramidal",
+        "description": "Gracias por invitar a 3 amigos a OSUC!... Que ahora ellos inviten a 3 amigos también. 😈",
+        "imageURL": "assets/images/badges/pyramids.png",
+        "type": "BY_REQUEST",
+        "level": "SILVER"
+    },
+    {
+        "creator": "agucova",
+        "name": "2FA",
+        "description": "Haber activado la autenticación de dos factores en tu cuenta de GitHub: ¿Tanto les cuesta adaptarse a la tecnología, que tenemos que darles un logro para que lo hagan?.",
+        "imageURL": "assets/images/badges/lock-key.png",
+        "type": "AUTOMATIC",
+        "level": "BRONZE"
+    },
+    {
+        "creator": "diegocostares",
+        "name": "Ayudante",
+        "description": "Haber sido ayudante de un curso del DCC.",
+        "imageURL": "assets/images/badges/space-invader.png",
+        "type": "BY_REQUEST",
+        "level": "SILVER"
+    },
+    {
+        "creator": "Dyotson",
+        "name": "Tenemos que hablar",
+        "description": "La DIPRE u alguna otra autoridad universitaria quiere \"conversar\" sobre tu proyecto.",
+        "imageURL": "assets/images/badges/fox.png",
+        "type": "BY_REQUEST",
+        "level": "GOLD"
+    },
+    {
+        "creator": "agucova",
+        "name": "Soy admin",
+        "description": "Haber sido ayudante coordinador de algún curso del DCC.",
+        "imageURL": "assets/images/badges/two-hearts.png",
+        "type": "BY_REQUEST",
+        "level": "SILVER"
+    }
+]

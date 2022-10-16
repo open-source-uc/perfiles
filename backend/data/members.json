@@ -1,0 +1,76 @@
+[
+  {
+    "name": "Max Militzer",
+    "role": "CHAIR",
+    "title": "Coordinador General",
+    "username": "Dyotson"
+  },
+  {
+    "name": "Diego Costa",
+    "role": "CHAIR",
+    "title": "Coordinador de Comunidad e Inserción",
+    "username": "diegocostares",
+    "telegramUsername": "diegocosta_no"
+  },
+  {
+    "name": "Lucas Natero",
+    "role": "CHAIR",
+    "title": "Coordinador Externo",
+    "username": "lnatero"
+  },
+  {
+    "name": "Fernando Smith",
+    "role": "CHAIR",
+    "title": "Coordinador de Educación",
+    "username": "fernandosmither",
+    "telegramUsername": "fdsmith"
+  },
+  {
+    "name": "Benjamín Vicente",
+    "role": "CHAIR",
+    "title": "Coordinador de Proyectos",
+    "username": "benjavicente",
+    "telegramUsername": "benjavicente"
+  },
+  {
+    "name": "Martín Atria",
+    "role": "MENTOR",
+    "username": "Maratripa"
+  },
+  {
+    "name": "Agustín Covarrubias",
+    "role": "MEMBER",
+    "username": "agucova",
+    "telegramUsername": "agucova"
+  },
+  {
+    "name": "Alister MacCormack",
+    "role": "MEMBER",
+    "username": "a-maccormack"
+  },
+  {
+    "name": "José Antonio Castro",
+    "role": "MEMBER",
+    "username": "Baelfire18"
+  },
+  {
+    "name": "Ignacio Palma",
+    "role": "MEMBER",
+    "username": "IgnacioPalma"
+  },
+  {
+    "name": "Juan Vargas",
+    "role": "MEMBER",
+    "username": "v4rgas"
+  },
+  {
+    "name": "Antonio Ossa-Guerra",
+    "role": "ALUMNI",
+    "username": "aaossa"
+  },
+  {
+    "name": "Bárbara Irarrázaval",
+    "role": "ALUMNI",
+    "username": "barbaraim"
+  }
+]
