@@ -17,7 +17,7 @@ router.get('/', async (ctx) => {
 
 router.get('/me', async (ctx) => {
   // Get username from JWT
-  const { username } = ctx.state.username;
+  const { username } = ctx.state;
   // Find member by username
   const member = await prisma.member.findUnique({
     where: {

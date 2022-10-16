@@ -27,7 +27,7 @@ if (!process.env.JWT_SECRET) {
 }
 
 // Login endpoint (redirects to GitHub)
-router.get('/', async (ctx) => {
+router.get('/login', async (ctx) => {
   let redirectUri = `${ctx.origin}/api/auth/callback`;
   if (process.env.NODE_ENV === 'development') {
     // Use a loopback redirect URI
@@ -46,6 +46,11 @@ router.get('/', async (ctx) => {
   });
   console.log(`${url}?${params}`);
   ctx.redirect(`${url}?${params}`);
+});
+
+router.get('/logout', async (ctx) => {
+  ctx.cookies.set('token', null);
+  ctx.redirect('/?logout=true');
 });
 
 // GitHub OAuth

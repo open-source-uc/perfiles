@@ -4,10 +4,10 @@ import { isLoggedIn } from '../../utils/auth';
 
 export default function Navbar() {
   let button;
-  if (isLoggedIn()) {
-    button = <Link to="/api/auth/login">👩‍💻 Iniciar sesión</Link>;
+  if (!isLoggedIn()) {
+    button = <a href="/api/auth/login">👩‍💻 Iniciar sesión</a>;
   } else {
-    button = <Link to="/?logout=yes">👩‍💻 Cerrar sesión</Link>;
+    button = <a href="/?logout=yes">👩‍💻 Cerrar sesión</a>;
   }
   return (
     <nav className="nav-main">
