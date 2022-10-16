@@ -34,7 +34,7 @@ export default function Footer() {
         >
           CC BY-NC-SA 4.0
           <img
-            style={{ marginLeft: '3px', verticalAllign: 'text-bottom' }}
+            style={{ marginLeft: '3px', verticalAlign: 'text-bottom' }}
             src="https://mirrors.creativecommons.org/presskit/icons/cc.svg?ref=chooser-v1"
             height="22px"
             alt="CC"

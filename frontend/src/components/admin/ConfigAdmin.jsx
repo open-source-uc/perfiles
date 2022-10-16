@@ -6,7 +6,7 @@ export default function ConfigAdmin() {
       {/* <!-- adminindexbox1--> */}
       <ol className="adminindexbox">
         <li className="adminindexbox-item">
-          <a href="/admin/index.html">Admin</a>
+          <a href="/admin/index">Admin</a>
         </li>
         <li className="adminindexbox-item active">Configuración</li>
       </ol>

@@ -5,7 +5,7 @@ export default function RRHHAdmin() {
     <div className="admin__main">
       <ol className="adminindexbox">
         <li className="adminindexbox-item">
-          <a href="/admin/index.html">Admin</a>
+          <a href="/admin/index">Admin</a>
         </li>
         <li className="adminindexbox-item active">Recursos humanos</li>
       </ol>

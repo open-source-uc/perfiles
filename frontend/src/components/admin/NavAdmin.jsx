@@ -7,9 +7,9 @@ export default function NavAdmin() {
       <nav className="nav-admin__nav" aria-label="Navegación de Admin">
         <ul className="nav-admin__ul">
           <li><Link to="/admin">📈</Link></li>
-          <li><Link to="/admin/rrhh.html">👥</Link></li>
-          <li><Link to="/admin/logros.html">🏅</Link></li>
-          <li className="active"><Link to="/admin/config.html">⚙️</Link></li>
+          <li><Link to="/admin/rrhh">👥</Link></li>
+          <li><Link to="/admin/logros">🏅</Link></li>
+          <li className="active"><Link to="/admin/config">⚙️</Link></li>
         </ul>
       </nav>
     </aside>

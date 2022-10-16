@@ -5,7 +5,7 @@ export default function LogrosAdmin() {
     <div className="admin__main">
       <ol className="adminindexbox">
         <li className="adminindexbox-item">
-          <a href="/admin/index.html">Admin</a>
+          <a href="/admin/index">Admin</a>
         </li>
         <li className="adminindexbox-item active">Logros y contadores</li>
       </ol>

@@ -44,9 +44,9 @@ export default function App() {
         </Route>
         <Route path="/admin" element={<LayoutAdmin />}>
           <Route index element={<IndexAdmin />} />
-          <Route path="/admin/config.html" element={<ConfigAdmin />} />
-          <Route path="/admin/logros.html" element={<LogrosAdmin />} />
-          <Route path="/admin/rrhh.html" element={<RRHHAdmin />} />
+          <Route path="/admin/config" element={<ConfigAdmin />} />
+          <Route path="/admin/logros" element={<LogrosAdmin />} />
+          <Route path="/admin/rrhh" element={<RRHHAdmin />} />
         </Route>
       </Routes>
     </div>

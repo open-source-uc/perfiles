@@ -6,7 +6,7 @@ export default function IndexAdmin() {
       {/* <!-- adminindexbox1--> */}
       <ol className="adminindexbox">
         <li className="adminindexbox-item">
-          <a href="/admin/index.html">Admin</a>
+          <a href="/admin/index">Admin</a>
         </li>
       </ol>
       <p className="admin__welcome">Bienvenida, Bárbara 👋</p>
