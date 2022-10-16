@@ -1,14 +1,19 @@
 /* eslint-disable no-console */
 import Koa from 'koa';
-import Router from '@koa/router';
 
+import Router from '@koa/router';
 import koaBody from 'koa-body';
 import json from 'koa-json';
+import jwt from 'koa-jwt';
 
 import { PrismaClient } from '@prisma/client';
+import dotenv from 'dotenv';
 
+import authRouter from './services/auth.js';
 import achievementsRouter from './services/achievements.js';
 import membersRouter from './services/members.js';
+
+dotenv.config();
 
 const app = new Koa();
 const router = new Router();
@@ -38,6 +43,19 @@ app.use(json({
   pretty: development,
 }));
 
+// JWT Error Handling
+app.use((ctx, next) => next().catch((err) => {
+  if (err.status === 401) {
+    ctx.status = 401;
+    ctx.body = {
+      message: 'Unauthorized, please provide the appropiate Authorization header to get access.',
+    };
+  } else {
+    throw err;
+  }
+}));
+
+// Body parsing
 app.use(koaBody());
 
 router.get('/', async (ctx) => {
@@ -64,8 +82,15 @@ router.get('/health', async (ctx) => {
     };
   }
 });
-
 app.use(router.routes()).use(router.allowedMethods());
+// Login
+app.use(authRouter.routes()).use(authRouter.allowedMethods());
+
+// Protect routes using JWT if not in development
+if (!development) {
+  app.use(jwt({ secret: process.env.JWT_SECRET }));
+}
+
 // Achievements
 app.use(achievementsRouter.routes()).use(achievementsRouter.allowedMethods());
 // Members

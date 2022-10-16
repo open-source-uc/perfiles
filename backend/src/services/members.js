@@ -6,7 +6,11 @@ const router = new Router({ prefix: '/members' });
 const prisma = new PrismaClient();
 
 router.get('/', async (ctx) => {
-  const members = await prisma.member.findMany();
+  const members = await prisma.member.findMany({
+    include: {
+      profile: true,
+    },
+  });
   ctx.body = members;
 });
 

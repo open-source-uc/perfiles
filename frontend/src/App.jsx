@@ -17,7 +17,14 @@ import LogrosAdmin from './components/admin/LogrosAdmin';
 import RRHHAdmin from './components/admin/RRHHAdmin';
 import LayoutAdmin from './components/admin/LayoutAdmin';
 
+import { storeTokenIfGiven } from './utils/auth';
+
 export default function App() {
+  // Check if the URL contains a JWT token and save it in localStorage
+  if (storeTokenIfGiven()) {
+    // Remove the token from the URL
+    window.history.replaceState({}, document.title, '/');
+  }
   return (
     <div>
       {

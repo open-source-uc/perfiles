@@ -2,12 +2,16 @@ import * as React from 'react';
 import axios from 'axios';
 import ProfileCard from './common/ProfileCard';
 
+import { getAuthHeader } from '../utils/auth';
+
 export default function Home() {
   const [users, setUsers] = React.useState([]);
   const [search, setSearch] = React.useState('');
 
   const apiGet = async () => {
-    const response = await axios.get('/api/members');
+    const response = await axios.get('/api/members', {
+      headers: getAuthHeader(),
+    });
     setUsers(response.data);
   };
 
@@ -26,7 +30,7 @@ export default function Home() {
 
   React.useEffect(() => {
     apiGet();
-  });
+  }, []);
 
   return (
     <div>
@@ -58,7 +62,7 @@ export default function Home() {
             {displayedMembers.map((user) => (
               // Revisamos que el user.role sea coordinator
               user.role === 'COORDINATOR' && (
-                ProfileCard(user.name, user.title, user.username)
+                ProfileCard(user.profile.name, user.profile.title, user.username)
               )
             ))}
           </div>
@@ -66,7 +70,7 @@ export default function Home() {
           <div id="members-profiles" className="profile__list">
             {displayedMembers.map((user) => (
               user.role === 'MEMBER' && (
-                ProfileCard(user.name, user.title, user.username)
+                ProfileCard(user.profile.name, user.profile.title, user.username)
               )
             ))}
           </div>
@@ -75,7 +79,7 @@ export default function Home() {
           <div id="hall-of-fame-profiles" className="profile__list">
             {displayedMembers.map((user) => (
               user.role === 'ALUMNI' && (
-                ProfileCard(user.name, user.title, user.username)
+                ProfileCard(user.profile.name, user.profile.title, user.username)
               )
             ))}
           </div>
