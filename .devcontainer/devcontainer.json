@@ -16,7 +16,8 @@
 				"dbaeumer.vscode-eslint",
 				"tonybaloney.vscode-pets",
 				"Prisma.prisma",
-				"GitHub.copilot"
+				"GitHub.copilot",
+				"GitHub.vscode-pull-request-github"
 			]
 		}
 	},

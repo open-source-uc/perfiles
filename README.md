@@ -22,6 +22,24 @@
 
 Este repositorio contiene el código fuente para la plataforma comunitaria de [Open Source UC](https://osuc.dev). La plataforma permite que integrantes de la organización creen perfiles y obtengan logros, entre otras cosas.
 
+## Uso
+
+Abrir el proyecto en el dev container de docker
+### Para el backend
+- Crear un .env segun la template
+- Ejecutar `cd backend`
+- Ejecutar `npm install`
+- Ejecutar `npx prisma migrate reset` para crear las tablas y migrar la base de datos
+- Opcional `npx prisma studio` para visualizar los datos
+- Ejecutar `npm run start` para ejecutar el backend
+
+### Migraciones
+En caso de querer generar migraciones despues de un cambio de schema o de pullear nuevas migraciones, es necesario correr: `npx prisma migrate dev`
+
+### Para el frontend
+- Ejecutar `cd frontend`
+- Ejecutar `npm install`
+
 ## Supuestos (Entrega 1)
 
 * Para correr el código, se sugiere utilizar la extensión "Live Server" de Vscode mencionada en una ayudantía, para evitar tener problemas con los paths al abrir directamente una vista.
