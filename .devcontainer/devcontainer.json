@@ -6,7 +6,6 @@
 	"dockerComposeFile": "docker-compose.yml",
 	"service": "app",
 	"workspaceFolder": "/workspace",
-
 	// Configure tool-specific properties.
 	"customizations": {
 		// Configure properties specific to VS Code.
@@ -16,22 +15,30 @@
 				"ritwickdey.liveserver",
 				"dbaeumer.vscode-eslint",
 				"tonybaloney.vscode-pets",
-				"Prisma.prisma"
+				"Prisma.prisma",
+				"GitHub.copilot"
 			]
 		}
 	},
-
 	// Use 'forwardPorts' to make a list of ports inside the container available locally.
 	// This can be used to network with other containers or with the host.
-	"forwardPorts": [3000, 3100, 5432],
-
+	"forwardPorts": [
+		3000,
+		3100,
+		5432
+	],
 	// Use 'postCreateCommand' to run commands after the container is created.
 	// "postCreateCommand": "yarn install",
-
 	// Comment out to connect as root instead. More info: https://aka.ms/vscode-remote/containers/non-root.
 	"remoteUser": "node",
 	"features": {
-		"github-cli": "latest",
-		"fish": "latest"
+		"ghcr.io/devcontainers/features/github-cli:1": {
+			"version": "latest"
+		}
+	},
+	"settings": {
+		"terminal.integrated.env.linux": {
+			"NODE_ENV": "development"
+		}
 	}
 }

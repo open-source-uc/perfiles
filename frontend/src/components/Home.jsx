@@ -1,4 +1,5 @@
 import * as React from 'react';
+import axios from 'axios';
 import ProfileCard from './common/ProfileCard';
 
 export default function Home() {
@@ -6,9 +7,8 @@ export default function Home() {
   const [search, setSearch] = React.useState('');
 
   const apiGet = async () => {
-    const response = await fetch('../assets/members.json');
-    const data = await response.json();
-    setUsers(data);
+    const response = await axios.get('/api/members');
+    setUsers(response.data);
   };
 
   // Funcion de busqueda
@@ -17,16 +17,16 @@ export default function Home() {
   };
 
   // Metodo de filtrado
-  let result = [];
-  if (!search) {
-    result = users;
-  } else {
-    result = users.filter((user) => user.name.toLowerCase().includes(search.toLowerCase()));
+  let displayedMembers = users;
+  if (search) {
+    displayedMembers = users.filter(
+      (user) => user.name.toLowerCase().includes(search.toLowerCase()),
+    );
   }
 
   React.useEffect(() => {
     apiGet();
-  }, []);
+  });
 
   return (
     <div>
@@ -55,17 +55,17 @@ export default function Home() {
           <h2>Coordinación</h2>
           <div id="coordination-profiles" className="profile__list">
             {/* Generamos varias ProfileCard con los datos */}
-            {result.map((user) => (
+            {displayedMembers.map((user) => (
               // Revisamos que el user.role sea coordinator
-              user.role === 'coordinator' && (
+              user.role === 'COORDINATOR' && (
                 ProfileCard(user.name, user.title, user.username)
               )
             ))}
           </div>
           <h2>Integrantes</h2>
           <div id="members-profiles" className="profile__list">
-            {result.map((user) => (
-              user.role === 'member' && (
+            {displayedMembers.map((user) => (
+              user.role === 'MEMBER' && (
                 ProfileCard(user.name, user.title, user.username)
               )
             ))}
@@ -73,8 +73,8 @@ export default function Home() {
 
           <h2>Sala de la fama 🏆</h2>
           <div id="hall-of-fame-profiles" className="profile__list">
-            {result.map((user) => (
-              user.role === 'alumni' && (
+            {displayedMembers.map((user) => (
+              user.role === 'ALUMNI' && (
                 ProfileCard(user.name, user.title, user.username)
               )
             ))}

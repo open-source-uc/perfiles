@@ -14,6 +14,7 @@ model Member {
   telegramUsername String?
   name             String
   role             Role
+  title            String?
   avatarURL        String?
   email            String
   joinedAt         DateTime

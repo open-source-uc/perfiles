@@ -1,179 +1,88 @@
+/* eslint-disable no-console */
 import Koa from 'koa';
 import Router from '@koa/router';
 
 import { Prisma, PrismaClient } from '@prisma/client';
 
 import koaBody from 'koa-body';
+import json from 'koa-json';
 
 const app = new Koa();
 const router = new Router();
-
 const prisma = new PrismaClient();
+
+const development = process.env.NODE_ENV === 'development';
+
+// X-Response-Time
+app.use(async (ctx, next) => {
+  const start = Date.now();
+  await next();
+  const ms = Date.now() - start;
+  ctx.set('X-Response-Time', `${ms}ms`);
+});
+
+// Logger
+app.use(async (ctx, next) => {
+  const start = Date.now();
+  await next();
+  const ms = Date.now() - start;
+  console.log(`ℹ️ ${ctx.method} ${ctx.url} - ${ms} ms`);
+});
+
+// Pretty JSON
+app.use(json({
+  // Enable in development
+  pretty: development,
+}));
 
 app.use(koaBody());
 
-router.post('/signup', async (ctx) => {
-  const { name, email, posts } = ctx.request.body;
-
-  const postData = posts
-    ? posts.map((post) => ({ title: post.title, content: post.content || undefined }))
-    : [];
-
-  const newUser = await prisma.user.create({
-    data: {
-      name,
-      email,
-      posts: {
-        create: postData,
-      },
-    },
-  });
-
-  ctx.status = 201; // Created
-  ctx.body = newUser;
-});
-
-router.post('/post', async (ctx) => {
-  const { title, content, authorEmail: email } = ctx.request.body;
-  const newPost = await prisma.post.create({
-    data: {
-      title,
-      content,
-      author: { connect: { email } },
-    },
-  });
-  ctx.status = 201; // Created
-  ctx.body = newPost;
-});
-
-router.put('/post/:id/views', async (ctx) => {
-  const id = Number(ctx.params.id);
-
+router.get('/health', async (ctx) => {
+  // Disable cache
+  ctx.set('Cache-Control', 'no-cache, no-store, must-revalidate');
+  // Check database connection
   try {
-    const post = await prisma.post.update({
-      where: {
-        id,
-      },
-      data: {
-        viewCount: {
-          increment: 1,
-        },
-      },
-    });
-
-    ctx.body = post;
-  } catch {
-    ctx.status = 404;
-    ctx.body = { error: `Post with ID ${id} does not exist in the database` };
+    await prisma.$connect();
+    await prisma.$executeRaw`SELECT 1`;
+    ctx.status = 200;
+    ctx.body = {
+      status: 'OK',
+    };
+  } catch (error) {
+    console.error(`⚠️ Health check failed: ${error}`);
+    ctx.status = 500;
+    ctx.body = {
+      status: 'ERROR',
+      message: error.message,
+    };
   }
 });
 
-router.put('/publish/:id', async (ctx) => {
-  const id = Number(ctx.params.id);
-  const postToUpdate = await prisma.post.findUnique({
+router.get('/members', async (ctx) => {
+  const members = await prisma.member.findMany();
+  ctx.body = members;
+});
+
+router.get('/members/:username', async (ctx) => {
+  const { username } = ctx.params;
+  const member = await prisma.member.findUnique({
     where: {
-      id,
+      username,
     },
   });
-
-  if (!postToUpdate) {
+  if (member) {
+    ctx.body = member;
+  } else {
     ctx.status = 404;
-    ctx.body = { error: `Post with ID ${id} does not exist in the database` };
-    return;
+    ctx.body = {
+      message: `Member ${username} not found`,
+    };
   }
-
-  const updatedPost = await prisma.post.update({
-    where: {
-      id,
-    },
-    data: {
-      published: !postToUpdate.published,
-    },
-  });
-
-  ctx.body = updatedPost;
-});
-
-router.delete('/post/:id', async (ctx) => {
-  const id = Number(ctx.params.id);
-  try {
-    const deletedPost = await prisma.post.delete({
-      where: {
-        id,
-      },
-    });
-
-    ctx.body = deletedPost;
-  } catch {
-    ctx.status = 404;
-    ctx.body = { error: `Post with ID ${id} does not exist in the database` };
-  }
-});
-
-router.get('/users', async (ctx) => {
-  const users = await prisma.user.findMany();
-
-  ctx.body = users;
-});
-
-router.get('/user/:id/drafts', async (ctx) => {
-  const id = Number(ctx.params.id);
-
-  const drafts = await prisma.user
-    .findUnique({
-      where: {
-        id,
-      },
-    })
-    .posts({
-      where: { published: false },
-    });
-
-  ctx.body = drafts;
-});
-
-router.get('/post/:id', async (ctx) => {
-  const id = Number(ctx.params.id);
-  const post = await prisma.post.findUnique({
-    where: {
-      id,
-    },
-  });
-
-  ctx.body = post;
-});
-
-router.get('/feed', async (ctx) => {
-  const {
-    searchString, skip, take, orderBy,
-  } = ctx.query;
-
-  const or = searchString
-    ? {
-      OR: [
-        { title: { contains: searchString } },
-        { content: { contains: searchString } },
-      ],
-    }
-    : {};
-
-  const posts = await prisma.post.findMany({
-    where: {
-      published: true,
-      ...or,
-    },
-    include: { author: true },
-    take: Number(take) || undefined,
-    skip: Number(skip) || undefined,
-    orderBy: {
-      updatedAt: orderBy,
-    },
-  });
-  ctx.body = posts;
 });
 
 app.use(router.routes()).use(router.allowedMethods());
 
-app.listen(3000, () => console.log(`
-🚀 Server ready at: http://localhost:3000
-⭐️ See sample requests: http://pris.ly/e/ts/rest-koa#3-using-the-rest-api`));
+const port = process.env.PORT || 3100;
+
+app.listen(port, () => console.log(`
+🚀 Server ready at: http://localhost:${port}`));
