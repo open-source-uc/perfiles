@@ -32,7 +32,7 @@ router.get('/:id', async (ctx) => {
       message: 'You must be an admin to access this resource',
     };
     return;
-  }
+
 
   const { id } = ctx.params;
   const request = await prisma.request.findUnique({
