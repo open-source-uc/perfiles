@@ -1,5 +1,4 @@
 {
-  "liveServer.settings.root": "/src",
   "files.autoSave": "onFocusChange",
   "editor.codeActionsOnSave": {
     "source.fixAll.eslint": true
@@ -9,5 +8,7 @@
   ],
   "[css]": {
     "editor.defaultFormatter": "vscode.css-language-features"
-  }
+  },
+  "thunder-client.saveToWorkspace": true,
+  "thunder-client.workspaceRelativePath": "backend/",
 }

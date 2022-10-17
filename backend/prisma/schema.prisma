@@ -60,8 +60,8 @@ model Achievement {
 model AchievementsOnMembers {
   id                String      @id @unique @default(cuid())
   obtainedAt        DateTime
-  member            Member      @relation("achieves", fields: [memberUsername], references: [username])
-  achievement       Achievement @relation(fields: [achievementId], references: [id])
+  member            Member      @relation("achieves", fields: [memberUsername], references: [username], onDelete: Cascade)
+  achievement       Achievement @relation(fields: [achievementId], references: [id], onDelete: Cascade)
   // Whether the achievement was manually awarded by an admin
   awardedBy         Member?     @relation("awards", fields: [awardedByUsername], references: [username])
   memberUsername    String
@@ -71,8 +71,8 @@ model AchievementsOnMembers {
 
 model Request {
   id             String        @id @unique @default(cuid())
-  achievement    Achievement   @relation(fields: [achievementId], references: [id])
-  openedBy       Member?       @relation(fields: [memberUsername], references: [username])
+  achievement    Achievement   @relation(fields: [achievementId], references: [id], onDelete: Cascade)
+  openedBy       Member?       @relation(fields: [memberUsername], references: [username], onDelete: Cascade)
   openedAt       DateTime
   state          RequestState?
   description    String?
@@ -82,7 +82,7 @@ model Request {
 
 model ClaimLink {
   id              String           @id @unique @default(cuid())
-  achievement     Achievement      @relation(fields: [achievementId], references: [id])
+  achievement     Achievement      @relation(fields: [achievementId], references: [id], onDelete: Cascade)
   creator         Member?          @relation(fields: [creatorUsername], references: [username])
   createdAt       DateTime
   expiresAt       DateTime?

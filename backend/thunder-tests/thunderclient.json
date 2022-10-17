@@ -1,0 +1,968 @@
+[
+  {
+    "_id": "d904ba60-2514-4fe8-9148-8ac39b037efb",
+    "colId": "b76205bf-d5f4-4ca0-a0ec-670af908a04d",
+    "containerId": "",
+    "name": "Get admin JWT (fernandosmither)",
+    "url": "/auth/debug/token?username=fernandosmither",
+    "method": "GET",
+    "sortNum": 10000,
+    "created": "2022-10-17T00:12:07.421Z",
+    "modified": "2022-10-17T01:31:43.934Z",
+    "headers": [],
+    "params": [
+      {
+        "name": "username",
+        "value": "fernandosmither",
+        "isPath": false
+      }
+    ],
+    "tests": [
+      {
+        "type": "res-code",
+        "custom": "",
+        "action": "equal",
+        "value": "200"
+      },
+      {
+        "type": "res-body",
+        "custom": "",
+        "action": "isjson",
+        "value": "true"
+      },
+      {
+        "type": "set-env-var",
+        "custom": "json.token",
+        "action": "setto",
+        "value": "{{adminToken}}"
+      }
+    ]
+  },
+  {
+    "_id": "f17b5bc0-942c-4bd1-a651-840a02bbda8c",
+    "colId": "b76205bf-d5f4-4ca0-a0ec-670af908a04d",
+    "containerId": "",
+    "name": "Get member JWT (agucova)",
+    "url": "/auth/debug/token?username=agucova",
+    "method": "GET",
+    "sortNum": 20000,
+    "created": "2022-10-17T01:24:18.821Z",
+    "modified": "2022-10-17T01:31:54.324Z",
+    "headers": [],
+    "params": [
+      {
+        "name": "username",
+        "value": "agucova",
+        "isPath": false
+      }
+    ],
+    "tests": [
+      {
+        "type": "res-code",
+        "custom": "",
+        "action": "equal",
+        "value": "200"
+      },
+      {
+        "type": "res-body",
+        "custom": "",
+        "action": "isjson",
+        "value": "true"
+      },
+      {
+        "type": "set-env-var",
+        "custom": "json.token",
+        "action": "setto",
+        "value": "{{memberToken}}"
+      }
+    ]
+  },
+  {
+    "_id": "8b86e28f-a884-4dfc-8f4c-568bf15130e9",
+    "colId": "db570040-1b78-4a43-8d13-ec935018679d",
+    "containerId": "b9e4ca5d-3433-4f19-97bd-2662c765966e",
+    "name": "/",
+    "url": "/",
+    "method": "GET",
+    "sortNum": 10000,
+    "created": "2022-10-17T01:26:08.499Z",
+    "modified": "2022-10-17T01:27:22.102Z",
+    "headers": [],
+    "params": [],
+    "auth": {
+      "type": "none"
+    },
+    "tests": [
+      {
+        "type": "res-code",
+        "custom": "",
+        "action": "equal",
+        "value": "200"
+      },
+      {
+        "type": "res-body",
+        "custom": "",
+        "action": "isjson",
+        "value": "true"
+      },
+      {
+        "type": "json-query",
+        "custom": "json.message",
+        "action": "contains",
+        "value": "Hello World!"
+      }
+    ]
+  },
+  {
+    "_id": "eda9091a-3495-4c27-8ed1-811402d4fb88",
+    "colId": "db570040-1b78-4a43-8d13-ec935018679d",
+    "containerId": "b9e4ca5d-3433-4f19-97bd-2662c765966e",
+    "name": "/health",
+    "url": "/health",
+    "method": "GET",
+    "sortNum": 20000,
+    "created": "2022-10-17T01:27:30.776Z",
+    "modified": "2022-10-17T01:28:06.066Z",
+    "headers": [],
+    "params": [],
+    "auth": {
+      "type": "none"
+    },
+    "tests": [
+      {
+        "type": "res-code",
+        "custom": "",
+        "action": "equal",
+        "value": "200"
+      },
+      {
+        "type": "res-body",
+        "custom": "",
+        "action": "isjson",
+        "value": "true"
+      },
+      {
+        "type": "json-query",
+        "custom": "json.status",
+        "action": "equal",
+        "value": "OK"
+      }
+    ]
+  },
+  {
+    "_id": "a18f3906-8a59-488d-90e9-a7e402eda0d5",
+    "colId": "db570040-1b78-4a43-8d13-ec935018679d",
+    "containerId": "33458773-f9ba-4336-a986-e1245c8cd813",
+    "name": "/public/members",
+    "url": "/public/members",
+    "method": "GET",
+    "sortNum": 30000,
+    "created": "2022-10-17T01:28:17.260Z",
+    "modified": "2022-10-17T01:30:11.775Z",
+    "headers": [],
+    "params": [],
+    "auth": {
+      "type": "none"
+    },
+    "tests": [
+      {
+        "type": "res-code",
+        "custom": "",
+        "action": "equal",
+        "value": "200"
+      },
+      {
+        "type": "res-body",
+        "custom": "",
+        "action": "isjson",
+        "value": "true"
+      },
+      {
+        "type": "json-query",
+        "custom": "json[0].username",
+        "action": "istype",
+        "value": "string"
+      }
+    ]
+  },
+  {
+    "_id": "3736e110-d58e-4edb-ac71-4e568ba6678c",
+    "colId": "db570040-1b78-4a43-8d13-ec935018679d",
+    "containerId": "23faf58c-8fbf-44b0-a327-36dc8212b757",
+    "name": "/members (🔑 admin)",
+    "url": "/members",
+    "method": "GET",
+    "sortNum": 40000,
+    "created": "2022-10-17T01:30:29.374Z",
+    "modified": "2022-10-17T01:34:02.635Z",
+    "headers": [],
+    "params": [],
+    "tests": [
+      {
+        "type": "res-code",
+        "custom": "",
+        "action": "equal",
+        "value": "200"
+      },
+      {
+        "type": "res-body",
+        "custom": "",
+        "action": "isjson",
+        "value": "true"
+      },
+      {
+        "type": "json-query",
+        "custom": "json[0].joinedAt",
+        "action": "istype",
+        "value": "string"
+      }
+    ]
+  },
+  {
+    "_id": "edde1c48-836a-4e67-9473-0c950504c211",
+    "colId": "db570040-1b78-4a43-8d13-ec935018679d",
+    "containerId": "23faf58c-8fbf-44b0-a327-36dc8212b757",
+    "name": "/members (🔑 member)",
+    "url": "/members",
+    "method": "GET",
+    "sortNum": 50000,
+    "created": "2022-10-17T01:32:26.929Z",
+    "modified": "2022-10-17T01:35:50.752Z",
+    "headers": [],
+    "params": [],
+    "auth": {
+      "type": "bearer",
+      "bearer": "{{memberToken}}"
+    },
+    "tests": [
+      {
+        "type": "res-code",
+        "custom": "",
+        "action": "equal",
+        "value": "403"
+      },
+      {
+        "type": "res-body",
+        "custom": "",
+        "action": "isjson",
+        "value": "true"
+      }
+    ]
+  },
+  {
+    "_id": "3ed98ca6-84d1-44c5-a89a-ebbf956dfbd2",
+    "colId": "db570040-1b78-4a43-8d13-ec935018679d",
+    "containerId": "23faf58c-8fbf-44b0-a327-36dc8212b757",
+    "name": "/members (🔒)",
+    "url": "/members",
+    "method": "GET",
+    "sortNum": 50000,
+    "created": "2022-10-17T01:34:44.103Z",
+    "modified": "2022-10-17T01:35:02.246Z",
+    "headers": [],
+    "params": [],
+    "auth": {
+      "type": "none"
+    },
+    "tests": [
+      {
+        "type": "res-code",
+        "custom": "",
+        "action": "equal",
+        "value": "401"
+      },
+      {
+        "type": "res-body",
+        "custom": "",
+        "action": "isjson",
+        "value": "true"
+      }
+    ]
+  },
+  {
+    "_id": "2d9f99a6-05e2-4774-8f8f-e4e039d5bf4d",
+    "colId": "db570040-1b78-4a43-8d13-ec935018679d",
+    "containerId": "f2c41802-a172-4bda-a9e8-787e6b975ce0",
+    "name": "/achievements (🔑 admin)",
+    "url": "/achievements",
+    "method": "GET",
+    "sortNum": 60000,
+    "created": "2022-10-17T01:36:25.488Z",
+    "modified": "2022-10-17T01:49:18.776Z",
+    "headers": [],
+    "params": [],
+    "tests": [
+      {
+        "type": "res-code",
+        "custom": "",
+        "action": "equal",
+        "value": "200"
+      },
+      {
+        "type": "res-body",
+        "custom": "",
+        "action": "isjson",
+        "value": "true"
+      },
+      {
+        "type": "json-query",
+        "custom": "json[0].id",
+        "action": "istype",
+        "value": "string"
+      },
+      {
+        "type": "set-env-var",
+        "custom": "json[2].id",
+        "action": "setto",
+        "value": "{{exampleAchievement}}"
+      }
+    ]
+  },
+  {
+    "_id": "0e896878-1fa5-4a3a-909d-eaff2c04596e",
+    "colId": "db570040-1b78-4a43-8d13-ec935018679d",
+    "containerId": "f2c41802-a172-4bda-a9e8-787e6b975ce0",
+    "name": "/achievements (🔑 member)",
+    "url": "/achievements",
+    "method": "GET",
+    "sortNum": 70000,
+    "created": "2022-10-17T01:36:56.711Z",
+    "modified": "2022-10-17T01:36:56.711Z",
+    "headers": [],
+    "params": [],
+    "tests": [
+      {
+        "type": "res-code",
+        "custom": "",
+        "action": "equal",
+        "value": "200"
+      },
+      {
+        "type": "res-body",
+        "custom": "",
+        "action": "isjson",
+        "value": "true"
+      },
+      {
+        "type": "json-query",
+        "custom": "json[0].id",
+        "action": "istype",
+        "value": "string"
+      }
+    ]
+  },
+  {
+    "_id": "89f1f504-5188-427f-a2ee-1f88164e4696",
+    "colId": "db570040-1b78-4a43-8d13-ec935018679d",
+    "containerId": "f2c41802-a172-4bda-a9e8-787e6b975ce0",
+    "name": "/achievements (🔒)",
+    "url": "/achievements",
+    "method": "GET",
+    "sortNum": 80000,
+    "created": "2022-10-17T01:38:22.775Z",
+    "modified": "2022-10-17T01:38:47.234Z",
+    "headers": [],
+    "params": [],
+    "auth": {
+      "type": "none"
+    },
+    "tests": [
+      {
+        "type": "res-code",
+        "custom": "",
+        "action": "equal",
+        "value": "401"
+      },
+      {
+        "type": "res-body",
+        "custom": "",
+        "action": "isjson",
+        "value": "true"
+      }
+    ]
+  },
+  {
+    "_id": "e32c5b2e-97dd-4bdc-9975-1d5efaa79c2d",
+    "colId": "db570040-1b78-4a43-8d13-ec935018679d",
+    "containerId": "2e526f1c-7eb7-45d9-9163-03c51287dae8",
+    "name": "/requests (🔑 admin)",
+    "url": "/requests",
+    "method": "GET",
+    "sortNum": 70000,
+    "created": "2022-10-17T01:39:11.641Z",
+    "modified": "2022-10-17T01:48:07.221Z",
+    "headers": [],
+    "params": [],
+    "tests": [
+      {
+        "type": "res-code",
+        "custom": "",
+        "action": "equal",
+        "value": "200"
+      },
+      {
+        "type": "res-body",
+        "custom": "",
+        "action": "isjson",
+        "value": "true"
+      },
+      {
+        "type": "json-query",
+        "custom": "json[0].id",
+        "action": "istype",
+        "value": "string"
+      },
+      {
+        "type": "json-query",
+        "custom": "json[0].achievement.id",
+        "action": "istype",
+        "value": "string"
+      },
+      {
+        "type": "set-env-var",
+        "custom": "json[2].id",
+        "action": "setto",
+        "value": "{{exampleRequest}}"
+      }
+    ]
+  },
+  {
+    "_id": "36a14f7b-bb93-4f11-96f7-cb5c39992c01",
+    "colId": "db570040-1b78-4a43-8d13-ec935018679d",
+    "containerId": "2e526f1c-7eb7-45d9-9163-03c51287dae8",
+    "name": "/requests/:id (🔑 admin)",
+    "url": "/requests/{{exampleRequest}}",
+    "method": "GET",
+    "sortNum": 80000,
+    "created": "2022-10-17T01:46:19.798Z",
+    "modified": "2022-10-17T02:37:19.101Z",
+    "headers": [],
+    "params": [],
+    "tests": [
+      {
+        "type": "res-code",
+        "custom": "",
+        "action": "equal",
+        "value": "200"
+      },
+      {
+        "type": "res-body",
+        "custom": "",
+        "action": "isjson",
+        "value": "true"
+      },
+      {
+        "type": "json-query",
+        "custom": "json.id",
+        "action": "istype",
+        "value": "string"
+      },
+      {
+        "type": "json-query",
+        "custom": "json.achievement.id",
+        "action": "istype",
+        "value": "string"
+      }
+    ],
+    "preReq": {
+      "runRequests": [
+        {
+          "reqId": "e32c5b2e-97dd-4bdc-9975-1d5efaa79c2d",
+          "colId": "db570040-1b78-4a43-8d13-ec935018679d",
+          "triggerCondition": "run-var-empty",
+          "triggerValue": "{{exampleRequest}}"
+        }
+      ]
+    }
+  },
+  {
+    "_id": "e0894d44-3022-4b15-8e20-85d216cf46ab",
+    "colId": "db570040-1b78-4a43-8d13-ec935018679d",
+    "containerId": "f2c41802-a172-4bda-a9e8-787e6b975ce0",
+    "name": "/achievements/:id (🔑 admin)",
+    "url": "/achievements/{{exampleAchievement}}",
+    "method": "GET",
+    "sortNum": 90000,
+    "created": "2022-10-17T01:48:32.820Z",
+    "modified": "2022-10-17T01:49:58.528Z",
+    "headers": [],
+    "params": [],
+    "tests": [
+      {
+        "type": "res-code",
+        "custom": "",
+        "action": "equal",
+        "value": "200"
+      },
+      {
+        "type": "res-body",
+        "custom": "",
+        "action": "isjson",
+        "value": "true"
+      },
+      {
+        "type": "json-query",
+        "custom": "json.id",
+        "action": "equal",
+        "value": "{{exampleAchievement}}"
+      }
+    ],
+    "preReq": {
+      "runRequests": [
+        {
+          "reqId": "2d9f99a6-05e2-4774-8f8f-e4e039d5bf4d",
+          "colId": "db570040-1b78-4a43-8d13-ec935018679d",
+          "triggerCondition": "run-var-empty",
+          "triggerValue": "{{exampleAchievement}}"
+        }
+      ]
+    }
+  },
+  {
+    "_id": "9abb76da-e6d7-4f41-9d10-1fbeea87f0fb",
+    "colId": "db570040-1b78-4a43-8d13-ec935018679d",
+    "containerId": "2e526f1c-7eb7-45d9-9163-03c51287dae8",
+    "name": "/requests (🔑 admin)",
+    "url": "/requests",
+    "method": "PUT",
+    "sortNum": 100000,
+    "created": "2022-10-17T01:54:46.734Z",
+    "modified": "2022-10-17T02:35:01.405Z",
+    "headers": [],
+    "params": [],
+    "body": {
+      "type": "json",
+      "raw": "{\n  \"achievementId\": \"{{createdAchievement}}\",\n  \"description\": \"Test request from Thunder!\"\n}",
+      "form": []
+    },
+    "tests": [
+      {
+        "type": "res-code",
+        "custom": "",
+        "action": "equal",
+        "value": "201"
+      },
+      {
+        "type": "res-body",
+        "custom": "",
+        "action": "isjson",
+        "value": "true"
+      },
+      {
+        "type": "set-env-var",
+        "custom": "json.id",
+        "action": "setto",
+        "value": "{{createdRequest}}"
+      }
+    ],
+    "preReq": {
+      "runRequests": [
+        {
+          "reqId": "3c846ded-d758-4a81-abbd-a15cc33aee94",
+          "colId": "db570040-1b78-4a43-8d13-ec935018679d",
+          "triggerCondition": "run-var-empty",
+          "triggerValue": "{{createdAchievement}}"
+        }
+      ]
+    }
+  },
+  {
+    "_id": "e5d377e8-661e-4fb0-991a-4fdfaaf568c6",
+    "colId": "db570040-1b78-4a43-8d13-ec935018679d",
+    "containerId": "f2c41802-a172-4bda-a9e8-787e6b975ce0",
+    "name": "/achievements (🔑 admin)",
+    "url": "/achievements",
+    "method": "PUT",
+    "sortNum": 120000,
+    "created": "2022-10-17T02:05:42.680Z",
+    "modified": "2022-10-17T02:24:18.461Z",
+    "headers": [],
+    "params": [],
+    "body": {
+      "type": "json",
+      "raw": "{\n  \"name\": \"Test achievement from Thunder\",\n  \"description\": \"This is a test achievement\",\n  \"imageURL\": \"assets/badges/example.png\",\n  \"type\": \"BY_REQUEST\",\n  \"level\": \"BRONZE\"\n}",
+      "form": []
+    },
+    "tests": [
+      {
+        "type": "res-code",
+        "custom": "",
+        "action": "<=",
+        "value": "202"
+      },
+      {
+        "type": "res-code",
+        "custom": "",
+        "action": ">=",
+        "value": "200"
+      },
+      {
+        "type": "res-body",
+        "custom": "",
+        "action": "isjson",
+        "value": "true"
+      },
+      {
+        "type": "json-query",
+        "custom": "json.name",
+        "action": "istype",
+        "value": "string"
+      },
+      {
+        "type": "set-env-var",
+        "custom": "json.id",
+        "action": "setto",
+        "value": "{{createdAchievement}}"
+      }
+    ]
+  },
+  {
+    "_id": "6f1e0c9e-6865-4d37-b647-141521456298",
+    "colId": "db570040-1b78-4a43-8d13-ec935018679d",
+    "containerId": "f2c41802-a172-4bda-a9e8-787e6b975ce0",
+    "name": "/achievements (🔑 admin)",
+    "url": "/achievements/{{createdAchievement}}",
+    "method": "DELETE",
+    "sortNum": 130000,
+    "created": "2022-10-17T02:24:04.085Z",
+    "modified": "2022-10-17T02:26:22.227Z",
+    "headers": [],
+    "params": [],
+    "body": {
+      "type": "json",
+      "raw": "{\n  \"name\": \"Test achievement from Thunder\",\n  \"description\": \"This is a test achievement\",\n  \"imageURL\": \"assets/badges/example.png\",\n  \"type\": \"BY_REQUEST\",\n  \"level\": \"BRONZE\"\n}",
+      "form": []
+    },
+    "tests": [
+      {
+        "type": "res-code",
+        "custom": "",
+        "action": "equal",
+        "value": "200"
+      },
+      {
+        "type": "res-body",
+        "custom": "",
+        "action": "isjson",
+        "value": "true"
+      }
+    ],
+    "preReq": {
+      "runRequests": [
+        {
+          "reqId": "e5d377e8-661e-4fb0-991a-4fdfaaf568c6",
+          "colId": "db570040-1b78-4a43-8d13-ec935018679d",
+          "triggerCondition": "run-always",
+          "triggerValue": ""
+        }
+      ]
+    }
+  },
+  {
+    "_id": "3c846ded-d758-4a81-abbd-a15cc33aee94",
+    "colId": "db570040-1b78-4a43-8d13-ec935018679d",
+    "containerId": "f2c41802-a172-4bda-a9e8-787e6b975ce0",
+    "name": "/achievements (🔑 admin, again)",
+    "url": "/achievements",
+    "method": "PUT",
+    "sortNum": 140000,
+    "created": "2022-10-17T02:29:52.828Z",
+    "modified": "2022-10-17T02:29:54.992Z",
+    "headers": [],
+    "params": [],
+    "body": {
+      "type": "json",
+      "raw": "{\n  \"name\": \"Test achievement from Thunder\",\n  \"description\": \"This is a test achievement\",\n  \"imageURL\": \"assets/badges/example.png\",\n  \"type\": \"BY_REQUEST\",\n  \"level\": \"BRONZE\"\n}",
+      "form": []
+    },
+    "tests": [
+      {
+        "type": "res-code",
+        "custom": "",
+        "action": "<=",
+        "value": "202"
+      },
+      {
+        "type": "res-code",
+        "custom": "",
+        "action": ">=",
+        "value": "200"
+      },
+      {
+        "type": "res-body",
+        "custom": "",
+        "action": "isjson",
+        "value": "true"
+      },
+      {
+        "type": "json-query",
+        "custom": "json.name",
+        "action": "istype",
+        "value": "string"
+      },
+      {
+        "type": "set-env-var",
+        "custom": "json.id",
+        "action": "setto",
+        "value": "{{createdAchievement}}"
+      }
+    ]
+  },
+  {
+    "_id": "eae63b3f-f865-4ee8-9bcd-1dd692ee30b3",
+    "colId": "db570040-1b78-4a43-8d13-ec935018679d",
+    "containerId": "2e526f1c-7eb7-45d9-9163-03c51287dae8",
+    "name": "/requests (🔑 admin)",
+    "url": "/requests/{{createdRequest}}",
+    "method": "DELETE",
+    "sortNum": 102500,
+    "created": "2022-10-17T02:33:51.780Z",
+    "modified": "2022-10-17T02:48:47.187Z",
+    "headers": [],
+    "params": [],
+    "tests": [
+      {
+        "type": "res-code",
+        "custom": "",
+        "action": "equal",
+        "value": "204"
+      }
+    ],
+    "preReq": {
+      "runRequests": [
+        {
+          "reqId": "9abb76da-e6d7-4f41-9d10-1fbeea87f0fb",
+          "colId": "db570040-1b78-4a43-8d13-ec935018679d",
+          "triggerCondition": "run-always",
+          "triggerValue": ""
+        }
+      ]
+    }
+  },
+  {
+    "_id": "4b259db9-ba50-4c6b-b101-60bba43c3959",
+    "colId": "db570040-1b78-4a43-8d13-ec935018679d",
+    "containerId": "2e526f1c-7eb7-45d9-9163-03c51287dae8",
+    "name": "/requests (🔑 member)",
+    "url": "/requests",
+    "method": "PUT",
+    "sortNum": 105000,
+    "created": "2022-10-17T02:38:30.994Z",
+    "modified": "2022-10-17T02:39:28.987Z",
+    "headers": [],
+    "params": [],
+    "body": {
+      "type": "json",
+      "raw": "{\n  \"achievementId\": \"{{createdAchievement}}\",\n  \"description\": \"Test 2 request from Thunder!\"\n}",
+      "form": []
+    },
+    "auth": {
+      "type": "bearer",
+      "bearer": "{{memberToken}}"
+    },
+    "tests": [
+      {
+        "type": "res-code",
+        "custom": "",
+        "action": "equal",
+        "value": "201"
+      },
+      {
+        "type": "res-body",
+        "custom": "",
+        "action": "isjson",
+        "value": "true"
+      },
+      {
+        "type": "set-env-var",
+        "custom": "json.id",
+        "action": "setto",
+        "value": "{{createdRequest}}"
+      }
+    ],
+    "preReq": {
+      "runRequests": [
+        {
+          "reqId": "3c846ded-d758-4a81-abbd-a15cc33aee94",
+          "colId": "db570040-1b78-4a43-8d13-ec935018679d",
+          "triggerCondition": "run-var-empty",
+          "triggerValue": "{{createdAchievement}}"
+        }
+      ]
+    }
+  },
+  {
+    "_id": "e758dae4-bedb-4a37-9d87-02bbf763f303",
+    "colId": "db570040-1b78-4a43-8d13-ec935018679d",
+    "containerId": "2e526f1c-7eb7-45d9-9163-03c51287dae8",
+    "name": "/requests (🔑 admin, again)",
+    "url": "/requests/{{createdRequest}}",
+    "method": "DELETE",
+    "sortNum": 115000,
+    "created": "2022-10-17T02:39:06.578Z",
+    "modified": "2022-10-17T02:39:10.670Z",
+    "headers": [],
+    "params": [],
+    "tests": [
+      {
+        "type": "res-code",
+        "custom": "",
+        "action": "equal",
+        "value": "204"
+      }
+    ],
+    "preReq": {
+      "runRequests": [
+        {
+          "reqId": "9abb76da-e6d7-4f41-9d10-1fbeea87f0fb",
+          "colId": "db570040-1b78-4a43-8d13-ec935018679d",
+          "triggerCondition": "run-always",
+          "triggerValue": ""
+        }
+      ]
+    }
+  },
+  {
+    "_id": "81e0171e-f23a-4c29-baf4-150e0a388bc1",
+    "colId": "db570040-1b78-4a43-8d13-ec935018679d",
+    "containerId": "2e526f1c-7eb7-45d9-9163-03c51287dae8",
+    "name": "/requests/:id (🔑 admin, approve)",
+    "url": "/requests/{{createdRequest}}",
+    "method": "PATCH",
+    "sortNum": 110000,
+    "created": "2022-10-17T02:49:39.026Z",
+    "modified": "2022-10-17T02:56:00.075Z",
+    "headers": [],
+    "params": [],
+    "body": {
+      "type": "json",
+      "raw": "{\n  \"approved\": true\n}",
+      "form": []
+    },
+    "tests": [
+      {
+        "type": "res-code",
+        "custom": "",
+        "action": "equal",
+        "value": "200"
+      },
+      {
+        "type": "json-query",
+        "custom": "json.message",
+        "action": "contains",
+        "value": "approved"
+      }
+    ]
+  },
+  {
+    "_id": "4531bc13-8d6e-4d04-af99-bcb6d272498f",
+    "colId": "db570040-1b78-4a43-8d13-ec935018679d",
+    "containerId": "23faf58c-8fbf-44b0-a327-36dc8212b757",
+    "name": "/members/me (🔑 admin)",
+    "url": "/members/me",
+    "method": "GET",
+    "sortNum": 100000,
+    "created": "2022-10-17T03:31:31.972Z",
+    "modified": "2022-10-17T03:32:00.484Z",
+    "headers": [],
+    "params": [],
+    "tests": [
+      {
+        "type": "res-code",
+        "custom": "",
+        "action": "equal",
+        "value": "200"
+      },
+      {
+        "type": "res-body",
+        "custom": "",
+        "action": "isjson",
+        "value": "true"
+      },
+      {
+        "type": "json-query",
+        "custom": "json.name",
+        "action": "istype",
+        "value": "string"
+      }
+    ]
+  },
+  {
+    "_id": "34f33d2b-50f5-441b-a714-c0b43f7dcd95",
+    "colId": "db570040-1b78-4a43-8d13-ec935018679d",
+    "containerId": "23faf58c-8fbf-44b0-a327-36dc8212b757",
+    "name": "/members/me/stats (🔑 admin)",
+    "url": "/members/me/stats",
+    "method": "GET",
+    "sortNum": 170000,
+    "created": "2022-10-17T03:36:12.765Z",
+    "modified": "2022-10-17T03:41:53.090Z",
+    "headers": [],
+    "params": [],
+    "tests": [
+      {
+        "type": "res-code",
+        "custom": "",
+        "action": "equal",
+        "value": "200"
+      },
+      {
+        "type": "res-body",
+        "custom": "",
+        "action": "isjson",
+        "value": "true"
+      },
+      {
+        "type": "json-query",
+        "custom": "json.points",
+        "action": ">=",
+        "value": "0"
+      },
+      {
+        "type": "json-query",
+        "custom": "json.level",
+        "action": ">=",
+        "value": "0"
+      }
+    ]
+  },
+  {
+    "_id": "d504825f-380b-40e9-bc61-825e9bdb0a8c",
+    "colId": "db570040-1b78-4a43-8d13-ec935018679d",
+    "containerId": "23faf58c-8fbf-44b0-a327-36dc8212b757",
+    "name": "/members/:id/stats (🔑 admin)",
+    "url": "/members/agucova/stats",
+    "method": "GET",
+    "sortNum": 180000,
+    "created": "2022-10-17T03:42:06.612Z",
+    "modified": "2022-10-17T03:42:15.998Z",
+    "headers": [],
+    "params": [],
+    "tests": [
+      {
+        "type": "res-code",
+        "custom": "",
+        "action": "equal",
+        "value": "200"
+      },
+      {
+        "type": "res-body",
+        "custom": "",
+        "action": "isjson",
+        "value": "true"
+      },
+      {
+        "type": "json-query",
+        "custom": "json.points",
+        "action": ">=",
+        "value": "0"
+      },
+      {
+        "type": "json-query",
+        "custom": "json.level",
+        "action": ">=",
+        "value": "0"
+      }
+    ]
+  }
+]

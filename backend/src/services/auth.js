@@ -131,5 +131,31 @@ if (development) {
       ctx.redirect(`${frontendUrl}/?token=${token}`);
     }
   });
+
+  router.get('/debug/token', async (ctx) => {
+    // Login as an arbitrary username
+    const { username } = ctx.query;
+    const member = await prisma.member.findUnique({
+      where: {
+        username,
+      },
+    });
+    if (!member) {
+      // Return 404
+      ctx.status = 404;
+      ctx.body = {
+        message: `Member ${username} not found`,
+      };
+    }
+    // Create JWT
+    const token = jwt.sign({
+      username: member.username,
+      role: member.role,
+    }, process.env.JWT_SECRET);
+
+    ctx.body = {
+      token,
+    };
+  });
 }
 export default router;
