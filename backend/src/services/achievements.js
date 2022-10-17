@@ -29,18 +29,27 @@ router.get('/:id', async (ctx) => {
   }
 });
 
-router.put('/:id', async (ctx) => {
-  // TODO: Add authentication
+router.put('/', async (ctx) => {
+  // Check that the user has a CHAIR or SERVICE role
+  if (!(['CHAIR', 'SERVICE'].includes(ctx.state.user.role))) {
+    ctx.status = 403;
+    ctx.body = {
+      message: 'You must be an admin to access this resource',
+    };
+    return;
+  }
+
+  const creatorUsername = ctx.state.user.username;
+
   // Idempotently create or update achievement
-  const { id } = ctx.params;
   const {
-    name, description, imageURL, type, level, creatorUsername,
+    name, description, imageURL, type, level,
   } = ctx.request.body;
-    // Optional fields (expiresAt, pointsOverride)
+  // Optional fields (expiresAt, pointsOverride)
   const { expiresAt, pointsOverride } = ctx.request.body;
 
   // Validate input
-  if (!name || !description || !imageURL || !type || !level || !creatorUsername) {
+  if (!name || !description || !imageURL || !type || !level) {
     ctx.status = 400;
     ctx.body = {
       message: 'Missing required fields',
@@ -48,38 +57,106 @@ router.put('/:id', async (ctx) => {
     return;
   }
   try {
-    const achievement = await prisma.achievement.upsert({
+    // Check if achievement already exists
+    const existingAchievement = await prisma.achievement.findUnique({
       where: {
-        id: Number(id),
-      },
-      update: {
         name,
-        description,
-        imageURL,
-        type,
-        level,
-        creatorUsername,
-        expiresAt,
-        pointsOverride,
-      },
-      create: {
-        id: Number(id),
-        name,
-        description,
-        imageURL,
-        type,
-        level,
-        creatorUsername,
-        expiresAt,
-        pointsOverride,
       },
     });
-    ctx.body = achievement;
+
+    if (existingAchievement) {
+      // Update existing achievement
+      const updatedAchievement = await prisma.achievement.update({
+        where: {
+          name,
+        },
+        data: {
+          description,
+          imageURL,
+          type,
+          expiresAt,
+          pointsOverride,
+          creator: {
+            connect: {
+              username: creatorUsername,
+            },
+          },
+          level: {
+            connect: {
+              name: level,
+            },
+          },
+          createdAt: new Date(),
+        },
+      });
+      ctx.body = updatedAchievement;
+      ctx.status = 200;
+    } else {
+      // Create new achievement
+      const newAchievement = await prisma.achievement.create({
+        data: {
+          name,
+          description,
+          imageURL,
+          type,
+          expiresAt,
+          pointsOverride,
+          creator: {
+            connect: {
+              username: creatorUsername,
+            },
+          },
+          level: {
+            connect: {
+              name: level,
+            },
+          },
+          createdAt: new Date(),
+        },
+      });
+      ctx.body = newAchievement;
+      ctx.status = 201;
+    }
   } catch (error) {
     console.error(`⚠️ Error creating/updating achievement: ${error}`);
     ctx.status = 500;
     ctx.body = {
       message: error.message,
+    };
+  }
+});
+
+router.delete('/:id', async (ctx) => {
+  // Check that the user has a CHAIR or SERVICE role
+  if (!(['CHAIR', 'SERVICE'].includes(ctx.state.user.role))) {
+    ctx.status = 403;
+    ctx.body = {
+      message: 'You must be an admin to access this resource',
+    };
+    return;
+  }
+
+  const { id } = ctx.params;
+
+  // Check if achievement exists
+  const existingAchievement = await prisma.achievement.findUnique({
+    where: {
+      id,
+    },
+  });
+
+  if (existingAchievement) {
+    const deletedAchievement = await prisma.achievement.delete({
+      where: {
+        id,
+      },
+    });
+    ctx.body = deletedAchievement;
+    ctx.status = 200;
+  } else {
+    ctx.status = 404;
+    ctx.body = {
+      message: `Achievement ${id} not found`,
     };
   }
 });

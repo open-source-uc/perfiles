@@ -13,6 +13,7 @@ import publicRouter from './services/public.js';
 import authRouter from './services/auth.js';
 import achievementsRouter from './services/achievements.js';
 import membersRouter from './services/members.js';
+import requestsRouter from './services/requests.js';
 
 dotenv.config();
 
@@ -100,6 +101,8 @@ app.use(jwt({ secret: process.env.JWT_SECRET }));
 app.use(achievementsRouter.routes()).use(achievementsRouter.allowedMethods());
 // Members
 app.use(membersRouter.routes()).use(membersRouter.allowedMethods());
+// Requests
+app.use(requestsRouter.routes()).use(requestsRouter.allowedMethods());
 
 const port = process.env.PORT || 3100;
 

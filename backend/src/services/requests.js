@@ -18,7 +18,53 @@ router.get('/', async (ctx) => {
   const requests = await prisma.request.findMany({
     include: {
       achievement: true,
-      member: true,
+      openedBy: true,
+    },
+  });
+  ctx.body = requests;
+});
+
+router.get('/open', async (ctx) => {
+  // Check that the user has a CHAIR or SERVICE role
+  if (!(['CHAIR', 'SERVICE'].includes(ctx.state.user.role))) {
+    ctx.status = 403;
+    ctx.body = {
+      message: 'You must be an admin to access this resource',
+    };
+    return;
+  }
+
+  const requests = await prisma.request.findMany({
+    where: {
+      status: 'OPEN',
+    },
+    include: {
+      achievement: true,
+      openedBy: true,
+    },
+  });
+  ctx.body = requests;
+});
+
+router.get('/closed', async (ctx) => {
+  // Check that the user has a CHAIR or SERVICE role
+  if (!(['CHAIR', 'SERVICE'].includes(ctx.state.user.role))) {
+    ctx.status = 403;
+    ctx.body = {
+      message: 'You must be an admin to access this resource',
+    };
+    return;
+  }
+
+  const requests = await prisma.request.findMany({
+    where: {
+      status: {
+        in: ['REJECTED', 'APPROVED'],
+      },
+    },
+    include: {
+      achievement: true,
+      openedBy: true,
     },
   });
   ctx.body = requests;
@@ -32,7 +78,7 @@ router.get('/:id', async (ctx) => {
       message: 'You must be an admin to access this resource',
     };
     return;
-
+  }
 
   const { id } = ctx.params;
   const request = await prisma.request.findUnique({
@@ -41,7 +87,7 @@ router.get('/:id', async (ctx) => {
     },
     include: {
       achievement: true,
-      member: true,
+      openedBy: true,
     },
   });
   if (request) {
@@ -80,7 +126,7 @@ router.put('/', async (ctx) => {
     return;
   }
   // Check that the member does not already have the achievement
-  const achievementOnMember = await prisma.achievementsOnMembers.findUnique({
+  const achievementOnMember = await prisma.achievementsOnMembers.findFirst({
     where: {
       memberUsername,
       achievementId,
@@ -119,6 +165,37 @@ router.put('/', async (ctx) => {
   });
   ctx.status = 201;
   ctx.body = newRequest;
+});
+
+router.delete('/:id', async (ctx) => {
+  // Check that the user has a CHAIR or SERVICE role
+  if (!(['CHAIR', 'SERVICE'].includes(ctx.state.user.role))) {
+    ctx.status = 403;
+    ctx.body = {
+      message: 'You must be an admin to access this resource',
+    };
+    return;
+  }
+
+  const { id } = ctx.params;
+  const request = await prisma.request.findUnique({
+    where: {
+      id,
+    },
+  });
+  if (request) {
+    await prisma.request.delete({
+      where: {
+        id,
+      },
+    });
+    ctx.status = 204;
+  } else {
+    ctx.status = 404;
+    ctx.body = {
+      message: `Request ${id} not found`,
+    };
+  }
 });
 
 // Approve or reject a request, giving the user the achievement if approved
