@@ -126,11 +126,11 @@ Ref: Achievement.creatorUsername > Member.username
 
 Ref: Achievement.levelName > AchievementLevel.name
 
-Ref: AchievementsOnMembers.memberUsername > Member.username
+Ref: AchievementsOnMembers.memberUsername > Member.username [delete: Cascade]
 
-Ref: AchievementsOnMembers.achievementId > Achievement.id
+Ref: AchievementsOnMembers.achievementId > Achievement.id [delete: Cascade]
 
-Ref: AchievementsOnMembers.awardedByUsername > Member.username
+Ref: AchievementsOnMembers.awardedByUsername > Member.username [delete: Cascade]
 
 Ref: Request.achievementId > Achievement.id [delete: Cascade]
 

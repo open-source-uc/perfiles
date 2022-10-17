@@ -237,11 +237,25 @@ router.patch('/:id', async (ctx) => {
     },
     include: {
       achievement: true,
-      member: true,
+      openedBy: true,
     },
   });
 
-  //
+  // Check that the request exists and is open
+  if (!request) {
+    ctx.status = 404;
+    ctx.body = {
+      message: `Request ${id} not found`,
+    };
+    return;
+  }
+  if (request.state !== 'OPEN') {
+    ctx.status = 400;
+    ctx.body = {
+      message: `Request ${id} is not open`,
+    };
+    return;
+  }
 
   if (request) {
     // If the request is approved, give the user the achievement
@@ -249,8 +263,8 @@ router.patch('/:id', async (ctx) => {
       await prisma.achievementsOnMembers.create({
         data: {
           achievementId: request.achievement.id,
-          memberUsername: request.member.username,
-          awardedBy: ctx.state.user.username,
+          memberUsername: request.openedBy.username,
+          awardedByUsername: ctx.state.user.username,
           obtainedAt: new Date(),
         },
       });
@@ -261,7 +275,7 @@ router.patch('/:id', async (ctx) => {
         id,
       },
       data: {
-        status: approved ? 'APPROVED' : 'REJECTED',
+        state: approved ? 'APPROVED' : 'REJECTED',
       },
     });
     ctx.body = {

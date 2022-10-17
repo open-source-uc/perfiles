@@ -821,5 +821,37 @@
         }
       ]
     }
+  },
+  {
+    "_id": "81e0171e-f23a-4c29-baf4-150e0a388bc1",
+    "colId": "db570040-1b78-4a43-8d13-ec935018679d",
+    "containerId": "2e526f1c-7eb7-45d9-9163-03c51287dae8",
+    "name": "/requests/:id (🔑 admin, approve)",
+    "url": "/requests/{{createdRequest}}",
+    "method": "PATCH",
+    "sortNum": 110000,
+    "created": "2022-10-17T02:49:39.026Z",
+    "modified": "2022-10-17T02:56:00.075Z",
+    "headers": [],
+    "params": [],
+    "body": {
+      "type": "json",
+      "raw": "{\n  \"approved\": true\n}",
+      "form": []
+    },
+    "tests": [
+      {
+        "type": "res-code",
+        "custom": "",
+        "action": "equal",
+        "value": "200"
+      },
+      {
+        "type": "json-query",
+        "custom": "json.message",
+        "action": "contains",
+        "value": "approved"
+      }
+    ]
   }
 ]

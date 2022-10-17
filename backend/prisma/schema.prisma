@@ -60,8 +60,8 @@ model Achievement {
 model AchievementsOnMembers {
   id                String      @id @unique @default(cuid())
   obtainedAt        DateTime
-  member            Member      @relation("achieves", fields: [memberUsername], references: [username])
-  achievement       Achievement @relation(fields: [achievementId], references: [id])
+  member            Member      @relation("achieves", fields: [memberUsername], references: [username], onDelete: Cascade)
+  achievement       Achievement @relation(fields: [achievementId], references: [id], onDelete: Cascade)
   // Whether the achievement was manually awarded by an admin
   awardedBy         Member?     @relation("awards", fields: [awardedByUsername], references: [username])
   memberUsername    String
