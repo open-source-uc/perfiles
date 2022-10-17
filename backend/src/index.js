@@ -14,6 +14,7 @@ import authRouter from './services/auth.js';
 import achievementsRouter from './services/achievements.js';
 import membersRouter from './services/members.js';
 import requestsRouter from './services/requests.js';
+import applicantsRouter from './services/applicants.js';
 
 dotenv.config();
 
@@ -106,6 +107,8 @@ app.use(achievementsRouter.routes()).use(achievementsRouter.allowedMethods());
 app.use(membersRouter.routes()).use(membersRouter.allowedMethods());
 // Requests
 app.use(requestsRouter.routes()).use(requestsRouter.allowedMethods());
+// Applicants
+app.use(applicantsRouter.routes()).use(applicantsRouter.allowedMethods());
 
 const port = process.env.PORT || 3100;
 
