@@ -2,21 +2,25 @@
     {
         "openedBy": "agucova",
         "state": "OPEN",
-        "description": "I really want this medal."
+        "description": "Yapo denme admin",
+        "achievement": "Soy admin"
     },
     {
         "openedBy": "fernandosmither",
         "state": "APPROVED",
-        "description": "I really want this medal."
+        "description": "Actualmente soy coord!",
+        "achievement": "Soy admin"
     },
     {
         "openedBy": "diegocostares",
         "state": "REJECTED",
-        "description": "I really want this medal."
+        "description": "👀",
+        "achievement": "Ayudante"
     },
     {
-        "openedBy": "Max Militzer",
+        "openedBy": "Dyotson",
         "state": "OPEN",
-        "description": "I really want this medal."
+        "description": "Como coord general definitivamente traje más de 3 personas.",
+        "achievement": "Estafa Piramidal"
     }
 ]
