@@ -38,6 +38,7 @@ Table Achievement {
   imageURL String [not null]
   type AchievementType [not null]
   level AchievementLevel [not null]
+  levelName String [not null]
   pointsOverride Int
   members AchievementsOnMembers [not null]
   requests Request [not null]
@@ -88,6 +89,12 @@ Table ClaimLinkClaim {
   claimLinkId String [not null]
 }
 
+Table AchievementLevel {
+  name String [pk, unique]
+  points Int [not null]
+  Achievement Achievement [not null]
+}
+
 Enum Role {
   SERVICE
   CHAIR
@@ -107,13 +114,6 @@ Enum AchievementType {
   AUTOMATIC
 }
 
-Enum AchievementLevel {
-  BRONZE
-  SILVER
-  GOLD
-  PLATINUM
-}
-
 Enum RequestState {
   OPEN
   APPROVED
@@ -123,6 +123,8 @@ Enum RequestState {
 Ref: Profile.memberUsername - Member.username
 
 Ref: Achievement.creatorUsername > Member.username
+
+Ref: Achievement.levelName > AchievementLevel.name
 
 Ref: AchievementsOnMembers.memberUsername > Member.username
 

@@ -1,6 +1,18 @@
-{
-    "BRONZE": 25,
-    "SILVER": 50,
-    "GOLD": 100,
-    "PLATINUM": 150
-}
+[
+    {
+        "name": "BRONZE",
+        "points": 25
+    },
+    {
+        "name": "SILVER",
+        "points": 50
+    },
+    {
+        "name": "GOLD",
+        "points": 100
+    },
+    {
+        "name": "PLATINUM",
+        "points": 150
+    }
+]
