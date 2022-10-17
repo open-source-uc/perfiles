@@ -2,6 +2,8 @@ import Router from '@koa/router';
 
 import { PrismaClient } from '@prisma/client';
 
+import getStats from '../utils/stats.js';
+
 const router = new Router({ prefix: '/members' });
 const prisma = new PrismaClient();
 
@@ -128,6 +130,27 @@ router.get('/:username/requests', async (ctx) => {
       message: `Member ${username} not found`,
     };
   }
+});
+
+router.get('/:username/stats', async (ctx) => {
+  // Check that the user has a CHAIR or SERVICE role
+  if (!(['CHAIR', 'SERVICE'].includes(ctx.state.user.role))) {
+    ctx.status = 403;
+    ctx.body = {
+      message: 'You must be an admin to access this resource',
+    };
+    return;
+  }
+
+  // Get user's achievements
+  let { username } = ctx.params;
+
+  // TODO: Make public?
+  if (username === 'me') {
+    username = ctx.state.user.username;
+  }
+
+  ctx.body = await getStats(username);
 });
 
 export default router;
