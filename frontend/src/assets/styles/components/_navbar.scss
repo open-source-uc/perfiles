@@ -102,3 +102,29 @@
     margin: 0px 15px;
     max-width: 12rem;
 }
+
+.switch-dark {
+    width: 4.5rem;
+    height: 2.5rem;
+    background-color: var(--black--1);
+    display: flex;
+    align-content: center;
+    justify-content: flex-start;
+    border-radius: 50px;
+    padding: 4px;
+    cursor: pointer;
+}
+
+.switch-dark[data-isOn="true"] {
+    justify-content: flex-end;
+    background: var(--main--nabyblue);
+}
+
+.handle-dark {
+    width: 2rem;
+    height: 2rem;
+    display: block;
+    box-shadow: var(--box-shadow2);
+    background-color: var(--white--3);
+    border-radius: 40px;
+}
