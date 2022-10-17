@@ -46,7 +46,10 @@ app.use(json({
 }));
 
 // Body parsing
-app.use(koaBody());
+app.use(koaBody(
+  // Enable multipart
+  { multipart: true, formidable: { multiples: false } },
+));
 
 router.get('/', async (ctx) => {
   ctx.body = { message: 'Hello World! 👀' };

@@ -964,5 +964,49 @@
         "value": "0"
       }
     ]
+  },
+  {
+    "_id": "7362ff99-b5f9-4f7e-b94e-2eccba5b4dc5",
+    "colId": "db570040-1b78-4a43-8d13-ec935018679d",
+    "containerId": "23faf58c-8fbf-44b0-a327-36dc8212b757",
+    "name": "/members/import (🔑 admin)",
+    "url": "/members/import",
+    "method": "PUT",
+    "sortNum": 190000,
+    "created": "2022-10-17T04:10:09.397Z",
+    "modified": "2022-10-17T04:47:12.987Z",
+    "headers": [],
+    "params": [],
+    "body": {
+      "type": "formdata",
+      "raw": "",
+      "form": [],
+      "files": [
+        {
+          "name": "file",
+          "value": "../data/test_import.csv"
+        }
+      ]
+    },
+    "tests": [
+      {
+        "type": "res-code",
+        "custom": "",
+        "action": "equal",
+        "value": "201"
+      },
+      {
+        "type": "res-body",
+        "custom": "",
+        "action": "isjson",
+        "value": "true"
+      },
+      {
+        "type": "json-query",
+        "custom": "json[0].username",
+        "action": "equal",
+        "value": "test1"
+      }
+    ]
   }
 ]

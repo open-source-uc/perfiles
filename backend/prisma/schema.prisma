@@ -122,7 +122,7 @@ enum Role {
   // The user is no longer a student, but remains active
   ALUMNI
   // The user is on the onboarding phase
-  APLICANT
+  APPLICANT
   // The user is no longer a member due to inactivity
   INACTIVE
   // The user has been suspended for some reason
