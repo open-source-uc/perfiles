@@ -1,6 +1,8 @@
 import * as React from 'react';
+import UserContext from '../../contexts/userContext';
 
 export default function IndexAdmin() {
+  const user = React.useContext(UserContext);
   return (
     <div className="admin__main">
       {/* <!-- adminindexbox1--> */}
@@ -9,7 +11,13 @@ export default function IndexAdmin() {
           <a href="/admin/index">Admin</a>
         </li>
       </ol>
-      <p className="admin__welcome">Bienvenida, Bárbara 👋</p>
+      <p className="admin__welcome">
+        Bienvenido/a,
+        {' '}
+        {user?.profile?.name}
+        {' '}
+        👋
+      </p>
       <h2>Actividad reciente</h2>
       <table className="tableadmin">
         <tbody>

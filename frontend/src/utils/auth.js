@@ -33,7 +33,20 @@ function storeTokenIfGiven() {
   return false;
 }
 
-async function getUserInfo() {
+async function getPublicUserInfo(username) {
+  const response = await axios.get(`/api/public/members/${username}`);
+  return response.data;
+}
+
+/*
+* Get the info from the current user
+* @deprecated since version 0.1.0
+* Please use the UserContext instead
+*/
+async function getCurrentUserInfo() {
+  // eslint-disable-next-line no-console
+  console.warn('getCurrentUserInfo is deprecated. Please use the UserContext instead');
+
   if (!isLoggedIn()) {
     return null;
   }
@@ -42,8 +55,8 @@ async function getUserInfo() {
   return response.data;
 }
 
-function isAdmin() {
-  return getUserInfo().then((user) => user.role === 'CHAIR' || user.role === 'SERVICE');
+function isAdmin(user) {
+  return user.role === 'CHAIR' || user.role === 'SERVICE';
 }
 
 export {
@@ -54,5 +67,6 @@ export {
   isAdmin,
   getAuthHeader,
   storeTokenIfGiven,
-  getUserInfo,
+  getCurrentUserInfo as getUserInfo,
+  getPublicUserInfo,
 };

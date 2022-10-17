@@ -1,15 +1,37 @@
-import React from 'react';
+import React, { useEffect } from 'react';
+
+import { useParams } from 'react-router-dom';
+import { getPublicUserInfo } from '../utils/auth';
 
 export default function Perfil() {
+  const [user, setUser] = React.useState(null);
+  const { username } = useParams();
+
+  useEffect(() => {
+    getPublicUserInfo(username)
+      .then(setUser);
+  }, [username]);
+
+  const formattedJoinedAt = new Date(user?.joinedAt).toLocaleDateString('es-CL');
+
   return (
     <section className="personal-profile">
       <div className="profile-header">
         <div className="profile-picture">
-          <img src="https://avatars.githubusercontent.com/barbaraim?s=120" alt="barbaraim" />
+          <img src={user?.profile?.avatarURL} alt="Foto de perfil" />
         </div>
         <div className="profile-info">
-          <h1>Bárbara Irarrázaval</h1>
-          <p>Entró en 2022. Nivel 17</p>
+          <h1>{user?.profile?.name}</h1>
+          <p>
+            Entró el
+            {' '}
+
+            <date dateTime={user?.joinedAt}>{formattedJoinedAt}</date>
+            . Nivel
+            {' '}
+            {user?.stats?.level}
+            .
+          </p>
         </div>
       </div>
       <h1>Logros</h1>
