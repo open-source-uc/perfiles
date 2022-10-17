@@ -1,13 +1,14 @@
 import * as React from 'react';
 import { Link } from 'react-router-dom';
 import { isLoggedIn } from '../../utils/auth';
+import ProfileNav from './ProfileNav';
 
 export default function Navbar() {
   let button;
   if (!isLoggedIn()) {
     button = <a href="/api/auth/login">👩‍💻 Iniciar sesión</a>;
   } else {
-    button = <a href="/?logout=yes">👩‍💻 Cerrar sesión</a>;
+    button = <ProfileNav />;
   }
   return (
     <nav className="nav-main">

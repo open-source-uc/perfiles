@@ -42,11 +42,16 @@ async function getUserInfo() {
   return response.data;
 }
 
+function isAdmin() {
+  return getUserInfo().then((user) => user.role === 'CHAIR' || user.role === 'SERVICE');
+}
+
 export {
   storeToken,
   getToken,
   removeToken,
   isLoggedIn,
+  isAdmin,
   getAuthHeader,
   storeTokenIfGiven,
   getUserInfo,
