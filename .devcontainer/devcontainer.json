@@ -19,7 +19,8 @@
 				"GitHub.copilot",
 				"GitHub.vscode-pull-request-github",
 				"CS50.vscode-presentation-mode",
-				"eamodio.gitlens"
+				"eamodio.gitlens",
+				"rangav.vscode-thunder-client"
 			]
 		}
 	},

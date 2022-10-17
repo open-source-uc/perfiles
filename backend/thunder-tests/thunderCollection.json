@@ -1,0 +1,83 @@
+[
+  {
+    "_id": "db570040-1b78-4a43-8d13-ec935018679d",
+    "colName": "Tests ✨",
+    "created": "2022-10-17T00:08:08.557Z",
+    "sortNum": 10000,
+    "folders": [
+      {
+        "_id": "33458773-f9ba-4336-a986-e1245c8cd813",
+        "name": "Public",
+        "containerId": "",
+        "created": "2022-10-17T00:08:12.844Z",
+        "sortNum": 15000
+      },
+      {
+        "_id": "23faf58c-8fbf-44b0-a327-36dc8212b757",
+        "name": "Members",
+        "containerId": "",
+        "created": "2022-10-17T00:08:30.964Z",
+        "sortNum": 20000
+      },
+      {
+        "_id": "f2c41802-a172-4bda-a9e8-787e6b975ce0",
+        "name": "Achievements",
+        "containerId": "",
+        "created": "2022-10-17T00:08:34.832Z",
+        "sortNum": 30000
+      },
+      {
+        "_id": "b9e4ca5d-3433-4f19-97bd-2662c765966e",
+        "name": "Basic",
+        "containerId": "",
+        "created": "2022-10-17T00:08:44.020Z",
+        "sortNum": 10000
+      },
+      {
+        "_id": "2e526f1c-7eb7-45d9-9163-03c51287dae8",
+        "name": "Requests",
+        "containerId": "",
+        "created": "2022-10-17T00:09:03.558Z",
+        "sortNum": 50000
+      },
+      {
+        "_id": "9c05ce61-468a-4189-8681-e9246a0c6fea",
+        "name": "Tokens",
+        "containerId": "",
+        "created": "2022-10-17T00:25:23.082Z",
+        "sortNum": 70000
+      }
+    ],
+    "settings": {
+      "headers": [],
+      "tests": [],
+      "options": {
+        "baseUrl": "http://127.0.0.1:3100"
+      },
+      "preReq": {
+        "runRequests": [
+          {
+            "reqId": "d904ba60-2514-4fe8-9148-8ac39b037efb",
+            "colId": "b76205bf-d5f4-4ca0-a0ec-670af908a04d",
+            "triggerCondition": "run-var-empty",
+            "triggerValue": "{{jwtToken}}"
+          }
+        ]
+      }
+    }
+  },
+  {
+    "_id": "b76205bf-d5f4-4ca0-a0ec-670af908a04d",
+    "colName": "Tokens 🔐",
+    "created": "2022-10-17T00:25:33.963Z",
+    "sortNum": 5000,
+    "folders": [],
+    "settings": {
+      "headers": [],
+      "tests": [],
+      "options": {
+        "baseUrl": "http://127.0.0.1:3100"
+      }
+    }
+  }
+]

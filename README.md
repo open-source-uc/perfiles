@@ -40,16 +40,16 @@ Hay que crear un archivo `.env` en la raíz del proyecto, en base al `.env.templ
 ### Migraciones
 En caso de querer generar migraciones despues de un cambio de schema o de pullear nuevas migraciones, es necesario correr: `npx prisma migrate dev`
 
+### Para el Front-end
+
+- Ejecutar `cd frontend`
+- Ejecutar `npm install`
+
 ### Autenticación
 Si es que la variable `NODE_ENV` está definida como `development`, se puede acceder a las rutas de debugging de autenticación, que permiten asumir el rol de cualquier usuario, con tal de probar las distintas rutas. Por ejemplo:
 
 - Para acceder como Fernando (coordinador): http://localhost:3000/api/auth/debug/login?username=fernandosmither
 - Para acceder como Agustín (miembro): http://localhost:3000/api/auth/debug/login?username=agucova
-
-### Para el Front-end
-
-- Ejecutar `cd frontend`
-- Ejecutar `npm install`
 
 ## Supuestos (Entrega 1)
 

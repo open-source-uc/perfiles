@@ -73,7 +73,7 @@ router.get('/health', async (ctx) => {
 });
 app.use(router.routes()).use(router.allowedMethods());
 
-// Login
+// Authentication
 app.use(authRouter.routes()).use(authRouter.allowedMethods());
 
 // Public routes

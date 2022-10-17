@@ -1,0 +1,41 @@
+[
+  {
+    "_id": "d904ba60-2514-4fe8-9148-8ac39b037efb",
+    "colId": "b76205bf-d5f4-4ca0-a0ec-670af908a04d",
+    "containerId": "",
+    "name": "Get admin JWT",
+    "url": "/auth/debug/token?username=fernandosmither",
+    "method": "GET",
+    "sortNum": 10000,
+    "created": "2022-10-17T00:12:07.421Z",
+    "modified": "2022-10-17T00:28:19.477Z",
+    "headers": [],
+    "params": [
+      {
+        "name": "username",
+        "value": "fernandosmither",
+        "isPath": false
+      }
+    ],
+    "tests": [
+      {
+        "type": "res-code",
+        "custom": "",
+        "action": "equal",
+        "value": "200"
+      },
+      {
+        "type": "res-body",
+        "custom": "",
+        "action": "isjson",
+        "value": "true"
+      },
+      {
+        "type": "set-env-var",
+        "custom": "json.token",
+        "action": "setto",
+        "value": "{{jwtToken}}"
+      }
+    ]
+  }
+]
