@@ -1084,5 +1084,71 @@
         "value": "MEMBER"
       }
     ]
+  },
+  {
+    "_id": "f0b19b2f-31ec-4737-ae85-b09684436e93",
+    "colId": "db570040-1b78-4a43-8d13-ec935018679d",
+    "containerId": "fe8c7417-33f4-4b50-949c-023c50301f0e",
+    "name": "/applicants  (🔑 admin)",
+    "url": "/applicants",
+    "method": "GET",
+    "sortNum": 210000,
+    "created": "2022-10-17T05:22:07.819Z",
+    "modified": "2022-10-17T05:33:53.217Z",
+    "headers": [],
+    "params": [],
+    "tests": [
+      {
+        "type": "res-code",
+        "custom": "",
+        "action": "equal",
+        "value": "200"
+      },
+      {
+        "type": "res-body",
+        "custom": "",
+        "action": "isjson",
+        "value": "true"
+      },
+      {
+        "type": "json-query",
+        "custom": "json[0].username",
+        "action": "istype",
+        "value": "string"
+      }
+    ]
+  },
+  {
+    "_id": "a49ccbf8-0ba5-499c-9b23-3671fed4f936",
+    "colId": "db570040-1b78-4a43-8d13-ec935018679d",
+    "containerId": "fe8c7417-33f4-4b50-949c-023c50301f0e",
+    "name": "/applicants/report  (🔑 admin)",
+    "url": "/applicants/report",
+    "method": "GET",
+    "sortNum": 220000,
+    "created": "2022-10-17T05:28:04.938Z",
+    "modified": "2022-10-17T05:34:43.032Z",
+    "headers": [],
+    "params": [],
+    "tests": [
+      {
+        "type": "res-code",
+        "custom": "",
+        "action": "equal",
+        "value": "200"
+      },
+      {
+        "type": "Content-Type",
+        "custom": "",
+        "action": "equal",
+        "value": "text/csv"
+      },
+      {
+        "type": "res-body",
+        "custom": "",
+        "action": "contains",
+        "value": "points,level"
+      }
+    ]
   }
 ]

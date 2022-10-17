@@ -39,6 +39,13 @@
         "containerId": "",
         "created": "2022-10-17T00:09:03.558Z",
         "sortNum": 50000
+      },
+      {
+        "_id": "fe8c7417-33f4-4b50-949c-023c50301f0e",
+        "name": "Applicants",
+        "containerId": "",
+        "created": "2022-10-17T05:22:02.599Z",
+        "sortNum": 60000
       }
     ],
     "settings": {
