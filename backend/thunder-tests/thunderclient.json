@@ -863,7 +863,7 @@
     "method": "GET",
     "sortNum": 100000,
     "created": "2022-10-17T03:31:31.972Z",
-    "modified": "2022-10-17T03:32:00.484Z",
+    "modified": "2022-10-17T05:13:19.066Z",
     "headers": [],
     "params": [],
     "tests": [
@@ -881,7 +881,7 @@
       },
       {
         "type": "json-query",
-        "custom": "json.name",
+        "custom": "json.profile.name",
         "action": "istype",
         "value": "string"
       }
@@ -1006,6 +1006,82 @@
         "custom": "json[0].username",
         "action": "equal",
         "value": "test1"
+      }
+    ]
+  },
+  {
+    "_id": "bc65e540-3010-4837-b159-6c3de638269e",
+    "colId": "db570040-1b78-4a43-8d13-ec935018679d",
+    "containerId": "23faf58c-8fbf-44b0-a327-36dc8212b757",
+    "name": "/members/:id (🔑 admin)",
+    "url": "/members/agucova",
+    "method": "PATCH",
+    "sortNum": 200000,
+    "created": "2022-10-17T05:13:46.804Z",
+    "modified": "2022-10-17T05:16:40.464Z",
+    "headers": [],
+    "params": [],
+    "body": {
+      "type": "json",
+      "raw": "{\n  \"role\": \"CHAIR\"\n}",
+      "form": []
+    },
+    "tests": [
+      {
+        "type": "res-code",
+        "custom": "",
+        "action": "equal",
+        "value": "200"
+      },
+      {
+        "type": "res-body",
+        "custom": "",
+        "action": "isjson",
+        "value": "true"
+      },
+      {
+        "type": "json-query",
+        "custom": "json.role",
+        "action": "equal",
+        "value": "CHAIR"
+      }
+    ]
+  },
+  {
+    "_id": "68b17fed-b887-48e1-89de-8a7cfc981e7d",
+    "colId": "db570040-1b78-4a43-8d13-ec935018679d",
+    "containerId": "23faf58c-8fbf-44b0-a327-36dc8212b757",
+    "name": "/members/:id (🔑 admin, again)",
+    "url": "/members/agucova",
+    "method": "PATCH",
+    "sortNum": 210000,
+    "created": "2022-10-17T05:16:04.486Z",
+    "modified": "2022-10-17T05:17:12.213Z",
+    "headers": [],
+    "params": [],
+    "body": {
+      "type": "json",
+      "raw": "{\n  \"role\": \"MEMBER\"\n}",
+      "form": []
+    },
+    "tests": [
+      {
+        "type": "res-code",
+        "custom": "",
+        "action": "equal",
+        "value": "200"
+      },
+      {
+        "type": "res-body",
+        "custom": "",
+        "action": "isjson",
+        "value": "true"
+      },
+      {
+        "type": "json-query",
+        "custom": "json.role",
+        "action": "equal",
+        "value": "MEMBER"
       }
     ]
   }

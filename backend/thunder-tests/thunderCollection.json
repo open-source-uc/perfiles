@@ -69,7 +69,7 @@
       },
       "runOptions": {
         "delay": 0,
-        "iterations": 30,
+        "iterations": 5,
         "dataFilePath": ""
       }
     }

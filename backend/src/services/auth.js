@@ -88,6 +88,8 @@ router.get('/callback', async (ctx) => {
     };
   }
   // Create JWT
+  // TODO: Add expiration and use refresh tokens
+  // TODO: Change algorithm to RS256
   const token = jwt.sign({ username: member.username, role: member.role }, process.env.JWT_SECRET);
   // Redirect to frontend
   const frontendUrl = process.env.FRONTEND_URL || 'http://localhost:3000';

@@ -207,6 +207,56 @@ router.put('/', async (ctx) => {
   ctx.status = 201;
 });
 
+router.patch('/:username', async (ctx) => {
+  // Check that the user has a CHAIR or SERVICE role
+  if (!(['CHAIR', 'SERVICE'].includes(ctx.state.user.role))) {
+    ctx.status = 403;
+    ctx.body = {
+      message: 'You must be an admin to access this resource',
+    };
+    return;
+  }
+
+  const { username } = ctx.params;
+  const { body } = ctx.request;
+
+  const member = await prisma.member.findUnique({
+    where: {
+      username,
+    },
+  });
+
+  // Allow only the following fields to be updated
+  const allowedFields = ['email', 'telegramUsername', 'role', 'profile'];
+
+  // Error if the user tries to update a field that is not allowed
+  const invalidFields = Object.keys(body).filter((field) => !allowedFields.includes(field));
+  if (invalidFields.length > 0) {
+    ctx.status = 400;
+    ctx.body = {
+      message: `Invalid fields: ${invalidFields.join(', ')}`,
+    };
+    return;
+  }
+
+  if (member) {
+    const updatedMember = await prisma.member.update({
+      where: {
+        username,
+      },
+      data: {
+        ...body,
+      },
+    });
+    ctx.body = updatedMember;
+  } else {
+    ctx.status = 404;
+    ctx.body = {
+      message: `Member ${username} not found`,
+    };
+  }
+});
+
 // Receive a CSV file and create members from it
 router.put('/import', async (ctx) => {
   // Check that the user has a CHAIR or SERVICE role
