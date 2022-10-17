@@ -435,7 +435,7 @@
     "method": "GET",
     "sortNum": 80000,
     "created": "2022-10-17T01:46:19.798Z",
-    "modified": "2022-10-17T01:47:25.464Z",
+    "modified": "2022-10-17T02:37:19.101Z",
     "headers": [],
     "params": [],
     "tests": [
@@ -453,21 +453,15 @@
       },
       {
         "type": "json-query",
-        "custom": "json[0].id",
+        "custom": "json.id",
         "action": "istype",
         "value": "string"
       },
       {
         "type": "json-query",
-        "custom": "json[0].achievement.id",
+        "custom": "json.achievement.id",
         "action": "istype",
         "value": "string"
-      },
-      {
-        "type": "set-env-var",
-        "custom": "json[2].achievement.id",
-        "action": "setto",
-        "value": "{{exampleAchievement}}"
       }
     ],
     "preReq": {
@@ -528,20 +522,49 @@
     "_id": "9abb76da-e6d7-4f41-9d10-1fbeea87f0fb",
     "colId": "db570040-1b78-4a43-8d13-ec935018679d",
     "containerId": "2e526f1c-7eb7-45d9-9163-03c51287dae8",
-    "name": "/requests",
+    "name": "/requests (🔑 admin)",
     "url": "/requests",
     "method": "PUT",
     "sortNum": 100000,
     "created": "2022-10-17T01:54:46.734Z",
-    "modified": "2022-10-17T01:59:21.996Z",
+    "modified": "2022-10-17T02:35:01.405Z",
     "headers": [],
     "params": [],
     "body": {
       "type": "json",
-      "raw": "{\n  \"achievementId\": \"{{exampleAchievement}}\",\n  \"description\": \"Test request from Thunder!\"\n}",
+      "raw": "{\n  \"achievementId\": \"{{createdAchievement}}\",\n  \"description\": \"Test request from Thunder!\"\n}",
       "form": []
     },
-    "tests": []
+    "tests": [
+      {
+        "type": "res-code",
+        "custom": "",
+        "action": "equal",
+        "value": "201"
+      },
+      {
+        "type": "res-body",
+        "custom": "",
+        "action": "isjson",
+        "value": "true"
+      },
+      {
+        "type": "set-env-var",
+        "custom": "json.id",
+        "action": "setto",
+        "value": "{{createdRequest}}"
+      }
+    ],
+    "preReq": {
+      "runRequests": [
+        {
+          "reqId": "3c846ded-d758-4a81-abbd-a15cc33aee94",
+          "colId": "db570040-1b78-4a43-8d13-ec935018679d",
+          "triggerCondition": "run-var-empty",
+          "triggerValue": "{{createdAchievement}}"
+        }
+      ]
+    }
   },
   {
     "_id": "e5d377e8-661e-4fb0-991a-4fdfaaf568c6",
@@ -628,6 +651,170 @@
       "runRequests": [
         {
           "reqId": "e5d377e8-661e-4fb0-991a-4fdfaaf568c6",
+          "colId": "db570040-1b78-4a43-8d13-ec935018679d",
+          "triggerCondition": "run-always",
+          "triggerValue": ""
+        }
+      ]
+    }
+  },
+  {
+    "_id": "3c846ded-d758-4a81-abbd-a15cc33aee94",
+    "colId": "db570040-1b78-4a43-8d13-ec935018679d",
+    "containerId": "f2c41802-a172-4bda-a9e8-787e6b975ce0",
+    "name": "/achievements (🔑 admin, again)",
+    "url": "/achievements",
+    "method": "PUT",
+    "sortNum": 140000,
+    "created": "2022-10-17T02:29:52.828Z",
+    "modified": "2022-10-17T02:29:54.992Z",
+    "headers": [],
+    "params": [],
+    "body": {
+      "type": "json",
+      "raw": "{\n  \"name\": \"Test achievement from Thunder\",\n  \"description\": \"This is a test achievement\",\n  \"imageURL\": \"assets/badges/example.png\",\n  \"type\": \"BY_REQUEST\",\n  \"level\": \"BRONZE\"\n}",
+      "form": []
+    },
+    "tests": [
+      {
+        "type": "res-code",
+        "custom": "",
+        "action": "<=",
+        "value": "202"
+      },
+      {
+        "type": "res-code",
+        "custom": "",
+        "action": ">=",
+        "value": "200"
+      },
+      {
+        "type": "res-body",
+        "custom": "",
+        "action": "isjson",
+        "value": "true"
+      },
+      {
+        "type": "json-query",
+        "custom": "json.name",
+        "action": "istype",
+        "value": "string"
+      },
+      {
+        "type": "set-env-var",
+        "custom": "json.id",
+        "action": "setto",
+        "value": "{{createdAchievement}}"
+      }
+    ]
+  },
+  {
+    "_id": "eae63b3f-f865-4ee8-9bcd-1dd692ee30b3",
+    "colId": "db570040-1b78-4a43-8d13-ec935018679d",
+    "containerId": "2e526f1c-7eb7-45d9-9163-03c51287dae8",
+    "name": "/requests (🔑 admin)",
+    "url": "/requests/{{createdRequest}}",
+    "method": "DELETE",
+    "sortNum": 102500,
+    "created": "2022-10-17T02:33:51.780Z",
+    "modified": "2022-10-17T02:48:47.187Z",
+    "headers": [],
+    "params": [],
+    "tests": [
+      {
+        "type": "res-code",
+        "custom": "",
+        "action": "equal",
+        "value": "204"
+      }
+    ],
+    "preReq": {
+      "runRequests": [
+        {
+          "reqId": "9abb76da-e6d7-4f41-9d10-1fbeea87f0fb",
+          "colId": "db570040-1b78-4a43-8d13-ec935018679d",
+          "triggerCondition": "run-always",
+          "triggerValue": ""
+        }
+      ]
+    }
+  },
+  {
+    "_id": "4b259db9-ba50-4c6b-b101-60bba43c3959",
+    "colId": "db570040-1b78-4a43-8d13-ec935018679d",
+    "containerId": "2e526f1c-7eb7-45d9-9163-03c51287dae8",
+    "name": "/requests (🔑 member)",
+    "url": "/requests",
+    "method": "PUT",
+    "sortNum": 105000,
+    "created": "2022-10-17T02:38:30.994Z",
+    "modified": "2022-10-17T02:39:28.987Z",
+    "headers": [],
+    "params": [],
+    "body": {
+      "type": "json",
+      "raw": "{\n  \"achievementId\": \"{{createdAchievement}}\",\n  \"description\": \"Test 2 request from Thunder!\"\n}",
+      "form": []
+    },
+    "auth": {
+      "type": "bearer",
+      "bearer": "{{memberToken}}"
+    },
+    "tests": [
+      {
+        "type": "res-code",
+        "custom": "",
+        "action": "equal",
+        "value": "201"
+      },
+      {
+        "type": "res-body",
+        "custom": "",
+        "action": "isjson",
+        "value": "true"
+      },
+      {
+        "type": "set-env-var",
+        "custom": "json.id",
+        "action": "setto",
+        "value": "{{createdRequest}}"
+      }
+    ],
+    "preReq": {
+      "runRequests": [
+        {
+          "reqId": "3c846ded-d758-4a81-abbd-a15cc33aee94",
+          "colId": "db570040-1b78-4a43-8d13-ec935018679d",
+          "triggerCondition": "run-var-empty",
+          "triggerValue": "{{createdAchievement}}"
+        }
+      ]
+    }
+  },
+  {
+    "_id": "e758dae4-bedb-4a37-9d87-02bbf763f303",
+    "colId": "db570040-1b78-4a43-8d13-ec935018679d",
+    "containerId": "2e526f1c-7eb7-45d9-9163-03c51287dae8",
+    "name": "/requests (🔑 admin, again)",
+    "url": "/requests/{{createdRequest}}",
+    "method": "DELETE",
+    "sortNum": 115000,
+    "created": "2022-10-17T02:39:06.578Z",
+    "modified": "2022-10-17T02:39:10.670Z",
+    "headers": [],
+    "params": [],
+    "tests": [
+      {
+        "type": "res-code",
+        "custom": "",
+        "action": "equal",
+        "value": "204"
+      }
+    ],
+    "preReq": {
+      "runRequests": [
+        {
+          "reqId": "9abb76da-e6d7-4f41-9d10-1fbeea87f0fb",
           "colId": "db570040-1b78-4a43-8d13-ec935018679d",
           "triggerCondition": "run-always",
           "triggerValue": ""

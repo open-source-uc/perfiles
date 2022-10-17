@@ -132,11 +132,11 @@ Ref: AchievementsOnMembers.achievementId > Achievement.id
 
 Ref: AchievementsOnMembers.awardedByUsername > Member.username
 
-Ref: Request.achievementId > Achievement.id
+Ref: Request.achievementId > Achievement.id [delete: Cascade]
 
-Ref: Request.memberUsername > Member.username
+Ref: Request.memberUsername > Member.username [delete: Cascade]
 
-Ref: ClaimLink.achievementId > Achievement.id
+Ref: ClaimLink.achievementId > Achievement.id [delete: Cascade]
 
 Ref: ClaimLink.creatorUsername > Member.username
 

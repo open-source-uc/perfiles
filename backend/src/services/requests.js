@@ -141,15 +141,16 @@ router.put('/', async (ctx) => {
   }
 
   // Check that the member does not have an open request for the achievement
-  const request = await prisma.request.findUnique({
+  const request = await prisma.request.findFirst({
     where: {
       memberUsername,
       achievementId,
-      status: 'OPEN',
+      state: 'OPEN',
     },
   });
   if (request) {
-    ctx.status = 204;
+    ctx.status = 200;
+    ctx.body = request;
     return;
   }
 
