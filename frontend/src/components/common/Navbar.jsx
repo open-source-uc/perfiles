@@ -1,13 +1,15 @@
 import * as React from 'react';
 import { Link } from 'react-router-dom';
 import { isLoggedIn } from '../../utils/auth';
+import ProfileNav from './ProfileNav';
+import SwitchDark from './SwitchDark';
 
 export default function Navbar() {
   let button;
   if (!isLoggedIn()) {
     button = <a href="/api/auth/login">👩‍💻 Iniciar sesión</a>;
   } else {
-    button = <a href="/?logout=yes">👩‍💻 Cerrar sesión</a>;
+    button = <ProfileNav />;
   }
   return (
     <nav className="nav-main">
@@ -17,18 +19,7 @@ export default function Navbar() {
       </label>
       <ul>
         <li>
-          <button className="switchtheme" type="button" id="switchtheme">
-            <span>
-              {' '}
-              <i className="fa-solid fa-sun" />
-              {' '}
-            </span>
-            <span>
-              {' '}
-              <i className="fa-solid fa-moon" />
-              {' '}
-            </span>
-          </button>
+          <SwitchDark />
         </li>
         <li>
           <Link to="/logros">🏅 Logros</Link>
