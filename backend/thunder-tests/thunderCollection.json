@@ -39,17 +39,14 @@
         "containerId": "",
         "created": "2022-10-17T00:09:03.558Z",
         "sortNum": 50000
-      },
-      {
-        "_id": "9c05ce61-468a-4189-8681-e9246a0c6fea",
-        "name": "Tokens",
-        "containerId": "",
-        "created": "2022-10-17T00:25:23.082Z",
-        "sortNum": 70000
       }
     ],
     "settings": {
       "headers": [],
+      "auth": {
+        "type": "bearer",
+        "bearer": "{{adminToken}}"
+      },
       "tests": [],
       "options": {
         "baseUrl": "http://127.0.0.1:3100"
@@ -60,9 +57,20 @@
             "reqId": "d904ba60-2514-4fe8-9148-8ac39b037efb",
             "colId": "b76205bf-d5f4-4ca0-a0ec-670af908a04d",
             "triggerCondition": "run-var-empty",
-            "triggerValue": "{{jwtToken}}"
+            "triggerValue": "{{adminToken}}"
+          },
+          {
+            "reqId": "f17b5bc0-942c-4bd1-a651-840a02bbda8c",
+            "colId": "b76205bf-d5f4-4ca0-a0ec-670af908a04d",
+            "triggerCondition": "run-var-empty",
+            "triggerValue": "{{memberToken}}"
           }
         ]
+      },
+      "runOptions": {
+        "delay": 0,
+        "iterations": 10,
+        "dataFilePath": ""
       }
     }
   },

@@ -3,12 +3,12 @@
     "_id": "d904ba60-2514-4fe8-9148-8ac39b037efb",
     "colId": "b76205bf-d5f4-4ca0-a0ec-670af908a04d",
     "containerId": "",
-    "name": "Get admin JWT",
+    "name": "Get admin JWT (fernandosmither)",
     "url": "/auth/debug/token?username=fernandosmither",
     "method": "GET",
     "sortNum": 10000,
     "created": "2022-10-17T00:12:07.421Z",
-    "modified": "2022-10-17T00:28:19.477Z",
+    "modified": "2022-10-17T01:31:43.934Z",
     "headers": [],
     "params": [
       {
@@ -34,8 +34,359 @@
         "type": "set-env-var",
         "custom": "json.token",
         "action": "setto",
-        "value": "{{jwtToken}}"
+        "value": "{{adminToken}}"
       }
     ]
+  },
+  {
+    "_id": "f17b5bc0-942c-4bd1-a651-840a02bbda8c",
+    "colId": "b76205bf-d5f4-4ca0-a0ec-670af908a04d",
+    "containerId": "",
+    "name": "Get member JWT (agucova)",
+    "url": "/auth/debug/token?username=agucova",
+    "method": "GET",
+    "sortNum": 20000,
+    "created": "2022-10-17T01:24:18.821Z",
+    "modified": "2022-10-17T01:31:54.324Z",
+    "headers": [],
+    "params": [
+      {
+        "name": "username",
+        "value": "agucova",
+        "isPath": false
+      }
+    ],
+    "tests": [
+      {
+        "type": "res-code",
+        "custom": "",
+        "action": "equal",
+        "value": "200"
+      },
+      {
+        "type": "res-body",
+        "custom": "",
+        "action": "isjson",
+        "value": "true"
+      },
+      {
+        "type": "set-env-var",
+        "custom": "json.token",
+        "action": "setto",
+        "value": "{{memberToken}}"
+      }
+    ]
+  },
+  {
+    "_id": "8b86e28f-a884-4dfc-8f4c-568bf15130e9",
+    "colId": "db570040-1b78-4a43-8d13-ec935018679d",
+    "containerId": "b9e4ca5d-3433-4f19-97bd-2662c765966e",
+    "name": "/",
+    "url": "/",
+    "method": "GET",
+    "sortNum": 10000,
+    "created": "2022-10-17T01:26:08.499Z",
+    "modified": "2022-10-17T01:27:22.102Z",
+    "headers": [],
+    "params": [],
+    "auth": {
+      "type": "none"
+    },
+    "tests": [
+      {
+        "type": "res-code",
+        "custom": "",
+        "action": "equal",
+        "value": "200"
+      },
+      {
+        "type": "res-body",
+        "custom": "",
+        "action": "isjson",
+        "value": "true"
+      },
+      {
+        "type": "json-query",
+        "custom": "json.message",
+        "action": "contains",
+        "value": "Hello World!"
+      }
+    ]
+  },
+  {
+    "_id": "eda9091a-3495-4c27-8ed1-811402d4fb88",
+    "colId": "db570040-1b78-4a43-8d13-ec935018679d",
+    "containerId": "b9e4ca5d-3433-4f19-97bd-2662c765966e",
+    "name": "/health",
+    "url": "/health",
+    "method": "GET",
+    "sortNum": 20000,
+    "created": "2022-10-17T01:27:30.776Z",
+    "modified": "2022-10-17T01:28:06.066Z",
+    "headers": [],
+    "params": [],
+    "auth": {
+      "type": "none"
+    },
+    "tests": [
+      {
+        "type": "res-code",
+        "custom": "",
+        "action": "equal",
+        "value": "200"
+      },
+      {
+        "type": "res-body",
+        "custom": "",
+        "action": "isjson",
+        "value": "true"
+      },
+      {
+        "type": "json-query",
+        "custom": "json.status",
+        "action": "equal",
+        "value": "OK"
+      }
+    ]
+  },
+  {
+    "_id": "a18f3906-8a59-488d-90e9-a7e402eda0d5",
+    "colId": "db570040-1b78-4a43-8d13-ec935018679d",
+    "containerId": "33458773-f9ba-4336-a986-e1245c8cd813",
+    "name": "/public/members",
+    "url": "/public/members",
+    "method": "GET",
+    "sortNum": 30000,
+    "created": "2022-10-17T01:28:17.260Z",
+    "modified": "2022-10-17T01:30:11.775Z",
+    "headers": [],
+    "params": [],
+    "auth": {
+      "type": "none"
+    },
+    "tests": [
+      {
+        "type": "res-code",
+        "custom": "",
+        "action": "equal",
+        "value": "200"
+      },
+      {
+        "type": "res-body",
+        "custom": "",
+        "action": "isjson",
+        "value": "true"
+      },
+      {
+        "type": "json-query",
+        "custom": "json[0].username",
+        "action": "istype",
+        "value": "string"
+      }
+    ]
+  },
+  {
+    "_id": "3736e110-d58e-4edb-ac71-4e568ba6678c",
+    "colId": "db570040-1b78-4a43-8d13-ec935018679d",
+    "containerId": "23faf58c-8fbf-44b0-a327-36dc8212b757",
+    "name": "/members (🔑 admin)",
+    "url": "/members",
+    "method": "GET",
+    "sortNum": 40000,
+    "created": "2022-10-17T01:30:29.374Z",
+    "modified": "2022-10-17T01:34:02.635Z",
+    "headers": [],
+    "params": [],
+    "tests": [
+      {
+        "type": "res-code",
+        "custom": "",
+        "action": "equal",
+        "value": "200"
+      },
+      {
+        "type": "res-body",
+        "custom": "",
+        "action": "isjson",
+        "value": "true"
+      },
+      {
+        "type": "json-query",
+        "custom": "json[0].joinedAt",
+        "action": "istype",
+        "value": "string"
+      }
+    ]
+  },
+  {
+    "_id": "edde1c48-836a-4e67-9473-0c950504c211",
+    "colId": "db570040-1b78-4a43-8d13-ec935018679d",
+    "containerId": "23faf58c-8fbf-44b0-a327-36dc8212b757",
+    "name": "/members (🔑 member)",
+    "url": "/members",
+    "method": "GET",
+    "sortNum": 50000,
+    "created": "2022-10-17T01:32:26.929Z",
+    "modified": "2022-10-17T01:35:50.752Z",
+    "headers": [],
+    "params": [],
+    "auth": {
+      "type": "bearer",
+      "bearer": "{{memberToken}}"
+    },
+    "tests": [
+      {
+        "type": "res-code",
+        "custom": "",
+        "action": "equal",
+        "value": "403"
+      },
+      {
+        "type": "res-body",
+        "custom": "",
+        "action": "isjson",
+        "value": "true"
+      }
+    ]
+  },
+  {
+    "_id": "3ed98ca6-84d1-44c5-a89a-ebbf956dfbd2",
+    "colId": "db570040-1b78-4a43-8d13-ec935018679d",
+    "containerId": "23faf58c-8fbf-44b0-a327-36dc8212b757",
+    "name": "/members (🔒)",
+    "url": "/members",
+    "method": "GET",
+    "sortNum": 50000,
+    "created": "2022-10-17T01:34:44.103Z",
+    "modified": "2022-10-17T01:35:02.246Z",
+    "headers": [],
+    "params": [],
+    "auth": {
+      "type": "none"
+    },
+    "tests": [
+      {
+        "type": "res-code",
+        "custom": "",
+        "action": "equal",
+        "value": "401"
+      },
+      {
+        "type": "res-body",
+        "custom": "",
+        "action": "isjson",
+        "value": "true"
+      }
+    ]
+  },
+  {
+    "_id": "2d9f99a6-05e2-4774-8f8f-e4e039d5bf4d",
+    "colId": "db570040-1b78-4a43-8d13-ec935018679d",
+    "containerId": "f2c41802-a172-4bda-a9e8-787e6b975ce0",
+    "name": "/achievements (🔑 admin)",
+    "url": "/achievements",
+    "method": "GET",
+    "sortNum": 60000,
+    "created": "2022-10-17T01:36:25.488Z",
+    "modified": "2022-10-17T01:36:54.255Z",
+    "headers": [],
+    "params": [],
+    "tests": [
+      {
+        "type": "res-code",
+        "custom": "",
+        "action": "equal",
+        "value": "200"
+      },
+      {
+        "type": "res-body",
+        "custom": "",
+        "action": "isjson",
+        "value": "true"
+      },
+      {
+        "type": "json-query",
+        "custom": "json[0].id",
+        "action": "istype",
+        "value": "string"
+      }
+    ]
+  },
+  {
+    "_id": "0e896878-1fa5-4a3a-909d-eaff2c04596e",
+    "colId": "db570040-1b78-4a43-8d13-ec935018679d",
+    "containerId": "f2c41802-a172-4bda-a9e8-787e6b975ce0",
+    "name": "/achievements (🔑 member)",
+    "url": "/achievements",
+    "method": "GET",
+    "sortNum": 70000,
+    "created": "2022-10-17T01:36:56.711Z",
+    "modified": "2022-10-17T01:36:56.711Z",
+    "headers": [],
+    "params": [],
+    "tests": [
+      {
+        "type": "res-code",
+        "custom": "",
+        "action": "equal",
+        "value": "200"
+      },
+      {
+        "type": "res-body",
+        "custom": "",
+        "action": "isjson",
+        "value": "true"
+      },
+      {
+        "type": "json-query",
+        "custom": "json[0].id",
+        "action": "istype",
+        "value": "string"
+      }
+    ]
+  },
+  {
+    "_id": "89f1f504-5188-427f-a2ee-1f88164e4696",
+    "colId": "db570040-1b78-4a43-8d13-ec935018679d",
+    "containerId": "f2c41802-a172-4bda-a9e8-787e6b975ce0",
+    "name": "/achievements (🔒)",
+    "url": "/achievements",
+    "method": "GET",
+    "sortNum": 80000,
+    "created": "2022-10-17T01:38:22.775Z",
+    "modified": "2022-10-17T01:38:47.234Z",
+    "headers": [],
+    "params": [],
+    "auth": {
+      "type": "none"
+    },
+    "tests": [
+      {
+        "type": "res-code",
+        "custom": "",
+        "action": "equal",
+        "value": "401"
+      },
+      {
+        "type": "res-body",
+        "custom": "",
+        "action": "isjson",
+        "value": "true"
+      }
+    ]
+  },
+  {
+    "_id": "e32c5b2e-97dd-4bdc-9975-1d5efaa79c2d",
+    "colId": "db570040-1b78-4a43-8d13-ec935018679d",
+    "containerId": "2e526f1c-7eb7-45d9-9163-03c51287dae8",
+    "name": "/requests",
+    "url": "/requests",
+    "method": "GET",
+    "sortNum": 70000,
+    "created": "2022-10-17T01:39:11.641Z",
+    "modified": "2022-10-17T01:39:23.407Z",
+    "headers": [],
+    "params": [],
+    "tests": []
   }
 ]
