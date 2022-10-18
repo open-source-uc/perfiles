@@ -5,18 +5,42 @@
     "version": "0.2.0",
     "configurations": [
         {
-            "type": "node",
+            "command": "npm start",
+            "name": "Frontend (react-scripts)",
             "request": "launch",
-            "name": "Launch back-end",
+            "type": "node-terminal",
+            "cwd": "${workspaceFolder}/frontend"
+        },
+        {
+            "console": "integratedTerminal",
+            "internalConsoleOptions": "neverOpen",
+            "name": "Backend (nodemon)",
+            "program": "${workspaceFolder}/backend/src/index.js",
+            "cwd": "${workspaceFolder}/backend",
+            "request": "launch",
+            "restart": true,
+            "runtimeExecutable": "nodemon",
             "skipFiles": [
                 "<node_internals>/**"
             ],
-            "program": "${workspaceFolder}/backend/src/index.js",
-            "env": {
-                "NODE_ENV": "development"
-            },
-            "cwd": "${workspaceFolder}/backend",
-            "console": "integratedTerminal"
-        }
+            "type": "node"
+        },
+        {
+            "name": "Launch localhost (Chrome + HMR)",
+            "type": "chrome",
+            "request": "launch",
+            "url": "http://localhost:3000/",
+            "webRoot": "${workspaceRoot}/frontend/src"
+        },
+        {
+            "type": "firefox",
+            "request": "launch",
+            "reAttach": true,
+            "name": "Launch localhost (Firefox, manual path)",
+            "url": "http://localhost:3000",
+            "webRoot": "${workspaceFolder}/frontend/",
+            "enableCRAWorkaround": true,
+        },
+
     ]
 }

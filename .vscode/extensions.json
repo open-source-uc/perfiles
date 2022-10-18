@@ -3,6 +3,7 @@
         "ritwickdey.liveserver",
         "dbaeumer.vscode-eslint",
         "tonybaloney.vscode-pets",
-        "Prisma.prisma"
+        "prisma.prisma",
+        "ms-vscode-remote.remote-containers"
     ]
 }
