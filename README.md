@@ -24,40 +24,64 @@ Este repositorio contiene el código fuente para la plataforma comunitaria de [O
 
 ## Uso
 
-Primero que todo hay que abrir el repositorio en el devcontainer, que se encarga de preparar el entorno de desarrollo, incluyendo PostgreSQL.
+El repositorio contiene un Dev Container de VSCode, que prepara un entorno de desarrollo listo con PostgreSQL, dependencias y herramientas avanzadas de debugging para tanto el frontend como el backend.
 
-### .env
+Para usarlo, debes tener instalada de la extensión de [Dev Containers]( https://marketplace.visualstudio.com/items?itemName=ms-vscode-remote.remote-containers). Luego, puedes abrir el proyecto en VSCode, abrir el archivo `devcontainer.json` y presionar el botón de `Reopen in Container` en la esquina inferior derecha de la ventana.
 
-Hay que crear un archivo `.env` en la raíz del proyecto, en base al `.env.template`. Es necesario proveer el ID y secreto de GitHub para hacer funcionar el OAuth localmente, al igual que un secreto JWT (aleatorio) que gestione la emisión de tokens.
+Una vez abierto en el contenedor, se instalará PostgreSQL en el entorno y se instalarán las dependencias de tanto el front, como el back, al igual que se ejecutará la creación de tablas y la carga de datos de prueba (seed) de la base de datos. En caso de no estar usando el contenedor, esto puede hacerse manualmente de la siguiente manera:
 
-### Para el Back-end
-- Ejecutar `cd backend`
-- Ejecutar `npm install`
-- Ejecutar `npx prisma migrate reset` para crear las tablas y cargar el seed.
-- Ejecutar `npm run start` para ejecutar el backend
-- Opcionalmente, se puede correr `npx prisma studio` para visualizar los datos post-seed.
+```bash
+# Instalar dependencias
+cd backend && npm install && npx prisma migrate reset
+cd ../frontend && npm install
+```
 
+### Entorno
+
+Una vez instaladas las dependencias y preparada la base de datos, es necesario configurar las variables de entorno. Para esto, hay que crear un archivo `.env` en la raíz del proyecto, en base al `.env.template`. Es necesario proveer el ID y secreto de GitHub para hacer funcionar el OAuth localmente, al igual que un secreto JWT (aleatorio) que gestione la emisión de tokens.
+
+Para obtener tokens de GitHub (en caso de que no se te hayan otorgado de antemano), puedes seguir [este tutorial](https://docs.github.com/en/developers/apps/building-oauth-apps/creating-an-oauth-app). Para desarrollo local, es necesario configurar `http://127.0.0.1:3000/api/auth/callback` como `Authorization Callback URL`.
+
+El secreto JWT puede ser generado de la siguiente manera (usando [OpenSSL](https://www.openssl.org/), aunque cualquier otro generador de tokens aleatorios sirve):
+
+```bash
+# Generar un secreto aleatorio
+openssl rand -hex 32
+```
+
+### Ejecución
+
+Finalmente, configurado el entorno, se puede ejecutar el proyecto de la siguiente manera mediante las tareas incluidas de VSCode (en la pestaña Run and Debug), o bien ejecutar manualmente:
+
+```bash
+# Ejecutar el backend:
+cd backend && npm start
+# En otro terminal, ejecutar el frontend:
+cd frontend && npm start
+```
 ### Migraciones
-En caso de querer generar migraciones despues de un cambio de schema o de pullear nuevas migraciones, es necesario correr: `npx prisma migrate dev`
+En caso de querer generar migraciones despues de un cambio de schema o de pullear nuevas migraciones, es necesario correr: `npx prisma migrate dev`. Esto sirve para tanto crear nuevas migraciones automáticamente en base a modificaciones en el schema, como para aplicar migraciones que hayan sido creadas por otros miembros del equipo.
 
-### Para el Front-end
-
-- Ejecutar `cd frontend`
-- Ejecutar `npm install`
-
-### Autenticación
-Si es que la variable `NODE_ENV` está definida como `development`, se puede acceder a las rutas de debugging de autenticación, que permiten asumir el rol de cualquier usuario, con tal de probar las distintas rutas. Por ejemplo:
+### Autenticación y autorización
+Si es que la variable `NODE_ENV` está definida como `development` (puesta por defecto en el contenedor), se puede acceder a las rutas de debugging de autorización, que permiten asumir el rol de cualquier usuario, con tal de probar las distintas rutas. Por ejemplo:
 
 - Para acceder como Fernando (coordinador): http://localhost:3000/api/auth/debug/login?username=fernandosmither
 - Para acceder como Agustín (miembro): http://localhost:3000/api/auth/debug/login?username=agucova
 
-## Supuestos (Entrega 1)
+### Prisma
+Las entidades en el proyecto se encuentran modeladas usando un schema de Prisma, que puede ser encontrado en `backend/prisma/schema.prisma`. Este schema se compila continuamente para generar el cliente de Prisma y un archivo de especificación [DBML](https://www.dbml.org/home/) que permite, entre otras cosas, [generar diagramas del esquema](https://dbdiagram.io) de la base de datos. Este archivo se encuentra en `backend/prisma/schema.dbml`.
 
-* Para correr el código, se sugiere utilizar la extensión "Live Server" de Vscode mencionada en una ayudantía, para evitar tener problemas con los paths al abrir directamente una vista.
+Adicionalmente, Prisma provee un "Studio" que permite inspeccionar los datos en la base de datos. Para abrirlo, se puede correr `npx prisma studio`.
 
-* Al darle al botón "Iniciar Sesión" realmente se está haciendo un llamado al autenticador de GitHub (el cual solo pide permisos de lectura, no se recolectarán datos). Esto significa que al autorizar el login, se hará una redirección automática a [Nuestro dominio oficial](https://perfiles.osuc.dev) para las vistas de admin. A pesar de que este deploy es exactamente el de nuestra branch `main`, se puede volver a local simplemente yendo a `/admin/index.html`.
+### Tests
+Junto con la API se provee un conjunto de tests REST para [Thunder Client](https://www.thunderclient.com/). Para correrlos, se necesita abrir el repositorio con la extensión instalada, crear un nuevo Environment para guardar las variables temporales, ejecutar al menos un test de prueba y luego se pueden ejecutar todos los tests de la colección.
 
-### Contribuir
+Los tests aprovechan el sistema de autenticación de desarrollo para poder probar las rutas de la API sin necesidad de autenticarse manualmente.
+
+## Documentación adicional
+Se puede encontrar la documentación de la API en [`docs/api.md`](docs/api.md).
+
+## Contribuir
 
 > El workflow es PR a development -> Revisar preview y checks -> Asignar reviewers -> Aprobación -> Merge a development
 

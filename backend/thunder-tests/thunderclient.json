@@ -620,7 +620,7 @@
     "_id": "6f1e0c9e-6865-4d37-b647-141521456298",
     "colId": "db570040-1b78-4a43-8d13-ec935018679d",
     "containerId": "f2c41802-a172-4bda-a9e8-787e6b975ce0",
-    "name": "/achievements (🔑 admin)",
+    "name": "/achievements:id (🔑 admin)",
     "url": "/achievements/{{createdAchievement}}",
     "method": "DELETE",
     "sortNum": 130000,
