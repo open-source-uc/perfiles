@@ -5,6 +5,8 @@ import { PrismaClient } from '@prisma/client';
 
 import slugify from 'slugify';
 
+import fs from 'fs';
+
 const router = new Router({ prefix: '/achievements' });
 const prisma = new PrismaClient();
 
@@ -45,57 +47,41 @@ router.put('/', async (ctx) => {
 
   // Idempotently create or update achievement
   const {
-    name, description, type, level,
+    name, description, type, level, image,
   } = ctx.request.body;
 
   // Optional fields (expiresAt, pointsOverride)
   const { expiresAt, pointsOverride } = ctx.request.body;
 
   // Validate input
-  if (!name || !description || !type || !level) {
+  if (!name || !description || !type || !level || !image) {
     ctx.status = 400;
     ctx.body = {
       message: 'Missing required fields',
     };
     return;
   }
-
-  // Check if a file was uploaded
-  if (!ctx.request.files || !ctx.request.files.badge) {
+  // Load PNG image from base64 string
+  const imageBuffer = Buffer.from(image, 'base64');
+  // Check that the image is a PNG
+  if (
+    imageBuffer[0] !== 0x89
+    || imageBuffer[1] !== 0x50
+    || imageBuffer[2] !== 0x4E
+    || imageBuffer[3] !== 0x47
+  ) {
     ctx.status = 400;
     ctx.body = {
-      message: 'Missing required file',
+      message: 'Image must be a PNG',
     };
     return;
   }
 
-  const { badge } = ctx.request.files;
-
-  // Ensure file is an image
-  if (!['image/png', 'image/jpeg'].includes(badge.mimetype)) {
-    ctx.status = 400;
-    ctx.body = {
-      message: 'File must be a PNG or JPEG',
-    };
-    return;
-  }
-
-  // Ensure file is not too large
-  if (badge.size > 1000000) {
-    ctx.status = 400;
-    ctx.body = {
-      message: 'File must be less than 1MB',
-    };
-    return;
-  }
-
-  // Save file to public/assets
-  // Sanitize filename
   const filename = slugify(name, { lower: true, strict: true });
-  // Add extension
-  const extension = badge.mimetype.split('/')[1];
-  const path = `assets/images/badge${filename}.${extension}`;
-  await badge.mv(`../frontend/public/${path}`);
+  const imageURL = `assets/images/badges/${filename}.png`;
+
+  // Write image to file
+  await fs.writeFile(`../frontend/public/${imageURL}`, imageBuffer);
 
   try {
     // Check if achievement already exists
@@ -113,7 +99,7 @@ router.put('/', async (ctx) => {
         },
         data: {
           description,
-          imageURL: path,
+          imageURL,
           type,
           expiresAt,
           pointsOverride,
