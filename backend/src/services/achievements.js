@@ -3,6 +3,8 @@ import Router from '@koa/router';
 
 import { PrismaClient } from '@prisma/client';
 
+import slugify from 'slugify';
+
 const router = new Router({ prefix: '/achievements' });
 const prisma = new PrismaClient();
 
@@ -43,19 +45,58 @@ router.put('/', async (ctx) => {
 
   // Idempotently create or update achievement
   const {
-    name, description, imageURL, type, level,
+    name, description, type, level,
   } = ctx.request.body;
+
   // Optional fields (expiresAt, pointsOverride)
   const { expiresAt, pointsOverride } = ctx.request.body;
 
   // Validate input
-  if (!name || !description || !imageURL || !type || !level) {
+  if (!name || !description || !type || !level) {
     ctx.status = 400;
     ctx.body = {
       message: 'Missing required fields',
     };
     return;
   }
+
+  // Check if a file was uploaded
+  if (!ctx.request.files || !ctx.request.files.badge) {
+    ctx.status = 400;
+    ctx.body = {
+      message: 'Missing required file',
+    };
+    return;
+  }
+
+  const { badge } = ctx.request.files;
+
+  // Ensure file is an image
+  if (!['image/png', 'image/jpeg'].includes(badge.mimetype)) {
+    ctx.status = 400;
+    ctx.body = {
+      message: 'File must be a PNG or JPEG',
+    };
+    return;
+  }
+
+  // Ensure file is not too large
+  if (badge.size > 1000000) {
+    ctx.status = 400;
+    ctx.body = {
+      message: 'File must be less than 1MB',
+    };
+    return;
+  }
+
+  // Save file to public/assets
+  // Sanitize filename
+  const filename = slugify(name, { lower: true, strict: true });
+  // Add extension
+  const extension = badge.mimetype.split('/')[1];
+  const path = `assets/images/badge${filename}.${extension}`;
+  await badge.mv(`../frontend/public/${path}`);
+
   try {
     // Check if achievement already exists
     const existingAchievement = await prisma.achievement.findUnique({
@@ -72,7 +113,7 @@ router.put('/', async (ctx) => {
         },
         data: {
           description,
-          imageURL,
+          imageURL: path,
           type,
           expiresAt,
           pointsOverride,

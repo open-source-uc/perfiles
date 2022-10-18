@@ -78,4 +78,12 @@ router.get('/members/:username', async (ctx) => {
   }
 });
 
+// Achievements
+
+router.get('/achievements', async (ctx) => {
+  const achievements = await prisma.achievement.findMany();
+  // Exclude mysterious achievements
+  ctx.body = achievements.filter((achievement) => achievement.type !== 'MYSTERIOUS');
+});
+
 export default router;

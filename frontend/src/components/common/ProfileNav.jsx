@@ -41,7 +41,7 @@ export default function ProfileNav() {
     <div>
       <motion.img
         whileHover={{ scale: 1.04 }}
-        whileTap={{ scale: 0.8 }}
+        whileTap={{ scale: 1 }}
         className="login-picture"
         src={user?.profile?.avatarURL}
         alt="Foto de Perfil"

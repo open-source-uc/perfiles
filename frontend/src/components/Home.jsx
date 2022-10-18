@@ -61,8 +61,13 @@ export default function Home() {
             {/* Generamos varias ProfileCard con los datos */}
             {displayedMembers.map((user) => (
               // Revisamos que el user.role sea coordinator
-              user.role === 'COORDINATOR' && (
-                ProfileCard(user.profile.name, user.profile.title, user.username)
+              user.role === 'CHAIR' && (
+                <ProfileCard
+                  name={user.profile.name}
+                  title={user.profile.title}
+                  username={user.username}
+                  key={user.username}
+                />
               )
             ))}
           </div>
@@ -70,7 +75,12 @@ export default function Home() {
           <div id="members-profiles" className="profile__list">
             {displayedMembers.map((user) => (
               user.role === 'MEMBER' && (
-                ProfileCard(user.profile.name, user.profile.title, user.username)
+                <ProfileCard
+                  name={user.profile.name}
+                  title={user.profile.title}
+                  username={user.username}
+                  key={user.username}
+                />
               )
             ))}
           </div>
@@ -79,7 +89,12 @@ export default function Home() {
           <div id="hall-of-fame-profiles" className="profile__list">
             {displayedMembers.map((user) => (
               user.role === 'ALUMNI' && (
-                ProfileCard(user.profile.name, user.profile.title, user.username)
+                <ProfileCard
+                  name={user.profile.name}
+                  title={user.profile.title}
+                  username={user.username}
+                  key={user.username}
+                />
               )
             ))}
           </div>
