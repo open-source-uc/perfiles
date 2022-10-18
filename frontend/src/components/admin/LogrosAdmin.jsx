@@ -1,6 +1,8 @@
 /* eslint-disable react/prop-types */
 /* eslint-disable no-unused-vars */
 import React, { Fragment, useState } from 'react';
+import Badge from '../common/Badge';
+import BadgeModal from './components/BadgeModal';
 // import { Dialog, Transition } from '@headlessui/react';
 
 export default function LogrosAdmin() {
@@ -78,9 +80,7 @@ export default function LogrosAdmin() {
       </section>
 
       <section className="admin-box admin-center">
-        <button type="button" className="round__button">Crear un Logro</button>
-        {/* A modal that enables file upload */}
-
+        <BadgeModal />
       </section>
 
       <section className="admin-box admin-link">
