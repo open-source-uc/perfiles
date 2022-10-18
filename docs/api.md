@@ -11,6 +11,7 @@ Junto con la API se provee un conjunto de tests REST para [Thunder Client](https
 
 Los tests aprovechan el sistema de autorización de desarrollo para poder probar las rutas de la API sin necesidad de autenticarse manualmente.
 
+Estos tests son demostrativos de los flujos comunes de la API, pero no son exhaustivos.
 ## Endpoints
 ### ℹ️ Endpoints básicos (`/`)
 #### `/`
@@ -62,7 +63,10 @@ Los tests aprovechan el sistema de autorización de desarrollo para poder probar
 
 #### 🔐 `/requests/:id`
 - `GET`: Devuelve una solicitud de logro específica.
+- `PATCH`: Permite aprobar o rechazar una solicitud de logro, especificando su estado (`approve`).
 - `DEL`: Permite eliminar una solicitud de logro.
+
+
 
 ### 👤🆕 Endpoints de aplicantes (`/applicants`)
 #### 🔐 `/applicants`
