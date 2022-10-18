@@ -14,5 +14,5 @@ FROM mcr.microsoft.com/vscode/devcontainers/javascript-node:0-${VARIANT}
 # RUN su node -c "npm install -g <your-package-list-here>"
 
 # Install npm dependencies in backend/ and frontend/ & run the seed script
-RUN cd backend/ && npm install && npx prisma migrate reset
-RUN cd frontend/ && npm install
+# RUN cd backend/ && npm install && npx prisma migrate reset
+# RUN cd frontend/ && npm install
