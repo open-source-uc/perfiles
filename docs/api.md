@@ -1,6 +1,6 @@
 # Documentación API
 
-La API está diseñada para comportarse de forma RESTful mediante JSON, y utiliza autorización vía [JSON Web Tokens](https://jwt.io/) para proteger las rutas de miembros y administradores. Los tokens son emitidos tras una autenticación exitosa via el OAuth de GitHub y deben ser adjuntados a las peticiones mediante el header `Authorization` como `Bearer <token>`.
+La API está diseñada para comportarse de forma RESTful mediante JSON, y utiliza autorización vía [JSON Web Tokens](https://jwt.io/) para proteger las rutas de integrantes y administradores. Los tokens son emitidos tras una autenticación exitosa via el OAuth de GitHub y deben ser adjuntados a las peticiones mediante el header `Authorization` como `Bearer <token>`.
 
 La API restringe acceso mediante un sistema de control de acceso basado en roles. Los roles se encuentran descritos en el schema de la base de datos, que se puede encontrar en [`backend/prisma/schema.prisma`](../backend/prisma/schema.prisma).
 
@@ -22,7 +22,7 @@ Estos tests son demostrativos de los flujos comunes de la API, pero no son exhau
 
 ### 🌐 Endpoints públicos (`/public`)
 #### `/public/members`
-- `GET`: Devuelve un listado de todos los miembros de la organización, incluyendo sus perfiles y logros.
+- `GET`: Devuelve un listado de todos los integrantes de la organización, incluyendo sus perfiles y logros.
 
 #### `/public/members/:username`
 - `GET`: Devuelve el perfil de un miembro de la organización, incluyendo sus logros.
@@ -30,7 +30,7 @@ Estos tests son demostrativos de los flujos comunes de la API, pero no son exhau
 #### `/public/achievements`
 - `GET`: Devuelve un listado de todos los logros públicos (no misteriosos).
 
-### 👥 Endpoints de miembros (`/members`)
+### 👥 Endpoints de integrantes (`/members`)
 #### 🔒 `/members/me`
 - `GET`: Devuelve un perfil completo del usuario, junto a sus logros conseguidos.
 
@@ -45,7 +45,7 @@ Estos tests son demostrativos de los flujos comunes de la API, pero no son exhau
 - `GET`: Devuelve los puntos y nivel de un miembro de la organización.
 
 #### 🔐 `/members/import`
-- `PUT`: Permite importar un listado de nuevos miembros a la organización, especificando sus roles y otros atributos. A diferencia de otras rutas, recibe un archivo CSV `file` en el body de la petición, en lugar de un JSON.
+- `PUT`: Permite importar un listado de nuevos integrantes a la organización, especificando sus roles y otros atributos. A diferencia de otras rutas, recibe un archivo CSV `file` en el body de la petición, en lugar de un JSON.
 
 ### 🏅 Endpoints de logros (`/achievements`)
 #### 🔐 `/achievements`

@@ -3,7 +3,7 @@
   <a href=#><img src="https://osuc.dev/img/min-icon.svg" width="200px" alt="banner"></a>
 </h1>
 
-<h4 align="center"> Repositorio web para la comunidad OSUC. </h4>
+<h4 align="center">Plataforma de integrantes de OSUC.</h4>
 
 <p align="center">
      <!-- Badges Here -->
@@ -21,6 +21,12 @@
 ## Descripción
 
 Este repositorio contiene el código fuente para la plataforma comunitaria de [Open Source UC](https://osuc.dev). La plataforma permite que integrantes de la organización creen perfiles y obtengan logros, entre otras cosas.
+
+## Comentarios (Entrega 2)
+- En algunos casos, se opta por utilizar métodos `PUT` y `PATCH` en reemplazo de `POST` para actualizar recursos, ya que se considera que es más semántico. Por ejemplo, en el caso de aprobar una solicitud de logro, se utiliza `PATCH /requests/:id/` en vez de `POST /achievements/:id/approve`.
+- Se optó por no implementar un skill tree completo en React (dado a dificultades con el manejo de estado), en vez optando por una vista de grilla de logros, por esta entrega.
+- A pesar de no ser necesario, se implementó un sistema de autenticación en base a OAuth de GitHub y autorización mediante [JSON Web Tokens](https://jwt.io/).
+- Se optó por usar [Prisma](https://www.prisma.io/) como ORM en vez de Sequelize.
 
 ## Uso
 
