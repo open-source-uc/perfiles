@@ -3,6 +3,7 @@
 import React, { Fragment, useState } from 'react';
 import Badge from '../common/Badge';
 import BadgeModal from './components/BadgeModal';
+import ListaSolicitudes from './ListaSolicitudes';
 // import { Dialog, Transition } from '@headlessui/react';
 
 export default function LogrosAdmin() {
@@ -39,48 +40,10 @@ export default function LogrosAdmin() {
           </div>
         </div>
       </section>
-      <section className="admin-box admin-achievements">
-        <h2 className="admin-box__title">Solicitudes de logros</h2>
-        <table className="admin-achievements__table">
-          <thead>
-            <tr>
-              <th>Logro</th>
-              <th>Nombre</th>
-              <th>Estado</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td>Esquema Piramidal</td>
-              <td>Fernando Smith</td>
-              <td>Pendiente</td>
-            </tr>
-            <tr>
-              <td>cruz@uc.cl</td>
-              <td>Alister McCormack</td>
-              <td>Pendiente</td>
-            </tr>
-            <tr>
-              <td>Mente de tiburón</td>
-              <td>José Antonio Castro</td>
-              <td>Pendiente</td>
-            </tr>
-            <tr>
-              <td>Hello world</td>
-              <td>Hernán Valdivieso</td>
-              <td>Rechazada</td>
-            </tr>
-            <tr>
-              <td>Tenemos que Hablar</td>
-              <td>Victor Hernández</td>
-              <td>Aprobada</td>
-            </tr>
-          </tbody>
-        </table>
-      </section>
+      <ListaSolicitudes />
 
       <section className="admin-box admin-center">
-        <BadgeModal />
+        {/* <BadgeModal /> */}
       </section>
 
       <section className="admin-box admin-link">
