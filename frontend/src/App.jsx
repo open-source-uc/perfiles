@@ -1,4 +1,5 @@
 import * as React from 'react';
+import axios from 'axios';
 import { Route, Routes } from 'react-router-dom';
 
 import Layout from './components/common/Layout';
@@ -17,9 +18,13 @@ import LogrosAdmin from './components/admin/LogrosAdmin';
 import RRHHAdmin from './components/admin/RRHHAdmin';
 import LayoutAdmin from './components/admin/LayoutAdmin';
 
+// Contexts
+import UserContext from './contexts/userContext';
+
 import { removeToken, storeTokenIfGiven } from './utils/auth';
 
 export default function App() {
+  // JWT MANAGEMENT
   // Check if the URL contains a JWT token and save it in localStorage
   if (storeTokenIfGiven()) {
     // Remove the token from the URL
@@ -32,6 +37,23 @@ export default function App() {
     // Remove the logout query parameter from the URL
     window.history.replaceState({}, document.title, '/');
   }
+
+  // USER MANAGEMENT
+  // Check if the user is logged in
+  const [user, setUser] = React.useState(null);
+  React.useEffect(() => {
+    const token = localStorage.getItem('token');
+    if (token) {
+      axios.get('/api/members/me', {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      }).then((response) => {
+        setUser(response.data);
+      });
+    }
+  }, []);
+
   return (
     <div>
       {
@@ -39,30 +61,32 @@ export default function App() {
             parent route paths, and nested route elements render inside
             parent route elements. See the note about <Outlet> below. */
       }
-      <Routes>
-        <Route path="/" element={<Layout />}>
-          <Route index element={<Home />} />
-          <Route path="about" element={<About />} />
-          <Route path="dashboard" element={<Dashboard />} />
-          <Route path="estatutos" element={<Estatutos />} />
-          <Route path="inscripciones" element={<Inscripciones />} />
-          <Route path="logros" element={<Logros />} />
-          <Route path="perfil" element={<Perfil />} />
+      <UserContext.Provider value={user}>
+        <Routes>
+          <Route path="/" element={<Layout />}>
+            <Route index element={<Home />} />
+            <Route path="about" element={<About />} />
+            <Route path="dashboard" element={<Dashboard />} />
+            <Route path="estatutos" element={<Estatutos />} />
+            <Route path="inscripciones" element={<Inscripciones />} />
+            <Route path="logros" element={<Logros />} />
+            <Route path="perfil/:username" element={<Perfil />} />
 
-          {
+            {
             /* Using path="*"" means "match anything", so this route
                 acts like a catch-all for URLs that we don't have explicit
                 routes for. */
           }
+          </Route>
+          <Route path="/admin" element={<LayoutAdmin />}>
+            <Route index element={<IndexAdmin />} />
+            <Route path="/admin/config" element={<ConfigAdmin />} />
+            <Route path="/admin/logros" element={<LogrosAdmin />} />
+            <Route path="/admin/rrhh" element={<RRHHAdmin />} />
+          </Route>
           <Route path="*" element={<NoMatch />} />
-        </Route>
-        <Route path="/admin" element={<LayoutAdmin />}>
-          <Route index element={<IndexAdmin />} />
-          <Route path="/admin/config" element={<ConfigAdmin />} />
-          <Route path="/admin/logros" element={<LogrosAdmin />} />
-          <Route path="/admin/rrhh" element={<RRHHAdmin />} />
-        </Route>
-      </Routes>
+        </Routes>
+      </UserContext.Provider>
     </div>
   );
 }

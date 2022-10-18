@@ -1,10 +1,12 @@
 import * as React from 'react';
 import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
-import { isAdmin } from '../../utils/auth';
+
+import UserContext from '../../contexts/userContext';
 
 export default function ProfileNav() {
   const [isOpen, setIsOpen] = React.useState(false);
+  const user = React.useContext(UserContext);
 
   const menuVariants = {
     opened: {
@@ -35,15 +37,14 @@ export default function ProfileNav() {
       },
     },
   };
-
   return (
-    <>
+    <div>
       <motion.img
         whileHover={{ scale: 1.04 }}
         whileTap={{ scale: 0.8 }}
         className="login-picture"
-        src="https://avatars.githubusercontent.com/barbaraim?s=120"
-        alt="profile"
+        src={user?.profile?.avatarURL}
+        alt="Foto de Perfil"
         onClick={() => setIsOpen(!isOpen)}
       />
 
@@ -53,12 +54,12 @@ export default function ProfileNav() {
         variants={menuVariants}
         animate={isOpen ? 'opened' : 'closed'}
       >
-        <motion.li variants={linkVariants}><Link to="/perfil">👤 Perfil</Link></motion.li>
-        {isAdmin() && (
-          <motion.li variants={linkVariants}><Link to="/admin">👨‍💻 Admin</Link></motion.li>
+        <motion.li variants={linkVariants}><Link to={`/perfil/${user?.username}`}>👤 Perfil</Link></motion.li>
+        {['CHAIR', 'SERVICE'].includes(user?.role) && (
+        <motion.li variants={linkVariants}><Link to="/admin">👨‍💻 Admin</Link></motion.li>
         )}
-        <motion.li variants={linkVariants}><Link to="/logout">🚪 Cerrar sesión</Link></motion.li>
+        <motion.li variants={linkVariants}><a href="/?logout=true">🚪 Cerrar sesión</a></motion.li>
       </motion.ul>
-    </>
+    </div>
   );
 }

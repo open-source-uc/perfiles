@@ -5,7 +5,9 @@ import Header from '../common/Header';
 import Footer from '../common/Footer';
 import Scrollup from '../common/Scrollup';
 import NavAdmin from './NavAdmin';
-import { isLoggedIn, getUserInfo } from '../../utils/auth';
+import { isLoggedIn } from '../../utils/auth';
+
+import UserContext from '../../contexts/userContext';
 
 async function adminCheck(navigate) {
   if (!isLoggedIn()) {
@@ -13,7 +15,7 @@ async function adminCheck(navigate) {
     navigate('/api/auth/login');
   }
   // Get user info and confirm user is an admin
-  const user = await getUserInfo();
+  const user = React.useContext(UserContext);
   if (!(['CHAIR', 'SERVICE'].includes(user.role))) {
     navigate('/');
   }

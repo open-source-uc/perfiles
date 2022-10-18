@@ -32,11 +32,32 @@ router.get('/me', async (ctx) => {
   const { username } = ctx.state.user;
   // Find member by username
   const member = await prisma.member.findUnique({
-    where: {
-      username,
-    },
-    include: {
-      profile: true,
+    where: { username },
+    select: {
+      username: true,
+      role: true,
+      joinedAt: true,
+      profile: {
+        select: {
+          name: true,
+          title: true,
+          avatarURL: true,
+        },
+      },
+      achievements: {
+        select: {
+          obtainedAt: true,
+          achievement: {
+            select: {
+              id: true,
+              name: true,
+              description: true,
+              imageURL: true,
+              level: true,
+            },
+          },
+        },
+      },
     },
   });
   ctx.body = member;
