@@ -38,7 +38,7 @@ export default function SwitchDark() {
   };
 
   return (
-    <button type="button" className="switch-dark" data-isOn={isDark} onClick={toggleDarkMode}>
+    <button type="button" className="switch-dark" data-ison={isDark} onClick={toggleDarkMode}>
       <motion.div className="handle-dark" layout transition={spring} />
     </button>
   );

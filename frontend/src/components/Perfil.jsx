@@ -3,6 +3,8 @@ import React, { useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import { getPublicUserInfo } from '../utils/auth';
 
+import Badge from './common/Badge';
+
 export default function Perfil() {
   const [user, setUser] = React.useState(null);
   const { username } = useParams();
@@ -36,66 +38,17 @@ export default function Perfil() {
       </div>
       <h1>Logros</h1>
       <article className="badge-article">
-        <a className="badge-container badge-container-empty" href="#-">
-          <div className="badge-image-container">
-            <img className="badge-image" alt="" src="/assets/images/badges/3.svg" />
-          </div>
-          <div className="badge-info-container">
-            <div className="badge-title">Primera PR</div>
-          </div>
-        </a>
-        <a className="badge-container badge-container-empty" href="#-">
-          <div className="badge-image-container">
-            <img className="badge-image" alt="" src="/assets/images/badges/1.svg" />
-          </div>
-          <div className="badge-info-container">
-            <div className="badge-title">Tenemos que hablar</div>
-          </div>
-        </a>
-        <a className="badge-container badge-container-empty" href="#-">
-          <div className="badge-image-container">
-            <img className="badge-image" alt="" src="/assets/images/badges/2.svg" />
-          </div>
-          <div className="badge-info-container">
-            <div className="badge-title">Elon Musk</div>
-          </div>
-        </a>
-        <a className="badge-container badge-container-empty" href="#-">
-          <div className="badge-image-container hexagon" />
-          <div className="badge-info-container">
-            <div className="badge-title">Insignia aún no obtenida</div>
-          </div>
-        </a>
-        <a className="badge-container badge-container-empty" href="#-">
-          <div className="badge-image-container circle" />
-          <div className="badge-info-container">
-            <div className="badge-title">Insignia aún no obtenida</div>
-          </div>
-        </a>
-        <a className="badge-container badge-container-empty" href="#-">
-          <div className="badge-image-container shield" />
-          <div className="badge-info-container">
-            <div className="badge-title">Insignia aún no obtenida</div>
-          </div>
-        </a>
-        <a className="badge-container badge-container-empty" href="#-">
-          <div className="badge-image-container hexagon" />
-          <div className="badge-info-container">
-            <div className="badge-title">Insignia aún no obtenida</div>
-          </div>
-        </a>
-        <a className="badge-container badge-container-empty" href="#-">
-          <div className="badge-image-container circle" />
-          <div className="badge-info-container">
-            <div className="badge-title">Insignia aún no obtenida</div>
-          </div>
-        </a>
-        <a className="badge-container badge-container-empty" href="#-">
-          <div className="badge-image-container shield" />
-          <div className="badge-info-container">
-            <div className="badge-title">Insignia aún no obtenida</div>
-          </div>
-        </a>
+        {user?.achievements?.map((logro) => (
+          <Badge
+            id={logro.achievement.id}
+            key={logro.achievement.id}
+            name={logro.achievement.name}
+            description={logro.achievement.description}
+            imageURL={logro.achievement.imageURL}
+            level={logro.achievement.level}
+            isHighlighted={false}
+          />
+        ))}
       </article>
       <h2>Biografía</h2>
       <blockquote>

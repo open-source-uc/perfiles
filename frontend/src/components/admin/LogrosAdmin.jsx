@@ -1,4 +1,7 @@
-import * as React from 'react';
+/* eslint-disable react/prop-types */
+/* eslint-disable no-unused-vars */
+import React, { Fragment, useState } from 'react';
+// import { Dialog, Transition } from '@headlessui/react';
 
 export default function LogrosAdmin() {
   return (
@@ -73,6 +76,13 @@ export default function LogrosAdmin() {
           </tbody>
         </table>
       </section>
+
+      <section className="admin-box admin-center">
+        <button type="button" className="round__button">Crear un Logro</button>
+        {/* A modal that enables file upload */}
+
+      </section>
+
       <section className="admin-box admin-link">
         <h2 className="admin-box__title">Crear nuevo enlace</h2>
         <div className="admin-link__grid">

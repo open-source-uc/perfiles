@@ -575,12 +575,12 @@
     "method": "PUT",
     "sortNum": 120000,
     "created": "2022-10-17T02:05:42.680Z",
-    "modified": "2022-10-17T02:24:18.461Z",
+    "modified": "2022-10-18T03:21:02.944Z",
     "headers": [],
     "params": [],
     "body": {
       "type": "json",
-      "raw": "{\n  \"name\": \"Test achievement from Thunder\",\n  \"description\": \"This is a test achievement\",\n  \"imageURL\": \"assets/badges/example.png\",\n  \"type\": \"BY_REQUEST\",\n  \"level\": \"BRONZE\"\n}",
+      "raw": "{\n  \"name\": \"Test achievement from Thunder\",\n  \"description\": \"This is a test achievement\",\n  \"type\": \"BY_REQUEST\",\n  \"level\": \"BRONZE\"\n}",
       "form": []
     },
     "tests": [

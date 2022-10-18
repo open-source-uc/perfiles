@@ -1,6 +1,5 @@
-import * as React from 'react';
+import React, { useEffect } from 'react';
 import { Outlet, useNavigate } from 'react-router-dom';
-import { useEffect } from 'react';
 import Header from '../common/Header';
 import Footer from '../common/Footer';
 import Scrollup from '../common/Scrollup';
