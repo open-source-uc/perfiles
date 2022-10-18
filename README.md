@@ -73,13 +73,8 @@ Las entidades en el proyecto se encuentran modeladas usando un schema de Prisma,
 
 Adicionalmente, Prisma provee un "Studio" que permite inspeccionar los datos en la base de datos. Para abrirlo, se puede correr `npx prisma studio`.
 
-### Tests
-Junto con la API se provee un conjunto de tests REST para [Thunder Client](https://www.thunderclient.com/). Para correrlos, se necesita abrir el repositorio con la extensión instalada, crear un nuevo Environment para guardar las variables temporales, ejecutar al menos un test de prueba y luego se pueden ejecutar todos los tests de la colección.
-
-Los tests aprovechan el sistema de autenticación de desarrollo para poder probar las rutas de la API sin necesidad de autenticarse manualmente.
-
 ## Documentación adicional
-Se puede encontrar la documentación de la API en [`docs/api.md`](docs/api.md).
+Se puede encontrar la documentación completa de la API en [`docs/api.md`](docs/api.md).
 
 ## Contribuir
 

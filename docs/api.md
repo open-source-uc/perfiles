@@ -4,6 +4,11 @@ La API está diseñada para comportarse de forma RESTful mediante JSON, y utiliz
 
 La API restringe acceso mediante un sistema de control de acceso basado en roles. Los roles se encuentran descritos en el schema de la base de datos, que se puede encontrar en [`backend/prisma/schema.prisma`](../backend/prisma/schema.prisma).
 
+## Tests
+Junto con la API se provee un conjunto de tests REST para [Thunder Client](https://www.thunderclient.com/). Para correrlos, se necesita abrir el repositorio con la extensión instalada, crear un nuevo Environment para guardar las variables temporales, ejecutar al menos un test de prueba y luego se pueden ejecutar todos los tests de la colección.
+
+Los tests aprovechan el sistema de autorización de desarrollo para poder probar las rutas de la API sin necesidad de autenticarse manualmente.
+
 ## Endpoints
 ### ℹ️ Endpoints básicos (`/`)
 #### `/`
