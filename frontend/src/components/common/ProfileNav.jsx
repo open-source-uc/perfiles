@@ -55,6 +55,7 @@ export default function ProfileNav() {
         animate={isOpen ? 'opened' : 'closed'}
       >
         <motion.li variants={linkVariants}><Link to={`/perfil/${user?.username}`}>👤 Perfil</Link></motion.li>
+        <motion.li variants={linkVariants}><Link to="/solicitudes">📝 Solicitudes</Link></motion.li>
         {['CHAIR', 'SERVICE'].includes(user?.role) && (
         <motion.li variants={linkVariants}><Link to="/admin">👨‍💻 Admin</Link></motion.li>
         )}
