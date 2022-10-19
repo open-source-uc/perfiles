@@ -9,11 +9,10 @@ export default function ImageAudioVideo() {
   };
 
   const handleChangeStatus = ({ meta }, status) => {
-    console.log(status, meta);
+    // Do nothing
   };
 
   const handleSubmit = (files, allFiles) => {
-    console.log(files.map((f) => f.meta));
     allFiles.forEach((f) => f.remove());
   };
 

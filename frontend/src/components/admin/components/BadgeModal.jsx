@@ -7,6 +7,20 @@ import React, { useState } from 'react';
 import { Dialog } from '@headlessui/react';
 import 'react-dropzone-uploader/dist/styles.css';
 import Dropzone from 'react-dropzone-uploader';
+import axios from 'axios';
+
+const getBase64FromUrl = async (url) => {
+  const data = await fetch(url);
+  const blob = await data.blob();
+  return new Promise((resolve) => {
+    const reader = new FileReader();
+    reader.readAsDataURL(blob);
+    reader.onloadend = () => {
+      const base64data = reader.result;
+      resolve(base64data);
+    };
+  });
+};
 
 function DropzoneUploaderLayout({
   input, previews, submitButton, dropzoneProps, files, extra: { maxFiles },
@@ -23,7 +37,7 @@ function DropzoneUploaderLayout({
 }
 
 export default function BadgeModal() {
-  const [isOpen, setIsOpen] = useState(true);
+  const [isOpen, setIsOpen] = useState(false);
   const [blob, setBlob] = useState(null);
   const [image, setImage] = useState(null);
 
@@ -35,20 +49,19 @@ export default function BadgeModal() {
   const uploadedImage = null;
   const handleFileChangeStatus = ({ meta }, status) => {
     if (status === 'done') {
-      setBlob(meta);
+      getBase64FromUrl(meta.previewUrl).then((r) => setImage(r));
     }
   };
 
   // Handle form submit (as an uncontrolled form)
   function handleSubmitForm(event) {
     event.preventDefault();
-    console.debug('handleSubmitForm');
+    // console.debug('handleSubmitForm');
 
     // Get form data
     const formData = new FormData(event.target);
     const entries = formData.entries();
     const data = Object.fromEntries(entries);
-    console.debug('data', data);
 
     // Get file data
     if (!image) {
@@ -56,12 +69,20 @@ export default function BadgeModal() {
       alert('No image uploaded');
     }
 
-    // Transform blob (image) to base64
-  }
+    // Send request
+    axios.put('/api/achievements', {
+      ...data,
+      image,
+    }, {
+      headers: {
+        Authorization: `Bearer ${localStorage.getItem('token')}`,
+      },
+    });
 
-  async function sendBadgeComponent() {
-    // console.log('La imagen es: ', blob);
-    fetch(blob.previewUrl).then((r) => setImage(r.blob()));
+    // Close modal
+    setIsOpen(false);
+    // eslint-disable-next-line no-alert
+    alert('Logro creado exitosamente.');
   }
 
   return (
@@ -178,9 +199,8 @@ export default function BadgeModal() {
                   {/* Fin zona de dropzone */}
                   {/* A send button */}
                   <button
-                    type="button"
+                    type="submit"
                     className="mt-4 bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
-                    onClick={sendBadgeComponent}
                   >
                     Enviar
                   </button>
