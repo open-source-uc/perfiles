@@ -1,9 +1,9 @@
 {
     "recommendations": [
         "ritwickdey.liveserver",
-        "esbenp.prettier-vscode",
         "dbaeumer.vscode-eslint",
-        "rvest.vs-code-prettier-eslint",
         "tonybaloney.vscode-pets",
+        "prisma.prisma",
+        "ms-vscode-remote.remote-containers"
     ]
 }

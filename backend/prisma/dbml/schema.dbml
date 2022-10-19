@@ -1,0 +1,145 @@
+//// ------------------------------------------------------
+//// THIS FILE WAS AUTOMATICALLY GENERATED (DO NOT MODIFY)
+//// ------------------------------------------------------
+
+Table Member {
+  username String [pk, unique]
+  profile Profile
+  role Role [not null]
+  joinedAt DateTime [not null]
+  achievements AchievementsOnMembers [not null]
+  created_achievements Achievement [not null]
+  given_achievements AchievementsOnMembers [not null]
+  created_requests Request [not null]
+  created_claimlinks ClaimLink [not null]
+  claimed_claimlinks ClaimLinkClaim [not null]
+}
+
+Table Profile {
+  id String [pk, unique]
+  member Member [not null]
+  memberUsername String [unique, not null]
+  name String [not null]
+  email String [not null]
+  title String
+  telegramUsername String
+  avatarURL String
+}
+
+Table Achievement {
+  id String [pk, unique]
+  creator Member
+  creatorUsername String
+  createdAt DateTime [not null]
+  updatedAt DateTime [not null]
+  expiresAt DateTime
+  name String [unique, not null]
+  description String [not null]
+  imageURL String [not null]
+  type AchievementType [not null]
+  level AchievementLevel [not null]
+  levelName String [not null]
+  pointsOverride Int
+  members AchievementsOnMembers [not null]
+  requests Request [not null]
+  claimlinks ClaimLink [not null]
+}
+
+Table AchievementsOnMembers {
+  id String [pk, unique]
+  obtainedAt DateTime [not null]
+  member Member [not null]
+  achievement Achievement [not null]
+  awardedBy Member
+  memberUsername String [not null]
+  achievementId String [not null]
+  awardedByUsername String
+}
+
+Table Request {
+  id String [pk, unique]
+  achievement Achievement [not null]
+  openedBy Member
+  openedAt DateTime [not null]
+  state RequestState
+  description String
+  achievementId String [not null]
+  memberUsername String
+}
+
+Table ClaimLink {
+  id String [pk, unique]
+  achievement Achievement [not null]
+  creator Member
+  createdAt DateTime [not null]
+  expiresAt DateTime
+  shortname String [not null]
+  achievementId String [not null]
+  creatorUsername String
+  user_limit Int
+  claims ClaimLinkClaim [not null]
+}
+
+Table ClaimLinkClaim {
+  id String [pk, unique]
+  claimedAt DateTime [not null]
+  claimedBy Member [not null]
+  claimLink ClaimLink [not null]
+  memberUsername String [not null]
+  claimLinkId String [not null]
+}
+
+Table AchievementLevel {
+  name String [pk, unique]
+  points Int [not null]
+  Achievement Achievement [not null]
+}
+
+Enum Role {
+  SERVICE
+  CHAIR
+  MENTOR
+  MEMBER
+  ALUMNI
+  APPLICANT
+  INACTIVE
+  SUSPENDED
+}
+
+Enum AchievementType {
+  PARTICIPATION
+  BY_REQUEST
+  MANUAL
+  MYSTERIOUS
+  AUTOMATIC
+}
+
+Enum RequestState {
+  OPEN
+  APPROVED
+  REJECTED
+}
+
+Ref: Profile.memberUsername - Member.username
+
+Ref: Achievement.creatorUsername > Member.username
+
+Ref: Achievement.levelName > AchievementLevel.name
+
+Ref: AchievementsOnMembers.memberUsername > Member.username [delete: Cascade]
+
+Ref: AchievementsOnMembers.achievementId > Achievement.id [delete: Cascade]
+
+Ref: AchievementsOnMembers.awardedByUsername > Member.username [delete: Cascade]
+
+Ref: Request.achievementId > Achievement.id [delete: Cascade]
+
+Ref: Request.memberUsername > Member.username [delete: Cascade]
+
+Ref: ClaimLink.achievementId > Achievement.id [delete: Cascade]
+
+Ref: ClaimLink.creatorUsername > Member.username
+
+Ref: ClaimLinkClaim.memberUsername > Member.username
+
+Ref: ClaimLinkClaim.claimLinkId > ClaimLink.id

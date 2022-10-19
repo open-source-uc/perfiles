@@ -1,0 +1,52 @@
+// For format details, see https://aka.ms/devcontainer.json. For config options, see the README at:
+// https://github.com/microsoft/vscode-dev-containers/tree/v0.245.2/containers/javascript-node-postgres
+// Update the VARIANT arg in docker-compose.yml to pick a Node.js version
+{
+	"name": "Node.js & PostgreSQL",
+	"dockerComposeFile": "docker-compose.yml",
+	"service": "app",
+	"workspaceFolder": "/workspace",
+	// Configure tool-specific properties.
+	"customizations": {
+		// Configure properties specific to VS Code.
+		"vscode": {
+			// Add the IDs of extensions you want installed when the container is created.
+			"extensions": [
+				"ritwickdey.liveserver",
+				"dbaeumer.vscode-eslint",
+				"tonybaloney.vscode-pets",
+				"Prisma.prisma",
+				"GitHub.copilot",
+				"GitHub.vscode-pull-request-github",
+				"CS50.vscode-presentation-mode",
+				"eamodio.gitlens",
+				"rangav.vscode-thunder-client",
+				"firefox-devtools.vscode-firefox-debug",
+				"bradlc.vscode-tailwindcss",
+				"austenc.tailwind-docs"
+			]
+		}
+	},
+	// Use 'forwardPorts' to make a list of ports inside the container available locally.
+	// This can be used to network with other containers or with the host.
+	"forwardPorts": [
+		3000,
+		3100,
+		5432
+	],
+	// Use 'postCreateCommand' to run commands after the container is created.
+	// "postCreateCommand": "yarn install",
+	// Comment out to connect as root instead. More info: https://aka.ms/vscode-remote/containers/non-root.
+	"remoteUser": "node",
+	"features": {
+		"ghcr.io/devcontainers/features/github-cli:1": {
+			"version": "latest"
+		}
+	},
+	"settings": {
+		"terminal.integrated.env.linux": {
+			"NODE_ENV": "development"
+		}
+	},
+	"postCreateCommand": "cd backend && npm install && npx prisma migrate reset --force && cd ../frontend && npm install"
+}

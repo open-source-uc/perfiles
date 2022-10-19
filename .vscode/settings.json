@@ -1,24 +1,14 @@
 {
-  "liveServer.settings.root": "/src",
-  "editor.defaultFormatter": "rvest.vs-code-prettier-eslint",
-  "editor.formatOnPaste": false,
-  "editor.formatOnType": false,
-  "editor.formatOnSave": true,
-  "editor.formatOnSaveMode": "file", // required to format on save
   "files.autoSave": "onFocusChange",
-  "[javascript]": {
-    "editor.defaultFormatter": "rvest.vs-code-prettier-eslint"
+  "editor.codeActionsOnSave": {
+    "source.fixAll.eslint": true
   },
-  "[html]": {
-    "editor.defaultFormatter": "rvest.vs-code-prettier-eslint"
-  },
+  "eslint.validate": [
+    "javascript"
+  ],
   "[css]": {
-    "editor.defaultFormatter": "rvest.vs-code-prettier-eslint"
+    "editor.defaultFormatter": "vscode.css-language-features"
   },
-  "[json]": {
-    "editor.defaultFormatter": "rvest.vs-code-prettier-eslint"
-  },
-  "[jsonc]": {
-    "editor.defaultFormatter": "rvest.vs-code-prettier-eslint"
-  }
+  "thunder-client.saveToWorkspace": true,
+  "thunder-client.workspaceRelativePath": "backend/",
 }

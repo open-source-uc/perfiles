@@ -1,0 +1,438 @@
+.adminindexbox {
+    padding: 10px 16px;
+    list-style: none;
+    background-color: var(--white--3);
+    border-radius: 0.5rem;
+    margin: 1rem 0 1rem 0;
+
+    li {
+        display: inline-block;
+        margin: 0 0.1rem;
+        font-size: 1.4rem;
+
+        &:before {
+            content: "/\00a0";
+        }
+
+        a {
+            color: var(--main--nabyblue);
+            text-decoration: none;
+            font-weight: 600;
+
+            &:hover {
+                color: #01447e;
+                text-decoration: underline;
+            }
+        }
+    }
+}
+
+.admin-box {
+    // Add a border
+    border: 3px solid var(--black--1);
+    // Add some padding
+    padding: 1em;
+    // Add some bottom margin
+    margin-bottom: 1em;
+
+    h2 {
+        margin-left: 20px;
+    }
+
+    h3 {
+        margin-left: 20px;
+    }
+
+    h4 {
+        margin-left: 20px;
+    }
+
+    p {
+        margin-left: 20px;
+    }
+
+    table {
+        width: 100%;
+        // Remove all padding
+        padding: 0;
+        margin: 0;
+    }
+
+    // Highlight thead
+    thead {
+        background-color: var(--black--3);
+        color: var(--white--1);
+    }
+
+    tr {
+        text-align: center;
+    }
+
+    td {
+        text-align: center;
+    }
+
+    th {
+        text-align: center;
+    }
+
+    ul {
+        list-style: none;
+        line-height: 4rem;
+    }
+
+    .button-admin {
+        background: var(--white--4);
+        height: 3rem;
+        width: 14rem;
+        border: none;
+        border-radius: 0.5rem;
+        padding: 0.5rem 1rem;
+        font-size: 1.2rem;
+        cursor: pointer;
+    }
+}
+
+.admin-members {
+    table {
+        width: 100%;
+        padding: 0;
+        margin: 0;
+    }
+}
+
+// Search for the members section
+
+.admin-members-search__input {
+    padding: 10px 20px;
+    border-radius: 5px;
+    font-size: 1.2em;
+    font-family: "Inter";
+    font-weight: 400;
+    max-width: 60%;
+    width: 100%;
+    text-align: center;
+    margin: 0 auto;
+}
+
+.admin-members-search__title {
+    font-size: 1.1em;
+    margin-bottom: 0.5em;
+}
+
+.admin-members-search {
+    text-align: center;
+    width: 90%;
+    margin-bottom: 20px;
+    display: flex;
+    justify-content: center;
+}
+
+// Styles for the report sections in human resources
+.admin-reports-buttons {
+    display: flex;
+    flex-direction: row;
+    // Distribute buttons along the row
+    justify-content: space-around;
+    // Center buttons vertically
+    align-items: center;
+
+    button {
+        height: 100px;
+        margin-top: 40px;
+        margin-bottom: 30px;
+        background-color: var(--main--nabyblue);
+        color: var(--white--3);
+    }
+}
+
+
+.admin__main {
+    // padding: 20px 50px;
+    margin-left: 60px;
+    min-width: 95vw;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.admin__main > * {
+    width: 100%;
+    max-width: 1000px;
+}
+
+.admin__welcome {
+    font-size: 2.3em;
+    margin: 10px 0;
+    text-align: center;
+    margin-top: 30px;
+}
+
+.nav-admin {
+    background-color: var(--white--3);
+    box-shadow: var(--box-shadow);
+    width: 60px;
+    height: 100%;
+    position: fixed;
+    z-index: 0;
+    top: 0;
+    transition: all 0.4s ease-in-out;
+    padding-top: 55px;
+
+    .nav-admin-notMargin {
+        margin-top: 0 !important;
+    }
+
+    ul {
+        li {
+            position: relative;
+            height: 50px;
+            line-height: 50px;
+            width: 100%;
+
+            a {
+                padding: auto;
+                text-decoration: none;
+            }
+        }
+    }
+
+    li.active {
+        background-color: var(--white--2);
+    }
+}
+
+.nav-admin__nav {
+    // This is a lateral navbar that goes on left of the page
+    display: flex;
+    flex-direction: column;
+    overflow: auto;
+    justify-content: space-between;
+    align-items: center;
+}
+
+// ul
+.nav-admin__ul {
+    // Disable the default bullets in the list
+    list-style-type: none;
+    // Set reasonable defaults
+    padding: 0;
+    width: 100%;
+    text-align: center;
+}
+
+.tableadmin {
+    width: 100%;
+    margin: 10px;
+    font-size: 1.2em;
+    margin-bottom: 15px;
+    text-align: left;
+    box-shadow: var(--box-shadow2);
+
+    td {
+        padding: 4px;
+    }
+
+    thead {
+        cursor: pointer;
+        background: var(--black--1);
+        color: var(--white--1);
+
+        th {
+            padding: 5px;
+        }
+    }
+
+    tbody {
+        background: var(--black--4);
+    }
+
+    tr {
+        &:nth-child(even) {
+            td {
+                background: var(--black--4);
+                color: var(--white--3);
+            }
+        }
+
+        &:nth-child(odd) {
+            td {
+                background: var(--white--4);
+                color: var(--black--1);
+            }
+        }
+
+        td {
+            padding: 15px;
+        }
+    }
+
+    time {
+        text-align: right;
+        display: block;
+        font-size: 80%;
+    }
+}
+
+
+// rrhh
+.import-members {
+    border: 4px dashed rgb(0, 0, 0);
+    padding: 20px;
+
+    p {
+        text-align: center;
+        color: #000000;
+        margin-top: 40px;
+        margin-bottom: 40px;
+    }
+
+    input {
+        position: absolute;
+        width: 100%;
+        height: 200px;
+        outline: none;
+        opacity: 0;
+    }
+
+    button {
+        width: 100%;
+        height: 40px;
+        transition: all 0.2s ease;
+        outline: none;
+        border: 10px;
+        margin-top: 20px;
+    }
+}
+
+.admin-danger-zone {
+    border: 4px solid #dc3545;
+
+    h2 {
+        margin-bottom: 30px;
+    }
+
+    button {
+        height: 100px;
+    }
+}
+
+.admin-danger-zone-buttons {
+    display: flex;
+    justify-content: space-evenly;
+    margin-top: 20px;
+    gap: 20px;
+}
+
+.admin-integrations-inputs {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr 1fr;
+
+    input {
+        width: 80%;
+        height: 30px;
+        margin-top: 10px;
+        margin-bottom: 10px;
+    }
+
+    button {
+        width: 80%;
+        height: 50px;
+        margin-top: 20px;
+        margin-bottom: 20px;
+        background-color: var(--main--nabyblue);
+        color: var(--white--1);
+    }
+}
+
+.admin-integrations {
+    h2 {
+        margin-bottom: 30px;
+    }
+}
+
+.admin-criteria-inputs {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr 1fr;
+
+    input {
+        width: 80%;
+        height: 30px;
+        margin-top: 10px;
+        margin-bottom: 10px;
+    }
+
+    button {
+        width: 80%;
+        height: 50px;
+        margin-top: 20px;
+        margin-bottom: 20px;
+        background-color: var(--main--nabyblue);
+        color: var(--white--1);
+    }
+}
+
+.admin-criteria {
+    h2 {
+        margin-bottom: 30px;
+    }
+}
+
+.admin-statistics__stats {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+}
+
+.admin-link__grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-gap: 20px;
+}
+
+.admin-link__search-button {
+    width: 100%;
+}
+
+.admin-link__select {
+    select {
+        width: 100%;
+        height: 50px;
+    }
+}
+
+// Logros
+.admin-center {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin-top: 30px;
+    margin-bottom: 30px;
+}
+
+.round__button {
+    width: 100%;
+    height: 50px;
+    background-color: var(--main--nabyblue);
+    color: var(--black--4);
+    border: none;
+    border-radius: 10px;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    font-size: 1.2em;
+}
+
+.fixed__modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 100;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}

@@ -1,0 +1,25 @@
+// Scroll to top button
+.btn-scrollup {
+    position: fixed;
+    bottom: 3%;
+    right: 1.5%;
+    padding: 1.5rem 1.5rem;
+    background-color: var(--main--nabyblue);
+    color: var(--white--1);
+    border: 0 solid transparent;
+    border-radius: 100%;
+    cursor: pointer;
+    transform: 100px;
+    transition: 0.3s;
+    z-index: 999;
+
+    &:hover {
+        transform: translateY(-6px);
+        transition: all 0.2s ease-in-out;
+    }
+
+    .btn-scrollup-visible {
+        transform: 0px !important;
+    }
+}
+

@@ -1,0 +1,135 @@
+@media (max-width: $tablet) {
+    .nav-main {
+        ul {
+            position: absolute;
+            width: 100%;
+            background: var(--black--2);
+            z-index: -1;
+            left: 0;
+            text-align: center;
+            margin-top: 70px;
+            padding: 0;
+            display: none;
+        }
+
+        li {
+            display: block;
+            margin: 0;
+            font-size: 1.1rem;
+            line-height: 30px;
+            border-top-width: 1.3px;
+            border-top-style: solid;
+            border-top-color: var(--white--2);
+            border-left: 30px solid transparent;
+            border-right: 30px solid transparent;
+        }
+    }
+
+    .checkbtn {
+        display: block;
+    }
+
+    .checkbtn-profile {
+        float: none;
+        display: block;
+    }
+
+    .profile-dropdown {
+        top: 50%;
+        border-left: none;
+    }
+
+    #check {
+        &:checked~ul {
+            display: block;
+        }
+    }
+
+    .search-box {
+        width: 85%;
+        flex-direction: column;
+
+        input {
+            margin-bottom: 10px;
+        }
+    }
+
+    .profile__list {
+        max-width: 100%;
+        justify-content: center;
+    }
+
+    .admin-box {
+        table {
+            overflow-x: auto;
+        }
+
+        button {
+            width: 100%;
+        }
+    }
+
+    .admin-members {
+        table {
+            overflow-x: auto;
+        }
+    }
+
+    .admin-members-search {
+        flex-direction: column;
+        gap: 10px;
+        margin-left: 5%;
+    }
+
+    .admin-reports-buttons {
+        flex-direction: column;
+
+        button {
+            margin-top: 20px;
+            margin-bottom: 20px;
+        }
+    }
+
+    .admin-achievements__table {
+        display: grid;
+        grid-template-columns: 1fr;
+    }
+}
+
+@media screen and (max-width: $large) {
+    .col-50 {
+        width: calc(100% - 1rem);
+    }
+
+    .col-33 {
+        width: calc(100% - 1rem);
+    }
+
+    .col-25 {
+        width: calc(100% - 1rem);
+    }
+
+    .admin-danger-zone-buttons {
+        flex-direction: column;
+    }
+
+    .admin-integrations-inputs {
+        grid-template-columns: 1fr;
+        grid-template-rows: 1fr 1fr 1fr 1fr;
+    }
+
+    .admin-criteria-inputs {
+        grid-template-columns: 1fr;
+        grid-template-rows: 1fr 1fr 1fr 1fr;
+    }
+
+    .admin-statistics__stats {
+        display: grid;
+        grid-template-columns: 1fr;
+    }
+
+    .admin-link__grid {
+        display: grid;
+        grid-template-columns: 1fr;
+    }
+}

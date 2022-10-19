@@ -1,0 +1,130 @@
+// Make navbar an horizontal flex
+.nav-main {
+    max-height: 70px !important;
+    height: 70px !important;
+    display: flex;
+
+    ul {
+        display: flex;
+        align-items: center;
+        margin: 0;
+
+        // Make navbar an right-aligned horizontal flex
+        li {
+            display: inline-block;
+            padding: 0.5rem 1rem;
+
+            // Make profile picture visible
+            .login-picture {
+                width: 50px;
+                height: 50px;
+                border-radius: 50%;
+                border-radius: 50%;
+                width: 60px;
+                height: 60px;
+                margin-top: 0.3rem;
+            }
+        }
+
+        // Link styling
+        a {
+            color: rgba(216, 222, 233, 1);
+            text-decoration: none;
+            font-family: "Inter";
+            font-weight: 400;
+
+            // Make navbar links whiter on hover
+            &:hover {
+                color: var(--white--1);
+            }
+        }
+
+        // Drop down list
+        .profile-dropdown {
+            position: absolute;
+            background: rgba(59, 66, 82, 1);
+            z-index: -1;
+            top: 0;
+            right: 0;
+            margin-top: 70px;
+            padding: 0;
+            display: block;
+            border: 1px solid rgba(193, 200, 215, 1);
+            border-top: 0;
+
+
+            li {
+                display: block;
+                margin: 0;
+                font-size: 1.1rem;
+                line-height: 30px;
+                border-top-width: 1.3px;
+                border-top-style: solid;
+                border-top-color: rgba(193, 200, 215, 1);
+                border-left: 30px solid transparent;
+                border-right: 30px solid transparent;
+            }
+        }
+    }
+
+    // Make the hamburger unfold
+    .checkbtn {
+        font-size: 2.5rem;
+        color: white;
+        cursor: pointer;
+        display: none;
+        float: right;
+        line-height: 80px;
+        transition: all 0.3s ease;
+        padding: 0 1rem;
+    }
+
+    // Makes it display with the profile picture
+    .checkbtn-profile {
+        font-size: 2.5rem;
+        cursor: pointer;
+        float: right;
+        line-height: 0px;
+        // transition: all 0.3s ease;
+    }
+
+    #check {
+        display: none;
+    }
+}
+
+
+.logo-osuc {
+    width: 280px;
+    height: 70px;
+    max-height: 70px;
+    object-fit: contain;
+    margin: 0px 15px;
+    max-width: 12rem;
+}
+
+.switch-dark {
+    width: 4.5rem;
+    height: 2.5rem;
+    background-color: var(--black--1);
+    display: flex;
+    align-content: center;
+    justify-content: flex-start;
+    border-radius: 50px;
+    padding: 4px;
+    cursor: pointer;
+}
+
+.switch-dark[data-isOn="true"] {
+    justify-content: flex-end;
+    background: var(--main--nabyblue);
+}
+
+.handle-dark {
+    width: 2rem;
+    height: 2rem;
+    display: block;
+    box-shadow: var(--box-shadow2);
+    background-color: var(--white--3);
+    border-radius: 40px;
+}
