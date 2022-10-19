@@ -55,10 +55,14 @@ router.put('/', async (ctx) => {
 
   if (expiresAt === '') {
     expiresAt = null;
+  } else {
+    expiresAt = new Date(expiresAt);
   }
 
   if (pointsOverride === '') {
     pointsOverride = null;
+  } else {
+    pointsOverride = parseInt(pointsOverride, 10);
   }
 
   // Validate input
