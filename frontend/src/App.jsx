@@ -17,6 +17,7 @@ import IndexAdmin from './components/admin/IndexAdmin';
 import LogrosAdmin from './components/admin/LogrosAdmin';
 import RRHHAdmin from './components/admin/RRHHAdmin';
 import LayoutAdmin from './components/admin/LayoutAdmin';
+import Solicitudes from './components/Solicitudes';
 
 // Contexts
 import UserContext from './contexts/userContext';
@@ -71,6 +72,7 @@ export default function App() {
             <Route path="inscripciones" element={<Inscripciones />} />
             <Route path="logros" element={<Logros />} />
             <Route path="perfil/:username" element={<Perfil />} />
+            <Route path="solicitudes" element={<Solicitudes />} />
 
             {
             /* Using path="*"" means "match anything", so this route

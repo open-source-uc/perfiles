@@ -5,10 +5,10 @@ import React, { useEffect } from 'react';
 export default function Scrollup() {
   const [isVisible, setIsVisible] = React.useState(false);
   const toggleVisibility = () => {
-    if (window.pageYOffset < 110) {
-      setIsVisible(true);
-    } else {
+    if (window.pageYOffset > 110) {
       setIsVisible(false);
+    } else {
+      setIsVisible(true);
     }
   };
 
