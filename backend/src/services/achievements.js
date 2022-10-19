@@ -51,7 +51,15 @@ router.put('/', async (ctx) => {
   } = ctx.request.body;
 
   // Optional fields (expiresAt, pointsOverride)
-  const { expiresAt, pointsOverride } = ctx.request.body;
+  let { expiresAt, pointsOverride } = ctx.request.body;
+
+  if (expiresAt === '') {
+    expiresAt = null;
+  }
+
+  if (pointsOverride === '') {
+    pointsOverride = null;
+  }
 
   // Validate input
   if (!name || !description || !type || !level || !image) {
@@ -62,26 +70,15 @@ router.put('/', async (ctx) => {
     return;
   }
   // Load PNG image from base64 string
-  const imageBuffer = Buffer.from(image, 'base64');
-  // Check that the image is a PNG
-  if (
-    imageBuffer[0] !== 0x89
-    || imageBuffer[1] !== 0x50
-    || imageBuffer[2] !== 0x4E
-    || imageBuffer[3] !== 0x47
-  ) {
-    ctx.status = 400;
-    ctx.body = {
-      message: 'Image must be a PNG',
-    };
-    return;
-  }
+  // Strip prefix from base64 string
+  const base64Image = image.split(';base64,').pop();
+  const imageBuffer = Buffer.from(base64Image, 'base64');
 
   const filename = slugify(name, { lower: true, strict: true });
   const imageURL = `assets/images/badges/${filename}.png`;
 
   // Write image to file
-  await fs.writeFile(`../frontend/public/${imageURL}`, imageBuffer);
+  fs.writeFileSync(`../frontend/public/${imageURL}`, imageBuffer);
 
   try {
     // Check if achievement already exists

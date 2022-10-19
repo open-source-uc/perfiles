@@ -39,8 +39,6 @@ export default function Solicitudes() {
   const user = React.useContext(UserContext);
   const myRequests = user?.created_requests;
 
-  console.debug(myRequests);
-
   useEffect(() => {
     axios.get('/api/achievements', {
       headers: {
@@ -86,7 +84,7 @@ export default function Solicitudes() {
     <section className="personal-profile h-screen flex items-center">
       <div className="profile-header">
         <div className="profile-info prose dark:prose-invert">
-          <h2>Generar solicitud</h2>
+          <h2>Nueva solicitud</h2>
         </div>
       </div>
       { success && (
