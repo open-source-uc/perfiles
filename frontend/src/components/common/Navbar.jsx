@@ -17,7 +17,7 @@ export default function Navbar() {
         <i className="fa-solid fa-bars" />
         <input type="checkbox" id="check" />
       </label>
-      <ul>
+      <ul className="text-white dark:text-white">
         <li>
           <SwitchDark />
         </li>

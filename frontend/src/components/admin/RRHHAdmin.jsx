@@ -10,11 +10,10 @@ export default function RRHHAdmin() {
         <li className="adminindexbox-item active">Recursos humanos</li>
       </ol>
       <section className="admin-box admin-members">
-        <h2>Miembros</h2>
-        <p className="admin-members-search__title">Buscar miembros...</p>
+        <h2 className="prose dark:prose-invert">Miembros</h2>
         <div className="admin-members-search">
           <input type="text" name="name" className="admin-members-search__input" placeholder="Escribe un nombre..." />
-          <button className="admin-members-search__button" type="button">
+          <button className="button-admin admin-members-search__button" type="button">
             <i className="fa-solid fa-search" />
             Buscar
           </button>
@@ -56,7 +55,7 @@ export default function RRHHAdmin() {
           </tbody>
         </table>
       </section>
-      <section className="admin-box admin-reports">
+      <section className="admin-box admin-reports prose dark:prose-invert">
         <h2>Generar reportes de actividad</h2>
 
         <div className="admin-reports-buttons">
@@ -64,7 +63,7 @@ export default function RRHHAdmin() {
           <button type="button">Reporte de outboarding</button>
         </div>
       </section>
-      <section className="admin-box admin-import-aplicants">
+      <section className="admin-box admin-import-aplicants prose dark:prose-invert">
         <h2>Importar aplicantes</h2>
         <p>
           Los aplicantes recibiran invitaciones a Telegram, Discord, GitHub y
@@ -76,7 +75,7 @@ export default function RRHHAdmin() {
           <button type="submit">Subir</button>
         </form>
       </section>
-      <section className="admin-box admin-danger-zone">
+      <section className="admin-box admin-danger-zone prose dark:prose-invert">
         {/* <!-- DANGER ZONE --> */}
         <h2 className="text-danger">Zona de peligro</h2>
         <div className="admin-danger-zone-buttons">

@@ -1,3 +1,8 @@
+// tailwind
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
 // abstracts
 @import "./abstracts/variables";
 @import "./abstracts/mixins";
@@ -14,6 +19,7 @@
 @import "./components/admin";
 @import "./components/home";
 @import "./components/perfil";
+@import "./components/solicitudes";
 
 // media queries
 @import "./components/_media";

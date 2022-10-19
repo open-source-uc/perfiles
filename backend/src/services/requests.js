@@ -36,7 +36,7 @@ router.get('/open', async (ctx) => {
 
   const requests = await prisma.request.findMany({
     where: {
-      status: 'OPEN',
+      state: 'OPEN',
     },
     include: {
       achievement: true,
@@ -58,7 +58,7 @@ router.get('/closed', async (ctx) => {
 
   const requests = await prisma.request.findMany({
     where: {
-      status: {
+      state: {
         in: ['REJECTED', 'APPROVED'],
       },
     },

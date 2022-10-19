@@ -28,11 +28,11 @@
 }
 
 .admin-box {
-    // Add a border 
+    // Add a border
     border: 3px solid var(--black--1);
-    // Add some padding 
+    // Add some padding
     padding: 1em;
-    // Add some bottom margin 
+    // Add some bottom margin
     margin-bottom: 1em;
 
     h2 {
@@ -53,12 +53,12 @@
 
     table {
         width: 100%;
-        // Remove all padding 
+        // Remove all padding
         padding: 0;
         margin: 0;
     }
 
-    // Highlight thead 
+    // Highlight thead
     thead {
         background-color: var(--black--3);
         color: var(--white--1);
@@ -81,7 +81,7 @@
         line-height: 4rem;
     }
 
-    button {
+    .button-admin {
         background: var(--white--4);
         height: 3rem;
         width: 14rem;
@@ -101,7 +101,7 @@
     }
 }
 
-// Search for the members section 
+// Search for the members section
 
 .admin-members-search__input {
     padding: 10px 20px;
@@ -128,13 +128,13 @@
     justify-content: center;
 }
 
-// Styles for the report sections in human resources 
+// Styles for the report sections in human resources
 .admin-reports-buttons {
     display: flex;
     flex-direction: row;
-    // Distribute buttons along the row 
+    // Distribute buttons along the row
     justify-content: space-around;
-    // Center buttons vertically 
+    // Center buttons vertically
     align-items: center;
 
     button {
@@ -150,7 +150,7 @@
 .admin__main {
     // padding: 20px 50px;
     margin-left: 60px;
-    min-width: 100vw;
+    min-width: 95vw;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -203,7 +203,7 @@
 }
 
 .nav-admin__nav {
-    // This is a lateral navbar that goes on left of the page 
+    // This is a lateral navbar that goes on left of the page
     display: flex;
     flex-direction: column;
     overflow: auto;
@@ -211,11 +211,11 @@
     align-items: center;
 }
 
-// ul 
+// ul
 .nav-admin__ul {
-    // Disable the default bullets in the list 
+    // Disable the default bullets in the list
     list-style-type: none;
-    // Set reasonable defaults 
+    // Set reasonable defaults
     padding: 0;
     width: 100%;
     text-align: center;
@@ -422,4 +422,17 @@
     margin-top: 20px;
     margin-bottom: 20px;
     font-size: 1.2em;
+}
+
+.fixed__modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 100;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }

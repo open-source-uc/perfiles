@@ -1,4 +1,4 @@
-// Make navbar an horizontal flex 
+// Make navbar an horizontal flex
 .nav-main {
     max-height: 70px !important;
     height: 70px !important;
@@ -9,7 +9,7 @@
         align-items: center;
         margin: 0;
 
-        // Make navbar an right-aligned horizontal flex 
+        // Make navbar an right-aligned horizontal flex
         li {
             display: inline-block;
             padding: 0.5rem 1rem;
@@ -26,30 +26,30 @@
             }
         }
 
-        // Link styling 
+        // Link styling
         a {
-            color: var(--white--3);
+            color: rgba(216, 222, 233, 1);
             text-decoration: none;
             font-family: "Inter";
             font-weight: 400;
 
-            // Make navbar links whiter on hover 
+            // Make navbar links whiter on hover
             &:hover {
                 color: var(--white--1);
             }
         }
 
-        // Drop down list 
+        // Drop down list
         .profile-dropdown {
             position: absolute;
-            background: var(--black--2);
+            background: rgba(59, 66, 82, 1);
             z-index: -1;
             top: 0;
             right: 0;
             margin-top: 70px;
             padding: 0;
             display: block;
-            border: 1px solid var(--white--4);
+            border: 1px solid rgba(193, 200, 215, 1);
             border-top: 0;
 
 
@@ -60,7 +60,7 @@
                 line-height: 30px;
                 border-top-width: 1.3px;
                 border-top-style: solid;
-                border-top-color: var(--white--4);
+                border-top-color: rgba(193, 200, 215, 1);
                 border-left: 30px solid transparent;
                 border-right: 30px solid transparent;
             }
@@ -79,7 +79,7 @@
         padding: 0 1rem;
     }
 
-    // Makes it display with the profile picture 
+    // Makes it display with the profile picture
     .checkbtn-profile {
         font-size: 2.5rem;
         cursor: pointer;

@@ -2,7 +2,7 @@ import React from 'react';
 
 export default function Inscripciones() {
   return (
-    <section className="styleword">
+    <section className="styleword prose dark:prose-invert">
       <h1 id="estatuto">Estatuto</h1>
       <p>Actualizado el 23 de agosto de 2022.</p>
       <h2 id="título-preliminar">Título preliminar</h2>

@@ -3,6 +3,7 @@
 import React, { Fragment, useState } from 'react';
 import Badge from '../common/Badge';
 import BadgeModal from './components/BadgeModal';
+import ListaSolicitudes from './ListaSolicitudes';
 // import { Dialog, Transition } from '@headlessui/react';
 
 export default function LogrosAdmin() {
@@ -14,7 +15,7 @@ export default function LogrosAdmin() {
         </li>
         <li className="adminindexbox-item active">Logros y contadores</li>
       </ol>
-      <section className="admin-box admin-statistics">
+      <section className="admin-box admin-statistics prose dark:prose-invert">
         <h2 className="admin-box__title">Estadísticas</h2>
         <div className="admin-statistics__stats">
           <div className="admin-statistics__stat">
@@ -39,55 +40,17 @@ export default function LogrosAdmin() {
           </div>
         </div>
       </section>
-      <section className="admin-box admin-achievements">
-        <h2 className="admin-box__title">Solicitudes de logros</h2>
-        <table className="admin-achievements__table">
-          <thead>
-            <tr>
-              <th>Logro</th>
-              <th>Nombre</th>
-              <th>Estado</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td>Esquema Piramidal</td>
-              <td>Fernando Smith</td>
-              <td>Pendiente</td>
-            </tr>
-            <tr>
-              <td>cruz@uc.cl</td>
-              <td>Alister McCormack</td>
-              <td>Pendiente</td>
-            </tr>
-            <tr>
-              <td>Mente de tiburón</td>
-              <td>José Antonio Castro</td>
-              <td>Pendiente</td>
-            </tr>
-            <tr>
-              <td>Hello world</td>
-              <td>Hernán Valdivieso</td>
-              <td>Rechazada</td>
-            </tr>
-            <tr>
-              <td>Tenemos que Hablar</td>
-              <td>Victor Hernández</td>
-              <td>Aprobada</td>
-            </tr>
-          </tbody>
-        </table>
-      </section>
+      <ListaSolicitudes />
 
       <section className="admin-box admin-center">
         <BadgeModal />
       </section>
 
-      <section className="admin-box admin-link">
+      <section className="admin-box admin-link prose dark:prose-invert">
         <h2 className="admin-box__title">Crear nuevo enlace</h2>
         <div className="admin-link__grid">
           <input type="text" placeholder="Buscar logro" />
-          <button className="admin-link__search-button" type="button">
+          <button className="button-admin admin-link__search-button" type="button">
             <i className="fa-solid fa-search" />
           </button>
           <div className="admin-link__select">
@@ -102,7 +65,7 @@ export default function LogrosAdmin() {
             </select>
           </div>
           <div className="admin-link__generate">
-            <button className="admin-link__generate-button" type="button">Generar</button>
+            <button className="button-admin admin-link__generate-button" type="button">Generar</button>
           </div>
         </div>
       </section>
