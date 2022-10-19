@@ -1,12 +1,10 @@
-/* eslint-disable react/prop-types */
 /* eslint-disable no-unused-vars */
 import React, { useEffect, useContext } from 'react';
 import axios from 'axios';
 
-function CardRequest(props) {
-  const {
-    name, createdAt, state, description, id,
-  } = props;
+function CardRequest({
+  name, createdAt, state, description, id,
+}) {
   const dateFormated = new Date(createdAt).toLocaleDateString('es-CL');
 
   // Configuramos el patch para cambiar el estado de la solicitud segun el boton presionado

@@ -1,4 +1,3 @@
-/* eslint-disable react/prop-types */
 /* eslint-disable no-unused-vars */
 import React, { Fragment, useState } from 'react';
 import Badge from '../common/Badge';

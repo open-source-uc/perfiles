@@ -1,12 +1,9 @@
-/* eslint-disable react/prop-types */
 /* eslint-disable no-unused-vars */
 import React from 'react';
 
-function Badge(props) {
-  const {
-    id, name, description, imageURL, level, isHighlighted,
-  } = props;
-
+function Badge({
+  id, name, description, imageURL, level, isHighlighted,
+}) {
   return (
     <a className="badge-container badge-container-empty" href="#-" id={id}>
       <div className="badge-image-container">

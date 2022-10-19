@@ -1,4 +1,3 @@
-/* eslint-disable react/prop-types */
 /* eslint-disable no-unused-vars */
 import React, { useEffect } from 'react';
 
@@ -17,8 +16,7 @@ function humanReadableStatus(status) {
   }
   return 'Desconocido';
 }
-function FilaSolicitud(props) {
-  const { name, createdAt, state } = props;
+function FilaSolicitud({ name, createdAt, state }) {
   const dateFormated = new Date(createdAt).toLocaleDateString('es-CL');
   return (
     <tr className="border-b">
