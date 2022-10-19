@@ -1,4 +1,4 @@
-// Scroll to top button 
+// Scroll to top button
 .btn-scrollup {
     position: fixed;
     bottom: 3%;
@@ -11,6 +11,7 @@
     cursor: pointer;
     transform: 100px;
     transition: 0.3s;
+    z-index: 999;
 
     &:hover {
         transform: translateY(-6px);

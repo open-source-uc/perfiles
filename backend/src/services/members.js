@@ -58,6 +58,15 @@ router.get('/me', async (ctx) => {
           },
         },
       },
+      created_requests: {
+        select: {
+          id: true,
+          achievement: true,
+          openedAt: true,
+          state: true,
+          description: true,
+        },
+      },
     },
   });
   ctx.body = member;

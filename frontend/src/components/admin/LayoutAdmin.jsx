@@ -8,18 +8,18 @@ import { isLoggedIn } from '../../utils/auth';
 
 import UserContext from '../../contexts/userContext';
 
-async function adminCheck(navigate) {
-  if (!isLoggedIn()) {
-    // Redirect to /api/auth/login
-    navigate('/api/auth/login');
-  }
-  // Get user info and confirm user is an admin
-  const user = React.useContext(UserContext);
-  if (!(['CHAIR', 'SERVICE'].includes(user.role))) {
-    navigate('/');
-  }
-}
 export default function Layout() {
+  async function adminCheck(navigate) {
+    if (!isLoggedIn()) {
+      // Redirect to /api/auth/login
+      navigate('/api/auth/login');
+    }
+    // Get user info and confirm user is an admin
+    const user = React.useContext(UserContext);
+    if (!(['CHAIR', 'SERVICE'].includes(user.role))) {
+      navigate('/');
+    }
+  }
   // Check if the user is logged in and is an admin
   const navigate = useNavigate();
 

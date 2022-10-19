@@ -13,7 +13,7 @@ export default function RRHHAdmin() {
         <h2 className="prose dark:prose-invert">Miembros</h2>
         <div className="admin-members-search">
           <input type="text" name="name" className="admin-members-search__input" placeholder="Escribe un nombre..." />
-          <button className="admin-members-search__button" type="button">
+          <button className="button-admin admin-members-search__button" type="button">
             <i className="fa-solid fa-search" />
             Buscar
           </button>

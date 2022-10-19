@@ -43,14 +43,14 @@ export default function LogrosAdmin() {
       <ListaSolicitudes />
 
       <section className="admin-box admin-center">
-        {/* <BadgeModal /> */}
+        <BadgeModal />
       </section>
 
       <section className="admin-box admin-link prose dark:prose-invert">
         <h2 className="admin-box__title">Crear nuevo enlace</h2>
         <div className="admin-link__grid">
           <input type="text" placeholder="Buscar logro" />
-          <button className="admin-link__search-button" type="button">
+          <button className="button-admin admin-link__search-button" type="button">
             <i className="fa-solid fa-search" />
           </button>
           <div className="admin-link__select">
@@ -65,7 +65,7 @@ export default function LogrosAdmin() {
             </select>
           </div>
           <div className="admin-link__generate">
-            <button className="admin-link__generate-button" type="button">Generar</button>
+            <button className="button-admin admin-link__generate-button" type="button">Generar</button>
           </div>
         </div>
       </section>
