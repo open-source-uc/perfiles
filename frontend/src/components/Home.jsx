@@ -35,13 +35,15 @@ export default function Home() {
   return (
     <div>
       <section id="welcome-hero">
-        <h1>Bienvenide a la plataforma de perfiles OSUC</h1>
-        <p>
-          Aquí podrás encontrar los perfiles de les integrantes de Open Source
-          UC, sus logros y biografías. Si deseas ser parte de esta comunidad, ve
-          los detalles en la
-          <a href="/inscripciones.html"> guía rapida de inscripción.</a>
-        </p>
+        <div className="prose dark:prose-invert mx-auto my-8">
+          <h1 className="">Bienvenide a la plataforma de perfiles OSUC</h1>
+          <p className="">
+            Aquí podrás encontrar los perfiles de les integrantes de Open Source
+            UC, sus logros y biografías. Si deseas ser parte de esta comunidad, ve
+            los detalles en la
+            <a href="/inscripciones.html"> guía rapida de inscripción.</a>
+          </p>
+        </div>
       </section>
       <section id="members">
         <section className="search-members">
@@ -56,7 +58,9 @@ export default function Home() {
           />
         </section>
         <section id="profiles">
-          <h2>Coordinación</h2>
+          <div className="prose dark:prose-invert">
+            <h2>Coordinación</h2>
+          </div>
           <div id="coordination-profiles" className="profile__list">
             {/* Generamos varias ProfileCard con los datos */}
             {displayedMembers.map((user) => (
@@ -71,7 +75,9 @@ export default function Home() {
               )
             ))}
           </div>
-          <h2>Integrantes</h2>
+          <div className="prose dark:prose-invert">
+            <h2>Integrantes</h2>
+          </div>
           <div id="members-profiles" className="profile__list">
             {displayedMembers.map((user) => (
               user.role === 'MEMBER' && (
@@ -85,7 +91,9 @@ export default function Home() {
             ))}
           </div>
 
-          <h2>Sala de la fama 🏆</h2>
+          <div className="prose dark:prose-invert">
+            <h2>Sala de la fama 🏆</h2>
+          </div>
           <div id="hall-of-fame-profiles" className="profile__list">
             {displayedMembers.map((user) => (
               user.role === 'ALUMNI' && (

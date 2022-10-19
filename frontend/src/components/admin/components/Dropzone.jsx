@@ -1,10 +1,36 @@
 /* eslint-disable no-unused-vars */
 /* eslint-disable react/jsx-props-no-spreading */
-import React from 'react';
+import React, { useCallback } from 'react';
 import { useDropzone } from 'react-dropzone';
+import { Dialog } from '@headlessui/react';
 
 export default function Dropzone(props) {
-  const { acceptedFiles, getRootProps, getInputProps } = useDropzone();
+  const onDrop = useCallback((uploadedFiles) => {
+    uploadedFiles.forEach((file) => {
+      const reader = new FileReader();
+
+      reader.onabort = () => console.log('file reading was aborted');
+      reader.onerror = () => console.log('file reading has failed');
+      reader.onload = () => {
+      // Do whatever you want with the file contents
+        const binaryStr = reader.result;
+        console.log('Will output file Str');
+        console.log(binaryStr);
+      };
+      reader.readAsArrayBuffer(file);
+      console.log('-----------');
+      console.log(file);
+      console.log('-----------');
+    });
+  }, []);
+
+  const { acceptedFiles, getRootProps, getInputProps } = useDropzone({
+    accept: {
+      'image/png': ['.png'],
+    },
+    maxFiles: 1,
+    onDrop,
+  });
 
   const files = acceptedFiles.map((file) => (
     <li key={file.path}>
@@ -18,16 +44,38 @@ export default function Dropzone(props) {
     </li>
   ));
 
+  // const reader = new FileReader();
+  // reader.onload = () => {
+  //   const binaryStr = reader.result;
+  //   console.log('Will output file Str');
+  //   console.log(binaryStr);
+  // };
+  // function activateLasers() {
+  //   console.log('Will output file Str');
+  //   console.log(files[0]);
+  //   reader.readAsArrayBuffer(files[0]);
+  // }
+
   return (
-    <section className="container">
-      <div {...getRootProps({ className: 'dropzone' })}>
-        <input {...getInputProps()} />
-        <p>Drag &apos;n&apos; drop some files here, or click to select files</p>
-      </div>
+    <div>
+      <Dialog.Description>
+        <div {...getRootProps({ className: 'p-2 dropzone border-dashed border-3' })}>
+          <input {...getInputProps()} />
+          <p>
+            Arrastra la imagen del logro, o haz click para seleccionar archivos.
+          </p>
+          <p className="text-sm text-grey-400">
+            (Solo se aceptan imágenes en formato .png)
+          </p>
+        </div>
+      </Dialog.Description>
       <aside>
-        <h4>Files</h4>
+        <h4>Se subirá:</h4>
         <ul>{files}</ul>
       </aside>
-    </section>
+      {/* <button type="button" onClick={activateLasers}>
+        Activate Lasers
+      </button> */}
+    </div>
   );
 }

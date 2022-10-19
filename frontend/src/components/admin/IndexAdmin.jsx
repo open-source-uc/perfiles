@@ -4,7 +4,7 @@ import UserContext from '../../contexts/userContext';
 export default function IndexAdmin() {
   const user = React.useContext(UserContext);
   return (
-    <div className="admin__main">
+    <div className="admin__main prose dark:prose-invert">
       {/* <!-- adminindexbox1--> */}
       <ol className="adminindexbox">
         <li className="adminindexbox-item">

@@ -14,7 +14,7 @@ export default function LogrosAdmin() {
         </li>
         <li className="adminindexbox-item active">Logros y contadores</li>
       </ol>
-      <section className="admin-box admin-statistics">
+      <section className="admin-box admin-statistics prose dark:prose-invert">
         <h2 className="admin-box__title">Estadísticas</h2>
         <div className="admin-statistics__stats">
           <div className="admin-statistics__stat">
@@ -83,7 +83,7 @@ export default function LogrosAdmin() {
         <BadgeModal />
       </section>
 
-      <section className="admin-box admin-link">
+      <section className="admin-box admin-link prose dark:prose-invert">
         <h2 className="admin-box__title">Crear nuevo enlace</h2>
         <div className="admin-link__grid">
           <input type="text" placeholder="Buscar logro" />

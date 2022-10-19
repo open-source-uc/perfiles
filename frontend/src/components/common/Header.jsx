@@ -5,7 +5,7 @@ import Navbar from './Navbar';
 
 export default function Header() {
   return (
-    <header>
+    <header className="sticky top-0">
       <Link to="/" className="logo">
         <Logo alt="Perfiles OSUC" className="logo-osuc" />
       </Link>
