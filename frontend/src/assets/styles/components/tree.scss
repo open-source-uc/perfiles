@@ -1,0 +1,45 @@
+.skill-tree {
+	display: flex;
+	flex-direction: column;
+	flex-flow: row wrap;
+	flex-wrap: wrap;
+	align-items: center;
+	justify-content: center;
+}
+
+.treeWrapper {
+	display: block;
+	height: 600px;
+	width: 300px;
+	margin: 2px;
+	border: 2px solid rgb(204, 204, 204);
+}
+
+.myLabelComponentIncard {
+	height: 100px;
+	width: 100px;
+	background: #ffffff;
+	text-align: center;
+	z-index: 100;
+	box-shadow: 0px 10px 10px rgba(0, 0, 0, 0.1);
+	padding: 5px 0;
+	border-radius: 5px;
+	border: 2px solid rgb(204, 204, 204);
+	fill: #fff;
+	stroke-width: 2;
+	stroke: rgb(204, 204, 204);
+}
+
+.chapita {
+	width: 90%;
+	height: 80%;
+	z-index: 1000;
+}
+
+// clase reservada de D3
+.linkBase {
+	stroke: #ccc !important;
+	stroke-width: 3px;
+	stroke-linejoin: round;
+	border-style: double;
+}
