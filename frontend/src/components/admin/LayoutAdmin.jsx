@@ -28,12 +28,14 @@ export default function Layout() {
   }, []);
 
   return (
-    <main>
+    <>
       <Header />
-      <AdminSidebar />
-      <Outlet />
-      <Scrollup />
+      <main>
+        <AdminSidebar />
+        <Outlet />
+        <Scrollup />
+      </main>
       <Footer />
-    </main>
+    </>
   );
 }
