@@ -22,9 +22,9 @@ function FilaSolicitud(props) {
   const dateFormated = new Date(createdAt).toLocaleDateString('es-CL');
   return (
     <tr className="border-b">
-      <td className="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">{name}</td>
-      <td className="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">{dateFormated}</td>
-      <td className="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">{humanReadableStatus(state)}</td>
+      <td className="text-sm text-gray-900 dark:text-white font-light px-6 py-4 whitespace-nowrap">{name}</td>
+      <td className="text-sm text-gray-900 dark:text-white font-light px-6 py-4 whitespace-nowrap">{dateFormated}</td>
+      <td className="text-sm text-gray-900 dark:text-white font-light px-6 py-4 whitespace-nowrap">{humanReadableStatus(state)}</td>
     </tr>
   );
 }
@@ -119,7 +119,7 @@ export default function Solicitudes() {
       ) : (
         <h2 className="prose dark:prose-invert">Al parecer ya tienes todos los logros solicitables! 🤝</h2>
       )}
-      <div className="profile-header">
+      <div className="profile-header mt-10">
         <div className="profile-info prose dark:prose-invert">
           <h2>Solicitudes enviadas</h2>
         </div>
@@ -128,9 +128,9 @@ export default function Solicitudes() {
         <table className="min-w-full">
           <thead className="border-b">
             <tr>
-              <th className="text-sm font-medium text-gray-900 px-6 py-4 text-left">Logro solicitado</th>
-              <th className="text-sm font-medium text-gray-900 px-6 py-4 text-left">Fecha de creación</th>
-              <th className="text-sm font-medium text-gray-900 px-6 py-4 text-left">Estado</th>
+              <th className="text-sm font-medium text-gray-900 dark:text-white px-6 py-4 text-left">Logro solicitado</th>
+              <th className="text-sm font-medium text-gray-900 dark:text-white px-6 py-4 text-left">Fecha de creación</th>
+              <th className="text-sm font-medium text-gray-900 dark:text-white px-6 py-4 text-left">Estado</th>
             </tr>
           </thead>
           <tbody>
