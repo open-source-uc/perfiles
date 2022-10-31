@@ -32,7 +32,7 @@ export default function ProfileCard({ name, title, username }) {
       onClick={redirectProfile}
     >
       <motion.div
-        className="profile"
+        className="profile cursor-grab"
         variants={cardVariants}
         whileHover={{ scale: 1.07, transition: { duration: 0.2 } }}
       >
