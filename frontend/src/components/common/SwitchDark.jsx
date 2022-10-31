@@ -2,44 +2,30 @@ import * as React from 'react';
 import { motion } from 'framer-motion';
 
 export default function SwitchDark() {
-  // guardamos en el localstorage
-  const body = document.querySelector('body');
-  const lightTheme = 'light';
-  const darkTheme = 'dark';
-  let theme;
-  if (localStorage) {
-    theme = localStorage.getItem('theme');
-  }
-  if (theme === lightTheme || theme === darkTheme) {
-    body.classList.add(theme);
-  } else {
-    body.classList.add(lightTheme);
-  }
+  const darkModeDefault = localStorage.theme === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches);
 
   // Para que funcione el boton
-  const [isDark, setIsDark] = React.useState(false);
+  const [isDark, setIsDark] = React.useState(darkModeDefault);
+
+  React.useEffect(() => {
+    if (isDark) {
+      document.documentElement.classList.add('dark');
+      localStorage.theme = 'dark';
+    } else {
+      document.documentElement.classList.remove('dark');
+      localStorage.theme = 'light';
+    }
+  }, [isDark]);
+
   const spring = {
     type: 'spring',
     stiffness: 700,
     damping: 30,
   };
 
-  const toggleDarkMode = () => {
-    if (theme === darkTheme) {
-      body.classList.replace(darkTheme, lightTheme);
-      localStorage.setItem('theme', 'light');
-      theme = lightTheme;
-    } else {
-      body.classList.replace(lightTheme, darkTheme);
-      localStorage.setItem('theme', 'dark');
-      theme = darkTheme;
-    }
-    setIsDark(!isDark);
-  };
-
   return (
-    <button type="button" className="switch-dark" data-ison={isDark} onClick={toggleDarkMode}>
-      <motion.div className="handle-dark" layout transition={spring} />
+    <button type="button" className={`w-16 h-10 flex content-center rounded-full p-1 bg-osuc-black-1 dark:bg-osuc-navyblue mx-2 ${isDark ? 'justify-end' : 'justify-start'}`} onClick={() => setIsDark(!isDark)}>
+      <motion.div className="handle-dark w-8 h-8 block bg-osuc-white-3 rounded-full shadow-sm shadow-black" layout transition={spring} />
     </button>
   );
 }

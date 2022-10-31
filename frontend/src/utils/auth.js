@@ -56,7 +56,7 @@ async function getCurrentUserInfo() {
 }
 
 function isAdmin(user) {
-  return user.role === 'CHAIR' || user.role === 'SERVICE';
+  return user?.role === 'CHAIR' || user?.role === 'SERVICE';
 }
 
 export {

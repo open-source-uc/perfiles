@@ -37,7 +37,7 @@ export default function Home() {
     <div>
       <section id="welcome-hero">
         <div className="prose dark:prose-invert mx-auto my-8">
-          <h1 className="">Bienvenide a la plataforma de perfiles OSUC</h1>
+          <h1 className="">Bienvenide a la plataforma de integrantes de OSUC.</h1>
           <p className="">
             Aquí podrás encontrar los perfiles de les integrantes de Open Source
             UC, sus logros y biografías. Si deseas ser parte de esta comunidad, ve
