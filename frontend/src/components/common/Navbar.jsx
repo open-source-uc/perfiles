@@ -1,16 +1,9 @@
 import * as React from 'react';
 import { Link } from 'react-router-dom';
-import { isLoggedIn } from '../../utils/auth';
-import ProfileNav from './ProfileNav';
 import SwitchDark from './SwitchDark';
 
 export default function Navbar() {
-  let button;
-  if (!isLoggedIn()) {
-    button = <a href="/api/auth/login">👩‍💻 Iniciar sesión</a>;
-  } else {
-    button = <ProfileNav />;
-  }
+  const button = <a href="/api/auth/login">👩‍💻 Iniciar sesión</a>;
   return (
     <nav className="nav-main">
       <label htmlFor="check" className="checkbtn">
