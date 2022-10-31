@@ -109,7 +109,7 @@ export default function Solicitudes() {
 
           <input
             className="input-solicitud px-12 w-full border rounded py-2 text-gray-700 items-center"
-            placeholder="Descripción"
+            placeholder="Razón o evidencia para la solicitud"
             type="text"
             name="description"
             required

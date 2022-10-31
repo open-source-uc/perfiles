@@ -15,22 +15,22 @@ export default function ConfigAdmin() {
         <h2>Integraciones</h2>
         <div className="admin-integrations-inputs">
           <div className="admin-integrations-inputs__input">
-            <label htmlFor="gh_api_token" type="text">
+            <label htmlFor="gh_api_token">
               GitHub API Token
-              <input type="text" id="gh_api_token" name="gh_api_token" value="" />
+              <input type="text" id="gh_api_token" name="gh_api_token" value="" className="rounded-md shadow-sm border-gray-300" />
             </label>
           </div>
           <div className="admin-integrations-inputs__input">
             <label htmlFor="tg_api_token">
               Telegram API Token
-              <input type="text" id="tg_api_token" name="tg_api_token" value="" />
+              <input type="text" id="tg_api_token" name="tg_api_token" value="" className="rounded-md shadow-sm border-gray-300" />
 
             </label>
           </div>
           <div className="admin-integrations-inputs__input">
             <label htmlFor="fw_api_token">
               ForwardEmail API Token
-              <input type="text" id="fw_api_token" name="fw_api_token" value="" />
+              <input type="text" id="fw_api_token" name="fw_api_token" value="" className="rounded-md shadow-sm border-gray-300" />
 
             </label>
           </div>
@@ -47,13 +47,13 @@ export default function ConfigAdmin() {
           <div className="admin-criteria-inputs__input">
             <label htmlFor="membership_score">
               Puntaje de Membresía
-              <input type="number" id="membership_score" name="membership_score" value="" />
+              <input type="number" id="membership_score" name="membership_score" value="" className="rounded-md shadow-sm border-gray-300" />
             </label>
           </div>
           <div className="admin-criteria-inputs__input">
             <label htmlFor="staying_score">
               Puntaje de Permanencia
-              <input type="number" id="staying_score" name="staying_score" value="" />
+              <input type="number" id="staying_score" name="staying_score" value="" className="rounded-md shadow-sm border-gray-300" />
             </label>
           </div>
           {/* <!-- Guardar button --> */}

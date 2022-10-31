@@ -49,12 +49,12 @@ export default function LogrosAdmin() {
       <section className="admin-box admin-link prose dark:prose-invert">
         <h2 className="admin-box__title">Crear nuevo enlace</h2>
         <div className="admin-link__grid">
-          <input type="text" placeholder="Buscar logro" />
+          <input type="text" placeholder="Buscar logro" className="rounded-md shadow-sm border-gray-300" />
           <button className="button-admin admin-link__search-button" type="button">
             <i className="fa-solid fa-search" />
           </button>
           <div className="admin-link__select">
-            <select name="expiration" id="expiration">
+            <select name="expiration" id="expiration" className="rounded-md shadow-sm border-gray-300">
               <option value="1">1 día</option>
               <option value="2">2 días</option>
               <option value="3">3 días</option>
