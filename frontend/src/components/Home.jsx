@@ -25,7 +25,7 @@ export default function Home() {
   if (search) {
     displayedMembers = users.filter(
       // (user) => user.name.toLowerCase().includes(search.toLowerCase()),
-      (user) => user.profile.name.toLowerCased().includes(search.toLowerCase()),
+      (user) => user.profile.name.toLowerCase().includes(search.toLowerCase()),
     );
   }
 
