@@ -8,6 +8,7 @@ export default function ImageAudioVideo() {
     return { url, meta: { fileUrl: `${url}/${encodeURIComponent(meta.name)}` } };
   };
 
+  // eslint-disable-next-line no-unused-vars
   const handleChangeStatus = ({ meta }, status) => {
     // Do nothing
   };
@@ -19,7 +20,6 @@ export default function ImageAudioVideo() {
   return (
     <Dropzone
       getUploadParams={getUploadParams}
-      onChangeStatus={handleChangeStatus}
       onSubmit={handleSubmit}
       accept="image/*"
       inputContent={(files, extra) => (extra.reject ? 'Solamente imágenes en formato .png' : 'Arrastrar Archivos')}
