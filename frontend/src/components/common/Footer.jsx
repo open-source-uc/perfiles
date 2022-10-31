@@ -11,7 +11,7 @@ export default function Footer() {
           property="dct:title"
           href="https://perfiles.osuc.dev/"
         >
-          Perfiles OSUC
+          Members OSUC
 
         </a
         >

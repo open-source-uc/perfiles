@@ -1,7 +1,7 @@
 {
   "name": "perfiles-osuc",
   "version": "1.0.0",
-  "description": "Perfiles OSUC es la plataforma comunitaria de Open Source UC. Aquí puedes encontrar un registro de todes nuestros integrantes, sus logros, biografías y más.",
+  "description": "Members OSUC es la plataforma comunitaria de Open Source UC. Aquí puedes encontrar un registro de todes nuestros integrantes, sus logros, biografías y más.",
   "main": "src/index.js",
   "type": "module",
   "scripts": {

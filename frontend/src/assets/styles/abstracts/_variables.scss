@@ -1,26 +1,26 @@
-// Variables 
+// Variables
 
 :root {
-    // Colors (from the OSUC Design Kit) 
-    --main--white: rgba(253, 251, 247, 1);
-    --main--bluegreen: rgba(150, 230, 215, 1);
-    --main--munsell: rgba(63, 144, 169, 1);
-    --main--nabyblue: rgba(0, 115, 222, 1);
-    --main--bluedark: rgba(39, 46, 145, 1);
-    --black--1: rgba(46, 52, 64, 1);
-    --black--2: rgba(59, 66, 82, 1);
-    --black--3: rgba(67, 76, 94, 1);
-    --black--4: rgba(76, 86, 106, 1);
-    --white--1: rgba(242, 244, 248, 1);
-    --white--2: rgba(229, 233, 240, 1);
-    --white--3: rgba(216, 222, 233, 1);
-    --white--4: rgba(193, 200, 215, 1);
-    --header: rgba(59, 66, 82, 1);
-    --blue: rgba(94, 129, 172, 1);
-    --yellow: rgba(235, 203, 139, 1);
-    --red: rgba(191, 97, 106, 1);
-    --box-shadow: 0 0 10px -2px rgba(0, 0, 0, 0.075);
-    --box-shadow2: 0 0 2px 2px rgba(0, 0, 0, 0.2);
+    // Colors (from the OSUC Design Kit)
+    --main--white: #fdfbf7;
+    --main--bluegreen: #96e6d7;
+    --main--munsell: #3f90a9;
+    --main--nabyblue: #0073de;
+    --main--bluedark: #272e91;
+    --black--1: #2e3440;
+    --black--2: #3b4252;
+    --black--3: #434c5e;
+    --black--4: #4c566a;
+    --white--1: #f2f4f8;
+    --white--2: #e5e9f0;
+    --white--3: #d8dee9;
+    --white--4: #c1c8d7;
+    --header: #3b4252;
+    --blue: #5e81ac;
+    --yellow: #ebcb8b;
+    --red: #bf616a;
+    --box-shadow: 0 0 10px -2px #00000013;
+    --box-shadow2: 0 0 2px 2px #00000033;
     // Colors for the Logros Page
     --connector-color: #369;
     --shadow-color: #8f949a;
@@ -41,7 +41,7 @@
     --main--nabyblue: hsl(209, 100%, 60%);
 }
 
-// variables de sass 
+// variables de sass
 //////////////////////////////
 
 // Breackpoints media queries

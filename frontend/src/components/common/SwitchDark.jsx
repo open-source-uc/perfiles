@@ -24,7 +24,7 @@ export default function SwitchDark() {
   };
 
   return (
-    <button type="button" className="switch-dark" data-ison={isDark} onClick={() => setIsDark(!isDark)}>
+    <button type="button" className={`w-16 h-10 flex content-center rounded-full p-1 bg-osuc-black-1 dark:bg-osuc-navyblue mx-2 ${isDark ? 'justify-end' : 'justify-start'}`} onClick={() => setIsDark(!isDark)}>
       <motion.div className="handle-dark" layout transition={spring} />
     </button>
   );
