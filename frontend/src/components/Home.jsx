@@ -42,7 +42,8 @@ export default function Home() {
             Aquí podrás encontrar los perfiles de les integrantes de Open Source
             UC, sus logros y biografías. Si deseas ser parte de esta comunidad, ve
             los detalles en la
-            <a href="/inscripciones.html"> guía rapida de inscripción.</a>
+            {' '}
+            <a href="/inscripciones.html">guía rapida de inscripción.</a>
           </p>
         </div>
       </section>

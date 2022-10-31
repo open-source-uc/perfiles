@@ -6,7 +6,7 @@
     "configurations": [
         {
             "command": "npm start",
-            "name": "Frontend (react-scripts)",
+            "name": "Frontend (vite)",
             "request": "launch",
             "type": "node-terminal",
             "cwd": "${workspaceFolder}/frontend"
@@ -36,7 +36,7 @@
             "type": "firefox",
             "request": "launch",
             "reAttach": true,
-            "name": "Launch localhost (Firefox, manual path)",
+            "name": "Launch localhost (Firefox + HMR)",
             "url": "http://localhost:3000",
             "webRoot": "${workspaceFolder}/frontend/",
             "enableCRAWorkaround": true,
