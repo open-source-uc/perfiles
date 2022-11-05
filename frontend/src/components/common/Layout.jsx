@@ -6,11 +6,13 @@ import Scrollup from './Scrollup';
 
 export default function Layout() {
   return (
-    <main>
+    <>
       <Header />
-      <Outlet />
-      <Scrollup />
+      <main>
+        <Outlet />
+        <Scrollup />
+      </main>
       <Footer />
-    </main>
+    </>
   );
 }
