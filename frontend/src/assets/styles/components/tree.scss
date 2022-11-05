@@ -1,0 +1,42 @@
+// Contenedor del árbol
+.skill-tree {
+	display: flex;
+	flex-direction: column;
+	flex-flow: row wrap;
+	flex-wrap: wrap;
+	align-items: center;
+	justify-content: center;
+}
+
+// Espacio del arbol
+.treeWrapper {
+	display: block;
+	height: 500px;
+	width: 350px;
+	margin: 2px;
+	border: 2px solid rgb(204, 204, 204);
+}
+
+// Estilo de los nodos
+.myLabelComponentIncard {
+	height: 100px;
+	width: 100px;
+	background: #ffffff;
+	text-align: center;
+	border-radius: 5px;
+	border: 2px solid rgb(204, 204, 204);
+}
+
+// Estilo de la imagen
+.chapita {
+	width: 90%;
+	height: 80%;
+}
+
+// Lineas de conexión
+.linkBase {
+	stroke: #ccc !important;
+	stroke-width: 3px;
+	stroke-linejoin: round;
+	border-style: double;
+}
