@@ -23,7 +23,8 @@
 				"rangav.vscode-thunder-client",
 				"firefox-devtools.vscode-firefox-debug",
 				"bradlc.vscode-tailwindcss",
-				"austenc.tailwind-docs"
+				"austenc.tailwind-docs",
+				"wix.glean"
 			]
 		}
 	},
