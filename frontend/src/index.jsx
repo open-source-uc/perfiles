@@ -12,8 +12,8 @@ ReactDOM.createRoot(document.getElementById('root')).render(
   <BrowserRouter>
     <App />
   </BrowserRouter>,
+  // </React.StrictMode>,
 );
-// {/* </React.StrictMode>, */}
 
 // eslint-disable-next-line no-console
 reportWebVitals(console.log);
