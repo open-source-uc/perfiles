@@ -14,11 +14,9 @@
 			"extensions": [
 				"ritwickdey.liveserver",
 				"dbaeumer.vscode-eslint",
-				"tonybaloney.vscode-pets",
 				"Prisma.prisma",
 				"GitHub.copilot",
 				"GitHub.vscode-pull-request-github",
-				"CS50.vscode-presentation-mode",
 				"eamodio.gitlens",
 				"rangav.vscode-thunder-client",
 				"firefox-devtools.vscode-firefox-debug",
