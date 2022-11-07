@@ -1,5 +1,4 @@
 import React from 'react';
-import { ReactComponent as FlujoDeMiembros } from '../assets/images/flujo-de-miembros.svg';
 
 export default function Inscripciones() {
   return (
@@ -492,7 +491,10 @@ export default function Inscripciones() {
         Criterio de membresía y permanencia
       </h3>
       <figure>
-        <FlujoDeMiembros width="500px" height="500px" />
+        <img
+          src="/assets/images/flujo-de-miembros.svg"
+          alt="Flujo de miembros"
+        />
         <figcaption>Flujo de miembros</figcaption>
       </figure>
       <p>
