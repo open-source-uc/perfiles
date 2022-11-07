@@ -1,168 +1,92 @@
-/* eslint-disable no-return-assign */
-/* eslint-disable react/destructuring-assignment */
 /* eslint-disable react/jsx-props-no-spreading */
-/* eslint-disable react/state-in-constructor */
-import React from 'react';
+import React, { useState, useCallback, useEffect } from 'react';
+
+import axios from 'axios';
+
 import Tree from 'react-d3-tree';
+import UserContext from '../../contexts/userContext';
 
-const myTreeData = [
-  {
-    name: 'Gaurang',
-    image:
-      'https://upload.wikimedia.org/wikipedia/commons/thumb/6/69/Banana.png/836px-Banana.png',
-    children: [
-      {
-        name: 'Avadhoot',
-        image:
-          'https://upload.wikimedia.org/wikipedia/commons/thumb/6/69/Banana.png/836px-Banana.png',
-        children: [
-          {
-            name: 'Richard',
-          },
-          {
-            name: 'Constantine',
-            children: [
-              {
-                name: 'Mia',
-              },
-            ],
-          },
-          {
-            name: 'Daniel',
-          },
-        ],
-      },
-      {
-        name: 'Mia',
-      },
-      {
-        name: 'Varun',
-        children: [
-          {
-            name: 'Ivo',
-            children: [
-              {
-                name: 'Level 2: A',
-                children: [
-                  {
-                    name: 'Level 2: A',
-                  },
-                  {
-                    name: 'Level 2: B',
-                  },
-                ],
-              },
-              {
-                name: 'Level 2: B',
-              },
-            ],
-          },
-          {
-            name: 'Vijay',
-          },
-          {
-            name: 'Tijay',
-          },
-          {
-            name: 'Ajsda',
-          },
-        ],
-      },
-      {
-        name: 'Mohit',
-        children: [
-          {
-            name: 'Rohit',
-            children: [
-              {
-                name: 'Level 2: A',
-                children: [
-                  {
-                    name: 'Level 2: A',
-                  },
-                  {
-                    name: 'Level 2: B',
-                  },
-                ],
-              },
-            ],
-          },
-          {
-            name: 'Pranav',
-          },
-        ],
-      },
-    ],
-  },
-];
+function BadgeCard({ name, image, hasAchievement }) {
+  return (
+    <article className={`w-[160px] h-[190px] rounded-xl shadow-xl bg-white px-6 flex flex-col justify-center ${hasAchievement ? 'border-indigo-500 border-4' : ''}`}>
+      <img className="w-[160px]" src={image} alt={name} />
+      <p className="text-gray-800 text-m font-semibold text-center leading-tight">{name}</p>
+    </article>
+  );
+}
 
-const renderForeignObjectNode = ({
+function renderBadgeCard({
+  nodeSize,
   nodeDatum,
-  toggleNode,
-  foreignObjectProps,
-}) => (
-  <g onClick={toggleNode}>
-    <foreignObject {...foreignObjectProps}>
-      <div className="myLabelComponentIncard">
-        <img className="chapita" src={nodeDatum.image} alt=" " />
-        <div>
-          {nodeDatum.name}
-        </div>
-      </div>
-    </foreignObject>
-  </g>
-);
+  myAchievements,
+}) {
+  const hasAchievement = myAchievements.has(nodeDatum.achievementId);
+  return (
+    <g>
+      <foreignObject
+        width={nodeSize.x}
+        height={nodeSize.y}
+        x={-80}
+        y={-50}
+      >
+        <BadgeCard
+          name={nodeDatum.name}
+          image={nodeDatum.imageURL}
+          hasAchievement={hasAchievement}
+        />
+      </foreignObject>
+    </g>
+  );
+}
 
-const nodeSize = { x: 150, y: 150 };
-const foreignObjectProps = {
-  width: nodeSize.x,
-  height: nodeSize.y - 40,
-  x: -50,
-  y: -50,
-};
+function useCenteredTree() {
+  const [translate, setTranslate] = useState({ x: 0, y: 0 });
+  const containerRef = useCallback((containerElem) => {
+    if (containerElem !== null) {
+      const { width, height } = containerElem.getBoundingClientRect();
+      setTranslate({ x: width / 2, y: height / 8 });
+    }
+  }, []);
+  return [translate, containerRef];
+}
 
-export default class SkillTree extends React.PureComponent {
-  state = {};
+export default function SkillTree() {
+  const [achievements, setAchievements] = useState({});
+  const [myAchievements, setMyAchievements] = useState(new Set());
+  const user = React.useContext(UserContext);
+  const [translate, containerRef] = useCenteredTree();
+  const nodeSize = { x: 180, y: 240 };
 
-  componentDidMount() {
-    const dimensions = this.treeContainer.getBoundingClientRect();
-    this.setState({
-      translate: {
-        x: dimensions.width / 2,
-        y: 70,
-      },
-      data: myTreeData,
-      depth: 2,
-    });
-  }
+  useEffect(() => {
+    axios.get('/api/public/achievements/progression').then((res) => setAchievements(res.data));
+  }, []);
 
-  render() {
-    return (
-      <div className="treeWrapper" ref={(tc) => (this.treeContainer = tc)}>
-        {this.state.data && (
-          <Tree
-            shouldCollapseNeighborNodes
-            orientation="vertical"
-            pathFunc="step"
-            data={this.state.data}
-            translate={this.state.translate} // Donde se visualiza
-            initialDepth={this.state.depth}
-            onNodeClick={this.onNodeClick}
-            separation={{ siblings: 0.6, nonSiblings: 0.7 }}
-            nodeSize={{ x: 175, y: 175 }}
-            // Generamos los nodos del arbol
-            renderCustomNodeElement={(rd3tProps) => renderForeignObjectNode(
-              { ...rd3tProps, foreignObjectProps },
-            )}
-            zoom={0.7}
-            // Pasamos los Estilos (No todos estan implementados, pero se deja como base)
-            pathClassFunc={() => 'linkBase'}
-            rootNodeClassName="rootNode"
-            branchNodeClassName="branchNode"
-            leafNodeClassName="leafNode"
-          />
-        )}
-      </div>
-    );
-  }
+  useEffect(() => {
+    if (user) {
+      axios.get('/api/members/me', {
+        headers: {
+          Authorization: `Bearer ${localStorage.getItem('token')}`,
+        },
+      }).then(
+        (res) => {
+          setMyAchievements(new Set(res.data.achievements.map((a) => a.achievement.id)));
+        },
+      );
+    }
+  }, [user]);
+
+  return (
+    <div className="w-[100%] h-[100vh]" ref={containerRef}>
+      <Tree
+        data={achievements}
+        orientation="vertical"
+        pathFunc="step"
+        pathClassFunc={() => 'linkBase'}
+        renderCustomNodeElement={(props) => renderBadgeCard({ ...props, nodeSize, myAchievements })}
+        translate={translate}
+        nodeSize={nodeSize}
+        collapsible
+      />
+    </div>
+  );
 }

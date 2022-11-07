@@ -5,8 +5,6 @@ import './assets/styles/main.scss';
 
 import App from './App';
 
-import reportWebVitals from './reportWebVitals';
-
 ReactDOM.createRoot(document.getElementById('root')).render(
   // <React.StrictMode>
   <BrowserRouter>
@@ -14,6 +12,3 @@ ReactDOM.createRoot(document.getElementById('root')).render(
   </BrowserRouter>,
   // </React.StrictMode>,
 );
-
-// eslint-disable-next-line no-console
-reportWebVitals(console.log);
