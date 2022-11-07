@@ -7,13 +7,8 @@ import { getAuthHeader } from '../utils/auth';
 export default function Home() {
   const [users, setUsers] = React.useState([]);
   const [search, setSearch] = React.useState('');
-
-  const apiGet = async () => {
-    const response = await axios.get('/api/public/members', {
-      headers: getAuthHeader(),
-    });
-    setUsers(response.data);
-  };
+  const [loading, setLoading] = React.useState(true);
+  const [error, setError] = React.useState(null);
 
   // Funcion de busqueda
   const searcher = (e) => {
@@ -24,17 +19,31 @@ export default function Home() {
   let displayedMembers = users;
   if (search) {
     displayedMembers = users.filter(
-      // (user) => user.name.toLowerCase().includes(search.toLowerCase()),
       (user) => user.profile.name.toLowerCase().includes(search.toLowerCase()),
     );
   }
 
   React.useEffect(() => {
-    apiGet();
+    // Get all users
+    axios.get('/api/public/members', {
+      headers: getAuthHeader(),
+    }).then((response) => {
+      setUsers(response.data);
+      setLoading(false);
+    }).catch((err) => {
+      if (err.response) {
+        setError(`El servidor respondió con un error (${err.response.status}).`);
+      } else if (err.request) {
+        setError('No se pudo conectar con el servidor.');
+      } else {
+        setError('Ocurrió un error desconocido al cargar los miembros.');
+      }
+      setLoading(false);
+    });
   }, []);
 
   return (
-    <div>
+    <>
       <section id="welcome-hero">
         <div className="prose dark:prose-invert mx-auto my-8">
           <h1 className="">Bienvenide a la plataforma de integrantes de OSUC.</h1>
@@ -47,6 +56,13 @@ export default function Home() {
           </p>
         </div>
       </section>
+      { loading && (
+      <div className="text-center mx-auto">
+        <p className="text-2xl font-bold">Cargando...</p>
+      </div>
+      ) }
+      { error && <h2 className="text-center text-2xl font-bold">{error}</h2> }
+      { !error && !loading && (
       <section id="members">
         <section className="search-members">
           <p className="search-members__title">🔍 Buscar integrantes</p>
@@ -64,16 +80,14 @@ export default function Home() {
             <h2>Coordinación</h2>
           </div>
           <div id="coordination-profiles" className="profile__list">
-            {/* Generamos varias ProfileCard con los datos */}
             {displayedMembers.map((user) => (
-              // Revisamos que el user.role sea coordinator
               user.role === 'CHAIR' && (
-                <ProfileCard
-                  name={user.profile.name}
-                  title={user.profile.title}
-                  username={user.username}
-                  key={user.username}
-                />
+              <ProfileCard
+                name={user.profile.name}
+                title={user.profile.title}
+                username={user.username}
+                key={user.username}
+              />
               )
             ))}
           </div>
@@ -83,12 +97,12 @@ export default function Home() {
           <div id="members-profiles" className="profile__list">
             {displayedMembers.map((user) => (
               user.role === 'MEMBER' && (
-                <ProfileCard
-                  name={user.profile.name}
-                  title={user.profile.title}
-                  username={user.username}
-                  key={user.username}
-                />
+              <ProfileCard
+                name={user.profile.name}
+                title={user.profile.title}
+                username={user.username}
+                key={user.username}
+              />
               )
             ))}
           </div>
@@ -99,18 +113,19 @@ export default function Home() {
           <div id="hall-of-fame-profiles" className="profile__list">
             {displayedMembers.map((user) => (
               user.role === 'ALUMNI' && (
-                <ProfileCard
-                  name={user.profile.name}
-                  title={user.profile.title}
-                  username={user.username}
-                  key={user.username}
-                />
+              <ProfileCard
+                name={user.profile.name}
+                title={user.profile.title}
+                username={user.username}
+                key={user.username}
+              />
               )
             ))}
           </div>
 
         </section>
       </section>
-    </div>
+      )}
+    </>
   );
 }

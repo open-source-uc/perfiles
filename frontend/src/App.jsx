@@ -54,26 +54,24 @@ export default function App() {
   }, []);
 
   return (
-    <div>
-      <UserContext.Provider value={user}>
-        <Routes>
-          <Route path="/" element={<Layout />}>
-            <Route index element={<Home />} />
-            <Route path="estatutos" element={<Estatutos />} />
-            <Route path="inscripciones" element={<Inscripciones />} />
-            <Route path="logros" element={<Logros />} />
-            <Route path="perfil/:username" element={<Perfil />} />
-            <Route path="solicitudes" element={<Solicitudes />} />
-          </Route>
-          <Route path="/admin" element={<LayoutAdmin />}>
-            <Route index element={<IndexAdmin />} />
-            <Route path="/admin/config" element={<ConfigAdmin />} />
-            <Route path="/admin/logros" element={<LogrosAdmin />} />
-            <Route path="/admin/rrhh" element={<RRHHAdmin />} />
-          </Route>
-          <Route path="*" element={<NoMatch />} />
-        </Routes>
-      </UserContext.Provider>
-    </div>
+    <UserContext.Provider value={user}>
+      <Routes>
+        <Route path="/" element={<Layout />}>
+          <Route index element={<Home />} />
+          <Route path="estatutos" element={<Estatutos />} />
+          <Route path="inscripciones" element={<Inscripciones />} />
+          <Route path="logros" element={<Logros />} />
+          <Route path="perfil/:username" element={<Perfil />} />
+          <Route path="solicitudes" element={<Solicitudes />} />
+        </Route>
+        <Route path="/admin" element={<LayoutAdmin />}>
+          <Route index element={<IndexAdmin />} />
+          <Route path="/admin/config" element={<ConfigAdmin />} />
+          <Route path="/admin/logros" element={<LogrosAdmin />} />
+          <Route path="/admin/rrhh" element={<RRHHAdmin />} />
+        </Route>
+        <Route path="*" element={<NoMatch />} />
+      </Routes>
+    </UserContext.Provider>
   );
 }

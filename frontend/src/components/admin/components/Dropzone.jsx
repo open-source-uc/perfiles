@@ -51,7 +51,7 @@ export default function Dropzone(props) {
   // }
 
   return (
-    <div>
+    <>
       <Dialog.Description>
         <div {...getRootProps({ className: 'p-2 dropzone border-dashed border-3' })}>
           <input {...getInputProps()} />
@@ -70,6 +70,6 @@ export default function Dropzone(props) {
       {/* <button type="button" onClick={activateLasers}>
         Activate Lasers
       </button> */}
-    </div>
+    </>
   );
 }

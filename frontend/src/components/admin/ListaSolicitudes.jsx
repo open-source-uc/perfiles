@@ -20,7 +20,7 @@ function CardRequest({
     setSuccess(true);
   };
   return (
-    <div>
+    <>
       { success ? (<div />) : (
         <div className="flex justify-center">
           <div className="flex flex-col items-center justify-center rounded-lg shadow-lg bg-white max-w-xs m-2">
@@ -42,7 +42,7 @@ function CardRequest({
           </div>
         </div>
       )}
-    </div>
+    </>
   );
 }
 
