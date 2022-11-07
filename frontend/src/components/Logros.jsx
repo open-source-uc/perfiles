@@ -34,7 +34,7 @@ export default function Logros() {
   );
 
   return (
-    <section className="personal-profile">
+    <section>
       <h1 className="text-center text-4xl pt-4">Logros</h1>
       <SkillTree />
     </section>

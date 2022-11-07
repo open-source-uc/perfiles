@@ -3,6 +3,7 @@ import Router from '@koa/router';
 import { Prisma, PrismaClient } from '@prisma/client';
 
 import getStats from '../utils/stats.js';
+import getProgressionTree from '../utils/progression_nodes.js';
 
 const router = new Router({ prefix: '/public' });
 const prisma = new PrismaClient();
@@ -84,6 +85,11 @@ router.get('/achievements', async (ctx) => {
   const achievements = await prisma.achievement.findMany();
   // Exclude mysterious achievements
   ctx.body = achievements.filter((achievement) => achievement.type !== 'MYSTERIOUS');
+});
+
+router.get('/achievements/progression', async (ctx) => {
+  const tree = await getProgressionTree();
+  ctx.body = tree;
 });
 
 export default router;
