@@ -32,6 +32,7 @@ export default function Home() {
     }).then((response) => {
       setUsers(response.data);
       setLoading(false);
+      document.title = 'Inicio | Members OSUC';
     }).catch((err) => {
       const errorMsg = handleError(err);
       setError(errorMsg);

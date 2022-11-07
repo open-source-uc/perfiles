@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
+import { Link, useParams } from 'react-router-dom';
 
-import { useParams } from 'react-router-dom';
 import { getPublicUserInfo } from '../utils/auth';
 import handleError from '../utils/error-handler';
 import LoadingAnimation from './common/LoadingAnimation';
@@ -16,8 +16,14 @@ export default function Perfil() {
   useEffect(() => {
     getPublicUserInfo(username)
       .then((response) => {
-        setUser(response.data);
-        setLoading(false);
+        if (response.data.username) {
+          setUser(response.data);
+          setLoading(false);
+          document.title = `Perfil de ${response.data.profile.name}`;
+        } else {
+          setError('No se encontró el usuario');
+          setLoading(false);
+        }
       }).catch((err) => {
         const errorMsg = handleError(err);
         setError(errorMsg);
@@ -32,7 +38,14 @@ export default function Perfil() {
       { loading && !error && (
       <LoadingAnimation />
       ) }
-      { error && <h2 className="text-center text-2xl font-bold">{error}</h2> }
+      { error && (
+        <>
+          <h1 className="text-center text-2xl font-bold">{error}</h1>
+          <p className="text-center">
+            <Link to="/">Volver al inicio</Link>
+          </p>
+        </>
+      )}
       { !error && !loading
       && (
       <section className="personal-profile prose dark:prose-invert">

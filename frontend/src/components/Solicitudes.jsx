@@ -1,5 +1,6 @@
 /* eslint-disable no-unused-vars */
 import React, { useEffect } from 'react';
+import { Helmet } from 'react-helmet';
 
 import axios from 'axios';
 import UserContext from '../contexts/userContext';
@@ -93,6 +94,9 @@ export default function Solicitudes() {
 
   return (
     <RequireAuth>
+      <Helmet>
+        <title>Solicitar un logro | Members OSUC</title>
+      </Helmet>
       <section className="personal-profile h-screen flex items-center">
         <div className="profile-header">
           <div className="profile-info prose dark:prose-invert">
