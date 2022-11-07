@@ -11,7 +11,7 @@ export default function IndexAdmin() {
           <a href="/admin/index">Admin</a>
         </li>
       </ol>
-      <p className="admin__welcome">
+      <p className="text-center text-4xl pt-4">
         Bienvenido/a,
         {' '}
         {user?.profile?.name}

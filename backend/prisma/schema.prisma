@@ -39,22 +39,33 @@ model Profile {
 }
 
 model Achievement {
-  id              String                  @id @unique @default(cuid())
-  creator         Member?                 @relation(fields: [creatorUsername], references: [username])
-  creatorUsername String?
-  createdAt       DateTime
-  updatedAt       DateTime                @updatedAt
-  expiresAt       DateTime?
-  name            String                  @unique
-  description     String
-  imageURL        String
-  type            AchievementType
-  level           AchievementLevel        @relation(fields: [levelName], references: [name])
-  levelName       String
-  pointsOverride  Int?
-  members         AchievementsOnMembers[]
-  requests        Request[]
-  claimlinks      ClaimLink[]
+  id                         String                       @id @unique @default(cuid())
+  creator                    Member?                      @relation(fields: [creatorUsername], references: [username])
+  creatorUsername            String?
+  createdAt                  DateTime
+  updatedAt                  DateTime                     @updatedAt
+  expiresAt                  DateTime?
+  name                       String                       @unique
+  description                String
+  imageURL                   String
+  type                       AchievementType
+  level                      AchievementLevel             @relation(fields: [levelName], references: [name])
+  levelName                  String
+  pointsOverride             Int?
+  members                    AchievementsOnMembers[]
+  requests                   Request[]
+  claimlinks                 ClaimLink[]
+  progression_nodes AchievementProgressionNode[]
+}
+
+model AchievementProgressionNode {
+  // These are used to model achievements inside the achievement progression tree (a skill tree)
+  id            String                       @id @unique @default(cuid())
+  achievement   Achievement                  @relation(fields: [achievementId], references: [id])
+  achievementId String
+  children      AchievementProgressionNode[] @relation("SubAchievements")
+  parent        AchievementProgressionNode?  @relation("SubAchievements", fields: [parentId], references: [id])
+  parentId      String?
 }
 
 model AchievementsOnMembers {
@@ -104,7 +115,7 @@ model ClaimLinkClaim {
 }
 
 model AchievementLevel {
-  name       String        @id @unique
+  name        String        @id @unique
   points      Int
   Achievement Achievement[]
 }

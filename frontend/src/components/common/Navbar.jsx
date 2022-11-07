@@ -85,16 +85,14 @@ export default function Navbar() {
                 {/* Profile dropdown */}
                 {user ? (
                   <Menu as="div" className="relative ml-3">
-                    <div>
-                      <Menu.Button className="flex rounded-full bg-gray-800 text-sm focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-800">
-                        <span className="sr-only">Abrir menú de usuario</span>
-                        <img
-                          className="h-10 w-10 rounded-full"
-                          src={user?.profile?.avatarURL}
-                          alt=""
-                        />
-                      </Menu.Button>
-                    </div>
+                    <Menu.Button className="flex rounded-full bg-gray-800 text-sm focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-800">
+                      <span className="sr-only">Abrir menú de usuario</span>
+                      <img
+                        className="h-10 w-10 rounded-full"
+                        src={user?.profile?.avatarURL}
+                        alt=""
+                      />
+                    </Menu.Button>
                     <Transition
                       as={Fragment}
                       enter="transition ease-out duration-100"

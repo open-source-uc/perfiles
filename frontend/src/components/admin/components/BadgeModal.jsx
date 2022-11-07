@@ -25,13 +25,13 @@ function DropzoneUploaderLayout({
   input, previews, submitButton, dropzoneProps, files, extra: { maxFiles },
 }) {
   return (
-    <div>
+    <>
       {previews}
 
       <div {...dropzoneProps}>
         {files.length < maxFiles && input}
       </div>
-    </div>
+    </>
   );
 }
 
@@ -85,7 +85,7 @@ export default function BadgeModal() {
   }
 
   return (
-    <div>
+    <>
 
       <Dialog
         open={isOpen}
@@ -211,6 +211,6 @@ export default function BadgeModal() {
       </Dialog>
       {/* This opens the modal */}
       <button type="button" onClick={openModal}>Crear logro</button>
-    </div>
+    </>
   );
 }

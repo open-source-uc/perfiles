@@ -127,12 +127,44 @@ async function loadAchievementLevels() {
   })));
 }
 
+async function loadAchievementProgressionNodes() {
+  const progressionNodes = JSON.parse(
+    fs.readFileSync('data/achievement_progression_nodes.json', 'utf-8'),
+  );
+
+  // Progression nodes is an object with the root node
+
+  // We need to depth-first traverse the tree and create the nodes
+  // Each node only includes a name and its children
+  async function createNode(node) {
+    const nodeData = {
+      achievement: {
+        connect: {
+          name: node.name,
+        },
+      },
+      children: {
+        connect: await Promise.all(node.children.map(createNode)),
+      },
+    };
+    const result = await prisma.achievementProgressionNode.create({
+      data: nodeData,
+    });
+
+    // Return the id of the created node
+    return { id: result.id };
+  }
+
+  await createNode(progressionNodes);
+}
+
 async function main() {
   await loadMembers();
   await loadAchievementLevels();
   await loadAchievements();
   await loadAchievementsOnMembers();
   await loadRequests();
+  await loadAchievementProgressionNodes();
 }
 
 await main();

@@ -1,4 +1,7 @@
 import axios from 'axios';
+import { Navigate } from 'react-router-dom';
+import React from 'react';
+import UserContext from '../contexts/userContext';
 
 /* eslint-disable no-unused-vars */
 function storeToken(token) {
@@ -59,6 +62,24 @@ function isAdmin(user) {
   return user?.role === 'CHAIR' || user?.role === 'SERVICE';
 }
 
+function RequireAuth({ children }) {
+  const user = React.useContext(UserContext);
+  if (!user) {
+    // Redirect to login
+    return <Navigate to="/api/auth/login" />;
+  }
+  return children;
+}
+
+function RequireAdmin({ children }) {
+  const user = React.useContext(UserContext);
+  if (!user || !isAdmin(user)) {
+    // Navigate to home
+    return <Navigate to="/" />;
+  }
+  return children;
+}
+
 export {
   storeToken,
   getToken,
@@ -69,4 +90,6 @@ export {
   storeTokenIfGiven,
   getCurrentUserInfo as getUserInfo,
   getPublicUserInfo,
+  RequireAuth,
+  RequireAdmin,
 };

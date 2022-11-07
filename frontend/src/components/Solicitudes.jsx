@@ -3,6 +3,7 @@ import React, { useEffect } from 'react';
 
 import axios from 'axios';
 import UserContext from '../contexts/userContext';
+import { RequireAuth } from '../utils/auth';
 
 function humanReadableStatus(status) {
   if (status === 'OPEN') {
@@ -16,6 +17,7 @@ function humanReadableStatus(status) {
   }
   return 'Desconocido';
 }
+
 function FilaSolicitud({ name, createdAt, state }) {
   const dateFormated = new Date(createdAt).toLocaleDateString('es-CL');
   return (
@@ -57,7 +59,7 @@ export default function Solicitudes() {
       .then((response) => {
         setMyAchievements(response.data.achievements.map((a) => a.achievement));
       });
-  }, []);
+  }, [user]);
 
   const achievementsUserDoesNotHave = achievements.filter(
     (a) => !myAchievements.map(
@@ -79,71 +81,73 @@ export default function Solicitudes() {
   };
 
   return (
-    <section className="personal-profile h-screen flex items-center">
-      <div className="profile-header">
-        <div className="profile-info prose dark:prose-invert">
-          <h2>Nueva solicitud</h2>
+    <RequireAuth>
+      <section className="personal-profile h-screen flex items-center">
+        <div className="profile-header">
+          <div className="profile-info prose dark:prose-invert">
+            <h2>Nueva solicitud</h2>
+          </div>
         </div>
-      </div>
-      { success && (
+        { success && (
         <div className="alert alert-success">
           Solicitud enviada correctamente
         </div>
-      )}
-      {achievementsUserDoesNotHave.length > 0 ? (
-        <form className="form-solicitud flex justify-center mt-6" onSubmit={handleSubmit}>
-          {/* Listbox para seleccionar achivement */}
-          <h3>Selecciona un logro</h3>
-          <select
-            name="achievementId"
-            id="achievement-select"
-            className="input-solicitud text-gray dark:text-gray-900"
-            required
-          >
-            {achievementsUserDoesNotHave.map((a) => (
-              <option value={a.id} key={a.id}>{a.name}</option>
-            ))}
-          </select>
+        )}
+        {achievementsUserDoesNotHave.length > 0 ? (
+          <form className="form-solicitud flex justify-center mt-6" onSubmit={handleSubmit}>
+            {/* Listbox para seleccionar achivement */}
+            <h3>Selecciona un logro</h3>
+            <select
+              name="achievementId"
+              id="achievement-select"
+              className="input-solicitud text-gray dark:text-gray-900"
+              required
+            >
+              {achievementsUserDoesNotHave.map((a) => (
+                <option value={a.id} key={a.id}>{a.name}</option>
+              ))}
+            </select>
 
-          <input
-            className="input-solicitud px-12 w-full border rounded py-2 text-gray-700 items-center"
-            placeholder="Razón o evidencia para la solicitud"
-            type="text"
-            name="description"
-            required
-          />
-          <button type="submit" className="button-solicitud text-white dark:text-gray-900">Enviar solicitud</button>
-        </form>
-      ) : (
-        <h2 className="prose dark:prose-invert">Al parecer ya tienes todos los logros solicitables! 🤝</h2>
-      )}
-      <div className="profile-header mt-10">
-        <div className="profile-info prose dark:prose-invert">
-          <h2>Solicitudes enviadas</h2>
+            <input
+              className="input-solicitud px-12 w-full border rounded py-2 text-gray-700 items-center"
+              placeholder="Razón o evidencia para la solicitud"
+              type="text"
+              name="description"
+              required
+            />
+            <button type="submit" className="button-solicitud text-white dark:text-gray-900">Enviar solicitud</button>
+          </form>
+        ) : (
+          <h2 className="prose dark:prose-invert">Al parecer ya tienes todos los logros solicitables! 🤝</h2>
+        )}
+        <div className="profile-header mt-10">
+          <div className="profile-info prose dark:prose-invert">
+            <h2>Solicitudes enviadas</h2>
+          </div>
         </div>
-      </div>
-      <section className="admin-achievements">
-        <table className="min-w-full">
-          <thead className="border-b">
-            <tr>
-              <th className="text-sm font-medium text-gray-900 dark:text-white px-6 py-4 text-left">Logro solicitado</th>
-              <th className="text-sm font-medium text-gray-900 dark:text-white px-6 py-4 text-left">Fecha de creación</th>
-              <th className="text-sm font-medium text-gray-900 dark:text-white px-6 py-4 text-left">Estado</th>
-            </tr>
-          </thead>
-          <tbody>
-            {myRequests?.map((solicitud) => (
-              <FilaSolicitud
-                name={solicitud.achievement.name}
-                createdAt={solicitud.achievement.createdAt}
-                state={solicitud.state}
-                key={solicitud.id}
-              />
-            ))}
+        <section className="admin-achievements">
+          <table className="min-w-full">
+            <thead className="border-b">
+              <tr>
+                <th className="text-sm font-medium text-gray-900 dark:text-white px-6 py-4 text-left">Logro solicitado</th>
+                <th className="text-sm font-medium text-gray-900 dark:text-white px-6 py-4 text-left">Fecha de creación</th>
+                <th className="text-sm font-medium text-gray-900 dark:text-white px-6 py-4 text-left">Estado</th>
+              </tr>
+            </thead>
+            <tbody>
+              {myRequests?.map((solicitud) => (
+                <FilaSolicitud
+                  name={solicitud.achievement.name}
+                  createdAt={solicitud.achievement.createdAt}
+                  state={solicitud.state}
+                  key={solicitud.id}
+                />
+              ))}
 
-          </tbody>
-        </table>
+            </tbody>
+          </table>
+        </section>
       </section>
-    </section>
+    </RequireAuth>
   );
 }
