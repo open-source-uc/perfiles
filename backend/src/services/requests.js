@@ -10,7 +10,7 @@ router.get('/', async (ctx) => {
   if (!(['CHAIR', 'SERVICE'].includes(ctx.state.user.role))) {
     ctx.status = 403;
     ctx.body = {
-      message: 'You must be an admin to access this resource',
+      message: 'Se requieren privilegios administrativos para acceder a este recurso',
     };
     return;
   }
@@ -29,7 +29,7 @@ router.get('/open', async (ctx) => {
   if (!(['CHAIR', 'SERVICE'].includes(ctx.state.user.role))) {
     ctx.status = 403;
     ctx.body = {
-      message: 'You must be an admin to access this resource',
+      message: 'Se requieren privilegios administrativos para acceder a este recurso',
     };
     return;
   }
@@ -51,7 +51,7 @@ router.get('/closed', async (ctx) => {
   if (!(['CHAIR', 'SERVICE'].includes(ctx.state.user.role))) {
     ctx.status = 403;
     ctx.body = {
-      message: 'You must be an admin to access this resource',
+      message: 'Se requieren privilegios administrativos para acceder a este recurso',
     };
     return;
   }
@@ -75,7 +75,7 @@ router.get('/:id', async (ctx) => {
   if (!(['CHAIR', 'SERVICE'].includes(ctx.state.user.role))) {
     ctx.status = 403;
     ctx.body = {
-      message: 'You must be an admin to access this resource',
+      message: 'Se requieren privilegios administrativos para acceder a este recurso',
     };
     return;
   }
@@ -95,7 +95,7 @@ router.get('/:id', async (ctx) => {
   } else {
     ctx.status = 404;
     ctx.body = {
-      message: `Request ${id} not found`,
+      message: `No se ha encontrado la solicitud de id ${id}`,
     };
   }
 });
@@ -108,7 +108,7 @@ router.put('/', async (ctx) => {
   if (!achievementId || !description) {
     ctx.status = 400;
     ctx.body = {
-      message: 'Missing fields',
+      message: 'Debes seleccionar un logro válido y escribir una descripción',
     };
     return;
   }
@@ -121,7 +121,7 @@ router.put('/', async (ctx) => {
   if (!achievement) {
     ctx.status = 400;
     ctx.body = {
-      message: `Achievement ${achievementId} not found`,
+      message: `El logro ${achievementId} no existe`,
     };
     return;
   }
@@ -135,7 +135,7 @@ router.put('/', async (ctx) => {
   if (achievementOnMember) {
     ctx.status = 400;
     ctx.body = {
-      message: `Member ${memberUsername} already has achievement ${achievementId}`,
+      message: `Ya tienes el logro ${achievementId}!`,
     };
     return;
   }
@@ -173,7 +173,7 @@ router.delete('/:id', async (ctx) => {
   if (!(['CHAIR', 'SERVICE'].includes(ctx.state.user.role))) {
     ctx.status = 403;
     ctx.body = {
-      message: 'You must be an admin to access this resource',
+      message: 'Se requieren privilegios administrativos para acceder a este recurso',
     };
     return;
   }
@@ -194,7 +194,7 @@ router.delete('/:id', async (ctx) => {
   } else {
     ctx.status = 404;
     ctx.body = {
-      message: `Request ${id} not found`,
+      message: `No se ha encontrado la solicitud de id ${id}`,
     };
   }
 });
@@ -205,7 +205,7 @@ router.patch('/:id', async (ctx) => {
   if (!(['CHAIR', 'SERVICE'].includes(ctx.state.user.role))) {
     ctx.status = 403;
     ctx.body = {
-      message: 'You must be an admin to access this resource',
+      message: 'Se requieren privilegios administrativos para acceder a este recurso',
     };
     return;
   }
@@ -217,7 +217,7 @@ router.patch('/:id', async (ctx) => {
   if (approved === undefined) {
     ctx.status = 400;
     ctx.body = {
-      message: 'Missing required fields (approved)',
+      message: 'Falta el argumento "approved"',
     };
     return;
   }
@@ -226,7 +226,7 @@ router.patch('/:id', async (ctx) => {
   if (typeof approved !== 'boolean') {
     ctx.status = 400;
     ctx.body = {
-      message: 'Approved must be a boolean',
+      message: 'El argumento "approved" debe ser un booleano',
     };
     return;
   }
@@ -245,14 +245,14 @@ router.patch('/:id', async (ctx) => {
   if (!request) {
     ctx.status = 404;
     ctx.body = {
-      message: `Request ${id} not found`,
+      message: `No se ha encontrado la solicitud de id ${id}`,
     };
     return;
   }
   if (request.state !== 'OPEN') {
     ctx.status = 400;
     ctx.body = {
-      message: `Request ${id} is not open`,
+      message: `La solicitud de id ${id} no está abierta`,
     };
     return;
   }
@@ -279,12 +279,12 @@ router.patch('/:id', async (ctx) => {
       },
     });
     ctx.body = {
-      message: `Request ${id} ${approved ? 'approved' : 'rejected'} successfully`,
+      message: `La solicitud de id ${id} fue ${approved ? 'aprobada' : 'rechazada'} exitosamente!`,
     };
   } else {
     ctx.status = 404;
     ctx.body = {
-      message: `Request ${id} not found`,
+      message: `No se ha encontrado la solicitud de id ${id}`,
     };
   }
 });

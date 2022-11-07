@@ -1,6 +1,8 @@
 import * as React from 'react';
 import axios from 'axios';
+import LoadingAnimation from './common/LoadingAnimation';
 import ProfileCard from './common/ProfileCard';
+import handleError from './common/ErrorHandler';
 
 import { getAuthHeader } from '../utils/auth';
 
@@ -31,13 +33,8 @@ export default function Home() {
       setUsers(response.data);
       setLoading(false);
     }).catch((err) => {
-      if (err.response) {
-        setError(`El servidor respondió con un error (${err.response.status}).`);
-      } else if (err.request) {
-        setError('No se pudo conectar con el servidor.');
-      } else {
-        setError('Ocurrió un error desconocido al cargar los miembros.');
-      }
+      const errorMsg = handleError(err);
+      setError(errorMsg);
       setLoading(false);
     });
   }, []);
@@ -52,14 +49,12 @@ export default function Home() {
             UC, sus logros y biografías. Si deseas ser parte de esta comunidad, ve
             los detalles en la
             {' '}
-            <a href="/inscripciones.html">guía rapida de inscripción.</a>
+            <a href="/inscripciones">guía rapida de inscripción.</a>
           </p>
         </div>
       </section>
       { loading && (
-      <div className="text-center mx-auto">
-        <p className="text-2xl font-bold">Cargando...</p>
-      </div>
+      <LoadingAnimation />
       ) }
       { error && <h2 className="text-center text-2xl font-bold">{error}</h2> }
       { !error && !loading && (

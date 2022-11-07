@@ -4,6 +4,7 @@ import React, { useEffect } from 'react';
 import axios from 'axios';
 import UserContext from '../contexts/userContext';
 import { RequireAuth } from '../utils/auth';
+import handleError from './common/ErrorHandler';
 
 function humanReadableStatus(status) {
   if (status === 'OPEN') {
@@ -35,6 +36,8 @@ export default function Solicitudes() {
   const [myAchievements, setMyAchievements] = React.useState([]);
 
   const [success, setSuccess] = React.useState(false);
+  const [alreadyCreated, setAlreadyCreated] = React.useState(false);
+  const [errorMsg, setErrorMsg] = React.useState(false);
 
   const user = React.useContext(UserContext);
   const myRequests = user?.created_requests;
@@ -76,8 +79,16 @@ export default function Solicitudes() {
       headers: {
         Authorization: `Bearer ${localStorage.getItem('token')}`,
       },
+    }).then((response) => {
+      if (response.status === 200) {
+        setAlreadyCreated(true);
+      } else {
+        setSuccess(true);
+      }
+    }).catch((error) => {
+      setSuccess(false);
+      setErrorMsg(handleError(error));
     });
-    setSuccess(true);
   };
 
   return (
@@ -92,6 +103,16 @@ export default function Solicitudes() {
         <div className="alert alert-success">
           Solicitud enviada correctamente
         </div>
+        )}
+        { alreadyCreated && (
+          <div className="alert alert-warning">
+            Ya tienes una solicitud pendiente
+          </div>
+        )}
+        { errorMsg && (
+          <div className="alert alert-danger">
+            {errorMsg}
+          </div>
         )}
         {achievementsUserDoesNotHave.length > 0 ? (
           <form className="form-solicitud flex justify-center mt-6" onSubmit={handleSubmit}>

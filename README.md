@@ -44,7 +44,7 @@ cd ../frontend && npm install
 
 ### Entorno
 
-Una vez instaladas las dependencias y preparada la base de datos, es necesario configurar las variables de entorno. Para esto, hay que crear un archivo `.env` en la raíz del proyecto, en base al `.env.template`. Es necesario proveer el ID y secreto de GitHub para hacer funcionar el OAuth localmente, al igual que un secreto JWT (aleatorio) que gestione la emisión de tokens.
+Una vez instaladas las dependencias y preparada la base de datos, es necesario configurar las variables de entorno. Para esto, hay que crear un archivo `.env` en la carpeta backend, en base al `.env.template`. Es necesario proveer el ID y secreto de GitHub para hacer funcionar el OAuth localmente, al igual que un secreto JWT (aleatorio) que gestione la emisión de tokens.
 
 Para obtener tokens de GitHub (en caso de que no se te hayan otorgado de antemano), puedes seguir [este tutorial](https://docs.github.com/en/developers/apps/building-oauth-apps/creating-an-oauth-app). Para desarrollo local, es necesario configurar `http://127.0.0.1:3000/api/auth/callback` como `Authorization Callback URL`.
 

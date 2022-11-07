@@ -22,6 +22,7 @@ router.get('/members', async (ctx) => {
         },
       },
     });
+    // add a timeout to simulate a slow network
     ctx.body = members;
   } catch (e) {
     // TODO: Standardize error handling
