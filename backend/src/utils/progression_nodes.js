@@ -30,9 +30,6 @@ export default async function getProgressionTree() {
         id: node.achievementId,
       },
     });
-    // Remove the achievementId field
-    // eslint-disable-next-line no-param-reassign
-    delete node.achievementId;
     // Remove id from achievement
     delete achievement.id;
     return {

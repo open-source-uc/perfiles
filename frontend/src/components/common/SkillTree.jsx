@@ -4,12 +4,13 @@ import React, { useState, useCallback, useEffect } from 'react';
 import axios from 'axios';
 
 import Tree from 'react-d3-tree';
+import UserContext from '../../contexts/userContext';
 
-function BadgeCard({ name, image }) {
+function BadgeCard({ name, image, hasAchievement }) {
   return (
-    <article className="w-[160px] h-[190px] rounded-xl shadow-xl bg-white px-6 flex flex-col justify-center">
+    <article className={`w-[160px] h-[190px] rounded-xl shadow-xl bg-white px-6 flex flex-col justify-center ${hasAchievement ? 'border-indigo-500 border-4' : ''}`}>
       <img className="w-[160px]" src={image} alt={name} />
-      <p className="text-gray-900 text-m font-semibold text-center leading-tight">{name}</p>
+      <p className="text-gray-800 text-m font-semibold text-center leading-tight">{name}</p>
     </article>
   );
 }
@@ -17,7 +18,9 @@ function BadgeCard({ name, image }) {
 function renderBadgeCard({
   nodeSize,
   nodeDatum,
+  myAchievements,
 }) {
+  const hasAchievement = myAchievements.has(nodeDatum.achievementId);
   return (
     <g>
       <foreignObject
@@ -26,7 +29,11 @@ function renderBadgeCard({
         x={-80}
         y={-50}
       >
-        <BadgeCard name={nodeDatum.name} image={nodeDatum.imageURL} />
+        <BadgeCard
+          name={nodeDatum.name}
+          image={nodeDatum.imageURL}
+          hasAchievement={hasAchievement}
+        />
       </foreignObject>
     </g>
   );
@@ -44,22 +51,38 @@ function useCenteredTree() {
 }
 
 export default function SkillTree() {
-  const [data, setData] = useState({});
+  const [achievements, setAchievements] = useState({});
+  const [myAchievements, setMyAchievements] = useState(new Set());
+  const user = React.useContext(UserContext);
   const [translate, containerRef] = useCenteredTree();
   const nodeSize = { x: 180, y: 240 };
 
   useEffect(() => {
-    axios.get('/api/public/achievements/progression').then((res) => setData(res.data));
+    axios.get('/api/public/achievements/progression').then((res) => setAchievements(res.data));
   }, []);
+
+  useEffect(() => {
+    if (user) {
+      axios.get('/api/members/me', {
+        headers: {
+          Authorization: `Bearer ${localStorage.getItem('token')}`,
+        },
+      }).then(
+        (res) => {
+          setMyAchievements(new Set(res.data.achievements.map((a) => a.achievement.id)));
+        },
+      );
+    }
+  }, [user]);
 
   return (
     <div className="w-[100%] h-[100vh]" ref={containerRef}>
       <Tree
-        data={data}
+        data={achievements}
         orientation="vertical"
         pathFunc="step"
         pathClassFunc={() => 'linkBase'}
-        renderCustomNodeElement={(props) => renderBadgeCard({ ...props, nodeSize })}
+        renderCustomNodeElement={(props) => renderBadgeCard({ ...props, nodeSize, myAchievements })}
         translate={translate}
         nodeSize={nodeSize}
         collapsible

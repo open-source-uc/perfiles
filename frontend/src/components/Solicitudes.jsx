@@ -59,7 +59,7 @@ export default function Solicitudes() {
       .then((response) => {
         setMyAchievements(response.data.achievements.map((a) => a.achievement));
       });
-  }, []);
+  }, [user]);
 
   const achievementsUserDoesNotHave = achievements.filter(
     (a) => !myAchievements.map(
