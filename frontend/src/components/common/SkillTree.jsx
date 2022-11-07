@@ -8,7 +8,7 @@ import Tree from 'react-d3-tree';
 function BadgeCard({ name, image }) {
   return (
     <article className="w-[160px] h-[190px] rounded-xl shadow-xl bg-white px-6 flex flex-col justify-center">
-      <img className="w-[160px]" src={image} alt="{name}" />
+      <img className="w-[160px]" src={image} alt={name} />
       <p className="text-gray-900 text-m font-semibold text-center leading-tight">{name}</p>
     </article>
   );
