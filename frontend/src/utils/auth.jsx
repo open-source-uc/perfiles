@@ -2,6 +2,7 @@ import axios from 'axios';
 import { Navigate } from 'react-router-dom';
 import React from 'react';
 import UserContext from '../contexts/userContext';
+import LoadingAnimation from '../components/common/LoadingAnimation';
 
 /* eslint-disable no-unused-vars */
 function storeToken(token) {
@@ -38,7 +39,7 @@ function storeTokenIfGiven() {
 
 async function getPublicUserInfo(username) {
   const response = await axios.get(`/api/public/members/${username}`);
-  return response.data;
+  return response;
 }
 
 /*
@@ -64,19 +65,32 @@ function isAdmin(user) {
 
 function RequireAuth({ children }) {
   const user = React.useContext(UserContext);
-  if (!user) {
+  const token = localStorage.getItem('token');
+
+  if (!user && !token) {
     // Redirect to login
     return <Navigate to="/api/auth/login" />;
+  }
+  if (!user && token) {
+    // User is not logged in, but has a token
+    return <LoadingAnimation />;
   }
   return children;
 }
 
 function RequireAdmin({ children }) {
   const user = React.useContext(UserContext);
-  if (!user || !isAdmin(user)) {
+  const token = localStorage.getItem('token');
+
+  if ((!user && !token) || (user && !isAdmin(user))) {
     // Navigate to home
     return <Navigate to="/" />;
   }
+  if (!user && token) {
+    // User is not logged in, but has a token
+    return <LoadingAnimation />;
+  }
+
   return children;
 }
 

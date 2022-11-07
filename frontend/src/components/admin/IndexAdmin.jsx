@@ -8,10 +8,10 @@ export default function IndexAdmin() {
       {/* <!-- adminindexbox1--> */}
       <ol className="adminindexbox">
         <li className="adminindexbox-item">
-          <a href="/admin/index">Admin</a>
+          <a href="/admin/">Admin</a>
         </li>
       </ol>
-      <p className="admin__welcome">
+      <p className="text-center text-4xl pt-4">
         Bienvenido/a,
         {' '}
         {user?.profile?.name}

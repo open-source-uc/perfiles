@@ -25,10 +25,8 @@ export default function Scrollup() {
   }, []);
 
   return (
-    <div>
-      <button className={isVisible ? 'btn-scrollup-visible' : 'btn-scrollup'} type="button" id="btn_scrollup" onClick={scrollToTop}>
-        <i className="fa-solid fa-chevron-up" />
-      </button>
-    </div>
+    <button className={isVisible ? 'btn-scrollup-visible' : 'btn-scrollup'} type="button" id="btn_scrollup" onClick={scrollToTop}>
+      <i className="fa-solid fa-chevron-up" />
+    </button>
   );
 }

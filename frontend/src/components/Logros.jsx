@@ -8,12 +8,24 @@ import UserContext from '../contexts/userContext';
 
 export default function Logros() {
   const [achievements, setAchievements] = React.useState([]);
+  const [loading, setLoading] = React.useState(true);
+  const [error, setError] = React.useState(null);
   const user = useContext(UserContext);
 
   useEffect(() => {
     axios.get('/api/public/achievements')
       .then((response) => {
         setAchievements(response.data);
+        setLoading(false);
+      }).catch((err) => {
+        if (err.response) {
+          setError(`El servidor respondió con un error (${err.response.status}).`);
+        } else if (err.request) {
+          setError('No se pudo conectar con el servidor.');
+        } else {
+          setError('Ocurrió un error desconocido al cargar los logros.');
+        }
+        setLoading(false);
       });
   }, []);
 
@@ -23,13 +35,8 @@ export default function Logros() {
 
   return (
     <section className="personal-profile">
-      <p className="admin__welcome">Logros</p>
-      <article className="badge-article">
-        <div className="skill-tree">
-          <SkillTree />
-          <SkillTree />
-        </div>
-      </article>
+      <h1 className="text-center text-4xl pt-4">Logros</h1>
+      <SkillTree />
     </section>
   );
 }
