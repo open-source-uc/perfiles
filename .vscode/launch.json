@@ -21,8 +21,7 @@
             "restart": true,
             "runtimeExecutable": "nodemon",
             "skipFiles": [
-                "<node_internals>/**/*.js",
-                "${workspaceFolder}/backend/node_modules/**/*.js"
+                "<node_internals>/**"
             ],
             "type": "node"
         },
