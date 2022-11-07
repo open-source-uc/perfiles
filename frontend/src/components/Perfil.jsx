@@ -2,7 +2,7 @@ import React, { useEffect } from 'react';
 
 import { useParams } from 'react-router-dom';
 import { getPublicUserInfo } from '../utils/auth';
-import handleError from './common/ErrorHandler';
+import handleError from '../utils/error-handler';
 import LoadingAnimation from './common/LoadingAnimation';
 
 import Badge from './common/Badge';

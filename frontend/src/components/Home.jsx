@@ -2,7 +2,7 @@ import * as React from 'react';
 import axios from 'axios';
 import LoadingAnimation from './common/LoadingAnimation';
 import ProfileCard from './common/ProfileCard';
-import handleError from './common/ErrorHandler';
+import handleError from '../utils/error-handler';
 
 import { getAuthHeader } from '../utils/auth';
 

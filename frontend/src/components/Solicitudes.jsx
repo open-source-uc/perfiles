@@ -4,7 +4,7 @@ import React, { useEffect } from 'react';
 import axios from 'axios';
 import UserContext from '../contexts/userContext';
 import { RequireAuth } from '../utils/auth';
-import handleError from './common/ErrorHandler';
+import handleError from '../utils/error-handler';
 
 function humanReadableStatus(status) {
   if (status === 'OPEN') {
