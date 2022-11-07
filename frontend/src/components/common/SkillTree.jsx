@@ -5,6 +5,8 @@ import axios from 'axios';
 
 import Tree from 'react-d3-tree';
 import UserContext from '../../contexts/userContext';
+import LoadingAnimation from './LoadingAnimation';
+import handleError from '../../utils/error-handler';
 
 function BadgeCard({ name, image, hasAchievement }) {
   return (
@@ -56,9 +58,14 @@ export default function SkillTree() {
   const user = React.useContext(UserContext);
   const [translate, containerRef] = useCenteredTree();
   const nodeSize = { x: 180, y: 240 };
+  const [loading, setLoading] = React.useState(true);
+  const [error, setError] = React.useState(null);
 
   useEffect(() => {
-    axios.get('/api/public/achievements/progression').then((res) => setAchievements(res.data));
+    axios.get('/api/public/achievements/progression').then((res) => setAchievements(res.data)).catch((err) => {
+      const errorMsg = handleError(err);
+      setError(errorMsg);
+    });
   }, []);
 
   useEffect(() => {
@@ -71,12 +78,23 @@ export default function SkillTree() {
         (res) => {
           setMyAchievements(new Set(res.data.achievements.map((a) => a.achievement.id)));
         },
+      ).then(
+        () => setLoading(false),
+      ).catch(
+        (err) => {
+          const errorMsg = handleError(err);
+          setError(errorMsg);
+          setLoading(false);
+        },
       );
     }
   }, [user]);
 
   return (
     <div className="w-[100%] h-[100vh]" ref={containerRef}>
+      {loading && !error && <LoadingAnimation />}
+      {error && <h2 className="text-center text-2xl font-bold">{error}</h2> }
+      {!error && !loading && (
       <Tree
         data={achievements}
         orientation="vertical"
@@ -87,6 +105,7 @@ export default function SkillTree() {
         nodeSize={nodeSize}
         collapsible
       />
+      )}
     </div>
   );
 }

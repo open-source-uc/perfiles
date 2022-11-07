@@ -27,9 +27,8 @@ function DropzoneUploaderLayout({
   return (
     <>
       {previews}
-
       <div {...dropzoneProps}>
-        {files.length < maxFiles && input}
+        {input && files.length < maxFiles}
       </div>
     </>
   );
@@ -39,6 +38,8 @@ export default function BadgeModal() {
   const [isOpen, setIsOpen] = useState(false);
   const [blob, setBlob] = useState(null);
   const [image, setImage] = useState(null);
+  const [expiresCheck, setExpiresCheck] = useState(false);
+  const [pointsOverride, setPointsOverride] = useState(false);
 
   // Open modal with button
   function openModal() {
@@ -153,7 +154,21 @@ export default function BadgeModal() {
                     <option value="PLATINUM">PLATINUM</option>
                   </select>
                 </div>
+                {/* A checkbox to toggle the badge expiration date visibility */}
+                <div className="flex flex-row items-center mt-4">
+                  <input
+                    type="checkbox"
+                    name="expires"
+                    id="badgeExpiration"
+                    className="border border-gray-300 rounded-md p-2 mr-2"
+                    onChange={() => setExpiresCheck(!expiresCheck)}
+                  />
+                  <label htmlFor="badgeExpiration" className="">
+                    Expira
+                  </label>
+                </div>
                 {/* An input form for the badge expiration date */}
+                {expiresCheck && (
                 <div className="flex flex-col">
                   <label htmlFor="badgeExpirationDate" className="mt-4">
                     Fecha de expiración del logro (Opcional)
@@ -165,7 +180,22 @@ export default function BadgeModal() {
                     />
                   </label>
                 </div>
+                )}
+                {/* A checkbox to toggle the badge points override visibility */}
+                <div className="flex flex-row items-center mt-4">
+                  <input
+                    type="checkbox"
+                    name="override"
+                    id="badgePoints"
+                    className="border border-gray-300 rounded-md p-2 mr-2"
+                    onChange={() => setPointsOverride(!pointsOverride)}
+                  />
+                  <label htmlFor="badgePoints" className="">
+                    Hardcodear cantidad de puntos
+                  </label>
+                </div>
                 {/* An input form for the badge points override */}
+                {pointsOverride && (
                 <div className="flex flex-col">
                   <label htmlFor="badgePointsOverride" className="mt-4">
                     Hardcodeo de puntos a otorgar (Opcional)
@@ -177,25 +207,26 @@ export default function BadgeModal() {
                     />
                   </label>
                 </div>
+                )}
                 {/* An input form for the badge image */}
                 <div className="flex flex-col">
                   <label htmlFor="badgeImage" className="mt-4">
                     Chapita para el logro
-                    {/* Inicio zona de dropzone */}
+                    {/* Dropzone start */}
                     <Dropzone
                       LayoutComponent={DropzoneUploaderLayout}
                       onChangeStatus={handleFileChangeStatus}
                       accept="image/*"
                       inputContent={(files, extra) => (extra.reject ? 'Solamente imágenes en formato PNG' : 'Arrastrar archivos')}
                       maxFiles={1}
-                      submitButtonDisabled={(files) => files.length < 3}
+                      submitButtonDisabled={(files) => files.length < 1}
                       styles={{
                         dropzoneReject: { borderColor: 'red', backgroundColor: '#DAA' },
                         inputLabel: (files, extra) => (extra.reject ? { color: 'red' } : {}),
                       }}
                     />
                   </label>
-                  {/* Fin zona de dropzone */}
+                  {/* Dropzone end */}
                   {/* A send button */}
                   <button
                     type="submit"

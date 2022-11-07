@@ -29,7 +29,7 @@ export default function Perfil() {
 
   return (
     <>
-      { loading && (
+      { loading && !error && (
       <LoadingAnimation />
       ) }
       { error && <h2 className="text-center text-2xl font-bold">{error}</h2> }
