@@ -1,5 +1,6 @@
 import * as React from 'react';
 import axios from 'axios';
+import { Link } from 'react-router-dom';
 import LoadingAnimation from './common/LoadingAnimation';
 import ProfileCard from './common/ProfileCard';
 import handleError from '../utils/error-handler';
@@ -50,7 +51,9 @@ export default function Home() {
             UC, sus logros y biografías. Si deseas ser parte de esta comunidad, ve
             los detalles en la
             {' '}
-            <a href="/inscripciones">guía rapida de inscripción.</a>
+            <Link to="/inscripciones">
+              <span className="font-semibold ">guía rapida de inscripción.</span>
+            </Link>
           </p>
         </div>
       </section>

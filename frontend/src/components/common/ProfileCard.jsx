@@ -1,11 +1,12 @@
 /* eslint-disable no-unused-vars */
 import * as React from 'react';
 import { motion } from 'framer-motion';
-import { Link } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 
 export default function ProfileCard({ name, title, username }) {
+  const navigate = useNavigate();
   const redirectProfile = () => {
-    window.location.href = `/perfil/${username}`;
+    navigate(`/perfil/${username}`);
   };
 
   // variant from animation

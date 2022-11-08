@@ -1,5 +1,6 @@
 /* eslint-disable no-unused-vars */
 import React, { Fragment, useState } from 'react';
+import { Link } from 'react-router-dom';
 import Badge from '../common/Badge';
 import BadgeModal from './components/BadgeModal';
 import ListaSolicitudes from './ListaSolicitudes';
@@ -10,7 +11,7 @@ export default function LogrosAdmin() {
     <div className="admin__main">
       <ol className="adminindexbox">
         <li className="adminindexbox-item">
-          <a href="/admin/index">Admin</a>
+          <Link to="/admin/">Admin</Link>
         </li>
         <li className="adminindexbox-item active">Logros y contadores</li>
       </ol>
