@@ -1,11 +1,15 @@
 import * as React from 'react';
 import { Link } from 'react-router-dom';
+import { ReactComponent as RobotDCC } from '../assets/images/robot-dcc.svg';
 
 function NoMatch() {
   return (
     <div className="flex items-center justify-center w-full min-h-screen bg-gray-100">
       <div className="flex flex-col text-gray-700 lg:flex-row lg:space-x-16 lg:space-x-reverse">
-        <div className="order-1 max-w-md px-2 text-sm md:text-base lg:px-0">
+        <div className="flex flex-1 max-w-lg">
+          <RobotDCC className="block w-auto object-scale-down overflow-hidden" alt="404" />
+        </div>
+        <div className="order-1 max-w-md px-2 text-sm md:text-base lg:px-0 mt-20">
           <header className="mb-6">
             <h2 className="text-4xl font-bold leading-none text-gray-400 select-none lg:text-6xl">404.</h2>
             <h3 className="text-xl font-light leading-normal lg:text-3xl md:text-3xl">Lo sentimos, no pudimos encontrar esta página.</h3>
@@ -23,9 +27,6 @@ function NoMatch() {
               Volver al inicio
             </button>
           </Link>
-        </div>
-        <div className="max-w-lg">
-          <img src="https://http.cat/404" alt="404" />
         </div>
       </div>
     </div>
