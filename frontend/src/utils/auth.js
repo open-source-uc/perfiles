@@ -104,6 +104,4 @@ export {
   storeTokenIfGiven,
   getCurrentUserInfo as getUserInfo,
   getPublicUserInfo,
-  RequireAuth,
-  RequireAdmin,
 };

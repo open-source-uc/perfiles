@@ -43,16 +43,6 @@ Table Achievement {
   members AchievementsOnMembers [not null]
   requests Request [not null]
   claimlinks ClaimLink [not null]
-  progression_nodes AchievementProgressionNode [not null]
-}
-
-Table AchievementProgressionNode {
-  id String [pk, unique]
-  achievement Achievement [not null]
-  achievementId String [not null]
-  children AchievementProgressionNode [not null]
-  parent AchievementProgressionNode
-  parentId String
 }
 
 Table AchievementsOnMembers {
@@ -135,10 +125,6 @@ Ref: Profile.memberUsername - Member.username
 Ref: Achievement.creatorUsername > Member.username
 
 Ref: Achievement.levelName > AchievementLevel.name
-
-Ref: AchievementProgressionNode.achievementId > Achievement.id
-
-Ref: AchievementProgressionNode.parentId > AchievementProgressionNode.id
 
 Ref: AchievementsOnMembers.memberUsername > Member.username [delete: Cascade]
 
