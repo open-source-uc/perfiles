@@ -27,7 +27,7 @@ function CardRequest({
           <span className="text-gray-900 ">{dateFormated}</span>
           {'  '}
           <span className="text-gray-900 ">{state}</span>
-          <p className="text-gray-700 text-base mb-4 text-ellipsis max-w-[100px]">
+          <p className="text-gray-700 text-base mb-4 text-ellipsis">
             {description}
           </p>
           <div className="">
