@@ -7,6 +7,7 @@ import { Dialog } from '@headlessui/react';
 import 'react-dropzone-uploader/dist/styles.css';
 import Dropzone from 'react-dropzone-uploader';
 import axios from 'axios';
+import handleError from '../../../utils/error-handler';
 
 const getBase64FromUrl = async (url) => {
   const data = await fetch(url);
@@ -64,7 +65,8 @@ export default function BadgeModal() {
     // Get file data
     if (!image) {
       // eslint-disable-next-line no-alert
-      alert('No image uploaded');
+      alert('Debes subir una imagen');
+      return;
     }
 
     // Send request
@@ -75,12 +77,19 @@ export default function BadgeModal() {
       headers: {
         Authorization: `Bearer ${localStorage.getItem('token')}`,
       },
+    }).then((res) => {
+      // eslint-disable-next-line no-alert
+      alert('Logro creado exitosamente!');
+      setIsOpen(false);
+    }).catch((err) => {
+      const errorMsg = handleError(err);
+      // eslint-disable-next-line no-alert
+      alert(errorMsg);
     });
 
     // Close modal
     setIsOpen(false);
     // eslint-disable-next-line no-alert
-    alert('Logro creado exitosamente.');
   }
 
   return (
@@ -241,7 +250,9 @@ export default function BadgeModal() {
         </div>
       </Dialog>
       {/* This opens the modal */}
-      <button type="button" onClick={openModal}>Crear logro</button>
+      <div className="flex flex-row justify-center">
+        <button type="button" className="button-admin admin-link__generate-button" onClick={openModal}>Abrir menú</button>
+      </div>
     </>
   );
 }

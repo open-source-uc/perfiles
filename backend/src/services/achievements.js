@@ -28,7 +28,7 @@ router.get('/:id', async (ctx) => {
   } else {
     ctx.status = 404;
     ctx.body = {
-      message: `Achievement ${id} not found`,
+      message: `No se ha encontrado el logro de id ${id}`,
     };
   }
 });
@@ -38,7 +38,7 @@ router.put('/', async (ctx) => {
   if (!(['CHAIR', 'SERVICE'].includes(ctx.state.user.role))) {
     ctx.status = 403;
     ctx.body = {
-      message: 'You must be an admin to access this resource',
+      message: 'Debes ser un administrador para acceder a este recurso',
     };
     return;
   }
@@ -69,10 +69,29 @@ router.put('/', async (ctx) => {
   if (!name || !description || !type || !level || !image) {
     ctx.status = 400;
     ctx.body = {
-      message: 'Missing required fields',
+      message: 'Faltan campos obligatorios',
     };
     return;
   }
+
+  // Validate that the name is shorter than 50 characters
+  if (name.length > 50) {
+    ctx.status = 400;
+    ctx.body = {
+      message: 'El nombre del logro no puede tener más de 50 caracteres',
+    };
+    return;
+  }
+
+  // Validate that the description is shorter than 500 characters
+  if (description.length > 500) {
+    ctx.status = 400;
+    ctx.body = {
+      message: 'La descripción del logro no puede tener más de 500 caracteres',
+    };
+    return;
+  }
+
   // Load PNG image from base64 string
   // Strip prefix from base64 string
   const base64Image = image.split(';base64,').pop();
@@ -146,7 +165,7 @@ router.put('/', async (ctx) => {
       ctx.status = 201;
     }
   } catch (error) {
-    console.error(`⚠️ Error creating/updating achievement: ${error}`);
+    console.error(`⚠️ Error creando/actualizando un logro: ${error}`);
     ctx.status = 500;
     ctx.body = {
       message: error.message,
@@ -159,7 +178,7 @@ router.delete('/:id', async (ctx) => {
   if (!(['CHAIR', 'SERVICE'].includes(ctx.state.user.role))) {
     ctx.status = 403;
     ctx.body = {
-      message: 'You must be an admin to access this resource',
+      message: 'Se requieren privilegios administrativos para acceder a este recurso',
     };
     return;
   }
@@ -184,7 +203,7 @@ router.delete('/:id', async (ctx) => {
   } else {
     ctx.status = 404;
     ctx.body = {
-      message: `Achievement ${id} not found`,
+      message: `No se ha encontrado el logro de id ${id}`,
     };
   }
 });

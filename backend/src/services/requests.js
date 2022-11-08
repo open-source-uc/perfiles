@@ -112,6 +112,15 @@ router.put('/', async (ctx) => {
     };
     return;
   }
+  // Check that the description is shorter than 500 characters
+  if (description.length > 1000) {
+    ctx.status = 400;
+    ctx.body = {
+      message: 'La descripción no puede tener más de 1000 caracteres',
+    };
+    return;
+  }
+
   // Check that the achievement exists
   const achievement = await prisma.achievement.findUnique({
     where: {
