@@ -80,7 +80,7 @@ Las entidades en el proyecto se encuentran modeladas usando un schema de Prisma,
 Adicionalmente, Prisma provee un "Studio" que permite inspeccionar los datos en la base de datos. Para abrirlo, se puede correr `npx prisma studio`.
 
 ## Documentación adicional
-Se puede encontrar la documentación completa de la API en [`docs/api.md`](docs/api.md).
+Los endpoints de la API [se encuentran ejemplificados en Postman](https://www.postman.com/agucova/workspace/eb248033-d0b2-4760-8638-8ba92f420b42/collection/18674839-9d3d4c46-87f6-4df9-9f03-d9f3ff6f17b4?action=share&creator=18674839).
 
 ## Contribuir
 
