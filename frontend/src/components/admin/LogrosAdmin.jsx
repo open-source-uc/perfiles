@@ -3,6 +3,7 @@ import React, { Fragment, useState } from 'react';
 import Badge from '../common/Badge';
 import BadgeModal from './components/BadgeModal';
 import ListaSolicitudes from './ListaSolicitudes';
+import BadgeCreate from './components/BadgeCreate';
 // import { Dialog, Transition } from '@headlessui/react';
 
 export default function LogrosAdmin() {
@@ -39,11 +40,14 @@ export default function LogrosAdmin() {
           </div>
         </div>
       </section>
+
       <ListaSolicitudes />
 
       <section className="admin-box admin-center">
         <BadgeModal />
       </section>
+
+      <BadgeCreate />
 
       <section className="admin-box admin-link prose dark:prose-invert">
         <h2 className="admin-box__title">Crear nuevo enlace</h2>
