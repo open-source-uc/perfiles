@@ -19,10 +19,11 @@ function renderBadgeCard({
   nodeSize,
   nodeDatum,
   myAchievements,
+  toggleNode,
 }) {
   const hasAchievement = myAchievements.has(nodeDatum.achievementId);
   return (
-    <g>
+    <g onClick={toggleNode}>
       <foreignObject
         width={nodeSize.x}
         height={nodeSize.y}
