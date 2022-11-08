@@ -1,11 +1,12 @@
 import * as React from 'react';
+import { Link } from 'react-router-dom';
 
 export default function RRHHAdmin() {
   return (
     <div className="admin__main">
       <ol className="adminindexbox">
         <li className="adminindexbox-item">
-          <a href="/admin/index">Admin</a>
+          <Link to="/admin/">Admin</Link>
         </li>
         <li className="adminindexbox-item active">Recursos humanos</li>
       </ol>

@@ -49,7 +49,7 @@ app.use(json({
 // Body parsing
 app.use(koaBody(
   // Enable multipart
-  { multipart: true, formidable: { multiples: false } },
+  { multipart: true, jsonLimit: '5mb', formidable: { multiples: false, maxFieldsSize: 50 * 1024 * 1024 } },
 ));
 
 router.get('/', async (ctx) => {

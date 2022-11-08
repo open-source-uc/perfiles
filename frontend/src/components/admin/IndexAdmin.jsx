@@ -1,4 +1,5 @@
 import * as React from 'react';
+import { Link } from 'react-router-dom';
 import UserContext from '../../contexts/userContext';
 
 export default function IndexAdmin() {
@@ -8,7 +9,7 @@ export default function IndexAdmin() {
       {/* <!-- adminindexbox1--> */}
       <ol className="adminindexbox">
         <li className="adminindexbox-item">
-          <a href="/admin/">Admin</a>
+          <Link to="/admin/">Admin</Link>
         </li>
       </ol>
       <p className="admin__welcome">

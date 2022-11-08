@@ -1,5 +1,6 @@
-import React, { useEffect } from 'react';
-import { Outlet, useNavigate } from 'react-router-dom';
+import React from 'react';
+import { Outlet } from 'react-router-dom';
+import { Helmet } from 'react-helmet';
 import Header from '../common/Header';
 import Footer from '../common/Footer';
 import Scrollup from '../common/Scrollup';
@@ -28,7 +29,10 @@ export default function Layout() {
   }, []);
 
   return (
-    <main>
+    <RequireAdmin>
+      <Helmet>
+        <title>Panel Administrativo 👩‍💻 | Members OSUC</title>
+      </Helmet>
       <Header />
       <AdminSidebar />
       <Outlet />

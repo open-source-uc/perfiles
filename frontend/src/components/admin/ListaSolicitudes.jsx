@@ -22,23 +22,21 @@ function CardRequest({
   return (
     <div>
       { success ? (<div />) : (
-        <div className="flex justify-center">
-          <div className="flex flex-col items-center justify-center rounded-lg shadow-lg bg-white max-w-xs m-2">
-            <h5 className="text-gray-900 text-xl leading-tight font-medium mb-2">{name}</h5>
-            <span className="text-gray-900 ">{dateFormated}</span>
-            {'  '}
-            <span className="text-gray-900 ">{state}</span>
-            <p className="text-gray-700 text-base mb-4">
-              {description}
-            </p>
-            <div className="inline-flex">
-              <button type="button" onClick={() => handleApproveOrReject(true)} className="bg-gray-300 mb-1 hover:bg-gray-400 text-gray-800 font-bold py-2 px-4 rounded-l">
-                ✅
-              </button>
-              <button type="button" onClick={() => handleApproveOrReject(false)} className="bg-gray-300 mb-1 hover:bg-gray-400 text-gray-800 font-bold py-2 px-4 rounded-r">
-                ❌
-              </button>
-            </div>
+        <div className="flex flex-col items-center justify-center rounded-lg shadow-lg bg-white p-6 w-s max-w-s flex-1 grow-0">
+          <h5 className="text-gray-900 text-xl leading-tight font-medium mb-2">{name}</h5>
+          <span className="text-gray-900 ">{dateFormated}</span>
+          {'  '}
+          <span className="text-gray-900 ">{state}</span>
+          <p className="text-gray-700 text-base mb-4 text-ellipsis">
+            {description}
+          </p>
+          <div className="">
+            <button type="button" onClick={() => handleApproveOrReject(true)} className="bg-gray-300 mb-1 hover:bg-gray-400 text-gray-800 font-bold py-2 px-4 rounded-l">
+              ✅
+            </button>
+            <button type="button" onClick={() => handleApproveOrReject(false)} className="bg-gray-300 mb-1 hover:bg-gray-400 text-gray-800 font-bold py-2 px-4 rounded-r">
+              ❌
+            </button>
           </div>
         </div>
       )}
@@ -64,9 +62,9 @@ export default function ListaSolicitudes() {
   return (
     <section className="admin-box admin-achievements">
       <div className="prose">
-        <h2 className="admin-box__title">Solicitudes abiertas</h2>
+        <h2 className="admin-box__title dark:text-white">Solicitudes abiertas</h2>
       </div>
-      <div className="profile__list">
+      <div className="flex justify-center gap-8 my-8">
         {request?.map((solicitud) => (
           <CardRequest
             name={solicitud.memberUsername}

@@ -12,7 +12,7 @@ router.get('/', async (ctx) => {
   if (!(['CHAIR', 'SERVICE'].includes(ctx.state.user.role))) {
     ctx.status = 403;
     ctx.body = {
-      message: 'You must be an admin to access this resource',
+      message: 'Se requieren privilegios administrativos para acceder a este recurso',
     };
     return;
   }
@@ -41,7 +41,7 @@ router.get('/report', async (ctx) => {
   if (!(['CHAIR', 'SERVICE'].includes(ctx.state.user.role))) {
     ctx.status = 403;
     ctx.body = {
-      message: 'You must be an admin to access this resource',
+      message: 'Se requieren privilegios administrativos para acceder a este recurso',
     };
     return;
   }

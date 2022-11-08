@@ -1,8 +1,13 @@
 import React from 'react';
+import { Helmet } from 'react-helmet';
+import { ReactComponent as FlujoDeMiembros } from '../assets/images/flujo-de-miembros.svg';
 
 export default function Inscripciones() {
   return (
     <section className="styleword prose dark:prose-invert">
+      <Helmet>
+        <title>Estatutos | Members OSUC</title>
+      </Helmet>
       <h1 id="estatuto">Estatuto</h1>
       <p>Actualizado el 23 de agosto de 2022.</p>
       <h2 id="título-preliminar">Título preliminar</h2>
