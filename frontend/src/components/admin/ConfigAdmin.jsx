@@ -1,12 +1,14 @@
 import * as React from 'react';
 
+import { Link } from 'react-router-dom';
+
 export default function ConfigAdmin() {
   return (
     <div className="admin__main">
       {/* <!-- adminindexbox1--> */}
       <ol className="adminindexbox">
         <li className="adminindexbox-item">
-          <a href="/admin/index">Admin</a>
+          <Link href="/admin/">Admin</Link>
         </li>
         <li className="adminindexbox-item active">Configuración</li>
       </ol>

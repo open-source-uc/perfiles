@@ -1,6 +1,6 @@
 export default function handleError(err) {
   if (err.response) {
-    return `El servidor respondió con un error (${err.response.status}).`;
+    return `El servidor respondió con un error (${err.response.status}): ${err.response.data.message}.`;
   } if (err.request) {
     return 'No se pudo conectar con el servidor.';
   }

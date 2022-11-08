@@ -1,8 +1,10 @@
+/* eslint-disable jsx-a11y/anchor-is-valid */
 import React from 'react';
+import { ReactComponent as FlujoDeMiembros } from '../assets/images/flujo-de-miembros.svg';
 
 export default function Inscripciones() {
   return (
-    <section className="styleword">
+    <section className="styleword prose dark:prose-invert">
       <h1>Guía de inscripción</h1>
       <p>
         Una vez por semestre se realiza un proceso de Onboarding en el cual
@@ -19,7 +21,7 @@ export default function Inscripciones() {
         siguiente link:
       </p>
       <p>
-        <a href="www">Formulario de inscripción</a>
+        <a href="#">Formulario de inscripción</a>
       </p>
       <p>
         Una vez completado el formulario, puedes esperar a que el equipo de
@@ -39,10 +41,7 @@ export default function Inscripciones() {
         para hacer un seguimiento efectivo.
       </p>
       <figure>
-        <img
-          src="/assets/images/flujo-de-miembros.svg"
-          alt="Flujo de miembros"
-        />
+        <FlujoDeMiembros width="500px" height="500px" />
         <figcaption>Flujo de miembros</figcaption>
       </figure>
     </section>

@@ -3,6 +3,7 @@ import { Navigate } from 'react-router-dom';
 import React from 'react';
 import UserContext from '../contexts/userContext';
 import LoadingAnimation from '../components/common/LoadingAnimation';
+import handleError from './error-handler';
 
 /* eslint-disable no-unused-vars */
 function storeToken(token) {

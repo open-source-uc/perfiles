@@ -1,1 +1,44 @@
-[]
+[
+  {
+    "_id": "2d5208df-00ad-4718-928a-05703615e758",
+    "colId": "history",
+    "containerId": "",
+    "name": "localhost:3000/api/public/members/${username",
+    "url": "localhost:3000/api/public/members/${username",
+    "method": "GET",
+    "sortNum": 0,
+    "created": "2022-11-07T23:13:50.211Z",
+    "modified": "2022-11-07T23:13:50.358Z",
+    "headers": [],
+    "params": [],
+    "tests": []
+  },
+  {
+    "_id": "727238a8-4d20-4efa-b53c-329496babcbf",
+    "colId": "history",
+    "containerId": "",
+    "name": "localhost:3000/api/public/members/fernandosmither",
+    "url": "localhost:3000/api/public/members/fernandosmither",
+    "method": "GET",
+    "sortNum": 0,
+    "created": "2022-11-07T23:13:55.888Z",
+    "modified": "2022-11-07T23:14:34.107Z",
+    "headers": [],
+    "params": [],
+    "tests": []
+  },
+  {
+    "_id": "f70933fe-a133-4941-bc8b-59702c00cca8",
+    "colId": "history",
+    "containerId": "",
+    "name": "localhost:3000/api/public/members/xd",
+    "url": "localhost:3000/api/public/members/xd",
+    "method": "GET",
+    "sortNum": 0,
+    "created": "2022-11-07T23:13:58.469Z",
+    "modified": "2022-11-07T23:13:58.500Z",
+    "headers": [],
+    "params": [],
+    "tests": []
+  }
+]

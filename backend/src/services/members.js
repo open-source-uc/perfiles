@@ -14,7 +14,7 @@ router.get('/', async (ctx) => {
   if (!(['CHAIR', 'SERVICE'].includes(ctx.state.user.role))) {
     ctx.status = 403;
     ctx.body = {
-      message: 'You must be an admin to access this resource',
+      message: 'Se requieren privilegios administrativos para acceder a este recurso',
     };
     return;
   }
@@ -77,7 +77,7 @@ router.get('/:username', async (ctx) => {
   if (!(['CHAIR', 'SERVICE'].includes(ctx.state.user.role))) {
     ctx.status = 403;
     ctx.body = {
-      message: 'You must be an admin to access this resource',
+      message: 'Se requieren privilegios administrativos para acceder a este recurso',
     };
     return;
   }
@@ -106,7 +106,7 @@ router.get('/:username/achievements', async (ctx) => {
   if (!(['CHAIR', 'SERVICE'].includes(ctx.state.user.role))) {
     ctx.status = 403;
     ctx.body = {
-      message: 'You must be an admin to access this resource',
+      message: 'Se requieren privilegios administrativos para acceder a este recurso',
     };
     return;
   }
@@ -139,7 +139,7 @@ router.get('/:username/requests', async (ctx) => {
   if (!(['CHAIR', 'SERVICE'].includes(ctx.state.user.role))) {
     ctx.status = 403;
     ctx.body = {
-      message: 'You must be an admin to access this resource',
+      message: 'Se requieren privilegios administrativos para acceder a este recurso',
     };
     return;
   }
@@ -169,7 +169,7 @@ router.get('/:username/stats', async (ctx) => {
   if (!(['CHAIR', 'SERVICE'].includes(ctx.state.user.role))) {
     ctx.status = 403;
     ctx.body = {
-      message: 'You must be an admin to access this resource',
+      message: 'Se requieren privilegios administrativos para acceder a este recurso',
     };
     return;
   }
@@ -192,7 +192,7 @@ router.put('/', async (ctx) => {
   if (!(['CHAIR', 'SERVICE'].includes(ctx.state.user.role))) {
     ctx.status = 403;
     ctx.body = {
-      message: 'You must be an admin to access this resource',
+      message: 'Se requieren privilegios administrativos para acceder a este recurso',
     };
     return;
   }
@@ -242,7 +242,7 @@ router.patch('/:username', async (ctx) => {
   if (!(['CHAIR', 'SERVICE'].includes(ctx.state.user.role))) {
     ctx.status = 403;
     ctx.body = {
-      message: 'You must be an admin to access this resource',
+      message: 'Se requieren privilegios administrativos para acceder a este recurso',
     };
     return;
   }
@@ -293,7 +293,7 @@ router.put('/import', async (ctx) => {
   if (!(['CHAIR', 'SERVICE'].includes(ctx.state.user.role))) {
     ctx.status = 403;
     ctx.body = {
-      message: 'You must be an admin to access this resource',
+      message: 'Se requieren privilegios administrativos para acceder a este recurso',
     };
     return;
   }
