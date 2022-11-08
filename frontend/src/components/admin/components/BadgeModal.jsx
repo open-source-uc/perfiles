@@ -25,12 +25,10 @@ function DropzoneUploaderLayout({
   input, previews, submitButton, dropzoneProps, files, extra: { maxFiles },
 }) {
   return (
-    <>
+    <div {...dropzoneProps}>
       {previews}
-      <div {...dropzoneProps}>
-        {input && files.length < maxFiles}
-      </div>
-    </>
+      {input && files.length < maxFiles}
+    </div>
   );
 }
 
@@ -214,9 +212,11 @@ export default function BadgeModal() {
                     Chapita para el logro
                     {/* Dropzone start */}
                     <Dropzone
+                      getUploadParams={() => ({ url: 'https://httpbin.org/post' })}
                       LayoutComponent={DropzoneUploaderLayout}
                       onChangeStatus={handleFileChangeStatus}
-                      accept="image/*"
+                      accept="image/png"
+                      maxSizeBytes={1000000}
                       inputContent={(files, extra) => (extra.reject ? 'Solamente imágenes en formato PNG' : 'Arrastrar archivos')}
                       maxFiles={1}
                       submitButtonDisabled={(files) => files.length < 1}

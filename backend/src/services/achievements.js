@@ -53,13 +53,13 @@ router.put('/', async (ctx) => {
   // Optional fields (expiresAt, pointsOverride)
   let { expiresAt, pointsOverride } = ctx.request.body;
 
-  if (expiresAt === '') {
+  if (!expiresAt) {
     expiresAt = null;
   } else {
     expiresAt = new Date(expiresAt);
   }
 
-  if (pointsOverride === '') {
+  if (!pointsOverride) {
     pointsOverride = null;
   } else {
     pointsOverride = parseInt(pointsOverride, 10);
