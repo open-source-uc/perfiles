@@ -96,7 +96,6 @@ export default function Solicitudes() {
 
   const validar = (values) => {
     const errors = {};
-    if (!values.achievementId) { errors.achievementId = 'Requerido'; }
     if (!values.description) {
       errors.description = 'Requerido';
     } else if (values.description.length < 10) {
@@ -116,18 +115,19 @@ export default function Solicitudes() {
             <h2>Nueva solicitud</h2>
           </div>
         </div>
+        {/* // TODO: Mejorar esto para que se elimine el mensaje anterior */}
         { success && (
-        <div className="alert alert-success">
+        <div className="alert alert-success text-green-600">
           Solicitud enviada correctamente
         </div>
         )}
         { alreadyCreated && (
-          <div className="alert alert-warning">
+          <div className="alert alert-warning text-red-600">
             Ya tienes una solicitud pendiente
           </div>
         )}
         { errorMsg && (
-          <div className="alert alert-danger">
+          <div className="alert alert-danger text-red-600">
             {errorMsg}
           </div>
         )}
@@ -139,35 +139,33 @@ export default function Solicitudes() {
             }}
             validate={validar}
           >
-            {(props) => (
-              <Form onSubmit={handleSubmit} className="form-solicitud flex justify-center mt-6">
-                {/* Listbox para seleccionar achivement */}
-                <h3>Selecciona un logro</h3>
-                <Field
-                  as="select"
-                  name="achievementId"
-                  id="achievement-select"
-                  className="input-solicitud text-gray dark:text-gray-900"
-                  required
-                >
-                  {achievementsUserDoesNotHave.map((a) => (
-                    <option value={a.id} key={a.id}>{a.name}</option>
-                  ))}
-                </Field>
-                <ErrorMessage name="achievementId" />
-                <Field
-                  id="description"
-                  className="input-solicitud px-12 w-full border rounded py-2 text-gray-700 items-center"
-                  placeholder="Razón o evidencia para la solicitud"
-                  type="text"
-                  name="description"
-                  required
-                />
-                <ErrorMessage name="description" />
+            <Form onSubmit={handleSubmit} className="form-solicitud flex justify-center mt-6">
+              {/* Listbox para seleccionar achivement */}
+              <h3>Selecciona un logro</h3>
+              <Field
+                as="select"
+                name="achievementId"
+                id="achievement-select"
+                className="input-solicitud text-gray dark:text-gray-900"
+                required
+              >
+                {achievementsUserDoesNotHave.map((a) => (
+                  <option value={a.id} key={a.id}>{a.name}</option>
+                ))}
+              </Field>
+              <div className="text-red-600"><ErrorMessage name="achievementId" /></div>
+              <Field
+                id="description"
+                className="input-solicitud px-12 w-full border rounded py-2 text-gray-700 items-center"
+                placeholder="Razón o evidencia para la solicitud"
+                type="text"
+                name="description"
+                required
+              />
+              <div className="text-red-600"><ErrorMessage name="description" /></div>
 
-                <button type="submit" className="button-solicitud text-white dark:text-gray-900">Enviar solicitud</button>
-              </Form>
-            )}
+              <button type="submit" className="button-solicitud text-white dark:text-gray-900">Enviar solicitud</button>
+            </Form>
           </Formik>
         ) : (
           <h2 className="prose dark:prose-invert">Al parecer ya tienes todos los logros solicitables! 🤝</h2>
