@@ -1,8 +1,9 @@
 /* eslint-disable no-unused-vars */
 import React, { useEffect } from 'react';
 import { Helmet } from 'react-helmet';
-// eslint-disable-next-line object-curly-newline
-import { Formik, Form, Field, ErrorMessage } from 'formik';
+import {
+  Formik, Form, Field, ErrorMessage,
+} from 'formik';
 import * as Yup from 'yup';
 import axios from 'axios';
 import UserContext from '../contexts/userContext';
