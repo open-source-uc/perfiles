@@ -1,7 +1,9 @@
 /* eslint-disable no-unused-vars */
 import React, { useEffect } from 'react';
 import { Helmet } from 'react-helmet';
-
+// eslint-disable-next-line object-curly-newline
+import { Formik, Form, Field, ErrorMessage } from 'formik';
+import * as Yup from 'yup';
 import axios from 'axios';
 import UserContext from '../contexts/userContext';
 import { RequireAuth } from '../utils/auth';
@@ -71,7 +73,7 @@ export default function Solicitudes() {
     ).includes(a.id),
   );
 
-  // Handle submit (uncontrolled form)
+  // Handle submit
   const handleSubmit = (event) => {
     event.preventDefault();
     const formData = new FormData(event.target);
@@ -90,6 +92,17 @@ export default function Solicitudes() {
       setSuccess(false);
       setErrorMsg(handleError(error));
     });
+  };
+
+  const validar = (values) => {
+    const errors = {};
+    if (!values.achievementId) { errors.achievementId = 'Requerido'; }
+    if (!values.description) {
+      errors.description = 'Requerido';
+    } else if (values.description.length < 10) {
+      errors.description = 'Debe tener al menos 10 caracteres';
+    }
+    return errors;
   };
 
   return (
@@ -119,29 +132,43 @@ export default function Solicitudes() {
           </div>
         )}
         {achievementsUserDoesNotHave.length > 0 ? (
-          <form className="form-solicitud flex justify-center mt-6" onSubmit={handleSubmit}>
-            {/* Listbox para seleccionar achivement */}
-            <h3>Selecciona un logro</h3>
-            <select
-              name="achievementId"
-              id="achievement-select"
-              className="input-solicitud text-gray dark:text-gray-900"
-              required
-            >
-              {achievementsUserDoesNotHave.map((a) => (
-                <option value={a.id} key={a.id}>{a.name}</option>
-              ))}
-            </select>
+          <Formik
+            initialValues={{
+              achievementId: '',
+              description: '',
+            }}
+            validate={validar}
+          >
+            {(props) => (
+              <Form onSubmit={handleSubmit} className="form-solicitud flex justify-center mt-6">
+                {/* Listbox para seleccionar achivement */}
+                <h3>Selecciona un logro</h3>
+                <Field
+                  as="select"
+                  name="achievementId"
+                  id="achievement-select"
+                  className="input-solicitud text-gray dark:text-gray-900"
+                  required
+                >
+                  {achievementsUserDoesNotHave.map((a) => (
+                    <option value={a.id} key={a.id}>{a.name}</option>
+                  ))}
+                </Field>
+                <ErrorMessage name="achievementId" />
+                <Field
+                  id="description"
+                  className="input-solicitud px-12 w-full border rounded py-2 text-gray-700 items-center"
+                  placeholder="Razón o evidencia para la solicitud"
+                  type="text"
+                  name="description"
+                  required
+                />
+                <ErrorMessage name="description" />
 
-            <input
-              className="input-solicitud px-12 w-full border rounded py-2 text-gray-700 items-center"
-              placeholder="Razón o evidencia para la solicitud"
-              type="text"
-              name="description"
-              required
-            />
-            <button type="submit" className="button-solicitud text-white dark:text-gray-900">Enviar solicitud</button>
-          </form>
+                <button type="submit" className="button-solicitud text-white dark:text-gray-900">Enviar solicitud</button>
+              </Form>
+            )}
+          </Formik>
         ) : (
           <h2 className="prose dark:prose-invert">Al parecer ya tienes todos los logros solicitables! 🤝</h2>
         )}
