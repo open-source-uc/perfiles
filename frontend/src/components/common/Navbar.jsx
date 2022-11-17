@@ -20,6 +20,7 @@ export default function Navbar() {
     [
       { name: 'Inicio', href: '/', current: true },
       { name: 'Logros', href: '/logros', current: false },
+      { name: 'Proyectos', href: '/proyectos', current: false },
       { name: 'Estatutos', href: '/estatutos', current: false },
     ],
   );

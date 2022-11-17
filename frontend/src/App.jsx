@@ -16,6 +16,7 @@ import LogrosAdmin from './components/admin/LogrosAdmin';
 import RRHHAdmin from './components/admin/RRHHAdmin';
 import LayoutAdmin from './components/admin/LayoutAdmin';
 import Solicitudes from './components/Solicitudes';
+import Proyectos from './components/Proyectos';
 
 import { removeToken, storeTokenIfGiven } from './utils/auth';
 
@@ -63,6 +64,7 @@ export default function App() {
           <Route path="logros" element={<Logros />} />
           <Route path="perfil/:username" element={<Perfil />} />
           <Route path="solicitudes" element={<Solicitudes />} />
+          <Route path="proyectos" element={<Proyectos />} />
         </Route>
         <Route path="/admin" element={<LayoutAdmin />}>
           <Route index element={<IndexAdmin />} />
