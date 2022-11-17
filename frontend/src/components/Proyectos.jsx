@@ -16,7 +16,24 @@ function Cards({ listElements }) {
         {/* recorremos la lista de elementos */}
         {listElements.map((element) => (
           <article className="block m-1 relative p-3 rounded-lg shadow-2xl w-full overflow-hidden bg-gray-500 md:w-1/2 lg:w-1/4">
-            <h3 className="title-font text-lg my-2 tracking-widest text-blue-800">{element.title.toUpperCase()}</h3>
+            <div className="flex justify-between item-center">
+              <div className="flex justify-between item-center">
+                <h3 className="title-font text-lg my-2 tracking-widest text-blue-800">{element.title.toUpperCase()}</h3>
+                {(element.size) && (
+                <div className="m-2 pl-1">
+                  <span>
+                    <i className="fa-solid fa-users" />
+                  </span>
+                  +
+                  {element.size}
+                </div>
+                )}
+              </div>
+              {/* //TODO: configurar boton para editar nota si eres el creador o admin */}
+              <button className="pr-3" type="button">
+                <i className="fa-solid fa-ellipsis-vertical" />
+              </button>
+            </div>
             <p>{element.description}</p>
             {/* hashtag */}
             {(element.hashtags) && (
@@ -43,15 +60,17 @@ export default function Proyectos() {
       title: 'Proyecto 1',
       description: 'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industrys standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.',
       hashtags: ['UwU', 'owo', 'uwuuwuwuwuwu'],
+      size: 5,
     },
     {
       title: 'Proyecto 2',
       description: 'ñeñeñeñe',
     },
     {
-      title: 'Proyecto 3',
+      title: 'Proye',
       description: 'ñeñeñeñe',
       hashtags: [],
+      size: 2,
     },
   ];
   return (
@@ -75,7 +94,7 @@ export default function Proyectos() {
         </Tab.List>
         <Tab.Panels>
           <Tab.Panel><Cards listElements={listElements} /></Tab.Panel>
-          <Tab.Panel>Content 2</Tab.Panel>
+          <Tab.Panel><Cards listElements={listElements} /></Tab.Panel>
         </Tab.Panels>
       </Tab.Group>
     </section>
