@@ -75,13 +75,12 @@ export default function Proyectos() {
         <Tab.Panels>
           <Tab.Panel>
             <CardsProyects listElements={listElements} />
-            {/* //TODO: lo del formulario no funciono intente modular asi, pero hay que intentar otra forma */}
-            <CreateModal isOpen={isOpen1} setIsOpen={setIsOpen1} title="Crear una idea para OSUC" formulario={FormProyectos} />
+            <CreateModal isOpen={isOpen1} setIsOpen={setIsOpen1} title="Crear una idea para OSUC" formulario={<FormProyectos isOpen={isOpen1} setIsOpen={setIsOpen1} />} />
             <BtnCreate onClick={() => setIsOpen1(true)} />
           </Tab.Panel>
           <Tab.Panel>
             <CardsProyects listElements={listElements} />
-            <CreateModal isOpen={isOpen2} setIsOpen={setIsOpen2} title="UwU" formulario={FormIdeas} />
+            <CreateModal isOpen={isOpen2} setIsOpen={setIsOpen2} title="UwU" formulario={<FormIdeas isOpen={isOpen2} setIsOpen={setIsOpen2} />} />
             <BtnCreate onClick={() => setIsOpen2(true)} />
           </Tab.Panel>
         </Tab.Panels>

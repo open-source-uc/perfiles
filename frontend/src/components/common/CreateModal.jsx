@@ -70,7 +70,7 @@ function CreateModal({
                 >
                   {title}
                 </Dialog.Title>
-                {formulario }
+                { formulario }
               </Dialog.Panel>
             </Transition.Child>
           </div>
