@@ -68,7 +68,7 @@ export default function Home() {
           <input
             type="text"
             name="name"
-            className="search-members__input"
+            className="search-members__input text-gray-800"
             placeholder="Escribe un nombre..."
             value={search}
             onChange={searcher}
