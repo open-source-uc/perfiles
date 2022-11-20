@@ -1,7 +1,7 @@
 /* eslint-disable no-unused-vars */
 import React, { Fragment, useState } from 'react';
 import { Link } from 'react-router-dom';
-import Badge from '../common/Badge';
+import Badge from '../common/BadgeCard';
 import BadgeModal from './components/BadgeModal';
 import ListaSolicitudes from './ListaSolicitudes';
 // import { Dialog, Transition } from '@headlessui/react';
