@@ -93,13 +93,13 @@ export default function Leaderboard() {
               <tbody>
                 {!error && members.map((member, memberIndex) => (
                   <tr onClick={() => { redirectProfile(member.username); }} className="bg-white border-b cursor-pointer dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600">
-                    <div scope="row" className="overflow-hidden relative flex items-center py-4 px-6 text-gray-900 whitespace-nowrap dark:text-white">
+                    <th scope="row" className="overflow-hidden relative flex items-center py-4 px-6 text-gray-900 whitespace-nowrap dark:text-white">
                       <img className="absolute rounded-full shadow-2xl -left-12" src={`https://avatars.githubusercontent.com/${member.username}?s=160`} alt={member.username} />
                       <div className="pl-20 py-5">
                         <div className="text-base font-semibold ml-[68px]">{member.profile.name}</div>
                         <div className="font-normal text-gray-500 ml-[68px]">{member.role}</div>
                       </div>
-                    </div>
+                    </th>
                     <td className="py-4 px-6 font-black">
                       {memberIndex + 1}
                     </td>
