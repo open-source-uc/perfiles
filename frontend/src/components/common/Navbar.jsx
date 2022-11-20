@@ -18,9 +18,9 @@ export default function Navbar() {
 
   const [navigation, setNavigation] = React.useState(
     [
-      { name: 'Inicio', href: '/', current: true },
       { name: 'Logros', href: '/logros', current: false },
       { name: 'Proyectos', href: '/proyectos', current: false },
+      { name: 'Leaderboard', href: '/leaderboard', current: false },
       { name: 'Estatutos', href: '/estatutos', current: false },
     ],
   );

@@ -32,7 +32,7 @@ export default function ProfileCard({ name, title, username }) {
       onClick={redirectProfile}
     >
       <motion.div
-        className="flex flex-col items-center justify-center w-[200px] h-[240px] shadow-xl cursor-grab bg-neutral-100 dark:bg-slate-200 rounded-xl"
+        className="flex flex-col items-center justify-center w-[200px] h-[240px] shadow-xl cursor-grab bg-neutral-100 dark:bg-slate-200 rounded-xl cursor-pointer"
         variants={cardVariants}
         whileHover={{ scale: 1.05, transition: { duration: 0.2 } }}
       >
