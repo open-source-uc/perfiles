@@ -57,19 +57,19 @@ export default function Logros() {
       <Helmet>
         <title>Logros | Members OSUC</title>
       </Helmet>
-      <h1 className="text-center text-4xl p-2 mt-4">Logros</h1>
+      <h1 className="text-center text-4xl p-2 mt-4 font-semibold">Logros</h1>
       {loading && !error && <LoadingAnimation />}
       {error && <h2 className="text-center text-2xl font-bold">{error}</h2> }
       {!error && !loading && (
       <Tab.Group>
         <Tab.List className="flex space-x-1 p-1 mx-auto w-[90%] md-[70%] lg:w-[50%] xl:w-[30%] bg-osuc-black-2 rounded-xl">
           <Tab
-            className="w-full rounded-lg py-2.5 font-medium text-xxs leading-5 text-lg text-gray-100  ui-selected:bg-osuc-navyblue"
+            className="w-full rounded-lg py-2.5 font-medium  leading-5 text-md text-gray-100  ui-selected:bg-osuc-navyblue"
           >
             <span className="text-center">Sourcerer</span>
           </Tab>
           <Tab
-            className="w-full rounded-lg py-2.5 font-medium text-xxs leading-5 text-gray-100 text-lg ui-selected:bg-osuc-navyblue"
+            className="w-full rounded-lg py-2.5 font-medium  leading-5 text-gray-100 text-md ui-selected:bg-osuc-navyblue"
           >
             <span className="text-center">Misceláneo</span>
           </Tab>
