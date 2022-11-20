@@ -15,7 +15,7 @@ export default function Layout() {
       </Helmet>
       <AdminSidebar />
       <Header />
-      <main className="p-2 ml-16 mt-20 h-full max-w-full flex relative overflow-hidden w-full flex-col justify-between">
+      <main className="p-2 ml-16 mt-20 h-full flex relative overflow-hidden flex-col justify-between">
         <Outlet />
         <Scrollup />
       </main>
