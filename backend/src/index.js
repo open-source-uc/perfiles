@@ -3,7 +3,7 @@ import Koa from 'koa';
 
 import Router from '@koa/router';
 import cors from '@koa/cors';
-import koaBody from 'koa-body';
+import { koaBody } from 'koa-body';
 import json from 'koa-json';
 import jwt from 'koa-jwt';
 
