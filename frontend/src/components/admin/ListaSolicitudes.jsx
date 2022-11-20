@@ -10,7 +10,7 @@ function CardRequest({
   // Configuramos el patch para cambiar el estado de la solicitud segun el boton presionado
   const [success, setSuccess] = React.useState(false);
   const handleApproveOrReject = (approved) => {
-    axios.patch(`/api/requests/${id}`, {
+    axios.patch(`${import.meta.env.VITE_BASE_API_URL}/requests/${id}`, {
       approved,
     }, {
       headers: {
