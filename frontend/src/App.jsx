@@ -10,12 +10,14 @@ import Inscripciones from './components/Inscripciones';
 import Logros from './components/Logros';
 import NoMatch from './components/NoMatch';
 import Perfil from './components/Perfil';
+import Leaderboard from './components/Leaderboard';
 import ConfigAdmin from './components/admin/ConfigAdmin';
 import IndexAdmin from './components/admin/IndexAdmin';
 import LogrosAdmin from './components/admin/LogrosAdmin';
 import RRHHAdmin from './components/admin/RRHHAdmin';
 import LayoutAdmin from './components/admin/LayoutAdmin';
 import Solicitudes from './components/Solicitudes';
+import Proyectos from './components/Proyectos';
 
 import { removeToken, storeTokenIfGiven } from './utils/auth';
 
@@ -63,6 +65,8 @@ export default function App() {
           <Route path="logros" element={<Logros />} />
           <Route path="perfil/:username" element={<Perfil />} />
           <Route path="solicitudes" element={<Solicitudes />} />
+          <Route path="proyectos" element={<Proyectos />} />
+          <Route path="leaderboard" element={<Leaderboard />} />
         </Route>
         <Route path="/admin" element={<LayoutAdmin />}>
           <Route index element={<IndexAdmin />} />

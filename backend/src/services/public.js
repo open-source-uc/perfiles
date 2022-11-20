@@ -10,7 +10,7 @@ const prisma = new PrismaClient();
 
 router.get('/members', async (ctx) => {
   try {
-    const members = await prisma.member.findMany({
+    let members = await prisma.member.findMany({
       select: {
         username: true,
         role: true,
@@ -23,6 +23,13 @@ router.get('/members', async (ctx) => {
         },
       },
     });
+    members = await Promise.all(members.map(async (member) => {
+      const stats = await getStats(member.username);
+      return {
+        ...member,
+        stats,
+      };
+    }));
     ctx.body = members;
   } catch (e) {
     // TODO: Standardize error handling

@@ -72,7 +72,7 @@ export default function RRHHAdmin() {
         </p>
         <form className="import-members">
           <input type="file" />
-          <p>Arrastre sus archivos aquí o haga clic en esta área.</p>
+          <p className="dark:text-osuc-white-4">Arrastre sus archivos aquí o haga clic en esta área.</p>
           <button type="submit">Subir</button>
         </form>
       </section>

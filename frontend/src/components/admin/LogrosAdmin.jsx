@@ -1,7 +1,7 @@
 /* eslint-disable no-unused-vars */
 import React, { Fragment, useState } from 'react';
 import { Link } from 'react-router-dom';
-import Badge from '../common/Badge';
+import Badge from '../common/BadgeCard';
 import BadgeModal from './components/BadgeModal';
 import ListaSolicitudes from './ListaSolicitudes';
 // import { Dialog, Transition } from '@headlessui/react';
@@ -50,12 +50,12 @@ export default function LogrosAdmin() {
       <section className="admin-box admin-link prose dark:prose-invert">
         <h2 className="admin-box__title">Crear nuevo enlace</h2>
         <div className="flex flex-row justify-center admin-link__grid">
-          <input type="text" placeholder="Buscar logro" className="rounded-md shadow-sm border-gray-300" />
+          <input type="text" placeholder="Buscar logro" className="rounded-md shadow-sm border-gray-300 dark:text-osuc-black-4" />
           <button className="button-admin admin-link__search-button" type="button">
             <i className="fa-solid fa-search" />
           </button>
           <div className="admin-link__select">
-            <select name="expiration" id="expiration" className="rounded-md shadow-sm border-gray-300">
+            <select name="expiration" id="expiration" className="rounded-md shadow-sm border-gray-300 dark:text-osuc-black-4">
               <option value="1">1 día</option>
               <option value="2">2 días</option>
               <option value="3">3 días</option>

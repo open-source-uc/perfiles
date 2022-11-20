@@ -20,14 +20,14 @@ function CardRequest({
     setSuccess(true);
   };
   return (
-    <div>
+    <div className="block relative w-full p-1 overflow-hidden md:w-1/2 lg:w-1/4">
       { success ? (<div />) : (
-        <div className="flex flex-col items-center justify-center rounded-lg shadow-lg bg-white p-6 w-s max-w-s flex-1 grow-0">
-          <h5 className="text-gray-900 text-xl leading-tight font-medium mb-2">{name}</h5>
-          <span className="text-gray-900 ">{dateFormated}</span>
-          {'  '}
-          <span className="text-gray-900 ">{state}</span>
-          <p className="text-gray-700 text-base mb-4 text-ellipsis">
+        <article className="flex flex-col items-center justify-center rounded-lg shadow bg-white">
+          <div className="flex flex-row items-center">
+            <h5 className="text-gray-900 text-xl leading-tight m-2">{name}</h5>
+            <span className=" text-gray-600 text-xs pl-3 pr-1">{dateFormated}</span>
+          </div>
+          <p className="text-gray-700 text-base mb-2 text-center">
             {description}
           </p>
           <div className="">
@@ -38,7 +38,7 @@ function CardRequest({
               ❌
             </button>
           </div>
-        </div>
+        </article>
       )}
     </div>
   );
@@ -64,7 +64,7 @@ export default function ListaSolicitudes() {
       <div className="prose">
         <h2 className="admin-box__title dark:text-white">Solicitudes abiertas</h2>
       </div>
-      <div className="flex justify-center gap-8 my-8">
+      <div className="container flex justify-center flex-wrap">
         {request?.map((solicitud) => (
           <CardRequest
             name={solicitud.memberUsername}
