@@ -47,7 +47,7 @@ export default function Solicitudes() {
   const myRequests = user?.created_requests;
 
   useEffect(() => {
-    axios.get('/api/achievements', {
+    axios.get(`${import.meta.env.VITE_BASE_API_URL}/achievements`, {
       headers: {
         Authorization: `Bearer ${localStorage.getItem('token')}`,
       },
@@ -58,7 +58,7 @@ export default function Solicitudes() {
   }, []);
 
   useEffect(() => {
-    axios.get('/api/members/me', {
+    axios.get(`${import.meta.env.VITE_BASE_API_URL}/members/me`, {
       headers: {
         Authorization: `Bearer ${localStorage.getItem('token')}`,
       },
@@ -79,7 +79,7 @@ export default function Solicitudes() {
     event.preventDefault();
     const formData = new FormData(event.target);
     const data = Object.fromEntries(formData);
-    axios.put('/api/requests', data, {
+    axios.put(`${import.meta.env.VITE_BASE_API_URL}/requests`, data, {
       headers: {
         Authorization: `Bearer ${localStorage.getItem('token')}`,
       },

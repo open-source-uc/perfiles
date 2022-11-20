@@ -86,6 +86,7 @@ router.get('/callback', async (ctx) => {
     ctx.body = {
       message: `Member ${login} not found`,
     };
+    return;
   }
   // Create JWT
   // TODO: Add expiration and use refresh tokens

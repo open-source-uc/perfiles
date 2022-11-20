@@ -28,7 +28,7 @@ export default function Home() {
 
   React.useEffect(() => {
     // Get all users
-    axios.get('/api/public/members', {
+    axios.get(`${import.meta.env.VITE_BASE_API_URL}/public/members`, {
       headers: getAuthHeader(),
     }).then((response) => {
       setUsers(response.data);
