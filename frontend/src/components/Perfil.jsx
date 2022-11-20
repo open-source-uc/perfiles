@@ -5,7 +5,7 @@ import { getPublicUserInfo } from '../utils/auth';
 import handleError from '../utils/error-handler';
 import LoadingAnimation from './common/LoadingAnimation';
 
-import Badge from './common/Badge';
+import Badge from './common/BadgeCard';
 
 export default function Perfil() {
   const [user, setUser] = React.useState(null);

@@ -94,6 +94,10 @@ function RequireAdmin({ children }) {
   return children;
 }
 
+function classNames(...classes) {
+  return classes.filter(Boolean).join(' ');
+}
+
 export {
   storeToken,
   getToken,
@@ -106,4 +110,5 @@ export {
   getPublicUserInfo,
   RequireAuth,
   RequireAdmin,
+  classNames,
 };

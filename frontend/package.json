@@ -5,6 +5,7 @@
   "proxy": "http://localhost:3100",
   "dependencies": {
     "@headlessui/react": "^1.7.3",
+    "@headlessui/tailwindcss": "^0.1.1",
     "@heroicons/react": "^2.0.12",
     "@nabla/vite-plugin-eslint": "^1.4.1",
     "@svgr/core": "^6.5.1",
