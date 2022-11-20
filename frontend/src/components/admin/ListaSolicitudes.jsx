@@ -48,7 +48,7 @@ export default function ListaSolicitudes() {
   const [request, setRequest] = React.useState([]);
 
   useEffect(() => {
-    axios.get('/api/requests/open', {
+    axios.get(`${import.meta.env.VITE_BASE_API_URL}/requests/open`, {
       // Accedemos a la API pasandole el token del admin
       headers: {
         Authorization: `Bearer ${localStorage.getItem('token')}`,

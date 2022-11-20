@@ -153,7 +153,7 @@ export default function Navbar() {
                 )
                   : (
                     <a
-                      href="/api/auth/login"
+                      href={`${import.meta.env.VITE_BASE_API_URL}/auth/login`}
                       className="flex rounded-full bg-gray-800 text-sm focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-800 mx-2"
                       title="Iniciar sesión"
                     >

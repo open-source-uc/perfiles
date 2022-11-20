@@ -45,7 +45,7 @@ export default function App() {
   React.useEffect(() => {
     const token = localStorage.getItem('token');
     if (token) {
-      axios.get('/api/members/me', {
+      axios.get(`${import.meta.env.VITE_BASE_API_URL}/members/me`, {
         headers: {
           Authorization: `Bearer ${token}`,
         },
