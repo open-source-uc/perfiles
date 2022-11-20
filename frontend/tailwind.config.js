@@ -41,5 +41,7 @@ module.exports = {
     require('@tailwindcss/typography'),
     // eslint-disable-next-line global-require
     require('@tailwindcss/forms'),
+    // eslint-disable-next-line global-require
+    require('@headlessui/tailwindcss'),
   ],
 };
