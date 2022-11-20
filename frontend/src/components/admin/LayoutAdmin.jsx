@@ -13,9 +13,9 @@ export default function Layout() {
       <Helmet>
         <title>Panel Administrativo 👩‍💻 | Members OSUC</title>
       </Helmet>
+      <AdminSidebar />
       <Header />
-      <main>
-        <AdminSidebar />
+      <main className="p-2 ml-16 mt-20 h-full flex relative overflow-hidden flex-col justify-between">
         <Outlet />
         <Scrollup />
       </main>
