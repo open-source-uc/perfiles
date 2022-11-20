@@ -90,10 +90,10 @@ export default function Leaderboard() {
               <thead className="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
                 <tr>
                   <th scope="col" className="py-3 px-6">
-                    RK
+                    USUARIO
                   </th>
                   <th scope="col" className="py-3 px-6">
-                    Usuario
+                    RK
                   </th>
                   <th scope="col" className="py-3 px-6">
                     Puntos
@@ -106,16 +106,15 @@ export default function Leaderboard() {
               <tbody>
                 {!error && members.map((member, memberIndex) => (
                   <tr onClick={() => { redirectProfile(member.username); }} className="bg-white border-b cursor-pointer dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600">
-                    <th scope="row" className="flex items-center py-4 px-6 text-gray-900 whitespace-nowrap dark:text-white">
-                      <img className="rounded-full" src={`https://avatars.githubusercontent.com/${member.username}?s=120`} alt={member.username} />
-
-                      <div className="pl-3">
-                        <div className="text-base font-semibold">{member.profile.name}</div>
-                        <div className="font-normal text-gray-500">{member.profile.email}</div>
+                    <div scope="row" className="overflow-hidden relative flex items-center py-4 px-6 text-gray-900 whitespace-nowrap dark:text-white">
+                      <img className="absolute rounded-3xl shadow-md -left-6" src={`https://avatars.githubusercontent.com/${member.username}?s=80`} alt={member.username} />
+                      <div className="pl-3 py-5">
+                        <div className="text-base font-semibold ml-[68px]">{member.profile.name}</div>
+                        <div className="font-normal text-gray-500 ml-[68px]">{member.role}</div>
                       </div>
-                    </th>
-                    <td className="py-4 px-6">
-                      {member.stats.points}
+                    </div>
+                    <td className="py-4 px-6 font-black">
+                      {memberIndex + 1}
                     </td>
                     <td className="py-4 px-6">
                       {member.stats.points}
