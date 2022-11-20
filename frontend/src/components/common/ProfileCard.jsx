@@ -32,13 +32,13 @@ export default function ProfileCard({ name, title, username }) {
       onClick={redirectProfile}
     >
       <motion.div
-        className="profile cursor-grab"
+        className="flex flex-col items-center justify-center w-[200px] h-[240px] shadow-xl cursor-grab bg-neutral-100 dark:bg-slate-200 rounded-xl"
         variants={cardVariants}
-        whileHover={{ scale: 1.07, transition: { duration: 0.2 } }}
+        whileHover={{ scale: 1.05, transition: { duration: 0.2 } }}
       >
-        <img className="profile__avatar" src={`https://avatars.githubusercontent.com/${username}?s=120`} alt={name} />
-        <p className="profile__name">{name}</p>
-        <p className="profile__title">{title}</p>
+        <img className="w-[100px] h-[100px] rounded-full object-cover mb-2" src={`https://avatars.githubusercontent.com/${username}?s=120`} alt={name} />
+        <p className="text-center font-bold text-lg break-words w-[160px]  text-slate-800">{name}</p>
+        <p className="text-center break-words w-[180px] text-slate-700 text-md">{title}</p>
       </motion.div>
     </motion.div>
   );
