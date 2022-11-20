@@ -1,14 +1,11 @@
 import * as React from 'react';
 import axios from 'axios';
-import { Link, useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import { Listbox } from '@headlessui/react';
 import { CheckIcon } from '@heroicons/react/20/solid';
 import { useState, Fragment } from 'react';
-import LoadingAnimation from './common/LoadingAnimation';
-import ProfileCard from './common/ProfileCard';
 import handleError from '../utils/error-handler';
-
-import { getAuthHeader } from '../utils/auth';
+import LoadingAnimation from './common/LoadingAnimation';
 
 export default function Leaderboard() {
   const navigate = useNavigate();
@@ -29,6 +26,11 @@ export default function Leaderboard() {
     axios.get('/api/public/members/')
       .then((response) => {
         setMembers(response.data.slice(0, 100).sort((a, b) => b.stats.points - a.stats.points));
+        setLoading(false);
+      }).catch((err) => {
+        const errorMsg = handleError(err);
+        setError(errorMsg);
+        setLoading(false);
       });
   }, []);
 
@@ -43,6 +45,11 @@ export default function Leaderboard() {
           </p>
         </div>
       </section>
+      { loading && (
+      <LoadingAnimation />
+      ) }
+      { error && <h2 className="text-center text-2xl font-bold">{error}</h2> }
+      { !loading && !error && (
       <div className="flex justify-center">
         <section id="leaderboard" className="flex-col justify-items-center">
           <Listbox value={selectedPerson} onChange={setSelectedPerson}>
@@ -64,26 +71,6 @@ export default function Leaderboard() {
               ))}
             </Listbox.Options>
           </Listbox>
-          {/* <table className="table-auto">
-            <thead>
-              <tr>
-                <th>RK</th>
-                <th>Usuario</th>
-                <th>Puntos</th>
-                <th>Nivel</th>
-              </tr>
-            </thead>
-            <tbody className="table rounded-md bg-osuc-white-3">
-              {!error && members.map((member, memberIndex) => (
-                <tr>
-                  <td>{memberIndex + 1}</td>
-                  <td>{member.profile.name}</td>
-                  <td>{member.stats.points}</td>
-                  <td>{member.stats.level}</td>
-                </tr>
-              ))}
-            </tbody>
-          </table> */}
 
           <div className="overflow-x-auto relative shadow-md sm:rounded-lg">
             <table className="w-full text-sm text-left text-gray-500 dark:text-gray-400">
@@ -107,8 +94,8 @@ export default function Leaderboard() {
                 {!error && members.map((member, memberIndex) => (
                   <tr onClick={() => { redirectProfile(member.username); }} className="bg-white border-b cursor-pointer dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600">
                     <div scope="row" className="overflow-hidden relative flex items-center py-4 px-6 text-gray-900 whitespace-nowrap dark:text-white">
-                      <img className="absolute rounded-3xl shadow-md -left-6" src={`https://avatars.githubusercontent.com/${member.username}?s=80`} alt={member.username} />
-                      <div className="pl-3 py-5">
+                      <img className="absolute rounded-full shadow-2xl -left-12" src={`https://avatars.githubusercontent.com/${member.username}?s=160`} alt={member.username} />
+                      <div className="pl-20 py-5">
                         <div className="text-base font-semibold ml-[68px]">{member.profile.name}</div>
                         <div className="font-normal text-gray-500 ml-[68px]">{member.role}</div>
                       </div>
@@ -130,6 +117,7 @@ export default function Leaderboard() {
 
         </section>
       </div>
+      )}
     </>
   );
 }
