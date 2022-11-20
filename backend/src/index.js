@@ -2,7 +2,8 @@
 import Koa from 'koa';
 
 import Router from '@koa/router';
-import koaBody from 'koa-body';
+import cors from '@koa/cors';
+import { koaBody } from 'koa-body';
 import json from 'koa-json';
 import jwt from 'koa-jwt';
 
@@ -23,6 +24,13 @@ const router = new Router();
 const prisma = new PrismaClient();
 
 const development = process.env.NODE_ENV === 'development';
+
+// CORS
+const corsOption = {
+  origin: development ? '*' : process.env.FRONTEND_URL,
+};
+
+app.use(cors(corsOption));
 
 // X-Response-Time
 app.use(async (ctx, next) => {
