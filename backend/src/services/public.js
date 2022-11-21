@@ -48,6 +48,7 @@ router.get('/members/:username', async (ctx) => {
         username: true,
         role: true,
         joinedAt: true,
+        created_projects: true,
         profile: {
           select: {
             name: true,
@@ -65,6 +66,17 @@ router.get('/members/:username', async (ctx) => {
                 description: true,
                 imageURL: true,
                 level: true,
+              },
+            },
+          },
+        },
+        projects: {
+          select: {
+            project: {
+              select: {
+                id: true,
+                name: true,
+                description: true,
               },
             },
           },

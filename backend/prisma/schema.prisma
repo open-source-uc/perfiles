@@ -25,6 +25,8 @@ model Member {
   created_requests     Request[]
   created_claimlinks   ClaimLink[]
   claimed_claimlinks   ClaimLinkClaim[]
+  projects             ProjectsOnMembers[] @relation("joins")
+  created_projects     Project[]
 }
 
 model Profile {
@@ -120,6 +122,26 @@ model AchievementLevel {
   Achievement Achievement[]
 }
 
+model Project {
+  id          String      @id @unique @default(cuid())
+  name        String      @unique
+  description String
+  creator     Member     @relation(fields: [creatorUsername], references: [username])
+  creatorUsername String
+  members     ProjectsOnMembers[]
+  github      String?
+  access      ProjectAccess
+}
+
+model ProjectsOnMembers {
+  id             String   @id @unique @default(cuid())
+  member         Member   @relation("joins", fields: [memberUsername], references: [username], onDelete: Cascade)
+  project        Project  @relation(fields: [projectId], references: [id], onDelete: Cascade)
+  memberUsername String
+  projectId      String
+}
+
+
 enum Role {
   // Used mostly for automation and testing
   SERVICE
@@ -161,4 +183,13 @@ enum RequestState {
   OPEN
   APPROVED
   REJECTED
+}
+
+enum ProjectAccess {
+  // The project is currently seeking new members
+  OPEN
+  // The project is currently seeking new members but requires approval
+  APPROVAL
+  // The project is currently closed to new members
+  CLOSED
 }

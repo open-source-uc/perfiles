@@ -158,6 +158,47 @@ async function loadAchievementProgressionNodes() {
   await createNode(progressionNodes);
 }
 
+async function loadProjects() {
+  const projects = JSON.parse(
+    fs.readFileSync('data/projects.json', 'utf-8'),
+  );
+
+  await Promise.all(projects.map((project) => prisma.project.create({
+    data: {
+      name: project.name,
+      description: project.description,
+      creator: {
+        connect: {
+          username: project.creator,
+        },
+      },
+      github: project.github,
+      access: project.access,
+    },
+  })));
+}
+
+async function loadProjectsOnMembers() {
+  const projectsOnMembers = JSON.parse(
+    fs.readFileSync('data/projects_on_members.json', 'utf-8'),
+  );
+
+  await Promise.all(projectsOnMembers.map((projectOnMember) => prisma.projectsOnMembers.create({
+    data: {
+      project: {
+        connect: {
+          name: projectOnMember.project,
+        },
+      },
+      member: {
+        connect: {
+          username: projectOnMember.member,
+        },
+      },
+    },
+  })));
+}
+
 async function main() {
   await loadMembers();
   await loadAchievementLevels();
@@ -165,6 +206,8 @@ async function main() {
   await loadAchievementsOnMembers();
   await loadRequests();
   await loadAchievementProgressionNodes();
+  await loadProjects();
+  await loadProjectsOnMembers();
 }
 
 await main();

@@ -1,0 +1,38 @@
+[
+    {
+        "name": "AutoRamosWeb",
+        "description": "AutoRamosWeb es una plataforma que permite tomar ramos de forma automática en la Universidad de Chile. El proyecto está desarrollado en Python y utiliza Selenium para interactuar con el navegador.",
+        "creator": "Dyotson",
+        "members": [
+            "Dyotson",
+            "fernandosmither",
+            "a-maccormack"
+        ],
+        "github": "https://github.com/open-source-uc/autoramos-web",
+        "access": "APPROVAL"
+    },
+    {
+        "name": "DirectUC",
+        "description": "DirectUC es una extensión que permite iniciar sesión en los distintos servicios UC.",
+        "creator": "lnatero",
+        "members": [
+            "lnatero",
+            "a-maccormack"
+        ],
+        "github": "https://github.com/wachunei/directUC",
+        "access": "OPEN"
+    },
+    {
+        "name": "UCalendar",
+        "description": "UCalendar es un calendario.",
+        "creator": "benjavicente",
+        "members": [
+            "benjavicente",
+            "a-maccormack",
+            "Baelfire18",
+            "barbaraim"
+        ],
+        "github": "https://github.com/open-source-uc/ucalendar",
+        "access": "CLOSED"
+    }
+]

@@ -13,6 +13,8 @@ Table Member {
   created_requests Request [not null]
   created_claimlinks ClaimLink [not null]
   claimed_claimlinks ClaimLinkClaim [not null]
+  projects ProjectsOnMembers [not null]
+  created_projects Project [not null]
 }
 
 Table Profile {
@@ -105,6 +107,25 @@ Table AchievementLevel {
   Achievement Achievement [not null]
 }
 
+Table Project {
+  id String [pk, unique]
+  name String [unique, not null]
+  description String [not null]
+  creator Member [not null]
+  creatorUsername String [not null]
+  members ProjectsOnMembers [not null]
+  github String
+  access ProjectAccess [not null]
+}
+
+Table ProjectsOnMembers {
+  id String [pk, unique]
+  member Member [not null]
+  project Project [not null]
+  memberUsername String [not null]
+  projectId String [not null]
+}
+
 Enum Role {
   SERVICE
   CHAIR
@@ -128,6 +149,12 @@ Enum RequestState {
   OPEN
   APPROVED
   REJECTED
+}
+
+Enum ProjectAccess {
+  OPEN
+  APPROVAL
+  CLOSED
 }
 
 Ref: Profile.memberUsername - Member.username
@@ -157,3 +184,9 @@ Ref: ClaimLink.creatorUsername > Member.username
 Ref: ClaimLinkClaim.memberUsername > Member.username
 
 Ref: ClaimLinkClaim.claimLinkId > ClaimLink.id
+
+Ref: Project.creatorUsername > Member.username
+
+Ref: ProjectsOnMembers.memberUsername > Member.username [delete: Cascade]
+
+Ref: ProjectsOnMembers.projectId > Project.id [delete: Cascade]
