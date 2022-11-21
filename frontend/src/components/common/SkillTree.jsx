@@ -10,6 +10,7 @@ function renderBadgeCard({
   nodeDatum,
   myAchievements,
   toggleNode,
+  setIsOpen,
 }) {
   const hasAchievement = myAchievements.has(nodeDatum.achievementId);
   return (
@@ -24,6 +25,7 @@ function renderBadgeCard({
           name={nodeDatum.name}
           image={nodeDatum.imageURL}
           hasAchievement={hasAchievement}
+          setIsOpen={setIsOpen}
         />
       </foreignObject>
     </g>
@@ -41,7 +43,7 @@ function useCenteredTree() {
   return [translate, containerRef];
 }
 
-export default function SkillTree({ achievementProgression, myAchievements }) {
+export default function SkillTree({ achievementProgression, myAchievements, setIsOpen }) {
   const [translate, containerRef] = useCenteredTree();
   const nodeSize = { x: 180, y: 240 };
 
@@ -52,7 +54,9 @@ export default function SkillTree({ achievementProgression, myAchievements }) {
         orientation="vertical"
         pathFunc="step"
         pathClassFunc={() => 'linkBase'}
-        renderCustomNodeElement={(props) => renderBadgeCard({ ...props, nodeSize, myAchievements })}
+        renderCustomNodeElement={(props) => renderBadgeCard({
+          ...props, nodeSize, myAchievements, setIsOpen,
+        })}
         translate={translate}
         nodeSize={nodeSize}
         collapsible
