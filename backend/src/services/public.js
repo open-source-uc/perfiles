@@ -111,4 +111,35 @@ router.get('/achievements/progression', async (ctx) => {
   ctx.body = tree;
 });
 
+// Projects
+
+router.get('/projects', async (ctx) => {
+  try {
+    const projects = await prisma.project.findMany({
+      select: {
+        id: false,
+        name: true,
+        description: true,
+        creator: {
+          select: {
+            username: true,
+          },
+        },
+        github: true,
+        access: true,
+        members: {
+          select: {
+            memberUsername: true,
+          },
+        },
+      },
+    });
+    ctx.body = projects;
+  } catch (e) {
+    if (e instanceof Prisma.PrismaClientKnownRequestError) {
+      ctx.throw(500, e.message);
+    }
+  }
+});
+
 export default router;
