@@ -6,19 +6,20 @@ import {
 } from 'formik';
 import * as Yup from 'yup';
 import axios from 'axios';
+import { ClockIcon, CheckIcon, XMarkIcon } from '@heroicons/react/20/solid';
 import UserContext from '../contexts/userContext';
 import { RequireAuth } from '../utils/auth';
 import handleError from '../utils/error-handler';
 
 function humanReadableStatus(status) {
   if (status === 'OPEN') {
-    return 'Pendiente';
+    return <ClockIcon className="w-6 text-yellow-600" />;
   }
   if (status === 'APPROVED') {
-    return 'Aprobada';
+    return <CheckIcon className="w-6 text-green-600" />;
   }
   if (status === 'REJECTED') {
-    return 'Rechazada';
+    return <XMarkIcon className="w-6 text-red-600" />;
   }
   return 'Desconocido';
 }
@@ -27,9 +28,9 @@ function FilaSolicitud({ name, createdAt, state }) {
   const dateFormated = new Date(createdAt).toLocaleDateString('es-CL');
   return (
     <tr className="border-b">
-      <td className="text-sm text-gray-900 dark:text-white font-light px-6 py-4 whitespace-nowrap">{name}</td>
-      <td className="text-sm text-gray-900 dark:text-white font-light px-6 py-4 whitespace-nowrap">{dateFormated}</td>
-      <td className="text-sm text-gray-900 dark:text-white font-light px-6 py-4 whitespace-nowrap">{humanReadableStatus(state)}</td>
+      <td className="text-sm text-gray-900 dark:text-white font-light px-3 py-4 whitespace-nowrap">{name}</td>
+      <td className="text-sm text-gray-900 dark:text-white font-light px-3 py-4 whitespace-nowrap">{dateFormated}</td>
+      <td className="text-sm text-gray-900 dark:text-white font-light px-3 py-4 whitespace-nowrap">{humanReadableStatus(state)}</td>
     </tr>
   );
 }
@@ -110,7 +111,7 @@ export default function Solicitudes() {
       <Helmet>
         <title>Solicitar un logro | Members OSUC</title>
       </Helmet>
-      <section className="personal-profile h-screen flex items-center">
+      <section className="personal-profile mx-auto h-full flex items-center">
         <div className="profile-header">
           <div className="profile-info prose dark:prose-invert">
             <h2>Nueva solicitud</h2>
@@ -140,14 +141,14 @@ export default function Solicitudes() {
             }}
             validate={validar}
           >
-            <Form onSubmit={handleSubmit} className="form-solicitud flex justify-center mt-6">
+            <Form onSubmit={handleSubmit} className="flex flex-column flex-wrap align-center justify-center mt-6">
               {/* Listbox para seleccionar achivement */}
               <h3>Selecciona un logro</h3>
               <Field
                 as="select"
                 name="achievementId"
                 id="achievement-select"
-                className="input-solicitud text-gray dark:text-gray-900"
+                className="m-2 block w-full p-4 text-gray-900 border border-gray-300 rounded-lg bg-gray-50 sm:text-md focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                 required
               >
                 {achievementsUserDoesNotHave.map((a) => (
@@ -157,7 +158,7 @@ export default function Solicitudes() {
               <div className="text-red-600"><ErrorMessage name="achievementId" /></div>
               <Field
                 id="description"
-                className="input-solicitud px-12 w-full border rounded py-2 text-gray-700 items-center"
+                className="m-2 block w-full p-4 text-gray-900 border border-gray-300 rounded-lg bg-gray-50 sm:text-md focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                 placeholder="Razón o evidencia para la solicitud"
                 type="text"
                 name="description"
@@ -165,7 +166,7 @@ export default function Solicitudes() {
               />
               <div className="text-red-600"><ErrorMessage name="description" /></div>
 
-              <button type="submit" className="button-solicitud text-white dark:text-gray-900">Enviar solicitud</button>
+              <button type="submit" className="m-2 text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800 dark:text-gray-900">Enviar solicitud</button>
             </Form>
           </Formik>
         ) : (
@@ -176,13 +177,13 @@ export default function Solicitudes() {
             <h2>Solicitudes enviadas</h2>
           </div>
         </div>
-        <section className="admin-achievements">
-          <table className="min-w-full">
+        <section>
+          <table className="my-3 w-full text-xs md:text-md text-left text-gray-500 dark:text-gray-400">
             <thead className="border-b">
               <tr>
-                <th className="text-sm font-medium text-gray-900 dark:text-white px-6 py-4 text-left">Logro solicitado</th>
-                <th className="text-sm font-medium text-gray-900 dark:text-white px-6 py-4 text-left">Fecha de creación</th>
-                <th className="text-sm font-medium text-gray-900 dark:text-white px-6 py-4 text-left">Estado</th>
+                <th className="text-sm font-medium text-gray-900 dark:text-white px-3 py-4 text-left">Logro solicitado</th>
+                <th className="text-sm font-medium text-gray-900 dark:text-white px-3 py-4 text-left">Fecha de creación</th>
+                <th className="text-sm font-medium text-gray-900 dark:text-white px-3 py-4 text-left">Estado</th>
               </tr>
             </thead>
             <tbody>
