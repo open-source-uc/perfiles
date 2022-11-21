@@ -9,7 +9,7 @@ import { getAuthHeader } from '../utils/auth';
 
 function WelcomeHero() {
   return (
-    <section id="welcome-hero">
+    <section className="bg-osuc-white-3 px-5 py-12">
       <div className="prose dark:prose-invert mx-auto my-8">
         <h1>👋 Bienvenide a la plataforma de integrantes de OSUC.</h1>
         <p>
@@ -93,34 +93,32 @@ export default function Home() {
       ) }
       { error && <h2 className="text-center text-2xl font-bold">{error}</h2> }
       { !error && !loading && (
-      <div className="mx-auto">
-        <section className="text-center mb-8">
+        <section className="text-center mb-8 max-w-lg lg:max-w-6xl mx-auto">
           <p className="text-xl font-semibold mt-8">🔍 Buscar integrantes</p>
           <input
             type="text"
             name="name"
-            className="text-lg text-center rounded-md text-gray-800 w-full max-w-lg my-2"
+            className="text-lg text-center rounded-md text-gray-800 w-full max-w-sm lg:max-w-md xl:max-w-lg my-2"
             placeholder="Escribe un nombre..."
             value={search}
             onChange={searcher}
           />
+          <RoleDisplay
+            members={displayedMembers}
+            memberRole="CHAIR"
+            sectionTitle="Coordinación"
+          />
+          <RoleDisplay
+            members={displayedMembers}
+            memberRole="MEMBER"
+            sectionTitle="Integrantes"
+          />
+          <RoleDisplay
+            members={displayedMembers}
+            memberRole="ALUMNI"
+            sectionTitle="Alumni"
+          />
         </section>
-        <RoleDisplay
-          members={displayedMembers}
-          memberRole="CHAIR"
-          sectionTitle="Coordinación"
-        />
-        <RoleDisplay
-          members={displayedMembers}
-          memberRole="MEMBER"
-          sectionTitle="Integrantes"
-        />
-        <RoleDisplay
-          members={displayedMembers}
-          memberRole="ALUMNI"
-          sectionTitle="Alumni"
-        />
-      </div>
       )}
     </>
   );

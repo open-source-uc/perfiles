@@ -53,12 +53,16 @@ function ProfileInfo({
   );
 }
 
+function CodeBlock({ children }) {
+  return (<pre className="whitespace-pre-wrap">{children}</pre>);
+}
+
 function UserBio({ userProfile }) {
   if (userProfile) {
     return (
-      <section className="rounded-xl bg-slate-300 dark:bg-slate-800 shadow-md max-w-3xl">
+      <section className="rounded-xl bg-slate-300 dark:bg-slate-800 shadow-md max-w-3xl mb-8">
         <div className="px-8 pb-8 pt-2">
-          <h2 className="text-2xl">Biografía</h2>
+          <h2 className="text-2xl font-semibold">Biografía</h2>
           <div className="prose dark:prose-invert">
             <ReactMarkdown
               remarkPlugins={[remarkGfm, remarkGemoji]}
@@ -69,6 +73,7 @@ function UserBio({ userProfile }) {
                 h3: 'h4',
                 h4: 'h5',
                 h5: 'h6',
+                pre: CodeBlock,
               }}
             >
               {userProfile}
@@ -80,7 +85,7 @@ function UserBio({ userProfile }) {
   }
 
   return (
-    <section className="rounded-xl bg-slate-300 dark:bg-slate-800 shadow-md max-w-3xl p-6">
+    <section className="rounded-xl bg-slate-300 dark:bg-slate-800 shadow-md max-w-3xl p-2 md:p-6">
       <div className="prose dark:prose-invert md:border-4 md:border-dashed dark:md:border-zinc-300 md:border-zinc-600 mx-auto p-4">
         <RobotDCC className="max-w-[300px] mx-auto my-0 h-60" alt="No encontrado" />
         <div className="text-center mx-4">
@@ -158,7 +163,7 @@ export default function Perfil() {
           setLoading(false);
           document.title = `Perfil de ${response.data.profile.name}`;
         } else {
-          setError('No se encontró el usuario');
+          setError('No se pudo encontrar al usuario.');
           setLoading(false);
         }
       }).catch((err) => {
@@ -178,31 +183,39 @@ export default function Perfil() {
       )}
       {error && (
         <>
-          <h1 className="text-center text-2xl font-bold">{error}</h1>
+          <h1 className="text-center text-2xl font-bold mt-28">{error}</h1>
           <p className="text-center">
-            <Link to="/">Volver al inicio</Link>
+            <Link to="/" className="underline">Volver al inicio</Link>
           </p>
         </>
       )}
       {!error && !loading
         && (
-        <div className="mx-8 mt-28 flex flex-row flex-wrap lg:flex-nowrap content-between justify-center gap-x-12 gap-y-12">
-          <div className="grow max-w-2xl lg:max-w-md">
-            <section className="mt-8">
-              <ProfileInfo user={user} />
-            </section>
-            <section>
-              <h2 className="text-2xl mt-10 text-center lg:text-left">Logros</h2>
-              <div className="flex flex-row flex-wrap gap-2 w-60 lg:w-80 mx-auto justify-center lg:justify-start lg:mx-0">
-                {user?.achievements.map((a) => a.achievement).map((achievement) => (
-                  <Badge key={achievement.id} achievement={achievement} />
-                ))}
-              </div>
-            </section>
+          <div className="mx-8 mt-28 mb-8 lg:mb-0 flex flex-row flex-wrap lg:flex-nowrap content-between justify-center gap-x-12 gap-y-12">
+            <div className="grow max-w-2xl lg:max-w-md">
+              <section className="mt-8">
+                <ProfileInfo user={user} />
+              </section>
+              <section>
+                <h2 className="text-2xl mt-10 text-center lg:text-left">Logros</h2>
+
+                {user.achievements.length ? (
+                  <div className="flex flex-row flex-wrap gap-2 w-60 lg:w-80 mx-auto justify-center lg:justify-start lg:mx-0">
+                    {user?.achievements.map((a) => a.achievement).map((achievement) => (
+                      <Badge key={achievement.id} achievement={achievement} />
+                    ))}
+                  </div>
+                ) : (<p className="text-center lg:text-left text-md">Este usuario no tiene logros.</p>
+                )}
+              </section>
+            </div>
+            <UserBio userProfile={userProfile} />
           </div>
-          <UserBio userProfile={userProfile} />
-        </div>
         )}
     </>
   );
+}
+
+function undefined({ children }) {
+  return (<pre className="truncate">{children}</pre>);
 }
