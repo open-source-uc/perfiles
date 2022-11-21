@@ -13,13 +13,13 @@ import handleError from '../utils/error-handler';
 
 function humanReadableStatus(status) {
   if (status === 'OPEN') {
-    return <ClockIcon className="w-6 text-yellow-600" />;
+    return <ClockIcon className="w-8 text-yellow-600" />;
   }
   if (status === 'APPROVED') {
-    return <CheckIcon className="w-6 text-green-600" />;
+    return <CheckIcon className="w-8 text-green-600" alt="Aprobada" title="Aprobada" />;
   }
   if (status === 'REJECTED') {
-    return <XMarkIcon className="w-6 text-red-600" />;
+    return <XMarkIcon className="w-8 text-red-600" alt="Rechazada" title="Rechazada" />;
   }
   return 'Desconocido';
 }
@@ -87,11 +87,16 @@ export default function Solicitudes() {
     }).then((response) => {
       if (response.status === 200) {
         setAlreadyCreated(true);
-      } else {
+        setSuccess(false);
+        setErrorMsg(false);
+      } else if (response.status === 201) {
         setSuccess(true);
+        setAlreadyCreated(false);
+        setErrorMsg(false);
       }
     }).catch((error) => {
       setSuccess(false);
+      setAlreadyCreated(false);
       setErrorMsg(handleError(error));
     });
   };
@@ -111,28 +116,8 @@ export default function Solicitudes() {
       <Helmet>
         <title>Solicitar un logro | Members OSUC</title>
       </Helmet>
-      <section className="personal-profile mx-auto h-full flex items-center">
-        <div className="profile-header">
-          <div className="profile-info prose dark:prose-invert">
-            <h2>Nueva solicitud</h2>
-          </div>
-        </div>
-        {/* // TODO: Mejorar esto para que se elimine el mensaje anterior */}
-        { success && (
-        <div className="alert alert-success text-green-600">
-          Solicitud enviada correctamente
-        </div>
-        )}
-        { alreadyCreated && (
-          <div className="alert alert-warning text-red-600">
-            Ya tienes una solicitud pendiente
-          </div>
-        )}
-        { errorMsg && (
-          <div className="alert alert-danger text-red-600">
-            {errorMsg}
-          </div>
-        )}
+      <section className="mx-auto max-w-lg mt-32 px-2">
+        <h1 className="text-center font-bold text-3xl">Solicitudes 📫</h1>
         {achievementsUserDoesNotHave.length > 0 ? (
           <Formik
             initialValues={{
@@ -141,9 +126,28 @@ export default function Solicitudes() {
             }}
             validate={validar}
           >
-            <Form onSubmit={handleSubmit} className="flex flex-column flex-wrap align-center justify-center mt-6">
+            <Form onSubmit={handleSubmit} className=" text-center mt-6 mx-auto max-w-md">
+              <h2 className="text-2xl font-semibold mb-4">Nueva solicitud</h2>
+              {/* // TODO: Mejorar esto para que se elimine el mensaje anterior */}
+              { success && (
+              <p className="">
+                ✅ Solicitud enviada correctamente
+              </p>
+              )}
+              { alreadyCreated && (
+              <p className="">
+                ⚠️ Ya tienes una solicitud pendiente para ese logro
+              </p>
+              )}
+              { errorMsg && (
+              <p className="">
+                ❌
+                {' '}
+                {errorMsg}
+              </p>
+              )}
               {/* Listbox para seleccionar achivement */}
-              <h3>Selecciona un logro</h3>
+              <p className="text-lg mt-4">Selecciona un logro</p>
               <Field
                 as="select"
                 name="achievementId"
@@ -170,20 +174,17 @@ export default function Solicitudes() {
             </Form>
           </Formik>
         ) : (
-          <h2 className="prose dark:prose-invert">Al parecer ya tienes todos los logros solicitables! 🤝</h2>
+          <p className="text-center text-lg font-semibold">Al parecer ya tienes todos los logros solicitables! 🤝</p>
         )}
-        <div className="profile-header mt-10">
-          <div className="profile-info prose dark:prose-invert">
-            <h2>Solicitudes enviadas</h2>
-          </div>
-        </div>
-        <section>
+        <section className="mt-16">
+          <h2 className="text-2xl font-semibold text-center">Solicitudes enviadas</h2>
+
           <table className="my-3 w-full text-xs md:text-md text-left text-gray-500 dark:text-gray-400">
             <thead className="border-b">
               <tr>
-                <th className="text-sm font-medium text-gray-900 dark:text-white px-3 py-4 text-left">Logro solicitado</th>
-                <th className="text-sm font-medium text-gray-900 dark:text-white px-3 py-4 text-left">Fecha de creación</th>
-                <th className="text-sm font-medium text-gray-900 dark:text-white px-3 py-4 text-left">Estado</th>
+                <th className="text-sm font-bold text-gray-900 dark:text-white px-3 py-4 text-left">Logro solicitado</th>
+                <th className="text-sm font-bold text-gray-900 dark:text-white px-3 py-4 text-left">Fecha de creación</th>
+                <th className="text-sm font-bold text-gray-900 dark:text-white px-3 py-4 text-left">Estado</th>
               </tr>
             </thead>
             <tbody>

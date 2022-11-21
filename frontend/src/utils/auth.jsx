@@ -38,7 +38,7 @@ function storeTokenIfGiven() {
 }
 
 async function getPublicUserInfo(username) {
-  const response = await axios.get(`/api/public/members/${username}`);
+  const response = await axios.get(`${import.meta.env.VITE_BASE_API_URL}/public/members/${username}`);
   return response;
 }
 
