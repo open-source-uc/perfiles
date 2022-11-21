@@ -25,11 +25,24 @@ const router = new Router();
 const development = process.env.NODE_ENV === 'development';
 
 // CORS
-const corsOption = {
-  origin: development ? '*' : process.env.FRONTEND_URL,
-};
+app.use(cors({
+  origin: (ctx) => {
+    // Allow any requests while in development
+    if (development) {
+      return '*';
+    }
 
-app.use(cors(corsOption));
+    // Otherwise, we only allow requests from our domains
+    // Check if the origin is osuc.dev or one of its subdomains
+    const origin = ctx.request.get('origin');
+    const url = new URL(origin);
+    if (url.hostname === 'osuc.dev' || url.hostname.endsWith('.osuc.dev')) {
+      return origin;
+    }
+
+    return false;
+  },
+}));
 
 // X-Response-Time
 app.use(async (ctx, next) => {
