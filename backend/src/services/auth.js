@@ -2,15 +2,15 @@
 /* eslint-disable no-console */
 import Router from '@koa/router';
 
-import { PrismaClient } from '@prisma/client';
 import axios from 'axios';
 import dotenv from 'dotenv';
 import jwt from 'jsonwebtoken';
 
+import prisma from '../client.js';
+
 dotenv.config();
 
 const router = new Router({ prefix: '/auth' });
-const prisma = new PrismaClient();
 
 // Get GITHUB_CLIENT_ID and GITHUB_CLIENT_SECRET from environment variables
 const { GITHUB_CLIENT_ID, GITHUB_CLIENT_SECRET } = process.env;

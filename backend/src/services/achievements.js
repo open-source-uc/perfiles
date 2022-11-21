@@ -1,14 +1,12 @@
 /* eslint-disable no-console */
 import Router from '@koa/router';
 
-import { PrismaClient } from '@prisma/client';
-
 import slugify from 'slugify';
 
 import fs from 'fs';
+import prisma from '../client.js';
 
 const router = new Router({ prefix: '/achievements' });
-const prisma = new PrismaClient();
 
 router.get('/', async (ctx) => {
   const achievements = await prisma.achievement.findMany();
