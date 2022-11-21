@@ -241,7 +241,3 @@ export default function Perfil() {
     </>
   );
 }
-
-function undefined({ children }) {
-  return (<pre className="truncate">{children}</pre>);
-}
