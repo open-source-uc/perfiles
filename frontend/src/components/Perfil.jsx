@@ -13,6 +13,7 @@ import handleError from '../utils/error-handler';
 import LoadingAnimation from './common/LoadingAnimation';
 
 import { ReactComponent as RobotDCC } from '../assets/images/robot-dcc.svg';
+import PopoverCreate from './common/PopoverCreate';
 
 function ProfileInfo({
   user,
@@ -144,8 +145,33 @@ async function getGithubProfile(username) {
   return null;
 }
 
-function Badge({ achievement }) {
-  return <img src={`/${achievement.imageURL}`} alt={achievement.name} width="64px" />;
+function Badge({ achievementOnMember }) {
+  const { achievement } = achievementOnMember;
+  const formattedDate = new Intl.DateTimeFormat('es-CL', {
+    year: 'numeric',
+  }).format(new Date(achievementOnMember.obtainedAt));
+  return (
+    <PopoverCreate
+      button={<img src={`/${achievement.imageURL}`} alt={achievement.name} className="w-16" />}
+      header={(
+        <>
+          <h3>{achievement.name}</h3>
+          <h3>{formattedDate}</h3>
+        </>
+      )}
+      body={(
+        <>
+          <p className="text-xs">{achievement.description}</p>
+          <p>
+            <StarIcon className="inline-block mr-2 h-5" />
+            {achievement.level.points}
+            {' '}
+            {achievement.level.name}
+          </p>
+        </>
+      )}
+    />
+  );
 }
 
 export default function Perfil() {
