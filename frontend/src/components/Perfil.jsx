@@ -3,7 +3,9 @@ import { Link, useParams } from 'react-router-dom';
 
 import ReactMarkdown from 'react-markdown';
 import remarkGfm from 'remark-gfm';
+import remarkGemoji from 'remark-gemoji';
 import rehypeSanitize from 'rehype-sanitize';
+import rehypeRaw from 'rehype-raw';
 
 import { CalendarDaysIcon, SparklesIcon, StarIcon } from '@heroicons/react/20/solid';
 import { getPublicUserInfo } from '../utils/auth';
@@ -54,54 +56,57 @@ function ProfileInfo({
 function UserBio({ userProfile }) {
   if (userProfile) {
     return (
-      <>
-        <h2 className="text-2xl">Biografía</h2>
-        <div className="prose dark:prose-invert">
-          <ReactMarkdown
-            remarkPlugins={[remarkGfm]}
-            rehypePlugins={[rehypeSanitize]}
-            components={{
-              h1: 'h2',
-              h2: 'h3',
-              h3: 'h4',
-              h4: 'h5',
-              h5: 'h6',
-            }}
-          >
-            {userProfile}
-          </ReactMarkdown>
+      <section className="rounded-xl bg-slate-300 dark:bg-slate-800 shadow-md max-w-3xl">
+        <div className="px-8 pb-8 pt-2">
+          <h2 className="text-2xl">Biografía</h2>
+          <div className="prose dark:prose-invert">
+            <ReactMarkdown
+              remarkPlugins={[remarkGfm, remarkGemoji]}
+              rehypePlugins={[rehypeRaw, rehypeSanitize]}
+              components={{
+                h1: 'h2',
+                h2: 'h3',
+                h3: 'h4',
+                h4: 'h5',
+                h5: 'h6',
+              }}
+            >
+              {userProfile}
+            </ReactMarkdown>
+          </div>
         </div>
-      </>
+      </section>
     );
   }
 
   return (
-    <div className="prose dark:prose-invert md:border-4 md:border-dashed dark:md:border-zinc-300 md:border-zinc-600 p-4 mx-auto">
-      <RobotDCC className="max-w-[300px] mx-auto my-0 h-60" alt="No encontrado" />
-      <div className="text-center mx-4">
-        <p className="font-semibold text-xl">Este usuario no tiene biografía.</p>
-        <p>
-          Si este perfil es tuyo,
-          {' '}
-          puedes crear tu perfil de OSUC Members usando
-          {' '}
-          <a href="https://github.com/open-source-uc/osuc-profile/generate">esta plantilla</a>
-          {' '}
-          para crear un repositorio llamado
-          {' '}
-          <code>osuc-profile</code>
-          {' '}
-          en tu cuenta personal.
-        </p>
-        <p>
-          El archivo
-          <code>readme.md</code>
-          {' '}
-          será cargado aquí.
-        </p>
+    <section className="rounded-xl bg-slate-300 dark:bg-slate-800 shadow-md max-w-3xl p-6">
+      <div className="prose dark:prose-invert md:border-4 md:border-dashed dark:md:border-zinc-300 md:border-zinc-600 mx-auto p-4">
+        <RobotDCC className="max-w-[300px] mx-auto my-0 h-60" alt="No encontrado" />
+        <div className="text-center mx-4">
+          <p className="font-semibold text-xl">Este usuario no tiene biografía.</p>
+          <p>
+            Si este perfil es tuyo,
+            {' '}
+            puedes crear tu perfil de OSUC Members usando
+            {' '}
+            <a href="https://github.com/open-source-uc/osuc-profile/generate">esta plantilla</a>
+            {' '}
+            para crear un repositorio llamado
+            {' '}
+            <code>osuc-profile</code>
+            {' '}
+            en tu cuenta personal.
+          </p>
+          <p>
+            El archivo
+            <code>readme.md</code>
+            {' '}
+            será cargado aquí.
+          </p>
+        </div>
       </div>
-
-    </div>
+    </section>
   );
 }
 
@@ -195,9 +200,7 @@ export default function Perfil() {
               </div>
             </section>
           </div>
-          <section className="rounded-xl bg-slate-300 dark:bg-slate-800 shadow-md p-6 max-w-3xl">
-            <UserBio userProfile={userProfile} />
-          </section>
+          <UserBio userProfile={userProfile} />
         </div>
         )}
     </>
