@@ -1,7 +1,5 @@
-import { PrismaClient } from '@prisma/client';
 import { arrayToTree } from 'performant-array-to-tree';
-
-const prisma = new PrismaClient();
+import prisma from '../client.js';
 
 export default async function getProgressionTree() {
   // We'll create a manual recursive query

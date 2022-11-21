@@ -6,9 +6,9 @@ import koaBody from 'koa-body';
 import json from 'koa-json';
 import jwt from 'koa-jwt';
 
-import { PrismaClient } from '@prisma/client';
 import dotenv from 'dotenv';
 
+import prisma from './client.js';
 import publicRouter from './services/public.js';
 import authRouter from './services/auth.js';
 import achievementsRouter from './services/achievements.js';
@@ -20,7 +20,6 @@ dotenv.config();
 
 const app = new Koa();
 const router = new Router();
-const prisma = new PrismaClient();
 
 const development = process.env.NODE_ENV === 'development';
 
