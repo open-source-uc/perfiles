@@ -19,7 +19,7 @@
   },
   "homepage": "https://github.com/open-source-uc/perfiles#readme",
   "devDependencies": {
-    "eslint": "^8.25.0",
+    "eslint": "^8.28.0",
     "eslint-config-airbnb-base": "^15.0.0",
     "eslint-plugin-import": "^2.26.0",
     "nodemon": "^2.0.20"
@@ -33,7 +33,7 @@
     "dotenv": "^16.0.3",
     "jsonwebtoken": "^8.5.1",
     "koa": "^2.13.4",
-    "koa-body": "^5.0.0",
+    "koa-body": "^6.0.1",
     "koa-json": "^2.0.2",
     "koa-jwt": "^4.0.3",
     "koa-logger": "^3.2.1",
