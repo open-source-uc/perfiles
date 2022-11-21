@@ -25,11 +25,30 @@ const router = new Router();
 const development = process.env.NODE_ENV === 'development';
 
 // CORS
-const corsOption = {
-  origin: development ? '*' : process.env.FRONTEND_URL,
-};
+app.use(cors({
+  origin: (ctx) => {
+    // Allow any requests while in development
+    if (development) {
+      return '*';
+    }
 
-app.use(cors(corsOption));
+    // Otherwise, we only allow requests from our domains
+    // Check if the origin is osuc.dev or one of its subdomains
+    // Also allow requests from perfiles.pages.dev
+    const origin = ctx.request.get('origin');
+    const domains = ['osuc.dev', 'perfiles.pages.dev'];
+    if (origin) {
+      const url = new URL(origin);
+      // eslint-disable-next-line no-restricted-syntax
+      for (const domain of domains) {
+        if (url.hostname.endsWith(`.${domain}`) || url.hostname === domain) {
+          return origin;
+        }
+      }
+    }
+    return false;
+  },
+}));
 
 // X-Response-Time
 app.use(async (ctx, next) => {
