@@ -23,7 +23,7 @@ export default function Leaderboard() {
   const [selectedPerson, setSelectedPerson] = useState(people[0]);
   const [members, setMembers] = useState([]);
   React.useEffect(() => {
-    axios.get('/api/public/members/')
+    axios.get(`${import.meta.env.VITE_BASE_API_URL}/public/members/`)
       .then((response) => {
         setMembers(response.data.slice(0, 100).sort((a, b) => b.stats.points - a.stats.points));
         setLoading(false);

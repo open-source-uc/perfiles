@@ -1,22 +1,22 @@
 import React from 'react';
 
-export default function CardsProyects({ listElements }) {
+export default function ProjectCards({ elementList }) {
   return (
     <div className="container mx-auto px-5 py-10">
       <div className="flex flex-wrap justify-center">
         {/* recorremos la lista de elementos */}
-        {listElements.map((element) => (
+        {elementList.map((element) => (
           <article className="block m-1 relative p-3 rounded-lg shadow-2xl w-full overflow-hidden bg-gray-500 md:w-1/2 lg:w-1/4">
             <div className="flex justify-between item-center">
               <div className="flex justify-between item-center">
-                <h3 className="title-font text-lg my-2 tracking-widest text-blue-800">{element.title.toUpperCase()}</h3>
-                {(element.size) && (
+                <h3 className="title-font text-lg my-2 tracking-widest text-blue-800">{element.name.toUpperCase()}</h3>
+                {(element.members.length) && (
                   <div className="m-2 pl-1">
                     <span>
                       <i className="fa-solid fa-users" />
                     </span>
                     +
-                    {element.size}
+                    {element.members.length}
                   </div>
                 )}
               </div>
