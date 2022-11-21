@@ -13,6 +13,7 @@ import handleError from '../utils/error-handler';
 import LoadingAnimation from './common/LoadingAnimation';
 
 import { ReactComponent as RobotDCC } from '../assets/images/robot-dcc.svg';
+import PopoverCreate from './common/PopoverCreate';
 
 function ProfileInfo({
   user,
@@ -139,8 +140,33 @@ async function getGithubProfile(username) {
   return null;
 }
 
-function Badge({ achievement }) {
-  return <img src={`/${achievement.imageURL}`} alt={achievement.name} width="64px" />;
+function Badge({ achievementOnMember }) {
+  const { achievement } = achievementOnMember;
+  const formattedDate = new Intl.DateTimeFormat('es-CL', {
+    year: 'numeric',
+  }).format(new Date(achievementOnMember.obtainedAt));
+  return (
+    <PopoverCreate
+      button={<img src={`/${achievement.imageURL}`} alt={achievement.name} className="w-16" />}
+      header={(
+        <>
+          <h3>{achievement.name}</h3>
+          <h3>{formattedDate}</h3>
+        </>
+      )}
+      body={(
+        <>
+          <p className="text-xs">{achievement.description}</p>
+          <p>
+            <StarIcon className="inline-block mr-2 h-5" />
+            {achievement.level.points}
+            {' '}
+            {achievement.level.name}
+          </p>
+        </>
+      )}
+    />
+  );
 }
 
 export default function Perfil() {
@@ -186,7 +212,7 @@ export default function Perfil() {
       )}
       {!error && !loading
         && (
-        <div className="mx-8 mt-28 flex flex-row flex-wrap lg:flex-nowrap content-between justify-center gap-x-12 gap-y-12">
+        <div className="m-10 mx-8 flex flex-row flex-wrap lg:flex-nowrap content-between justify-center gap-x-12 gap-y-12">
           <div className="grow max-w-2xl lg:max-w-md">
             <section className="mt-8">
               <ProfileInfo user={user} />
@@ -194,8 +220,11 @@ export default function Perfil() {
             <section>
               <h2 className="text-2xl mt-10 text-center lg:text-left">Logros</h2>
               <div className="flex flex-row flex-wrap gap-2 w-60 lg:w-80 mx-auto justify-center lg:justify-start lg:mx-0">
-                {user?.achievements.map((a) => a.achievement).map((achievement) => (
-                  <Badge key={achievement.id} achievement={achievement} />
+                {user?.achievements.map((achievementOnMember) => (
+                  <Badge
+                    key={achievementOnMember.achievement.id}
+                    achievementOnMember={achievementOnMember}
+                  />
                 ))}
               </div>
             </section>
