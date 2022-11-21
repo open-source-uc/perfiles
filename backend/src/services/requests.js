@@ -1,9 +1,7 @@
 import Router from '@koa/router';
-
-import { PrismaClient } from '@prisma/client';
+import prisma from '../client.js';
 
 const router = new Router({ prefix: '/requests' });
-const prisma = new PrismaClient();
 
 router.get('/', async (ctx) => {
   // Check that the user has a CHAIR or SERVICE role

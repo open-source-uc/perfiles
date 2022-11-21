@@ -1,12 +1,13 @@
 import Router from '@koa/router';
 
-import { Prisma, PrismaClient } from '@prisma/client';
+import { Prisma } from '@prisma/client';
 
 import getStats from '../utils/stats.js';
 import getProgressionTree from '../utils/progression_nodes.js';
 
+import prisma from '../client.js';
+
 const router = new Router({ prefix: '/public' });
-const prisma = new PrismaClient();
 
 router.get('/members', async (ctx) => {
   try {

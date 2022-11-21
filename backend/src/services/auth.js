@@ -2,15 +2,17 @@
 /* eslint-disable no-console */
 import Router from '@koa/router';
 
-import { PrismaClient } from '@prisma/client';
 import axios from 'axios';
 import dotenv from 'dotenv';
 import jwt from 'jsonwebtoken';
 
+import prisma from '../client.js';
+
 dotenv.config();
 
 const router = new Router({ prefix: '/auth' });
-const prisma = new PrismaClient();
+
+const development = process.env.NODE_ENV === 'development';
 
 // Get GITHUB_CLIENT_ID and GITHUB_CLIENT_SECRET from environment variables
 const { GITHUB_CLIENT_ID, GITHUB_CLIENT_SECRET } = process.env;
@@ -29,11 +31,19 @@ if (!process.env.JWT_SECRET) {
 // Login endpoint (redirects to GitHub)
 router.get('/login', async (ctx) => {
   let redirectUri = `${ctx.origin}/api/auth/callback`;
-  if (process.env.NODE_ENV === 'development') {
-    // Use a loopback redirect URI
-    redirectUri = 'http://127.0.0.1:3000/api/auth/callback';
+  if (development && process.env.FRONTEND_URL) {
+    // Use a proxied redirect URI
+    // Replace localhost with 127.0.0.1
+    const frontend_url = process.env.FRONTEND_URL.replace('localhost', '127.0.0.1');
+    redirectUri = `${frontend_url}/api/auth/callback`;
+  } else if (process.env.BACKEND_URL) {
+    // Use a public redirect URI
+    redirectUri = `${process.env.BACKEND_URL}/auth/callback`;
+  } else {
+    // Use the default redirect URI
+    redirectUri = `${ctx.origin}/auth/callback`;
   }
-  console.debug('redirectUri', redirectUri);
+  console.debug(redirectUri);
 
   const scope = 'read:user user:email';
   const url = 'https://github.com/login/oauth/authorize';
@@ -44,7 +54,6 @@ router.get('/login', async (ctx) => {
     scope,
     // TODO: Add CSRF protection
   });
-  console.log(`${url}?${params}`);
   ctx.redirect(`${url}?${params}`);
 });
 
@@ -56,6 +65,9 @@ router.get('/logout', async (ctx) => {
 // GitHub OAuth
 router.get('/callback', async (ctx) => {
   // Visita http://127.0.0.1:3000/api/auth/callback?code=sdfjkdsfjkdfsjkdfskj
+  if (!ctx.query.code) {
+    ctx.throw(400, 'No code provided');
+  }
   const { code } = ctx.query;
   // Exchange code for access token
   const response = await axios.post('https://github.com/login/oauth/access_token', {
@@ -86,6 +98,7 @@ router.get('/callback', async (ctx) => {
     ctx.body = {
       message: `Member ${login} not found`,
     };
+    return;
   }
   // Create JWT
   // TODO: Add expiration and use refresh tokens
@@ -101,8 +114,6 @@ router.get('/callback', async (ctx) => {
 });
 
 // Debugging routes
-const development = process.env.NODE_ENV === 'development';
-
 if (development) {
   router.get('/debug/login', async (ctx) => {
     // Login as an arbitrary username

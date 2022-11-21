@@ -74,7 +74,7 @@ export default function BadgeModal() {
     }
 
     // Send request
-    axios.put('/api/achievements', {
+    axios.put(`${import.meta.env.VITE_BASE_API_URL}/achievements`, {
       ...data,
       image,
     }, {

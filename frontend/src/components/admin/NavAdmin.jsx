@@ -29,12 +29,12 @@ function SideBarIcon({ icon, route, text = 'tooltip 💡' }) {
 
 function AdminSidebar() {
   return (
-    <div className="fixed top-30 left-0 h-screen w-16 flex flex-col shadow-lg bg-white dark:bg-gray-900 shadow-lg" aria-label="Navegación de Admin">
+    <aside className="top-20 z-30 fixed h-screen p-4 space-y-1 min-h-full items-center left-0 w-16 flex flex-col shadow-lg bg-white dark:bg-gray-900" aria-label="Navegación de Admin">
       <SideBarIcon icon="📈" route="/admin" text="Métricas y actividad" />
       <SideBarIcon icon="👥" route="/admin/rrhh" text="RRHH" />
       <SideBarIcon icon="🏅" route="/admin/logros" text="Logros" />
       <SideBarIcon icon="⚙️" route="/admin/config" text="Configuración" />
-    </div>
+    </aside>
   );
 }
 

@@ -148,15 +148,12 @@
 
 
 .admin__main {
-    // padding: 20px 50px;
-    margin-left: 60px;
-    min-width: 95vw;
     display: flex;
     flex-direction: column;
     align-items: center;
 }
 
-.admin__main > * {
+.admin__main>* {
     width: 100%;
     max-width: 1000px;
 }
@@ -168,58 +165,7 @@
     margin-top: 30px;
 }
 
-.nav-admin {
-    background-color: var(--white--3);
-    box-shadow: var(--box-shadow);
-    width: 60px;
-    height: 100%;
-    position: fixed;
-    z-index: 0;
-    top: 0;
-    transition: all 0.4s ease-in-out;
-    padding-top: 55px;
 
-    .nav-admin-notMargin {
-        margin-top: 0 !important;
-    }
-
-    ul {
-        li {
-            position: relative;
-            height: 50px;
-            line-height: 50px;
-            width: 100%;
-
-            a {
-                padding: auto;
-                text-decoration: none;
-            }
-        }
-    }
-
-    li.active {
-        background-color: var(--white--2);
-    }
-}
-
-.nav-admin__nav {
-    // This is a lateral navbar that goes on left of the page
-    display: flex;
-    flex-direction: column;
-    overflow: auto;
-    justify-content: space-between;
-    align-items: center;
-}
-
-// ul
-.nav-admin__ul {
-    // Disable the default bullets in the list
-    list-style-type: none;
-    // Set reasonable defaults
-    padding: 0;
-    width: 100%;
-    text-align: center;
-}
 
 .tableadmin {
     width: 100%;

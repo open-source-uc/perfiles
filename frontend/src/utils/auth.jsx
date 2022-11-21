@@ -55,7 +55,7 @@ async function getCurrentUserInfo() {
     return null;
   }
   const authHeader = getAuthHeader();
-  const response = await axios.get('/api/members/me', { headers: authHeader });
+  const response = await axios.get(`${import.meta.env.VITE_BASE_API_URL}/members/me`, { headers: authHeader });
   return response.data;
 }
 
@@ -69,7 +69,7 @@ function RequireAuth({ children }) {
 
   if (!user && !token) {
     // Redirect to login
-    return <Navigate to="/api/auth/login" />;
+    return <Navigate to={`${import.meta.env.VITE_BASE_API_URL}/auth/login`} />;
   }
   if (!user && token) {
     // User is not logged in, but has a token

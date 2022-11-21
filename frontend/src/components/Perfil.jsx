@@ -186,7 +186,7 @@ export default function Perfil() {
       )}
       {!error && !loading
         && (
-        <div className="m-10 mx-8 flex flex-row flex-wrap lg:flex-nowrap content-between justify-center gap-x-12 gap-y-12">
+        <div className="mx-8 mt-28 flex flex-row flex-wrap lg:flex-nowrap content-between justify-center gap-x-12 gap-y-12">
           <div className="grow max-w-2xl lg:max-w-md">
             <section className="mt-8">
               <ProfileInfo user={user} />

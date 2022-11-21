@@ -61,7 +61,7 @@ Finalmente, configurado el entorno, se puede ejecutar el proyecto de la siguient
 
 ```bash
 # Ejecutar el backend:
-cd backend && npm start
+cd backend && npm run dev
 # En otro terminal, ejecutar el frontend:
 cd frontend && npm start
 ```

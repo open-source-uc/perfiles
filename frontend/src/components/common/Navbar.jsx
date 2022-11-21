@@ -36,7 +36,7 @@ export default function Navbar() {
   }, [location]);
 
   return (
-    <Disclosure as="nav" className="bg-gray-800">
+    <Disclosure as="nav" className="bg-gray-800 z-50 min-w-full fixed top-0">
       {({ open }) => (
         <>
           <div className="mx-auto max-w-7xl px-2 sm:px-6 lg:px-8">
@@ -153,7 +153,7 @@ export default function Navbar() {
                 )
                   : (
                     <a
-                      href="/api/auth/login"
+                      href={`${import.meta.env.VITE_BASE_API_URL}/auth/login`}
                       className="flex rounded-full bg-gray-800 text-sm focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-800 mx-2"
                       title="Iniciar sesión"
                     >

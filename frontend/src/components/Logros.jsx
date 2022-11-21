@@ -18,14 +18,14 @@ export default function Logros() {
   const [error, setError] = React.useState(null);
 
   useEffect(() => {
-    axios.get('/api/public/achievements/progression').then((res) => setAchievementProgression(res.data)).catch((err) => {
+    axios.get(`${import.meta.env.VITE_BASE_API_URL}/public/achievements/progression`).then((res) => setAchievementProgression(res.data)).catch((err) => {
       const errorMsg = handleError(err);
       setError(errorMsg);
     });
   }, []);
 
   useEffect(() => {
-    axios.get('/api/public/achievements').then((res) => setAchievements(res.data)).catch((err) => {
+    axios.get(`${import.meta.env.VITE_BASE_API_URL}/public/achievements`).then((res) => setAchievements(res.data)).catch((err) => {
       const errorMsg = handleError(err);
       setError(errorMsg);
     });
@@ -33,7 +33,7 @@ export default function Logros() {
 
   useEffect(() => {
     if (user) {
-      axios.get('/api/members/me', {
+      axios.get(`${import.meta.env.VITE_BASE_API_URL}/members/me`, {
         headers: {
           Authorization: `Bearer ${localStorage.getItem('token')}`,
         },
@@ -53,7 +53,7 @@ export default function Logros() {
     }
   }, [user]);
   return (
-    <section>
+    <section className="mt-24">
       <Helmet>
         <title>Logros | Members OSUC</title>
       </Helmet>

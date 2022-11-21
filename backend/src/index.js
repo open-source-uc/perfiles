@@ -2,13 +2,14 @@
 import Koa from 'koa';
 
 import Router from '@koa/router';
-import koaBody from 'koa-body';
+import cors from '@koa/cors';
+import { koaBody } from 'koa-body';
 import json from 'koa-json';
 import jwt from 'koa-jwt';
 
-import { PrismaClient } from '@prisma/client';
 import dotenv from 'dotenv';
 
+import prisma from './client.js';
 import publicRouter from './services/public.js';
 import authRouter from './services/auth.js';
 import achievementsRouter from './services/achievements.js';
@@ -20,9 +21,34 @@ dotenv.config();
 
 const app = new Koa();
 const router = new Router();
-const prisma = new PrismaClient();
 
 const development = process.env.NODE_ENV === 'development';
+
+// CORS
+app.use(cors({
+  origin: (ctx) => {
+    // Allow any requests while in development
+    if (development) {
+      return '*';
+    }
+
+    // Otherwise, we only allow requests from our domains
+    // Check if the origin is osuc.dev or one of its subdomains
+    // Also allow requests from perfiles.pages.dev
+    const origin = ctx.request.get('origin');
+    const domains = ['osuc.dev', 'perfiles.pages.dev'];
+    if (origin) {
+      const url = new URL(origin);
+      // eslint-disable-next-line no-restricted-syntax
+      for (const domain of domains) {
+        if (url.hostname.endsWith(`.${domain}`) || url.hostname === domain) {
+          return origin;
+        }
+      }
+    }
+    return false;
+  },
+}));
 
 // X-Response-Time
 app.use(async (ctx, next) => {
