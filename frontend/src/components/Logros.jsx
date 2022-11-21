@@ -8,6 +8,7 @@ import SkillTree from './common/SkillTree';
 import handleError from '../utils/error-handler';
 import LoadingAnimation from './common/LoadingAnimation';
 import SkillGrid from './common/SkillGrid';
+import { CreateModal, InfoBadge } from './common/CreateModal';
 
 export default function Logros() {
   const user = React.useContext(UserContext);
@@ -16,6 +17,7 @@ export default function Logros() {
   const [myAchievements, setMyAchievements] = useState(new Set());
   const [loading, setLoading] = React.useState(true);
   const [error, setError] = React.useState(null);
+  const [isOpen, setIsOpen] = useState(false);
 
   useEffect(() => {
     axios.get(`${import.meta.env.VITE_BASE_API_URL}/public/achievements/progression`).then((res) => setAchievementProgression(res.data)).catch((err) => {
@@ -73,9 +75,12 @@ export default function Logros() {
         </Tab.List>
         <Tab.Panels>
           <Tab.Panel>
+            <CreateModal isOpen={isOpen} setIsOpen={setIsOpen} title="Informacion del logro" formulario={<InfoBadge isOpen={isOpen} setIsOpen={setIsOpen} />} />
             <SkillTree
               achievementProgression={achievementProgression}
               myAchievements={myAchievements}
+              isOpen={isOpen}
+              setIsOpen={setIsOpen}
             />
           </Tab.Panel>
           <Tab.Panel>

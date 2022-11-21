@@ -36,6 +36,21 @@ function FormIdeas({ isOpen, setIsOpen }) {
   );
 }
 
+function InfoBadge({ isOpen, setIsOpen }) {
+  return (
+    <>
+      <p>TODO: crear formulario Con framgent</p>
+      <button
+        type="submit"
+        className="block mx-auto inset-x-0 mt-4 bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
+        onClick={() => setIsOpen(false)}
+      >
+        Enviar
+      </button>
+    </>
+  );
+}
+
 function CreateModal({
   isOpen, setIsOpen, title, formulario,
 }) {
@@ -84,4 +99,5 @@ export {
   CreateModal,
   FormProyectos,
   FormIdeas,
+  InfoBadge,
 };
