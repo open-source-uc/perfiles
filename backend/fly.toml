@@ -8,6 +8,8 @@ processes = []
 [env]
   PORT = "8080"
   NODE_ENV = "production"
+  BACKEND_URL = "https://api-members.osuc.dev"
+  FRONTEND_URL = "https://members.osuc.dev"
 
 
 [experimental]
