@@ -1,6 +1,6 @@
 <h1 align="center">
   <br>
-  <a href=#><img src="https://osuc.dev/img/min-icon.svg" width="200px" alt="banner"></a>
+  <a href=#><img src="https://osuc.dev/img/min-icon.svg" width="200px" alt="OSUC Logo "></a>
 </h1>
 
 <h4 align="center">Plataforma de integrantes de OSUC.</h4>

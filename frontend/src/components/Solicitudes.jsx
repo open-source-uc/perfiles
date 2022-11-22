@@ -4,7 +4,6 @@ import { Helmet } from 'react-helmet';
 import {
   Formik, Form, Field, ErrorMessage,
 } from 'formik';
-import * as Yup from 'yup';
 import axios from 'axios';
 import { ClockIcon, CheckIcon, XMarkIcon } from '@heroicons/react/20/solid';
 import UserContext from '../contexts/userContext';
@@ -13,7 +12,7 @@ import handleError from '../utils/error-handler';
 
 function humanReadableStatus(status) {
   if (status === 'OPEN') {
-    return <ClockIcon className="w-8 text-yellow-600" />;
+    return <ClockIcon className="w-8 text-yellow-600" alt="Esperando respuest" title="Esperando respuesta" />;
   }
   if (status === 'APPROVED') {
     return <CheckIcon className="w-8 text-green-600" alt="Aprobada" title="Aprobada" />;
