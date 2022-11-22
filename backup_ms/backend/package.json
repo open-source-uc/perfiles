@@ -1,0 +1,32 @@
+{
+  "name": "backup-backend",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "start": "node src/index.js",
+    "dev": "nodemon src/index.js"
+  },
+  "author": "",
+  "license": "GPL-3.0-or-later",
+  "dependencies": {
+    "@koa/cors": "^4.0.0",
+    "@koa/router": "^12.0.0",
+    "@prisma/client": "^4.6.1",
+    "dotenv": "^16.0.3",
+    "koa": "^2.13.4",
+    "koa-body": "^6.0.1",
+    "koa-json": "^2.0.2"
+  },
+  "devDependencies": {
+    "eslint": "^8.28.0",
+    "eslint-config-airbnb": "^19.0.4",
+    "eslint-plugin-import": "^2.26.0",
+    "eslint-plugin-jsx-a11y": "^6.6.1",
+    "eslint-plugin-react": "^7.31.11",
+    "eslint-plugin-react-hooks": "^4.6.0",
+    "nodemon": "^2.0.20",
+    "prisma": "^4.6.1"
+  }
+}
