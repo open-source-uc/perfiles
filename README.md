@@ -40,6 +40,7 @@ Una vez abierto en el contenedor, se instalará PostgreSQL en el entorno y se in
 # Instalar dependencias
 cd backend && npm install && npx prisma migrate reset
 cd ../frontend && npm install
+
 ```
 
 ### Entorno
@@ -81,6 +82,16 @@ Si es que la variable `NODE_ENV` está definida como `development` (puesta por d
 Las entidades en el proyecto se encuentran modeladas usando un schema de Prisma, que puede ser encontrado en `backend/prisma/schema.prisma`. Este schema se compila continuamente para generar el cliente de Prisma y un archivo de especificación [DBML](https://www.dbml.org/home/) que permite, entre otras cosas, [generar diagramas del esquema](https://dbdiagram.io) de la base de datos. Este archivo se encuentra en `backend/prisma/schema.dbml`.
 
 Adicionalmente, Prisma provee un "Studio" que permite inspeccionar los datos en la base de datos. Para abrirlo, se puede correr `npx prisma studio`.
+
+
+### Deployment
+Fuera del entorno de desarrollo, todo el proceso de deployment a producción ocurre de forma automática. Esto ocurre mediante dos procesos paralelos:
+
+- Con cada commit, [Cloudflare Pages](https://pages.cloudflare.com/) se encarga de construir y desplegar el frontend en modo estático (`npm run build`).
+- Con cada push a la rama `main`, [Fly.io](https://fly.io) se encarga desplegar el backend (`npm start`), corriendo migraciones (`prisma deploy`) según sea necesario.
+
+La configuración de Fly.io se encuentra definida en `backend/fly.toml`, y la imagen del entorno se encuentra definida en `backend/Dockerfile`.
+
 
 ## Documentación adicional
 Los endpoints de la API [se encuentran ejemplificados en Postman](https://www.postman.com/agucova/workspace/eb248033-d0b2-4760-8638-8ba92f420b42/collection/18674839-9d3d4c46-87f6-4df9-9f03-d9f3ff6f17b4?action=share&creator=18674839).
