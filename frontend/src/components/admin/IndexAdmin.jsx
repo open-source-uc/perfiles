@@ -1,12 +1,52 @@
 import * as React from 'react';
 import { Link } from 'react-router-dom';
+import axios from 'axios';
+
+import RelativeTime from '@yaireo/relative-time';
 import UserContext from '../../contexts/userContext';
+import LoadingAnimation from '../common/LoadingAnimation';
+import handleError from '../../utils/error-handler';
 
 export default function IndexAdmin() {
   const user = React.useContext(UserContext);
+  const [recentAuditMessages, setRecentAuditMessages] = React.useState([]);
+  const [error, setError] = React.useState(null);
+  const [loading, setLoading] = React.useState(true);
+
+  React.useEffect(() => {
+    const token = localStorage.getItem('token');
+    axios.get(`${import.meta.env.VITE_BASE_API_URL}/audit`, {
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    })
+      .then((response) => {
+        setRecentAuditMessages(response.data);
+        setLoading(false);
+      })
+      .catch((e) => {
+        setLoading(false);
+        setError(handleError(e));
+      });
+  }, []);
+
+  if (error) {
+    return (
+      <div className="container mx-auto text-center">
+        <h2 className="text-xl font-bold">🚨 Error</h2>
+        <p>{error}</p>
+      </div>
+    );
+  }
+
+  if (loading) {
+    return <LoadingAnimation />;
+  }
+
+  const rtf = new RelativeTime({ locale: 'es' });
+
   return (
     <div className="admin__main">
-      {/* <!-- adminindexbox1--> */}
       <ol className="adminindexbox">
         <li className="adminindexbox-item">
           <Link to="/admin/">Admin</Link>
@@ -20,42 +60,18 @@ export default function IndexAdmin() {
         👋
       </p>
       <h2>Actividad reciente</h2>
-      <table className="tableadmin">
-        <tbody>
-          <tr>
-            <td>
-              Agustin Covarrubias actualizó su perfil.
-              <time>Hace 4 minutos.</time>
-            </td>
-          </tr>
-          <tr>
-            <td>
-              Diego Costa cargó 15 aplicantes.
-              {' '}
-              <time>Hace 8 minutos.</time>
-            </td>
-          </tr>
-          <tr>
-            <td>
-              Lucas Natero creó un nuevo evento.
-              {' '}
-              <time>Hace 1 hora.</time>
-            </td>
-          </tr>
-          <tr>
-            <td>
-              Fernando Smith entregó un logro a Martin Atria.
-              <time>Hace 3 dias.</time>
-            </td>
-          </tr>
-          <tr>
-            <td>
-              Bárbara Irarrázaval entregó un logro a Nicolás Berríos.
-              <time>Hace 5 dias.</time>
-            </td>
-          </tr>
-        </tbody>
-      </table>
+      <ul className="tableadmin mb-8 shadow-md">
+        {recentAuditMessages.slice(0, 7).map((auditMessage) => (
+          <div key={auditMessage.id} className="even:bg-osuc-black-4 even:text-osuc-white-3 odd:bg-osuc-white-4 odd:text-osuc-black-1">
+            <div className="p-4 text-lg">
+              {auditMessage.message}
+              <time dateTime={auditMessage.createdAt} className="text-right block text-sm">
+                {rtf.from(new Date(auditMessage.createdAt))}
+              </time>
+            </div>
+          </div>
+        ))}
+      </ul>
     </div>
   );
 }
