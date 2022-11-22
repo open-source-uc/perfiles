@@ -6,7 +6,7 @@ on:
   workflow_dispatch:
 jobs:
   deploy:
-    name: Deploy proxy
+    name: Deploy back-end (flyctl)
     runs-on: ubuntu-latest
     steps:
       # This step checks out a copy of your repository.
