@@ -3,10 +3,12 @@
 import React, {
   useEffect, useContext, useState, Fragment,
 } from 'react';
+import axios from 'axios';
 import { Helmet } from 'react-helmet';
 import { Tab, Dialog, Transition } from '@headlessui/react';
+import handleError from '../utils/error-handler';
 import { CreateModal, FormProyectos, FormIdeas } from './common/CreateModal';
-import CardsProyects from './common/CardsProyects';
+import ProjectCards from './common/ProjectCards';
 
 // TODO: BORRAR luego de mergear a develop e importar la misma funcion desde utils
 function classNames(...classes) {
@@ -31,57 +33,47 @@ function BtnCreate({ onClick }) {
 }
 
 export default function Proyectos() {
-  const categories = ['Proyectos', 'Ideas'];
   const [isOpen1, setIsOpen1] = useState(false);
-  const [isOpen2, setIsOpen2] = useState(false);
+  const [error, setError] = useState(false);
+  const [loading, setLoading] = useState(false);
+  const [proyectos, setProyectos] = useState([]);
 
-  const listElements = [
-    {
-      title: 'Proyecto 1',
-      description: 'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industrys standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.',
-      hashtags: ['UwU', 'owo', 'uwuuwuwuwuwu'],
-      size: 5,
-    },
-    {
-      title: 'Proyecto 2',
-      description: 'ñeñeñeñe',
-    },
-    {
-      title: 'Proye',
-      description: 'ñeñeñeñe',
-      hashtags: [],
-      size: 2,
-    },
-  ];
+  React.useEffect(() => {
+    axios.get(`${import.meta.env.VITE_BASE_API_URL}/public/projects`)
+      .then((res) => setProyectos(res.data))
+      .catch((err) => {
+        const errorMsg = handleError(err);
+        setError(errorMsg);
+      });
+  }, []);
   return (
-    <section>
+    <section className="mt-24 p-4">
+      <Helmet>
+        <title>Proyectos | Members OSUC</title>
+      </Helmet>
       {/* <h1 className="text-center text-4xl p-2 m-0 bg-gray-800/60">Proyectos e ideas</h1> */}
+      <h1 className="text-center text-4xl p-2 mt-4 font-semibold">Proyectos e ideas 🚀</h1>
       <Tab.Group>
-        <Tab.List className="flex space-x-1 bg-gray-800/60 p-1 mx-auto">
-          {categories.map((category) => (
-            <Tab
-              key={category}
-              className={({ selected }) => classNames(
-                'w-full rounded-lg py-2.5 font-medium text-xxs leading-5 text-gray-800 sm:text-sm lg:text-sm xl:text-lg',
-                selected
-                  ? 'bg-white'
-                  : 'text-gray-100 hover:bg-white/[0.12] hover:text-white',
-              )}
-            >
-              {category}
-            </Tab>
-          ))}
+        <Tab.List className="flex space-x-1 p-1 mx-auto w-[90%] md:[70%] lg:w-[50%] xl:w-[30%] bg-osuc-black-2 rounded-xl">
+          <Tab
+            className="w-full rounded-lg py-2.5 font-medium  leading-5 text-md text-gray-100  ui-selected:bg-osuc-navyblue"
+          >
+            <span className="text-center">Proyectos</span>
+          </Tab>
+          <Tab
+            className="w-full rounded-lg py-2.5 font-medium  leading-5 text-md text-gray-100  ui-selected:bg-osuc-navyblue"
+          >
+            <span className="text-center">Ideas</span>
+          </Tab>
         </Tab.List>
         <Tab.Panels>
           <Tab.Panel>
-            <CardsProyects listElements={listElements} />
+            <ProjectCards elementList={proyectos} />
             <CreateModal isOpen={isOpen1} setIsOpen={setIsOpen1} title="Crear una idea para OSUC" formulario={<FormProyectos isOpen={isOpen1} setIsOpen={setIsOpen1} />} />
             <BtnCreate onClick={() => setIsOpen1(true)} />
           </Tab.Panel>
           <Tab.Panel>
-            <CardsProyects listElements={listElements} />
-            <CreateModal isOpen={isOpen2} setIsOpen={setIsOpen2} title="UwU" formulario={<FormIdeas isOpen={isOpen2} setIsOpen={setIsOpen2} />} />
-            <BtnCreate onClick={() => setIsOpen2(true)} />
+            Nothing here yet!
           </Tab.Panel>
         </Tab.Panels>
       </Tab.Group>

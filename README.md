@@ -68,6 +68,9 @@ cd frontend && npm start
 ### Migraciones
 En caso de querer generar migraciones despues de un cambio de schema o de pullear nuevas migraciones, es necesario correr: `npx prisma migrate dev`. Esto sirve para tanto crear nuevas migraciones automáticamente en base a modificaciones en el schema, como para aplicar migraciones que hayan sido creadas por otros miembros del equipo.
 
+### Seeding
+Para utilizar una seed en la base de datos, primero debemos eliminar el contenido ya existente, corriendo `npx prisma migrate reset`. Luego, podemos correr `npx prisma db seed` para cargar los datos de prueba. (Es posible que el primer comando haga seed automáticamente)
+
 ### Autenticación y autorización
 Si es que la variable `NODE_ENV` está definida como `development` (puesta por defecto en el contenedor), se puede acceder a las rutas de debugging de autorización, que permiten asumir el rol de cualquier usuario, con tal de probar las distintas rutas. Por ejemplo:
 
