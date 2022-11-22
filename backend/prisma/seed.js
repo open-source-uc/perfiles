@@ -172,7 +172,7 @@ async function loadProjects() {
           username: project.creator,
         },
       },
-      github: project.github,
+      repo: project.repo,
       access: project.access,
     },
   })));

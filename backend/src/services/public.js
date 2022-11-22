@@ -125,7 +125,7 @@ router.get('/projects', async (ctx) => {
             username: true,
           },
         },
-        github: true,
+        repo: true,
         access: true,
         members: {
           select: {

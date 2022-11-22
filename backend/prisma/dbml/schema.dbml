@@ -115,7 +115,7 @@ Table Project {
   creator Member [not null]
   creatorUsername String [not null]
   members ProjectsOnMembers [not null]
-  github String
+  repo String
   access ProjectAccess [not null]
 }
 
@@ -202,10 +202,10 @@ Ref: ClaimLinkClaim.claimLinkId > ClaimLink.id
 
 Ref: Project.creatorUsername > Member.username
 
-Ref: ProjectsOnMembers.memberUsername > Member.username [delete: Cascade]
+Ref: ProjectsOnMembers.memberUsername > Member.username
 
-Ref: ProjectsOnMembers.projectId > Project.id [delete: Cascade]
+Ref: ProjectsOnMembers.projectId > Project.id
 
-Ref: HashtagsOnProjects.projectId > Project.id [delete: Cascade]
+Ref: HashtagsOnProjects.projectId > Project.id
 
-Ref: HashtagsOnProjects.hashtagId > Hashtag.id [delete: Cascade]
+Ref: HashtagsOnProjects.hashtagId > Hashtag.id

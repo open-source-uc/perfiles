@@ -130,7 +130,7 @@ model Project {
   creator     Member     @relation(fields: [creatorUsername], references: [username])
   creatorUsername String
   members     ProjectsOnMembers[]
-  github      String?
+  repo      String?
   access      ProjectAccess
 }
 

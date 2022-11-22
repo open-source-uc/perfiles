@@ -8,7 +8,7 @@
             "fernandosmither",
             "a-maccormack"
         ],
-        "github": "https://github.com/open-source-uc/autoramos-web",
+        "repo": "https://github.com/open-source-uc/autoramos-web",
         "access": "APPROVAL"
     },
     {
@@ -19,7 +19,7 @@
             "lnatero",
             "a-maccormack"
         ],
-        "github": "https://github.com/wachunei/directUC",
+        "repo": "https://github.com/wachunei/directUC",
         "access": "OPEN"
     },
     {
@@ -32,7 +32,7 @@
             "Baelfire18",
             "barbaraim"
         ],
-        "github": "https://github.com/open-source-uc/ucalendar",
+        "repo": "https://github.com/open-source-uc/ucalendar",
         "access": "CLOSED"
     }
 ]
