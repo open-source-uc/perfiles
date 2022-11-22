@@ -165,62 +165,6 @@
     margin-top: 30px;
 }
 
-
-
-.tableadmin {
-    width: 100%;
-    margin: 10px;
-    font-size: 1.2em;
-    margin-bottom: 15px;
-    text-align: left;
-    box-shadow: var(--box-shadow2);
-
-    td {
-        padding: 4px;
-    }
-
-    thead {
-        cursor: pointer;
-        background: var(--black--1);
-        color: var(--white--1);
-
-        th {
-            padding: 5px;
-        }
-    }
-
-    tbody {
-        background: var(--black--4);
-    }
-
-    tr {
-        &:nth-child(even) {
-            td {
-                background: var(--black--4);
-                color: var(--white--3);
-            }
-        }
-
-        &:nth-child(odd) {
-            td {
-                background: var(--white--4);
-                color: var(--black--1);
-            }
-        }
-
-        td {
-            padding: 15px;
-        }
-    }
-
-    time {
-        text-align: right;
-        display: block;
-        font-size: 80%;
-    }
-}
-
-
 // rrhh
 .import-members {
     border: 4px dashed rgb(0, 0, 0);
