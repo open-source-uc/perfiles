@@ -227,8 +227,8 @@ export default function Perfil() {
 
                 {user.achievements.length ? (
                   <div className="flex flex-row flex-wrap gap-2 w-60 lg:w-80 mx-auto justify-center lg:justify-start lg:mx-0">
-                    {user?.achievements.map((a) => a.achievement).map((achievement) => (
-                      <Badge key={achievement.id} achievement={achievement} />
+                    {user?.achievements.map((achievementOnMember) => (
+                      <Badge achievementOnMember={achievementOnMember} />
                     ))}
                   </div>
                 ) : (<p className="text-center lg:text-left text-md">Este usuario no tiene logros.</p>
