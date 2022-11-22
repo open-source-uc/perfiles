@@ -54,7 +54,7 @@ export default function Proyectos() {
       {/* <h1 className="text-center text-4xl p-2 m-0 bg-gray-800/60">Proyectos e ideas</h1> */}
       <h1 className="text-center text-4xl p-2 mt-4 font-semibold">Proyectos e ideas 🚀</h1>
       <Tab.Group>
-        <Tab.List className="flex space-x-1 p-1 mx-auto w-[90%] md-[70%] lg:w-[50%] xl:w-[30%] bg-osuc-black-2 rounded-xl">
+        <Tab.List className="flex space-x-1 p-1 mx-auto w-[90%] md:[70%] lg:w-[50%] xl:w-[30%] bg-osuc-black-2 rounded-xl">
           <Tab
             className="w-full rounded-lg py-2.5 font-medium  leading-5 text-md text-gray-100  ui-selected:bg-osuc-navyblue"
           >
