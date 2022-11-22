@@ -4,7 +4,6 @@ import { Helmet } from 'react-helmet';
 import {
   Formik, Form, Field, ErrorMessage,
 } from 'formik';
-import * as Yup from 'yup';
 import axios from 'axios';
 import { ClockIcon, CheckIcon, XMarkIcon } from '@heroicons/react/20/solid';
 import UserContext from '../contexts/userContext';
