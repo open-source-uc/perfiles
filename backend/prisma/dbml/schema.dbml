@@ -177,12 +177,13 @@ Enum RequestState {
   REJECTED
 }
 
-Ref: Profile.memberUsername - Member.username [delete: Cascade]
 Enum ProjectAccess {
   OPEN
   APPROVAL
   CLOSED
 }
+
+Ref: Profile.memberUsername - Member.username [delete: Cascade]
 
 Ref: Achievement.creatorUsername > Member.username
 
@@ -211,6 +212,7 @@ Ref: ClaimLinkClaim.memberUsername > Member.username
 Ref: ClaimLinkClaim.claimLinkId > ClaimLink.id
 
 Ref: AuditEntry.actorUsername > Member.username
+
 Ref: Project.creatorUsername > Member.username
 
 Ref: ProjectsOnMembers.memberUsername > Member.username
