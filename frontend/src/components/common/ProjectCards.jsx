@@ -6,7 +6,7 @@ export default function ProjectCards({ elementList }) {
       <div className="grid sm:grid-cols-2 lg:grid-cols-3 2xl:grid-cols-4 gap-6">
         {/* recorremos la lista de elementos */}
         {elementList.map((element) => (
-          <article className="block m-1 relative p-3 overflow-y-auto h-[180px] rounded-lg shadow-2xl w-full overflow-hidden bg-gray-600">
+          <article className="block m-1 relative p-3 overflow-y-auto h-[180px] rounded-lg shadow-2xl w-full overflow-hidden bg-osuc-white-3 dark:bg-gray-600">
             <div className="flex flex-col justify-between h-[100%] px-2">
               <div>
                 <div className="flex justify-between item-center">
