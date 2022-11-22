@@ -4,44 +4,44 @@ import { Prisma } from '@prisma/client';
 import prisma from '../client.js';
 
 export function getProjects() {
-  return async (ctx) => {
-    try {
-      const projects = await prisma.project.findMany({
-        select: {
-          id: false,
-          name: true,
-          description: true,
-          creator: {
-            select: {
-              username: true,
-            },
-          },
-          repo: true,
-          access: true,
-          members: {
-            select: {
-              memberUsername: true,
-            },
-          },
-          hashtags: {
-            select: {
-              hashtag: true,
-            },
-          },
-        },
-      });
-      ctx.body = projects;
-    } catch (e) {
-      if (e instanceof Prisma.PrismaClientKnownRequestError) {
-        ctx.throw(e.message);
-      }
-    }
-  };
+
 }
 
 const router = new Router({ prefix: '/projects' });
 
-router.get('/projects', getProjects);
+router.get('/', async (ctx) => {
+  try {
+    const projects = await prisma.project.findMany({
+      select: {
+        id: false,
+        name: true,
+        description: true,
+        creator: {
+          select: {
+            username: true,
+          },
+        },
+        repo: true,
+        access: true,
+        members: {
+          select: {
+            memberUsername: true,
+          },
+        },
+        hashtags: {
+          select: {
+            hashtag: true,
+          },
+        },
+      },
+    });
+    ctx.body = projects;
+  } catch (e) {
+    if (e instanceof Prisma.PrismaClientKnownRequestError) {
+      ctx.throw(e.message);
+    }
+  }
+});
 
 router.get('/:id', async (ctx) => {
   const { id } = ctx.params;
@@ -166,16 +166,7 @@ router.put('/', async (ctx) => {
       },
       hashtags: {
         create: hashtagsArray.map((hashtag) => ({
-          hashtag: {
-            createOrConnect: {
-              create: {
-                name: hashtag,
-              },
-              where: {
-                name: hashtag,
-              },
-            },
-          },
+          name: hashtag,
         })),
       },
     },

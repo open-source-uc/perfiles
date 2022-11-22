@@ -126,7 +126,7 @@ model Project {
   id          String      @id @unique @default(cuid())
   name        String      @unique
   description String
-  hashtags                   HashtagsOnProjects[]     @relation("has")
+  hashtags                   Hashtag[]
   creator     Member     @relation(fields: [creatorUsername], references: [username])
   creatorUsername String
   members     ProjectsOnMembers[]
@@ -145,15 +145,7 @@ model ProjectsOnMembers {
 model Hashtag {
   id          String @id @unique @default(cuid())
   name        String @unique
-  projects    HashtagsOnProjects[]
-}
-
-model HashtagsOnProjects {
-  id             String   @id @unique @default(cuid())
-  project        Project  @relation("has", fields: [projectId], references: [id])
-  hashtag        Hashtag @relation(fields: [hashtagId], references: [id])
-  projectId      String
-  hashtagId      String
+  projects    Project[]
 }
 
 enum Role {

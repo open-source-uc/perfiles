@@ -204,29 +204,27 @@ async function loadHashtags() {
     fs.readFileSync('data/hashtags.json', 'utf-8'),
   );
 
+  //   await Promise.all([hashtags.map((hashtag) => prisma.hashtag.create({
+  //     data: {
+  //       name: hashtag.name,
+  //     },
+  //   })),
+  //   hashtags.map((hashtag) => prisma.hashtag.connect({
+  //     where: {
+  //       name: hashtag.name,
+  //     },
+  //     data: {
+  //       projects: {
+  //         connect: hashtag.projects.map((project) => ({ name: project })),
+  //       },
+  //     },
+  //   }))]);
+  // }
   await Promise.all(hashtags.map((hashtag) => prisma.hashtag.create({
     data: {
       name: hashtag.name,
-    },
-  })));
-}
-
-async function loadHashtagsOnProjects() {
-  const hashtagsOnProjects = JSON.parse(
-    fs.readFileSync('data/hashtags_on_projects.json', 'utf-8'),
-  );
-
-  await Promise.all(hashtagsOnProjects.map((hashtagOnProject) => prisma.hashtagsOnProjects.create({
-    data: {
-      hashtag: {
-        connect: {
-          name: hashtagOnProject.hashtag,
-        },
-      },
-      project: {
-        connect: {
-          name: hashtagOnProject.project,
-        },
+      projects: {
+        connect: hashtag.projects.map((project) => ({ name: project })),
       },
     },
   })));
@@ -242,7 +240,6 @@ async function main() {
   await loadProjects();
   await loadProjectsOnMembers();
   await loadHashtags();
-  await loadHashtagsOnProjects();
 }
 
 await main();

@@ -47,10 +47,10 @@
     "containerId": "",
     "name": "localhost:3000/api/projects",
     "url": "localhost:3000/api/projects",
-    "method": "PUT",
+    "method": "GET",
     "sortNum": 0,
     "created": "2022-11-22T08:37:38.585Z",
-    "modified": "2022-11-22T09:06:43.457Z",
+    "modified": "2022-11-22T18:30:38.612Z",
     "headers": [
       {
         "name": "Authorization",
