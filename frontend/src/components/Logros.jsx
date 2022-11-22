@@ -18,6 +18,7 @@ export default function Logros() {
   const [loading, setLoading] = React.useState(true);
   const [error, setError] = React.useState(null);
   const [isOpen, setIsOpen] = useState(false);
+  const [dataBadge, setDataBadge] = useState('');
 
   useEffect(() => {
     axios.get(`${import.meta.env.VITE_BASE_API_URL}/public/achievements/progression`).then((res) => setAchievementProgression(res.data)).catch((err) => {
@@ -76,18 +77,34 @@ export default function Logros() {
             <span className="text-center">Misceláneo</span>
           </Tab>
         </Tab.List>
+        <CreateModal
+          isOpen={isOpen}
+          setIsOpen={setIsOpen}
+          title=""
+          formulario={(
+            <InfoBadge
+              DataBadge={dataBadge}
+            />
+                )}
+        />
         <Tab.Panels>
           <Tab.Panel>
-            <CreateModal isOpen={isOpen} setIsOpen={setIsOpen} title="Informacion del logro" formulario={<InfoBadge isOpen={isOpen} setIsOpen={setIsOpen} />} />
             <SkillTree
               achievementProgression={achievementProgression}
               myAchievements={myAchievements}
               isOpen={isOpen}
               setIsOpen={setIsOpen}
+              setDataBadge={setDataBadge}
             />
           </Tab.Panel>
           <Tab.Panel>
-            <SkillGrid achievements={achievements} myAchievements={myAchievements} />
+            <SkillGrid
+              achievements={achievements}
+              myAchievements={myAchievements}
+              isOpen={isOpen}
+              setIsOpen={setIsOpen}
+              setDataBadge={setDataBadge}
+            />
           </Tab.Panel>
         </Tab.Panels>
       </Tab.Group>
