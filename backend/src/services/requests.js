@@ -67,6 +67,7 @@ router.get('/closed', async (ctx) => {
       openedBy: true,
     },
   });
+
   ctx.body = requests;
 });
 
