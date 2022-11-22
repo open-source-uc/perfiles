@@ -53,7 +53,7 @@ export default function Logros() {
     }
   }, [user]);
   return (
-    <section className="mt-24">
+    <section className="mt-28">
       <Helmet>
         <title>Logros | Members OSUC</title>
       </Helmet>
