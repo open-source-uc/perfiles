@@ -126,6 +126,7 @@ model Project {
   id          String      @id @unique @default(cuid())
   name        String      @unique
   description String
+  hashtags                   HashtagsOnProjects[]     @relation("has")
   creator     Member     @relation(fields: [creatorUsername], references: [username])
   creatorUsername String
   members     ProjectsOnMembers[]
@@ -141,6 +142,19 @@ model ProjectsOnMembers {
   projectId      String
 }
 
+model Hashtag {
+  id          String @id @unique @default(cuid())
+  name        String @unique
+  projects    HashtagsOnProjects[]
+}
+
+model HashtagsOnProjects {
+  id             String   @id @unique @default(cuid())
+  project        Project  @relation("has", fields: [projectId], references: [id], onDelete: Cascade)
+  hashtag        Hashtag @relation(fields: [hashtagId], references: [id], onDelete: Cascade)
+  projectId      String
+  hashtagId      String
+}
 
 enum Role {
   // Used mostly for automation and testing

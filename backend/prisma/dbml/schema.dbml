@@ -111,6 +111,7 @@ Table Project {
   id String [pk, unique]
   name String [unique, not null]
   description String [not null]
+  hashtags HashtagsOnProjects [not null]
   creator Member [not null]
   creatorUsername String [not null]
   members ProjectsOnMembers [not null]
@@ -124,6 +125,20 @@ Table ProjectsOnMembers {
   project Project [not null]
   memberUsername String [not null]
   projectId String [not null]
+}
+
+Table Hashtag {
+  id String [pk, unique]
+  name String [unique, not null]
+  projects HashtagsOnProjects [not null]
+}
+
+Table HashtagsOnProjects {
+  id String [pk, unique]
+  project Project [not null]
+  hashtag Hashtag [not null]
+  projectId String [not null]
+  hashtagId String [not null]
 }
 
 Enum Role {
@@ -190,3 +205,7 @@ Ref: Project.creatorUsername > Member.username
 Ref: ProjectsOnMembers.memberUsername > Member.username [delete: Cascade]
 
 Ref: ProjectsOnMembers.projectId > Project.id [delete: Cascade]
+
+Ref: HashtagsOnProjects.projectId > Project.id [delete: Cascade]
+
+Ref: HashtagsOnProjects.hashtagId > Hashtag.id [delete: Cascade]

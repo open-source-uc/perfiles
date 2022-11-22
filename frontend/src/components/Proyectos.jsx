@@ -38,19 +38,21 @@ export default function Proyectos() {
   const [loading, setLoading] = useState(false);
   const [proyectos, setProyectos] = useState([]);
 
-  axios.get(`${import.meta.env.VITE_BASE_API_URL}/public/projects`)
-    .then((res) => setProyectos(res.data))
-    .catch((err) => {
-      const errorMsg = handleError(err);
-      setError(errorMsg);
-    });
+  React.useEffect(() => {
+    axios.get(`${import.meta.env.VITE_BASE_API_URL}/public/projects`)
+      .then((res) => setProyectos(res.data))
+      .catch((err) => {
+        const errorMsg = handleError(err);
+        setError(errorMsg);
+      });
+  }, []);
   return (
-    <section>
+    <section className="mt-24 p-4">
       <Helmet>
         <title>Proyectos | Members OSUC</title>
       </Helmet>
       {/* <h1 className="text-center text-4xl p-2 m-0 bg-gray-800/60">Proyectos e ideas</h1> */}
-      <h1 className="text-center text-4xl p-2 mt-4 font-semibold">Proyectos & Ideas 🚀</h1>
+      <h1 className="text-center text-4xl p-2 mt-4 font-semibold">Proyectos e ideas 🚀</h1>
       <Tab.Group>
         <Tab.List className="flex space-x-1 p-1 mx-auto w-[90%] md-[70%] lg:w-[50%] xl:w-[30%] bg-osuc-black-2 rounded-xl">
           <Tab

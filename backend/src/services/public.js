@@ -132,6 +132,11 @@ router.get('/projects', async (ctx) => {
             memberUsername: true,
           },
         },
+        hashtags: {
+          select: {
+            hashtag: true,
+          },
+        },
       },
     });
     ctx.body = projects;

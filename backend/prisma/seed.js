@@ -199,6 +199,39 @@ async function loadProjectsOnMembers() {
   })));
 }
 
+async function loadHashtags() {
+  const hashtags = JSON.parse(
+    fs.readFileSync('data/hashtags.json', 'utf-8'),
+  );
+
+  await Promise.all(hashtags.map((hashtag) => prisma.hashtag.create({
+    data: {
+      name: hashtag.name,
+    },
+  })));
+}
+
+async function loadHashtagsOnProjects() {
+  const hashtagsOnProjects = JSON.parse(
+    fs.readFileSync('data/hashtags_on_projects.json', 'utf-8'),
+  );
+
+  await Promise.all(hashtagsOnProjects.map((hashtagOnProject) => prisma.hashtagsOnProjects.create({
+    data: {
+      hashtag: {
+        connect: {
+          name: hashtagOnProject.hashtag,
+        },
+      },
+      project: {
+        connect: {
+          name: hashtagOnProject.project,
+        },
+      },
+    },
+  })));
+}
+
 async function main() {
   await loadMembers();
   await loadAchievementLevels();
@@ -208,6 +241,8 @@ async function main() {
   await loadAchievementProgressionNodes();
   await loadProjects();
   await loadProjectsOnMembers();
+  await loadHashtags();
+  await loadHashtagsOnProjects();
 }
 
 await main();
