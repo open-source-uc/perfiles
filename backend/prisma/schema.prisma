@@ -26,6 +26,8 @@ model Member {
   created_claimlinks   ClaimLink[]
   claimed_claimlinks   ClaimLinkClaim[]
   actions              AuditEntry[]           @relation("actor")
+  projects             ProjectsOnMembers[] @relation("joins")
+  created_projects     Project[]
 }
 
 model Profile {
@@ -132,6 +134,40 @@ model AuditEntry {
 
 }
 
+model Project {
+  id          String      @id @unique @default(cuid())
+  name        String      @unique
+  description String
+  hashtags                   HashtagsOnProjects[]     @relation("has")
+  creator     Member     @relation(fields: [creatorUsername], references: [username])
+  creatorUsername String
+  members     ProjectsOnMembers[]
+  repo      String?
+  access      ProjectAccess
+}
+
+model ProjectsOnMembers {
+  id             String   @id @unique @default(cuid())
+  member         Member   @relation("joins", fields: [memberUsername], references: [username])
+  project        Project  @relation(fields: [projectId], references: [id])
+  memberUsername String
+  projectId      String
+}
+
+model Hashtag {
+  id          String @id @unique @default(cuid())
+  name        String @unique
+  projects    HashtagsOnProjects[]
+}
+
+model HashtagsOnProjects {
+  id             String   @id @unique @default(cuid())
+  project        Project  @relation("has", fields: [projectId], references: [id])
+  hashtag        Hashtag @relation(fields: [hashtagId], references: [id])
+  projectId      String
+  hashtagId      String
+}
+
 enum Role {
   // Used mostly for automation and testing
   SERVICE
@@ -175,3 +211,11 @@ enum RequestState {
   REJECTED
 }
 
+enum ProjectAccess {
+  // The project is currently seeking new members
+  OPEN
+  // The project is currently seeking new members but requires approval
+  APPROVAL
+  // The project is currently closed to new members
+  CLOSED
+}

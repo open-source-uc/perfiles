@@ -35,7 +35,7 @@ router.get('/members', async (ctx) => {
   } catch (e) {
     // TODO: Standardize error handling
     if (e instanceof Prisma.PrismaClientKnownRequestError) {
-      ctx.throw(500, e.message);
+      ctx.throw(e.message);
     }
   }
 });
@@ -49,6 +49,7 @@ router.get('/members/:username', async (ctx) => {
         username: true,
         role: true,
         joinedAt: true,
+        created_projects: true,
         profile: {
           select: {
             name: true,
@@ -70,6 +71,17 @@ router.get('/members/:username', async (ctx) => {
             },
           },
         },
+        projects: {
+          select: {
+            project: {
+              select: {
+                id: true,
+                name: true,
+                description: true,
+              },
+            },
+          },
+        },
       },
     });
     // Also add stats
@@ -81,7 +93,7 @@ router.get('/members/:username', async (ctx) => {
         ctx.status = 404;
         ctx.body = { message: 'Member not found' };
       } else {
-        ctx.throw(500, e.message);
+        ctx.throw(e.message);
       }
     }
   }
@@ -98,6 +110,42 @@ router.get('/achievements', async (ctx) => {
 router.get('/achievements/progression', async (ctx) => {
   const tree = await getProgressionTree();
   ctx.body = tree;
+});
+
+// Projects
+
+router.get('/projects', async (ctx) => {
+  try {
+    const projects = await prisma.project.findMany({
+      select: {
+        id: false,
+        name: true,
+        description: true,
+        creator: {
+          select: {
+            username: true,
+          },
+        },
+        repo: true,
+        access: true,
+        members: {
+          select: {
+            memberUsername: true,
+          },
+        },
+        hashtags: {
+          select: {
+            hashtag: true,
+          },
+        },
+      },
+    });
+    ctx.body = projects;
+  } catch (e) {
+    if (e instanceof Prisma.PrismaClientKnownRequestError) {
+      ctx.throw(e.message);
+    }
+  }
 });
 
 export default router;
