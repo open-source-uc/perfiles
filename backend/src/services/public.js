@@ -34,7 +34,7 @@ router.get('/members', async (ctx) => {
   } catch (e) {
     // TODO: Standardize error handling
     if (e instanceof Prisma.PrismaClientKnownRequestError) {
-      ctx.throw(500, e.message);
+      ctx.throw(e.message);
     }
   }
 });
@@ -92,7 +92,7 @@ router.get('/members/:username', async (ctx) => {
         ctx.status = 404;
         ctx.body = { message: 'Member not found' };
       } else {
-        ctx.throw(500, e.message);
+        ctx.throw(e.message);
       }
     }
   }
@@ -142,7 +142,7 @@ router.get('/projects', async (ctx) => {
     ctx.body = projects;
   } catch (e) {
     if (e instanceof Prisma.PrismaClientKnownRequestError) {
-      ctx.throw(500, e.message);
+      ctx.throw(e.message);
     }
   }
 });
