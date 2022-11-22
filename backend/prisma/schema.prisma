@@ -136,8 +136,8 @@ model Project {
 
 model ProjectsOnMembers {
   id             String   @id @unique @default(cuid())
-  member         Member   @relation("joins", fields: [memberUsername], references: [username], onDelete: Cascade)
-  project        Project  @relation(fields: [projectId], references: [id], onDelete: Cascade)
+  member         Member   @relation("joins", fields: [memberUsername], references: [username])
+  project        Project  @relation(fields: [projectId], references: [id])
   memberUsername String
   projectId      String
 }
@@ -150,8 +150,8 @@ model Hashtag {
 
 model HashtagsOnProjects {
   id             String   @id @unique @default(cuid())
-  project        Project  @relation("has", fields: [projectId], references: [id], onDelete: Cascade)
-  hashtag        Hashtag @relation(fields: [hashtagId], references: [id], onDelete: Cascade)
+  project        Project  @relation("has", fields: [projectId], references: [id])
+  hashtag        Hashtag @relation(fields: [hashtagId], references: [id])
   projectId      String
   hashtagId      String
 }
