@@ -4,8 +4,8 @@ module.exports = {
     es2021: true,
   },
   extends: [
-    'plugin:react/recommended',
     'airbnb',
+    'airbnb/hooks',
   ],
   overrides: [
   ],
@@ -13,9 +13,6 @@ module.exports = {
     ecmaVersion: 'latest',
     sourceType: 'module',
   },
-  plugins: [
-    'react',
-  ],
   rules: {
     'import/no-extraneous-dependencies': ['error', { devDependencies: true }],
     'react/prop-types': 'off',
