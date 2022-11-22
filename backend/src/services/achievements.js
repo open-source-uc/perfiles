@@ -104,6 +104,24 @@ router.put('/', async (ctx) => {
     return;
   }
 
+  // Validate that the type is valid
+  if (!['PARTICIPATION', 'BY_REQUEST', 'MANUAL', 'MYSTERIOUS', 'AUTOMATIC'].includes(type)) {
+    ctx.status = 400;
+    ctx.body = {
+      message: 'El tipo de logro no es válido',
+    };
+    return;
+  }
+
+  // Validate that the level is valid
+  if (!['BRONZE', 'SILVER', 'GOLD', 'PLATINUM'].includes(level)) {
+    ctx.status = 400;
+    ctx.body = {
+      message: 'El nivel del logro no es válido',
+    };
+    return;
+  }
+
   // Load PNG image from base64 string
   // Strip prefix from base64 string
   const base64Image = image.split(';base64,').pop();
