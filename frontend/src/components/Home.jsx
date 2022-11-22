@@ -9,7 +9,7 @@ import { getAuthHeader } from '../utils/auth';
 
 function WelcomeHero() {
   return (
-    <section className="bg-osuc-white-3 px-5 py-12">
+    <section className="bg-osuc-white-3 dark:bg-osuc-black-2 px-5 py-12">
       <div className="prose dark:prose-invert mx-auto my-8">
         <h1>👋 Bienvenide a la plataforma de integrantes de OSUC.</h1>
         <p>
