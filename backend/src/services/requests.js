@@ -1,6 +1,8 @@
 import Router from '@koa/router';
 import prisma from '../client.js';
 
+import auditLogger from '../utils/audit-logger.js';
+
 const router = new Router({ prefix: '/requests' });
 
 router.get('/', async (ctx) => {
@@ -98,6 +100,12 @@ router.get('/:id', async (ctx) => {
   }
 });
 
+auditLogger.register(
+  'requests',
+  'create',
+  (data, actor) => `El usuario ${actor.username} ha solicitado el logro ${data.achievement.name}`,
+);
+
 // Create a new request
 router.put('/', async (ctx) => {
   const memberUsername = ctx.state.user.username;
@@ -164,16 +172,34 @@ router.put('/', async (ctx) => {
   // Create the request
   const newRequest = await prisma.request.create({
     data: {
-      memberUsername,
-      achievementId,
+      openedBy: {
+        connect: {
+          username: memberUsername,
+        },
+      },
+      achievement: {
+        connect: {
+          id: achievementId,
+        },
+      },
       description,
       openedAt: new Date(),
       state: 'OPEN',
     },
+    include: {
+      achievement: true,
+    },
   });
   ctx.status = 201;
   ctx.body = newRequest;
+  await auditLogger.log('requests', 'create', newRequest, ctx.state.user.username);
 });
+
+auditLogger.register(
+  'requests',
+  'delete',
+  (data, actor) => `El admin ${actor.username} ha eliminado la solicitud del logro ${data.achievement.name} hecha por ${data.openedBy.username}`,
+);
 
 router.delete('/:id', async (ctx) => {
   // Check that the user has a CHAIR or SERVICE role
@@ -190,6 +216,10 @@ router.delete('/:id', async (ctx) => {
     where: {
       id,
     },
+    include: {
+      achievement: true,
+      openedBy: true,
+    },
   });
   if (request) {
     await prisma.request.delete({
@@ -198,6 +228,7 @@ router.delete('/:id', async (ctx) => {
       },
     });
     ctx.status = 204;
+    await auditLogger.log('requests', 'delete', request, ctx.state.user.username);
   } else {
     ctx.status = 404;
     ctx.body = {
@@ -205,6 +236,18 @@ router.delete('/:id', async (ctx) => {
     };
   }
 });
+
+auditLogger.register(
+  'requests',
+  'approve',
+  (data, actor) => `El admin ${actor.username} ha aprobado la solicitud del logro ${data.achievement.name} hecha por ${data.openedBy.username}`,
+);
+
+auditLogger.register(
+  'requests',
+  'reject',
+  (data, actor) => `El admin ${actor.username} ha rechazado la solicitud del logro ${data.achievement.name} hecha por ${data.openedBy.username}`,
+);
 
 // Approve or reject a request, giving the user the achievement if approved
 router.patch('/:id', async (ctx) => {
@@ -277,17 +320,23 @@ router.patch('/:id', async (ctx) => {
       });
     }
     // Set the request status
-    await prisma.request.update({
+    const updatedRequest = await prisma.request.update({
       where: {
         id,
       },
       data: {
         state: approved ? 'APPROVED' : 'REJECTED',
       },
+      include: {
+        achievement: true,
+        openedBy: true,
+      },
     });
     ctx.body = {
       message: `La solicitud de id ${id} fue ${approved ? 'aprobada' : 'rechazada'} exitosamente!`,
     };
+    ctx.status = 200;
+    await auditLogger.log('requests', approved ? 'approve' : 'reject', updatedRequest, ctx.state.user.username);
   } else {
     ctx.status = 404;
     ctx.body = {

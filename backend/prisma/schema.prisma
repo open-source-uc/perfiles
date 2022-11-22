@@ -25,11 +25,12 @@ model Member {
   created_requests     Request[]
   created_claimlinks   ClaimLink[]
   claimed_claimlinks   ClaimLinkClaim[]
+  actions              AuditEntry[]           @relation("actor")
 }
 
 model Profile {
   id               String  @id @unique @default(cuid())
-  member           Member  @relation(fields: [memberUsername], references: [username])
+  member           Member  @relation(fields: [memberUsername], references: [username], onDelete: Cascade)
   memberUsername   String  @unique
   name             String
   email            String
@@ -117,7 +118,18 @@ model ClaimLinkClaim {
 model AchievementLevel {
   name        String        @id @unique
   points      Int
-  Achievement Achievement[]
+  achievement Achievement[]
+}
+
+model AuditEntry {
+  id        String   @id @unique @default(cuid())
+  createdAt DateTime
+  service  String
+  action   String
+  actor Member? @relation("actor", fields: [actorUsername], references: [username])
+  actorUsername String?
+  data    Json
+
 }
 
 enum Role {
@@ -162,3 +174,4 @@ enum RequestState {
   APPROVED
   REJECTED
 }
+
