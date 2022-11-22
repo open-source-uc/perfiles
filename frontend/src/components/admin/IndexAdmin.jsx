@@ -59,7 +59,10 @@ export default function IndexAdmin() {
         {' '}
         👋
       </p>
-      <h2>Actividad reciente</h2>
+      <h2 className="text-lg">Actividad reciente</h2>
+      {recentAuditMessages.length === 0 && (
+        <p className="font-semibold">No hay actividad reciente para mostrar.</p>
+      )}
       <ul className="tableadmin mb-8 shadow-md">
         {recentAuditMessages.slice(0, 7).map((auditMessage) => (
           <div key={auditMessage.id} className="even:bg-osuc-black-4 even:text-osuc-white-3 odd:bg-osuc-white-4 odd:text-osuc-black-1">
