@@ -8,8 +8,8 @@ function NoMatch() {
       <RobotDCC className="h-auto object-scale-down overflow-hidden w-3/4 md:w-4/12" alt="404" />
       <div className="max-w-md px-2 text-sm md:text-base lg:px-0">
         <header className="mb-6">
-          <h2 className="text-4xl font-bold leading-none text-gray-400 select-none md:text-6xl">404.</h2>
-          <h3 className="text-xl font-light leading-normal lg:text-3xl md:text-3xl">Lo sentimos, no pudimos encontrar esta página.</h3>
+          <h1 className="text-4xl font-bold leading-none text-gray-400 select-none md:text-6xl">404.</h1>
+          <h2 className="text-xl font-light leading-normal lg:text-3xl md:text-3xl">Lo sentimos, no pudimos encontrar esta página.</h2>
         </header>
 
         <p className="max-w-sm mb-5 leading-5 md:leading-7">
