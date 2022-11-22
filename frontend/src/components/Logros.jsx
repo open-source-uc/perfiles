@@ -22,16 +22,12 @@ export default function Logros() {
       const errorMsg = handleError(err);
       setError(errorMsg);
     });
-  }, []);
 
-  useEffect(() => {
     axios.get(`${import.meta.env.VITE_BASE_API_URL}/public/achievements`).then((res) => setAchievements(res.data)).catch((err) => {
       const errorMsg = handleError(err);
       setError(errorMsg);
     });
-  }, []);
 
-  useEffect(() => {
     if (user) {
       axios.get(`${import.meta.env.VITE_BASE_API_URL}/members/me`, {
         headers: {
@@ -47,10 +43,11 @@ export default function Logros() {
         (err) => {
           const errorMsg = handleError(err);
           setError(errorMsg);
-          setLoading(false);
         },
       );
     }
+
+    setLoading(false);
   }, [user]);
   return (
     <section className="mt-28">
