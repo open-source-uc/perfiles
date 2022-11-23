@@ -10,7 +10,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       # This step checks out a copy of your repository.
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v3
       - uses: superfly/flyctl-actions/setup-flyctl@master
       - run: cd backend && flyctl deploy --remote-only && cd ../backup_ms/backend && flyctl deploy --remote-only
         env:
@@ -20,7 +20,7 @@ jobs:
     runs-on: ubuntu-latest
     name: Deploy backup front-end (wrangler-cli)
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v3
 
       - name: Install dependencies
         run: cd backup_ms/frontend && npm install
