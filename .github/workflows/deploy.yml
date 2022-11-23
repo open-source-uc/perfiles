@@ -9,7 +9,6 @@ jobs:
     name: Deploy back-end(s) (flyctl)
     runs-on: ubuntu-latest
     steps:
-      # This step checks out a copy of your repository.
       - uses: actions/checkout@v3
       - uses: superfly/flyctl-actions/setup-flyctl@master
       - run: cd backend && flyctl deploy --remote-only && cd ../backup_ms/backend && flyctl deploy --remote-only

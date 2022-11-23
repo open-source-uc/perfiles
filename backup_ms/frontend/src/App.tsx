@@ -5,10 +5,18 @@ import { Link, Route } from 'wouter';
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 
+type AchievementOnMember = {
+  id: string;
+  obtainedAt: string;
+  awardedByUsername: string;
+  memberUsername: string;
+  achievementId: string;
+}
+
 type Backup = {
   id: string;
   createdAt: string;
-  blob?: object;
+  blob?: AchievementOnMember[];
 }
 
 function Backup({ id }: { id: string }) {
@@ -28,21 +36,48 @@ function Backup({ id }: { id: string }) {
   return (
     <>
       {backup && (
-      <>
-        <h2 className="mb-2">
-          Backup
-          {' '}
-          <code>{id}</code>
-        </h2>
-        <span className="font-mono">
-          Obtenida el
-          {' '}
-          <time dateTime={backup?.createdAt}>{df.format(new Date(backup?.createdAt))}</time>
-        </span>
-        <pre className="text-left">
+        <>
+          <h2 className="mb-2">
+            Backup
+            {' '}
+            <code>{id}</code>
+          </h2>
+          <span className="font-mono">
+            Obtenido el
+            {' '}
+            <time dateTime={backup?.createdAt}>{df.format(new Date(backup?.createdAt))}</time>
+          </span>
+          <table>
+            <thead>
+              <tr>
+                <th>Usuario</th>
+                <th>ID Logro</th>
+                <th>Entregado por</th>
+                <th>Fecha</th>
+              </tr>
+            </thead>
+            <tbody>
+              {backup?.blob?.map((item: AchievementOnMember) => (
+                <tr key={item.id}>
+                  <td>{item.memberUsername}</td>
+                  <td>{item.achievementId}</td>
+                  <td>{item.awardedByUsername}</td>
+                  <td>
+                    <time
+                      dateTime={item.obtainedAt}
+                    >
+                      {df.format(new Date(item.obtainedAt))}
+                    </time>
+
+                  </td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+          {/* <pre className="text-left">
           {JSON.stringify(backup?.blob, null, 2)}
-        </pre>
-      </>
+        </pre> */}
+        </>
       )}
       {!backup && <p>Cargando...</p>}
     </>
@@ -65,7 +100,7 @@ function App() {
   });
 
   return (
-    <main className="prose">
+    <main className="prose mx-auto">
       <h1 className="text-center">Servicio de Backups</h1>
       <section>
         <h2>Backups disponibles</h2>
