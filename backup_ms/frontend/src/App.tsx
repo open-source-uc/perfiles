@@ -69,6 +69,7 @@ function App() {
       <h1 className="text-center">Servicio de Backups</h1>
       <section>
         <h2>Backups disponibles</h2>
+        {!backups.length && <p>No hay backups disponibles.</p>}
         <ol>
           {backups.map((backup: Backup) => (
             <li key={backup.id}>
