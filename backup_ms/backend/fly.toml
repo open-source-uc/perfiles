@@ -17,11 +17,14 @@ processes = []
   release_command = "npx prisma migrate deploy && npx prisma generate"
 
 [[services]]
-  http_checks = []
   internal_port = 8080
   processes = ["app"]
   protocol = "tcp"
   script_checks = []
+  [[services.http_checks]]
+    method = "get"
+    path = "/health"
+
   [services.concurrency]
     hard_limit = 25
     soft_limit = 20
