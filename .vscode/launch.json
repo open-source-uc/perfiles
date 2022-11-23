@@ -27,6 +27,28 @@
             "type": "node"
         },
         {
+            "command": "npm run dev",
+            "name": "Backups Frontend (vite)",
+            "request": "launch",
+            "type": "node-terminal",
+            "cwd": "${workspaceFolder}/backup_ms/frontend"
+        },
+        {
+            "console": "integratedTerminal",
+            "internalConsoleOptions": "neverOpen",
+            "name": "Backups Backend (nodemon)",
+            "program": "${workspaceFolder}/backup_ms/backend/src/index.js",
+            "cwd": "${workspaceFolder}/backup_ms/backend",
+            "request": "launch",
+            "restart": true,
+            "runtimeExecutable": "nodemon",
+            "skipFiles": [
+                "<node_internals>/**/*.js",
+                "${workspaceFolder}/backup_ms/backend/node_modules/**/*.js"
+            ],
+            "type": "node"
+        },
+        {
             "name": "Launch localhost (Chrome + HMR)",
             "type": "chrome",
             "request": "launch",
