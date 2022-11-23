@@ -47,7 +47,7 @@ export default function Proyectos() {
       });
   }, []);
   return (
-    <section className="mt-24 p-4">
+    <section className="p-4">
       <Helmet>
         <title>Proyectos | Members OSUC</title>
       </Helmet>

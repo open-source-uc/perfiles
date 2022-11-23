@@ -20,7 +20,7 @@ function BadgeCard({
     <article className={`${width} ${height} z-20 rounded-xl px-1 py-1 shadow-xl bg-white flex flex-col justify-between ${hasAchievement ? 'border-indigo-500 border-4' : ''}`}>
       <button
         type="button"
-        className="w-6 mx-0 fixed fill-yellow-500  z-10"
+        className="w-6 mx-0 absolute fill-yellow-500  z-10"
         onClick={(e) => buttonClicked(e, data)}
       >
         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
