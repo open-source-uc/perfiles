@@ -47,7 +47,7 @@ export default function Proyectos() {
       });
   }, []);
   return (
-    <section className="mt-24 p-4">
+    <section className="p-4">
       <Helmet>
         <title>Proyectos | Members OSUC</title>
       </Helmet>
@@ -68,7 +68,7 @@ export default function Proyectos() {
         </Tab.List>
         <Tab.Panels>
           <Tab.Panel>
-            <ProjectCards elementList={proyectos} key={proyectos} />
+            <ProjectCards elementList={proyectos} />
             <CreateModal isOpen={isOpen1} setIsOpen={setIsOpen1} title="Crear un proyecto" formulario={<FormProyectos isOpen={isOpen1} setIsOpen={setIsOpen1} />} />
             <BtnCreate onClick={() => setIsOpen1(true)} />
           </Tab.Panel>

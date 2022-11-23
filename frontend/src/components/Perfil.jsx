@@ -209,7 +209,7 @@ export default function Perfil() {
       )}
       {error && (
         <>
-          <h1 className="text-center text-2xl font-bold mt-28">{error}</h1>
+          <h1 className="text-center text-2xl font-bold mt-4">{error}</h1>
           <p className="text-center">
             <Link to="/" className="underline">Volver al inicio</Link>
           </p>
@@ -217,7 +217,7 @@ export default function Perfil() {
       )}
       {!error && !loading
         && (
-          <div className="mx-8 mt-28 mb-8 lg:mb-0 flex flex-row flex-wrap lg:flex-nowrap content-between justify-center gap-x-12 gap-y-12">
+          <div className="mx-8 mt-6 mb-8 lg:mt-24 lg:mb-0 flex flex-row flex-wrap lg:flex-nowrap content-between justify-center gap-x-12 gap-y-12">
             <div className="grow max-w-2xl lg:max-w-md">
               <section className="mt-8">
                 <ProfileInfo user={user} />
