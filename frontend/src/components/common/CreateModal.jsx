@@ -11,10 +11,40 @@ import {
 import * as Yup from 'yup';
 import { Tab, Dialog, Transition } from '@headlessui/react';
 import { StarIcon } from '@heroicons/react/20/solid';
+import axios from 'axios';
+import handleError from '../../utils/error-handler';
 
 function FormProyectos({ isOpen, setIsOpen }) {
+  // Handle form submit (as an uncontrolled form)
+  function handleSubmitForm(event) {
+    event.preventDefault();
+    const form = event.target;
+    const formData = new FormData(form);
+    const data = Object.fromEntries(formData.entries());
+    // eslint-disable-next-line no-console
+    console.log(data);
+    // Send request
+    axios.put(`${import.meta.env.VITE_BASE_API_URL}/projects`, {
+      ...data,
+    }, {
+      headers: {
+        Authorization: `Bearer ${localStorage.getItem('token')}`,
+      },
+    }).then((res) => {
+      // eslint-disable-next-line no-alert
+      alert('Logro creado exitosamente!');
+    }).catch((err) => {
+      const errorMsg = handleError(err);
+      // eslint-disable-next-line no-alert
+      alert(errorMsg);
+    });
+
+    // Close modal
+
+    // eslint-disable-next-line no-alert
+  }
   return (
-    <>
+    <div className="p-3">
 
       <Formik
         initialValues={{
@@ -42,77 +72,78 @@ function FormProyectos({ isOpen, setIsOpen }) {
         })}
         onSubmit={(values, { setSubmitting }) => {
           setTimeout(() => {
+            // eslint-disable-next-line no-alert
             alert(JSON.stringify(values, null, 2));
             setSubmitting(false);
           }, 400);
         }}
       >
 
-        <Form className="w-full">
+        {/* eslint-disable-next-line react/jsx-no-bind */}
+        <Form onSubmit={handleSubmitForm} className="w-full">
           <div className="flex flex-col space-y-4">
             <div className="flex flex-col space-y-2">
-              <label htmlFor="projectName" className="text-sm font-medium text-gray-700">
+              <label htmlFor="projectName" className="text-sm font-medium">
                 Nombre del proyecto
               </label>
-              <Field name="projectName" type="text" placeholder="Members OSUC" className="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent text-osuc-black-1" />
-              <ErrorMessage name="projectName" component="div" className="text-xs text-red-500" />
+              <Field name="name" type="text" placeholder="Members OSUC" className="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent text-osuc-black-1" />
+              <ErrorMessage name="name" component="div" className="text-xs text-red-500" />
             </div>
             <div className="flex flex-col space-y-2">
-              <label htmlFor="projectDescription" className="text-sm font-medium text-gray-700">
+              <label htmlFor="projectDescription" className="text-sm font-medium">
                 Descripción del proyecto
               </label>
-              <Field name="projectDescription" as="textarea" placeholder="Plataforma para recopilar ideas y ganar chapitas" className="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent text-osuc-black-1" />
-              <ErrorMessage name="projectDescription" component="div" className="text-xs text-red-500" />
+              <Field name="description" as="textarea" placeholder="Plataforma para recopilar ideas y ganar chapitas" className="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent text-osuc-black-1" />
+              <ErrorMessage name="description" component="div" className="text-xs text-red-500" />
             </div>
 
             <div className="flex flex-col space-y-2">
-              <label htmlFor="projectHashtags" className="text-sm font-medium text-gray-700">
+              <label htmlFor="projectHashtags" className="text-sm font-medium ">
                 Hashtags
               </label>
-              <Field name="projectHashtags" type="text" placeholder="#UC #OSUC #React" className="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent text-osuc-black-1" />
-              <ErrorMessage name="projectHashtags" component="div" className="text-xs text-red-500" />
+              <Field name="hashtags" type="text" placeholder="#UC #OSUC #React" className="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent text-osuc-black-1" />
+              <ErrorMessage name="hashtags" component="div" className="text-xs text-red-500" />
             </div>
 
             <div className="flex flex-col space-y-2">
-              <label htmlFor="projectRepo" className="text-sm font-medium text-gray-700">
+              <label htmlFor="repo" className="text-sm font-medium">
                 Repositorio del proyecto
               </label>
-              <Field name="projectRepo" type="text" placeholder="https://github.com/open-source-uc/perfiles" className="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent text-osuc-black-1" />
-              <ErrorMessage name="projectRepo" component="div" className="text-xs text-red-500" />
+              <Field name="repo" type="text" placeholder="https://github.com/open-source-uc/perfiles" className="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent text-osuc-black-1" />
+              <ErrorMessage name="repo" component="div" className="text-xs text-red-500" />
             </div>
             <div className="flex flex-col space-y-2">
-              <label htmlFor="projectAccess" className="text-sm font-medium text-gray-700">
+              <label htmlFor="access" className="text-sm font-medium">
                 Apertura del proyecto
               </label>
-              <Field name="projectAccess" as="select" className="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent text-osuc-black-1">
+              <Field name="access" as="select" className="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent text-osuc-black-1">
                 <option value="" disabled selected>Selecciona una opción</option>
                 <option value="OPEN">Aceptar nuevos miembros</option>
                 <option value="APPROVAL">Por solicitud</option>
                 <option value="CLOSED">No aceptar nuevos miembros</option>
               </Field>
-              <ErrorMessage name="projectAccess" component="div" className="text-xs text-red-500" />
+              <ErrorMessage name="access" component="div" className="text-xs text-red-500" />
             </div>
+          </div>
+          <div className="flex mb-2 mt-4">
+            <button
+              type="button"
+              className="block text-white mx-auto inset-x-0 mt-4 bg-gray-400 hover:bg-gray-600 font-bold py-2 px-4 rounded"
+              onClick={() => setIsOpen(false)}
+            >
+              Cancelar
+            </button>
+            <button
+              type="submit"
+              className="block mx-auto text-white inset-x-0 mt-4 bg-blue-500 hover:bg-blue-700 font-bold py-2 px-4 rounded"
+              onClick={() => setIsOpen(false)}
+            >
+              Enviar
+            </button>
           </div>
         </Form>
       </Formik>
-
-      <div className="flex mb-2 mt-4">
-        <button
-          type="submit"
-          className="block mx-auto inset-x-0 mt-4 bg-gray-400 hover:bg-gray-600 text-white font-bold py-2 px-4 rounded"
-          onClick={() => setIsOpen(false)}
-        >
-          Cancelar
-        </button>
-        <button
-          type="submit"
-          className="block mx-auto inset-x-0 mt-4 bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
-          onClick={() => setIsOpen(false)}
-        >
-          Enviar
-        </button>
-      </div>
-    </>
+    </div>
   );
 }
 
@@ -122,7 +153,7 @@ function FormIdeas({ isOpen, setIsOpen }) {
       <p>TODO: crear formulario Con framgent</p>
       <button
         type="submit"
-        className="block mx-auto inset-x-0 mt-4 bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
+        className="block mx-auto inset-x-0 mt-4 bg-blue-500 hover:bg-blue-700 font-bold py-2 px-4 rounded"
         onClick={() => setIsOpen(false)}
       >
         Enviar
@@ -133,7 +164,7 @@ function FormIdeas({ isOpen, setIsOpen }) {
 
 function InfoBadge({ DataBadge }) {
   return (
-    <div className="inline-block w-64 text-sm font-light text-gray-500 duration-300 bg-white border border-gray-200 rounded-lg shadow-sm dark:text-gray-400 dark:border-gray-600 dark:bg-gray-800">
+    <div className="">
       <div className="flex flex-row justify-center item-center px-3 bg-gray-100 border-b border-gray-200 rounded-t-lg dark:border-gray-600 dark:bg-gray-700">
         <h3>{DataBadge.name}</h3>
       </div>
@@ -168,7 +199,7 @@ function CreateModal({
         </Transition.Child>
 
         <div className="fixed inset-0 overflow-y-auto">
-          <div className="flex min-h-full items-center justify-center p-5 text-center">
+          <div className="flex min-h-full items-center justify-center text-center">
             <Transition.Child
               enter="ease-out duration-300"
               enterFrom="opacity-0 scale-95"
@@ -177,14 +208,17 @@ function CreateModal({
               leaveFrom="opacity-100 scale-100"
               leaveTo="opacity-0 scale-95"
             >
-              <Dialog.Panel>
-                {/* className="w-full h-full max-w-md transform overflow-hidden rounded-2xl bg-white p-3 text-left align-middle shadow-xl transition-all" */}
-                <Dialog.Title
-                  as="h3"
-                  className="text-xl font-medium leading-6 text-gray-900 mt-2 mb-4"
-                >
-                  {title}
-                </Dialog.Title>
+              <Dialog.Panel className="z-50 my-20 inline-block w-full h-full max-w-md text-sm transform overflow-hidden font-light text-gray-500 duration-300 bg-white border border-gray-200 rounded-lg shadow-sm dark:border-gray-600 dark:bg-gray-800 dark:text-white">
+                {/* className="w-64 h-full max-w-md transform overflow-hidden rounded-2xl bg-white p-3 text-left align-middle shadow-xl transition-all" */}
+                {/* si existe title */}
+                {title && (
+                  <Dialog.Title
+                    as="h3"
+                    className="text-xl font-medium leading-6 text-gray-900 mt-2 mb-4 dark:text-white"
+                  >
+                    {title}
+                  </Dialog.Title>
+                )}
                 { formulario }
               </Dialog.Panel>
             </Transition.Child>

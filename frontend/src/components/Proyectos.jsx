@@ -73,7 +73,7 @@ export default function Proyectos() {
             <BtnCreate onClick={() => setIsOpen1(true)} />
           </Tab.Panel>
           <Tab.Panel>
-            Nothing here yet!
+            <p>¡Nada aquí todavía!</p>
           </Tab.Panel>
         </Tab.Panels>
       </Tab.Group>

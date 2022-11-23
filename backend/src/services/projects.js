@@ -3,10 +3,6 @@ import Router from '@koa/router';
 import { Prisma } from '@prisma/client';
 import prisma from '../client.js';
 
-export function getProjects() {
-
-}
-
 const router = new Router({ prefix: '/projects' });
 
 router.get('/', async (ctx) => {
@@ -30,7 +26,7 @@ router.get('/', async (ctx) => {
         },
         hashtags: {
           select: {
-            hashtag: true,
+            name: true,
           },
         },
       },
