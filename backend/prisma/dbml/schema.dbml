@@ -13,6 +13,7 @@ Table Member {
   created_requests Request [not null]
   created_claimlinks ClaimLink [not null]
   claimed_claimlinks ClaimLinkClaim [not null]
+  actions AuditEntry [not null]
   projects ProjectsOnMembers [not null]
   created_projects Project [not null]
 }
@@ -104,7 +105,17 @@ Table ClaimLinkClaim {
 Table AchievementLevel {
   name String [pk, unique]
   points Int [not null]
-  Achievement Achievement [not null]
+  achievement Achievement [not null]
+}
+
+Table AuditEntry {
+  id String [pk, unique]
+  createdAt DateTime [not null]
+  service String [not null]
+  action String [not null]
+  actor Member
+  actorUsername String
+  data Json [not null]
 }
 
 Table Project {
@@ -169,7 +180,7 @@ Enum ProjectAccess {
   CLOSED
 }
 
-Ref: Profile.memberUsername - Member.username
+Ref: Profile.memberUsername - Member.username [delete: Cascade]
 
 Ref: Achievement.creatorUsername > Member.username
 
@@ -196,6 +207,8 @@ Ref: ClaimLink.creatorUsername > Member.username
 Ref: ClaimLinkClaim.memberUsername > Member.username
 
 Ref: ClaimLinkClaim.claimLinkId > ClaimLink.id
+
+Ref: AuditEntry.actorUsername > Member.username
 
 Ref: Project.creatorUsername > Member.username
 

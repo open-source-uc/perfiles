@@ -8,6 +8,7 @@ import SkillTree from './common/SkillTree';
 import handleError from '../utils/error-handler';
 import LoadingAnimation from './common/LoadingAnimation';
 import SkillGrid from './common/SkillGrid';
+import { CreateModal, InfoBadge } from './common/CreateModal';
 
 export default function Logros() {
   const user = React.useContext(UserContext);
@@ -16,22 +17,20 @@ export default function Logros() {
   const [myAchievements, setMyAchievements] = useState(new Set());
   const [loading, setLoading] = React.useState(true);
   const [error, setError] = React.useState(null);
+  const [isOpen, setIsOpen] = useState(false);
+  const [dataBadge, setDataBadge] = useState('');
 
   useEffect(() => {
     axios.get(`${import.meta.env.VITE_BASE_API_URL}/public/achievements/progression`).then((res) => setAchievementProgression(res.data)).catch((err) => {
       const errorMsg = handleError(err);
       setError(errorMsg);
     });
-  }, []);
 
-  useEffect(() => {
     axios.get(`${import.meta.env.VITE_BASE_API_URL}/public/achievements`).then((res) => setAchievements(res.data)).catch((err) => {
       const errorMsg = handleError(err);
       setError(errorMsg);
     });
-  }, []);
 
-  useEffect(() => {
     if (user) {
       axios.get(`${import.meta.env.VITE_BASE_API_URL}/members/me`, {
         headers: {
@@ -47,10 +46,11 @@ export default function Logros() {
         (err) => {
           const errorMsg = handleError(err);
           setError(errorMsg);
-          setLoading(false);
         },
       );
     }
+
+    setLoading(false);
   }, [user]);
   return (
     <section className="mt-28">
@@ -74,15 +74,34 @@ export default function Logros() {
             <span className="text-center">Misceláneo</span>
           </Tab>
         </Tab.List>
+        <CreateModal
+          isOpen={isOpen}
+          setIsOpen={setIsOpen}
+          title=""
+          formulario={(
+            <InfoBadge
+              DataBadge={dataBadge}
+            />
+                )}
+        />
         <Tab.Panels>
           <Tab.Panel>
             <SkillTree
               achievementProgression={achievementProgression}
               myAchievements={myAchievements}
+              isOpen={isOpen}
+              setIsOpen={setIsOpen}
+              setDataBadge={setDataBadge}
             />
           </Tab.Panel>
           <Tab.Panel>
-            <SkillGrid achievements={achievements} myAchievements={myAchievements} />
+            <SkillGrid
+              achievements={achievements}
+              myAchievements={myAchievements}
+              isOpen={isOpen}
+              setIsOpen={setIsOpen}
+              setDataBadge={setDataBadge}
+            />
           </Tab.Panel>
         </Tab.Panels>
       </Tab.Group>

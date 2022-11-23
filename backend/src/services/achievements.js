@@ -6,6 +6,8 @@ import slugify from 'slugify';
 import fs from 'fs';
 import prisma from '../client.js';
 
+import auditLogger from '../utils/audit-logger.js';
+
 const router = new Router({ prefix: '/achievements' });
 
 router.get('/', async (ctx) => {
@@ -30,6 +32,18 @@ router.get('/:id', async (ctx) => {
     };
   }
 });
+
+auditLogger.register(
+  'achievements',
+  'create',
+  (data, actor) => `El usuario ${actor.username} ha creado el logro ${data.name}`,
+);
+
+auditLogger.register(
+  'achievements',
+  'update',
+  (data, actor) => `El usuario ${actor.username} ha actualizado el logro ${data.name}`,
+);
 
 router.put('/', async (ctx) => {
   // Check that the user has a CHAIR or SERVICE role
@@ -90,6 +104,24 @@ router.put('/', async (ctx) => {
     return;
   }
 
+  // Validate that the type is valid
+  if (!['PARTICIPATION', 'BY_REQUEST', 'MANUAL', 'MYSTERIOUS', 'AUTOMATIC'].includes(type)) {
+    ctx.status = 400;
+    ctx.body = {
+      message: 'El tipo de logro no es válido',
+    };
+    return;
+  }
+
+  // Validate that the level is valid
+  if (!['BRONZE', 'SILVER', 'GOLD', 'PLATINUM'].includes(level)) {
+    ctx.status = 400;
+    ctx.body = {
+      message: 'El nivel del logro no es válido',
+    };
+    return;
+  }
+
   // Load PNG image from base64 string
   // Strip prefix from base64 string
   const base64Image = image.split(';base64,').pop();
@@ -136,6 +168,7 @@ router.put('/', async (ctx) => {
       });
       ctx.body = updatedAchievement;
       ctx.status = 200;
+      await auditLogger.log('achievements', 'update', updatedAchievement, ctx.state.user.username);
     } else {
       // Create new achievement
       const newAchievement = await prisma.achievement.create({
@@ -161,6 +194,7 @@ router.put('/', async (ctx) => {
       });
       ctx.body = newAchievement;
       ctx.status = 201;
+      await auditLogger.log('achievements', 'create', newAchievement, ctx.state.user.username);
     }
   } catch (error) {
     console.error(`⚠️ Error creando/actualizando un logro: ${error}`);
@@ -170,6 +204,12 @@ router.put('/', async (ctx) => {
     };
   }
 });
+
+auditLogger.register(
+  'achievements',
+  'delete',
+  (data, actor) => `El usuario ${actor.username} ha eliminado el logro ${data.name}`,
+);
 
 router.delete('/:id', async (ctx) => {
   // Check that the user has a CHAIR or SERVICE role
@@ -198,6 +238,7 @@ router.delete('/:id', async (ctx) => {
     });
     ctx.body = deletedAchievement;
     ctx.status = 200;
+    await auditLogger.log('achievements', 'delete', deletedAchievement, ctx.state.user.username);
   } else {
     ctx.status = 404;
     ctx.body = {

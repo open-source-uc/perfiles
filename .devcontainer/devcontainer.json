@@ -22,7 +22,8 @@
 				"firefox-devtools.vscode-firefox-debug",
 				"bradlc.vscode-tailwindcss",
 				"austenc.tailwind-docs",
-				"wix.glean"
+				"wix.glean",
+				"tamasfe.even-better-toml"
 			]
 		}
 	},
@@ -47,7 +48,7 @@
 			"NODE_ENV": "development"
 		}
 	},
-	"postCreateCommand": "cd backend && npm install && npx prisma migrate reset --force && cd ../frontend && npm install",
+	"postCreateCommand": "cd backend && npm install && npx prisma migrate reset --force && cd ../frontend && npm install && cd ../backup_ms/backend && npm install && cd ../frontend && npm install",
 	"postStartCommand": "git config --global --add safe.directory ${containerWorkspaceFolder}",
 	"waitFor": "postStartCommand"
 }

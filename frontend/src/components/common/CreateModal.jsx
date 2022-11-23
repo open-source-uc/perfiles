@@ -10,6 +10,7 @@ import {
 } from 'formik';
 import * as Yup from 'yup';
 import { Tab, Dialog, Transition } from '@headlessui/react';
+import { StarIcon } from '@heroicons/react/20/solid';
 
 function FormProyectos({ isOpen, setIsOpen }) {
   return (
@@ -130,12 +131,31 @@ function FormIdeas({ isOpen, setIsOpen }) {
   );
 }
 
+function InfoBadge({ DataBadge }) {
+  return (
+    <div className="inline-block w-64 text-sm font-light text-gray-500 duration-300 bg-white border border-gray-200 rounded-lg shadow-sm dark:text-gray-400 dark:border-gray-600 dark:bg-gray-800">
+      <div className="flex flex-row justify-center item-center px-3 bg-gray-100 border-b border-gray-200 rounded-t-lg dark:border-gray-600 dark:bg-gray-700">
+        <h3>{DataBadge.name}</h3>
+      </div>
+      <div className="relative grid gap-8 p-3 lg:grid-cols-2 ">
+        <p className="text-xs">{DataBadge.description}</p>
+        <p>
+          <StarIcon className="inline-block mr-2 h-5" />
+          {DataBadge.levelName}
+          {' '}
+          {/* {DataBadge.level.name} */}
+        </p>
+      </div>
+    </div>
+  );
+}
+
 function CreateModal({
   isOpen, setIsOpen, title, formulario,
 }) {
   return (
     <Transition appear show={isOpen} as={Fragment}>
-      <Dialog as="div" className="relative z-10" onClose={() => setIsOpen(false)}>
+      <Dialog as="div" className="relative z-30" onClose={() => setIsOpen(false)}>
         <Transition.Child
           enter="ease-out duration-300"
           enterFrom="opacity-0"
@@ -157,7 +177,8 @@ function CreateModal({
               leaveFrom="opacity-100 scale-100"
               leaveTo="opacity-0 scale-95"
             >
-              <Dialog.Panel className="w-full max-w-md transform overflow-hidden rounded-2xl bg-white p-3 text-left align-middle shadow-xl transition-all">
+              <Dialog.Panel>
+                {/* className="w-full h-full max-w-md transform overflow-hidden rounded-2xl bg-white p-3 text-left align-middle shadow-xl transition-all" */}
                 <Dialog.Title
                   as="h3"
                   className="text-xl font-medium leading-6 text-gray-900 mt-2 mb-4"
@@ -178,4 +199,5 @@ export {
   CreateModal,
   FormProyectos,
   FormIdeas,
+  InfoBadge,
 };

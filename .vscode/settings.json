@@ -3,24 +3,18 @@
   "editor.codeActionsOnSave": {
     "source.fixAll.eslint": true
   },
+  "[typescript]": {
+    "editor.formatOnSave": false,
+  },
   "eslint.validate": [
-    "javascript"
+    "javascript",
+    "javascriptreact",
+    "typescript",
+    "typescriptreact"
   ],
   "[css]": {
     "editor.defaultFormatter": "vscode.css-language-features"
   },
   "thunder-client.saveToWorkspace": true,
   "thunder-client.workspaceRelativePath": "backend/",
-  "sqltools.connections": [
-    {
-      "previewLimit": 50,
-      "server": "localhost",
-      "port": 5432,
-      "driver": "PostgreSQL",
-      "name": "local",
-      "database": "postgres",
-      "username": "postgres",
-      "password": "postgres"
-    }
-  ],
 }

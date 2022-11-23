@@ -4,6 +4,7 @@ import neatCsv from 'neat-csv';
 import fs from 'fs';
 import prisma from '../client.js';
 import getStats from '../utils/stats.js';
+import auditLogger from '../utils/audit-logger.js';
 
 const router = new Router({ prefix: '/members' });
 
@@ -185,6 +186,15 @@ router.get('/:username/stats', async (ctx) => {
 
 // User creation / batch import endpoint
 // This endpoint is only available to admins
+
+auditLogger.register('members', 'create', (data, actor) => (
+  `El usuario ${actor.username} ha creado el usuario ${data.username}`
+));
+
+auditLogger.register('members', 'import', (data, actor) => (
+  `El usuario ${actor.username} ha importado ${data.length} usuarios`
+));
+
 router.put('/', async (ctx) => {
   // Check that the user has a CHAIR or SERVICE role
   if (!(['CHAIR', 'SERVICE'].includes(ctx.state.user.role))) {
@@ -199,6 +209,27 @@ router.put('/', async (ctx) => {
   const { body } = ctx.request;
   const members = Array.isArray(body) ? body : [body];
 
+  // Check for required fields
+  const usernameRequiredFields = ['username', 'role', 'profile'];
+  const profileRequiredFields = ['name', 'email'];
+
+  const errors = [];
+  // eslint-disable-next-line no-restricted-syntax
+  for (const member of members) {
+    // eslint-disable-next-line no-restricted-syntax
+    for (const field of usernameRequiredFields) {
+      if (!member[field]) {
+        errors.push(`Missing field ${field} in member ${member.username}`);
+      }
+    }
+    // eslint-disable-next-line no-restricted-syntax
+    for (const field of profileRequiredFields) {
+      if (!member.profile[field]) {
+        errors.push(`Missing field ${field} in member ${member.username}`);
+      }
+    }
+  }
+
   // Create a new member for each object in the array
   const createdMembers = await Promise.all(
     members.map((member) => prisma.member.upsert({
@@ -208,10 +239,11 @@ router.put('/', async (ctx) => {
       create: {
         username: member.username,
         role: member.role,
+        joinedAt: new Date(),
         profile: {
           create: {
-            name: member.name,
-            email: member.email,
+            name: member.profile.name,
+            email: member.profile.email,
             telegramUsername: member.telegramUsername,
             avatarURL: member.avatarURL ? member.avatarURL : `https://avatars.githubusercontent.com/${member.username}`,
           },
@@ -221,10 +253,10 @@ router.put('/', async (ctx) => {
         role: member.role,
         profile: {
           update: {
-            name: member.name,
-            email: member.email,
-            telegramUsername: member.telegramUsername,
-            avatarURL: member.avatarURL ? member.avatarURL : `https://avatars.githubusercontent.com/${member.username}`,
+            name: member.profile.name,
+            email: member.profile.email,
+            telegramUsername: member.profile.telegramUsername,
+            avatarURL: member.profile.avatarURL ? member.profile.avatarURL : `https://avatars.githubusercontent.com/${member.username}`,
           },
         },
       },
@@ -233,7 +265,53 @@ router.put('/', async (ctx) => {
 
   ctx.body = createdMembers;
   ctx.status = 201;
+  if (members.length > 1) {
+    await auditLogger.log('members', 'import', members, ctx.state.user.username);
+  } else {
+    await auditLogger.log('members', 'create', members[0], ctx.state.user.username);
+  }
 });
+
+auditLogger.register('members', 'delete', (data, actor) => (
+  `El usuario ${actor.username} ha eliminado el usuario ${data.username}`
+));
+
+router.delete('/:username', async (ctx) => {
+  // Check that the user has a CHAIR or SERVICE role
+  if (!(['CHAIR', 'SERVICE'].includes(ctx.state.user.role))) {
+    ctx.status = 403;
+    ctx.body = {
+      message: 'Se requieren privilegios administrativos para acceder a este recurso',
+    };
+    return;
+  }
+
+  const { username } = ctx.params;
+  const member = await prisma.member.findUnique({
+    where: {
+      username,
+    },
+  });
+
+  if (member) {
+    await prisma.member.delete({
+      where: {
+        username,
+      },
+    });
+    ctx.status = 204;
+    await auditLogger.log('members', 'delete', member, ctx.state.user.username);
+  } else {
+    ctx.status = 404;
+    ctx.body = {
+      message: `Member ${username} not found`,
+    };
+  }
+});
+
+auditLogger.register('members', 'update', (data, actor) => (
+  `El usuario ${actor.username} ha modificado el usuario ${data.username}`
+));
 
 router.patch('/:username', async (ctx) => {
   // Check that the user has a CHAIR or SERVICE role
@@ -277,6 +355,7 @@ router.patch('/:username', async (ctx) => {
       },
     });
     ctx.body = updatedMember;
+    await auditLogger.log('members', 'update', updatedMember, ctx.state.user.username);
   } else {
     ctx.status = 404;
     ctx.body = {
@@ -377,5 +456,10 @@ router.put('/import', async (ctx) => {
 
   ctx.body = createdMembers;
   ctx.status = 201;
+  if (parsedData.length > 1) {
+    await auditLogger.log('members', 'import', parsedData, ctx.state.user.username);
+  } else {
+    await auditLogger.log('members', 'create', parsedData[0], ctx.state.user.username);
+  }
 });
 export default router;

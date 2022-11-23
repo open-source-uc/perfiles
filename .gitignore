@@ -159,10 +159,13 @@ sketch
 *.sass.map
 *.scss.map
 
+# End of https://www.toptal.com/developers/gitignore/api/node,sass,react
+
 ### Images, DELETE AFTER PRODUCTION ###
 frontend/public/assets/images/badges/adsadsa.png
 frontend/public/assets/images/badges/fdsfsafd.png
 frontend/public/assets/images/badges/long-boy.png
 frontend/public/assets/images/badges/lorem.png
+frontend/public/assets/images/badges/test-achievement-from-thunder.png
 
-# End of https://www.toptal.com/developers/gitignore/api/node,sass,react
+
