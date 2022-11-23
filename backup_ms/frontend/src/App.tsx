@@ -70,6 +70,7 @@ function App() {
       <section>
         <h2>Backups disponibles</h2>
         <ol>
+          {!backups.length && <li>No hay backups disponibles.</li>}
           {backups.map((backup: Backup) => (
             <li key={backup.id}>
               <Link href={`/backups/${backup.id}`}><time dateTime={backup.createdAt} className="underline">{df.format(new Date(backup.createdAt))}</time></Link>
