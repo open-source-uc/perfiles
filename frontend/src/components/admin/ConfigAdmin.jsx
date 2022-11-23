@@ -31,7 +31,7 @@ export default function ConfigAdmin() {
   }
 
   return (
-    <div className="admin__main">
+    <div className="admin__main mx-4">
       {/* <!-- adminindexbox1--> */}
       <ol className="adminindexbox">
         <li className="adminindexbox-item">
