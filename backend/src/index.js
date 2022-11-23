@@ -16,6 +16,7 @@ import achievementsRouter from './services/achievements.js';
 import membersRouter from './services/members.js';
 import requestsRouter from './services/requests.js';
 import applicantsRouter from './services/applicants.js';
+import projectsRouter from './services/projects.js';
 import backupsRouter from './services/backups.js';
 import auditRouter from './services/audit.js';
 
@@ -137,6 +138,8 @@ app.use(membersRouter.routes()).use(membersRouter.allowedMethods());
 app.use(requestsRouter.routes()).use(requestsRouter.allowedMethods());
 // Applicants
 app.use(applicantsRouter.routes()).use(applicantsRouter.allowedMethods());
+// Projects
+app.use(projectsRouter.routes()).use(projectsRouter.allowedMethods());
 // Backups
 app.use(backupsRouter.routes()).use(backupsRouter.allowedMethods());
 // Audit

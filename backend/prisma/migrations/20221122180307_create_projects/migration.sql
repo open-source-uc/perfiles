@@ -31,12 +31,9 @@ CREATE TABLE "Hashtag" (
 );
 
 -- CreateTable
-CREATE TABLE "HashtagsOnProjects" (
-    "id" TEXT NOT NULL,
-    "projectId" TEXT NOT NULL,
-    "hashtagId" TEXT NOT NULL,
-
-    CONSTRAINT "HashtagsOnProjects_pkey" PRIMARY KEY ("id")
+CREATE TABLE "_HashtagToProject" (
+    "A" TEXT NOT NULL,
+    "B" TEXT NOT NULL
 );
 
 -- CreateIndex
@@ -55,7 +52,10 @@ CREATE UNIQUE INDEX "Hashtag_id_key" ON "Hashtag"("id");
 CREATE UNIQUE INDEX "Hashtag_name_key" ON "Hashtag"("name");
 
 -- CreateIndex
-CREATE UNIQUE INDEX "HashtagsOnProjects_id_key" ON "HashtagsOnProjects"("id");
+CREATE UNIQUE INDEX "_HashtagToProject_AB_unique" ON "_HashtagToProject"("A", "B");
+
+-- CreateIndex
+CREATE INDEX "_HashtagToProject_B_index" ON "_HashtagToProject"("B");
 
 -- AddForeignKey
 ALTER TABLE "Project" ADD CONSTRAINT "Project_creatorUsername_fkey" FOREIGN KEY ("creatorUsername") REFERENCES "Member"("username") ON DELETE RESTRICT ON UPDATE CASCADE;
@@ -67,7 +67,7 @@ ALTER TABLE "ProjectsOnMembers" ADD CONSTRAINT "ProjectsOnMembers_memberUsername
 ALTER TABLE "ProjectsOnMembers" ADD CONSTRAINT "ProjectsOnMembers_projectId_fkey" FOREIGN KEY ("projectId") REFERENCES "Project"("id") ON DELETE RESTRICT ON UPDATE CASCADE;
 
 -- AddForeignKey
-ALTER TABLE "HashtagsOnProjects" ADD CONSTRAINT "HashtagsOnProjects_projectId_fkey" FOREIGN KEY ("projectId") REFERENCES "Project"("id") ON DELETE RESTRICT ON UPDATE CASCADE;
+ALTER TABLE "_HashtagToProject" ADD CONSTRAINT "_HashtagToProject_A_fkey" FOREIGN KEY ("A") REFERENCES "Hashtag"("id") ON DELETE CASCADE ON UPDATE CASCADE;
 
 -- AddForeignKey
-ALTER TABLE "HashtagsOnProjects" ADD CONSTRAINT "HashtagsOnProjects_hashtagId_fkey" FOREIGN KEY ("hashtagId") REFERENCES "Hashtag"("id") ON DELETE RESTRICT ON UPDATE CASCADE;
+ALTER TABLE "_HashtagToProject" ADD CONSTRAINT "_HashtagToProject_B_fkey" FOREIGN KEY ("B") REFERENCES "Project"("id") ON DELETE CASCADE ON UPDATE CASCADE;

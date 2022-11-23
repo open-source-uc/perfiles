@@ -40,5 +40,29 @@
     "headers": [],
     "params": [],
     "tests": []
+  },
+  {
+    "_id": "30640c99-c9f1-4bb3-82a6-2e4db9337f43",
+    "colId": "history",
+    "containerId": "",
+    "name": "localhost:3000/api/projects",
+    "url": "localhost:3000/api/projects",
+    "method": "GET",
+    "sortNum": 0,
+    "created": "2022-11-22T08:37:38.585Z",
+    "modified": "2022-11-22T18:30:38.612Z",
+    "headers": [
+      {
+        "name": "Authorization",
+        "value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImZlcm5hbmRvc21pdGhlciIsInJvbGUiOiJDSEFJUiIsImlhdCI6MTY2Nzg1Njk2OX0.ytQhCSYCaZnVEHngxDwXZByXZTtbX9iPt7yrFKZ-l7o"
+      }
+    ],
+    "params": [],
+    "body": {
+      "type": "json",
+      "raw": "{\n  \"name\": \"Members OSdddfffdddUCCdddaso\",\n  \"description\": \"Loremaso Ipsum\",\n  \"hashtags\": \"#Paul #Vaso\",\n  \"access\": \"APPROVAL\"\n}",
+      "form": []
+    },
+    "tests": []
   }
 ]

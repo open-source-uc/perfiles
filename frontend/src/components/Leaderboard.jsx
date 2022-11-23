@@ -36,7 +36,7 @@ export default function Leaderboard() {
 
   return (
     <>
-      <section className="bg-osuc-white-3 px-5 py-12">
+      <section className="bg-osuc-white-3 dark:bg-osuc-black-2 px-5 py-12">
         <div className="prose dark:prose-invert mx-auto my-8">
           <h1 className="">Ranking de integrantes 🏆</h1>
           <p className="">

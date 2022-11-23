@@ -6,6 +6,7 @@ import getStats from '../utils/stats.js';
 import getProgressionTree from '../utils/progression_nodes.js';
 
 import prisma from '../client.js';
+import { getProjects } from './projects.js';
 
 const router = new Router({ prefix: '/public' });
 
@@ -114,38 +115,6 @@ router.get('/achievements/progression', async (ctx) => {
 
 // Projects
 
-router.get('/projects', async (ctx) => {
-  try {
-    const projects = await prisma.project.findMany({
-      select: {
-        id: false,
-        name: true,
-        description: true,
-        creator: {
-          select: {
-            username: true,
-          },
-        },
-        repo: true,
-        access: true,
-        members: {
-          select: {
-            memberUsername: true,
-          },
-        },
-        hashtags: {
-          select: {
-            hashtag: true,
-          },
-        },
-      },
-    });
-    ctx.body = projects;
-  } catch (e) {
-    if (e instanceof Prisma.PrismaClientKnownRequestError) {
-      ctx.throw(e.message);
-    }
-  }
-});
+router.get('/projects', getProjects);
 
 export default router;

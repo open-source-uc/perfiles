@@ -122,7 +122,7 @@ Table Project {
   id String [pk, unique]
   name String [unique, not null]
   description String [not null]
-  hashtags HashtagsOnProjects [not null]
+  hashtags Hashtag [not null]
   creator Member [not null]
   creatorUsername String [not null]
   members ProjectsOnMembers [not null]
@@ -141,15 +141,12 @@ Table ProjectsOnMembers {
 Table Hashtag {
   id String [pk, unique]
   name String [unique, not null]
-  projects HashtagsOnProjects [not null]
+  projects Project [not null]
 }
 
-Table HashtagsOnProjects {
-  id String [pk, unique]
-  project Project [not null]
-  hashtag Hashtag [not null]
-  projectId String [not null]
-  hashtagId String [not null]
+Table HashtagToProject {
+  hashtagsId String [ref: > Hashtag.id]
+  projectsId String [ref: > Project.id]
 }
 
 Enum Role {
@@ -218,7 +215,3 @@ Ref: Project.creatorUsername > Member.username
 Ref: ProjectsOnMembers.memberUsername > Member.username
 
 Ref: ProjectsOnMembers.projectId > Project.id
-
-Ref: HashtagsOnProjects.projectId > Project.id
-
-Ref: HashtagsOnProjects.hashtagId > Hashtag.id

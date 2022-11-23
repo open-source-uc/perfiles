@@ -1,14 +1,18 @@
 [
     {
-        "name": "UC"
+        "name": "UC",
+        "projects": ["AutoRamosWeb", "DirectUC"]
     },
     {
-        "name": "startup"
+        "name": "startup",
+        "projects": ["AutoRamosWeb"]
     },
     {
-        "name": "its-3-am-i-should-be-sleeping"
+        "name": "its-3-am-i-should-be-sleeping",
+        "projects": ["AutoRamosWeb"]
     },
     {
-        "name": "send-help"
+        "name": "send-help",
+        "projects": ["AutoRamosWeb"]
     }
 ]
