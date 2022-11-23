@@ -93,6 +93,13 @@ Fuera del entorno de desarrollo, todo el proceso de deployment a producción ocu
 La configuración de Fly.io se encuentra definida en `backend/fly.toml`, y la imagen del entorno se encuentra definida en `backend/Dockerfile`.
 
 ## Servicio de Backups
+El servicio de backups se encuentra implementado de forma análoga a la webapp principal, teniendo una carpeta `backend` y `frontend` en `backup_ms`. Se disponen de comandos de lanzamiento en VSCode para ejecutar el servicio de backups, y por defecto se puede acceder a la webapp en [localhost:5173](http://localhost:5173) (la URL de producción es [backup.osuc.dev](https://backup.osuc.dev).
+
+El servicio permite almacenar backups de la tabla `AchievementsOnMembers`, que establece que miembros tienen que logros, y está implementado de una forma flexible, pudiendo funcionar con cualquier tabla con pequeñas modificaciones.
+
+El deployment del servicio ocurre en paralelo de la app principal, estando alojado en Fly.io ([api-backup.osuc.dev](https://api-backup.osuc.dev)) y Cloudflare Pages ([backup.osuc.dev](https://backup.osuc.dev)). Cloudflare Pages hace deployment via Github Actions usando `wrangler-cli`, con tal de bypassear una limitación en la plataforma (no tener dos sitios en un mismo repo).
+
+Todos los endpoints del servicio, y sus webhooks complementarios en el back-end, se encuentran documentados y testeados en Postman.
 
 ## Documentación adicional
 Los endpoints de la API [se encuentran ejemplificados en Postman](https://www.postman.com/agucova/workspace/eb248033-d0b2-4760-8638-8ba92f420b42/collection/18674839-9d3d4c46-87f6-4df9-9f03-d9f3ff6f17b4?action=share&creator=18674839).
