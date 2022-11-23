@@ -3,7 +3,7 @@ import * as React from 'react';
 
 export default function Footer() {
   return (
-    <footer className="relative z-40 bg-osuc-black-3 text-osuc-white-3 py-6 text-center bottom-0 w-full">
+    <footer className="z-40 bg-osuc-black-3 text-osuc-white-3 py-6 px-4 text-center w-full">
       {/* Código autogenerado por https://chooser-beta.creativecommons.org/ */}
       <p>
         <a
