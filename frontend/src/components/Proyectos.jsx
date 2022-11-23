@@ -68,7 +68,7 @@ export default function Proyectos() {
         </Tab.List>
         <Tab.Panels>
           <Tab.Panel>
-            <ProjectCards elementList={proyectos} />
+            <ProjectCards elementList={proyectos} key={proyectos} />
             <CreateModal isOpen={isOpen1} setIsOpen={setIsOpen1} title="Crear un proyecto" formulario={<FormProyectos isOpen={isOpen1} setIsOpen={setIsOpen1} />} />
             <BtnCreate onClick={() => setIsOpen1(true)} />
           </Tab.Panel>
