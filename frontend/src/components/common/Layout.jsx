@@ -6,13 +6,13 @@ import Scrollup from './Scrollup';
 
 export default function Layout() {
   return (
-    <>
+    <div className="flex flex-col h-screen">
       <Header />
-      <main className="mt-20">
+      <main className="mt-20 flex-grow">
         <Outlet />
         <Scrollup />
       </main>
       <Footer />
-    </>
+    </div>
   );
 }
