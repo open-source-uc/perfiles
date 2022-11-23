@@ -11,14 +11,9 @@ processes = []
   BACKEND_URL = "https://api-members.osuc.dev"
   FRONTEND_URL = "https://members.osuc.dev"
 
-
 [experimental]
   allowed_public_ports = []
   auto_rollback = true
-
-[build]
-  [build.args]
-    NODE_VERSION = "18"
 
 [deploy]
   release_command = "npx prisma migrate deploy && npx prisma generate"

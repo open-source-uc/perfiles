@@ -26,7 +26,7 @@ app.use(cors({
     // Check if the origin is osuc.dev or one of its subdomains
     // Also allow requests from perfiles.pages.dev
     const origin = ctx.request.get('origin');
-    const domains = ['osuc.dev', 'perfiles.pages.dev'];
+    const domains = ['osuc.dev', 'perfiles.pages.dev', 'backups-ms.pages.dev'];
     if (origin) {
       const url = new URL(origin);
       // eslint-disable-next-line no-restricted-syntax
