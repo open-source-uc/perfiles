@@ -5,7 +5,7 @@ on:
       - main
   workflow_dispatch:
 jobs:
-  deploy:
+  deploy_backends:
     name: Deploy back-end(s) (flyctl)
     runs-on: ubuntu-latest
     steps:
@@ -15,3 +15,22 @@ jobs:
       - run: cd backend && flyctl deploy --remote-only && cd ../backups_ms/backend && flyctl deploy --remote-only
         env:
           FLY_API_TOKEN: ${{ secrets.FLY_API_TOKEN }}
+
+  deploy_backup_frontend:
+    runs-on: ubuntu-latest
+    name: Deploy backup front-end (wrangler-cli)
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: Install dependencies
+        run: cd backups_ms/frontend && npm install
+
+      - name: Build
+        run: cd backups_ms/frontend && npm run build
+
+      - name: Publish
+        uses: cloudflare/wrangler-action@2.0.0
+        with:
+          apiToken: ${{ secrets.CF_API_TOKEN }}
+          accountId: ${{ secrets.CF_ACCOUNT_ID }}
+          command: pages publish backups_ms/frontend/dist --release --env production --project-name backups_ms
