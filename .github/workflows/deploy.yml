@@ -12,7 +12,7 @@ jobs:
       # This step checks out a copy of your repository.
       - uses: actions/checkout@v2
       - uses: superfly/flyctl-actions/setup-flyctl@master
-      - run: cd backend && flyctl deploy --remote-only && cd ../backups_ms/backend && flyctl deploy --remote-only
+      - run: cd backend && flyctl deploy --remote-only && cd ../backup_ms/backend && flyctl deploy --remote-only
         env:
           FLY_API_TOKEN: ${{ secrets.FLY_API_TOKEN }}
 
@@ -23,10 +23,10 @@ jobs:
       - uses: actions/checkout@v2
 
       - name: Install dependencies
-        run: cd backups_ms/frontend && npm install
+        run: cd backup_ms/frontend && npm install
 
       - name: Build
-        run: cd backups_ms/frontend && npm run build
+        run: cd backup_ms/frontend && npm run build
 
       - name: Publish
         uses: cloudflare/wrangler-action@2.0.0
