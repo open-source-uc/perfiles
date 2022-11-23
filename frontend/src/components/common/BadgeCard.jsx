@@ -17,18 +17,20 @@ function BadgeCard({
   }
 
   return (
-    <article className={`${width} ${height} z-20 marker:rounded-xl shadow-xl bg-white px-6 flex flex-col justify-center ${hasAchievement ? 'border-indigo-500 border-4' : ''}`}>
+    <article className={`${width} ${height} z-20 rounded-xl px-1 py-1 shadow-xl bg-white flex flex-col justify-between ${hasAchievement ? 'border-indigo-500 border-4' : ''}`}>
       <button
-        type="submit"
-        className="block w-6 fill-yellow-500  z-10"
+        type="button"
+        className="w-6 mx-0 fixed fill-yellow-500  z-10"
         onClick={(e) => buttonClicked(e, data)}
       >
         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
-          <path d="M256 512c141.4 0 256-114.6 256-256S397.4 0 256 0S0 114.6 0 256S114.6 512 256 512zM216 336h24V272H216c-13.3 0-24-10.7-24-24s10.7-24 24-24h48c13.3 0 24 10.7 24 24v88h8c13.3 0 24 10.7 24 24s-10.7 24-24 24H216c-13.3 0-24-10.7-24-24s10.7-24 24-24zm40-144c-17.7 0-32-14.3-32-32s14.3-32 32-32s32 14.3 32 32s-14.3 32-32 32z" />
+          <path className="absolute inset-0" d="M256 512c141.4 0 256-114.6 256-256S397.4 0 256 0S0 114.6 0 256S114.6 512 256 512zM216 336h24V272H216c-13.3 0-24-10.7-24-24s10.7-24 24-24h48c13.3 0 24 10.7 24 24v88h8c13.3 0 24 10.7 24 24s-10.7 24-24 24H216c-13.3 0-24-10.7-24-24s10.7-24 24-24zm40-144c-17.7 0-32-14.3-32-32s14.3-32 32-32s32 14.3 32 32s-14.3 32-32 32z" />
         </svg>
       </button>
-      <img className={`${width}`} src={`/${data.imageURL}`} alt={data.name} />
-      <p className={`text-gray-800 ${textSize} font-semibold text-center leading-tight`}>{data.name}</p>
+      <div className="px-4 py-4">
+        <img className={`${width}`} src={`/${data.imageURL}`} alt={data.name} />
+        <p className={`text-gray-800 ${textSize} font-semibold text-center leading-tight`}>{data.name}</p>
+      </div>
     </article>
   );
 }
