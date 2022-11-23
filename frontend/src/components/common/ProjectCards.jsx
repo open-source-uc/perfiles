@@ -33,10 +33,10 @@ export default function ProjectCards({ elementList }) {
               {/* hashtag */}
               {(element.hashtags) && (
               <div className="pt-4">
-                {element.hashtags.map((hashtagsOnProjects) => (
+                {element.hashtags.map((hashtag) => (
                   <span className="inline-block max-w-[100%] truncate bg-gray-200 rounded-full px-3 py-1 text-xs font-semibold text-gray-700 mr-2 mb-2">
                     #
-                    {hashtagsOnProjects.hashtag.name}
+                    {hashtag.name}
                   </span>
                 ))}
               </div>
