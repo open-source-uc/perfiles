@@ -1,8 +1,35 @@
-import * as React from 'react';
+import React, { useState } from 'react';
 
 import { Link } from 'react-router-dom';
 
+import axios from 'axios';
+
 export default function ConfigAdmin() {
+  const [message, setMessage] = useState('');
+
+  const token = localStorage.getItem('token');
+
+  async function triggerBackup(e) {
+    e.preventDefault();
+    await axios.post(`${import.meta.env.VITE_BASE_API_URL}/backups/trigger`, {}, {
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    });
+
+    setMessage('Backup creado exitosamente.');
+  }
+
+  async function restoreBackup(e) {
+    e.preventDefault();
+    await axios.post(`${import.meta.env.VITE_BASE_API_URL}/backups/restore`, {}, {
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    });
+    setMessage('Backup restaurado exitosamente.');
+  }
+
   return (
     <div className="admin__main">
       {/* <!-- adminindexbox1--> */}
@@ -13,55 +40,25 @@ export default function ConfigAdmin() {
         <li className="adminindexbox-item active">Configuración</li>
       </ol>
       {/* <!-- adminBox--> */}
-      <section className="admin-box admin-integrations">
-        <h2>Integraciones</h2>
-        <div className="admin-integrations-inputs">
-          <div className="admin-integrations-inputs__input">
-            <label htmlFor="gh_api_token">
-              GitHub API Token
-              <input type="text" id="gh_api_token" name="gh_api_token" value="" className="rounded-md shadow-sm border-gray-300" />
-            </label>
-          </div>
-          <div className="admin-integrations-inputs__input">
-            <label htmlFor="tg_api_token">
-              Telegram API Token
-              <input type="text" id="tg_api_token" name="tg_api_token" value="" className="rounded-md shadow-sm border-gray-300" />
+      <section className="prose dark:prose-invert">
+        <h2>Backups</h2>
+        {message && <p className="font-semibold">{message}</p>}
+        <div className="flex gap-4 mx-4 flex-wrap">
+          <button
+            type="button"
+            onClick={triggerBackup}
+            className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
+          >
+            Crear backup
+          </button>
+          <button
+            type="button"
+            onClick={restoreBackup}
+            className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
+          >
+            Restaurar backup
 
-            </label>
-          </div>
-          <div className="admin-integrations-inputs__input">
-            <label htmlFor="fw_api_token">
-              ForwardEmail API Token
-              <input type="text" id="fw_api_token" name="fw_api_token" value="" className="rounded-md shadow-sm border-gray-300" />
-
-            </label>
-          </div>
-          {/* <!-- Guardar button --> */}
-          <div className="admin-integrations-inputs__input">
-            <button className="admin-integrations-inputs__input__button" id="save-integrations" type="button">Guardar</button>
-          </div>
-        </div>
-      </section>
-      <section className="admin-box admin-criteria">
-        <h2>Criterios de membresía y permanencia</h2>
-        <div className="admin-criteria-inputs">
-          {/* <!-- Two inputs: Puntaje de Membresía y Puntaje de Permanencia --> */}
-          <div className="admin-criteria-inputs__input">
-            <label htmlFor="membership_score">
-              Puntaje de Membresía
-              <input type="number" id="membership_score" name="membership_score" value="" className="rounded-md shadow-sm border-gray-300" />
-            </label>
-          </div>
-          <div className="admin-criteria-inputs__input">
-            <label htmlFor="staying_score">
-              Puntaje de Permanencia
-              <input type="number" id="staying_score" name="staying_score" value="" className="rounded-md shadow-sm border-gray-300" />
-            </label>
-          </div>
-          {/* <!-- Guardar button --> */}
-          <div className="admin-criteria-inputs__input admin-criteria-button">
-            <button className="admin-criteria-inputs__input__button" id="save-criteria" type="button">Guardar</button>
-          </div>
+          </button>
         </div>
       </section>
     </div>
